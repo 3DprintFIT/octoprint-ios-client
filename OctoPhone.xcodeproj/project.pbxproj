@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		357C3E9A1DC7BE4A0018A07E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E981DC7BE4A0018A07E /* Fabric.framework */; };
+		357C3E9B1DC7BE4A0018A07E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E991DC7BE4A0018A07E /* Crashlytics.framework */; };
 		D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */; };
 		D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7451DBF46DB00EF9752 /* ViewController.swift */; };
 		D2CCF7491DBF46DB00EF9752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF7471DBF46DB00EF9752 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		357C3E981DC7BE4A0018A07E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		357C3E991DC7BE4A0018A07E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2CCF7451DBF46DB00EF9752 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				357C3E9B1DC7BE4A0018A07E /* Crashlytics.framework in Frameworks */,
+				357C3E9A1DC7BE4A0018A07E /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +83,8 @@
 		D2CCF7371DBF46DB00EF9752 = {
 			isa = PBXGroup;
 			children = (
+				357C3E981DC7BE4A0018A07E /* Fabric.framework */,
+				357C3E991DC7BE4A0018A07E /* Crashlytics.framework */,
 				D2CCF7421DBF46DB00EF9752 /* OctoPhone */,
 				D2CCF7571DBF46DC00EF9752 /* OctoPhoneTests */,
 				D2CCF7621DBF46DC00EF9752 /* OctoPhoneUITests */,
@@ -135,6 +143,7 @@
 				D2CCF73C1DBF46DB00EF9752 /* Sources */,
 				D2CCF73D1DBF46DB00EF9752 /* Frameworks */,
 				D2CCF73E1DBF46DB00EF9752 /* Resources */,
+				357C3E971DC7BDC40018A07E /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -193,8 +202,8 @@
 				TargetAttributes = {
 					D2CCF73F1DBF46DB00EF9752 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 69T295ARCG;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = CDMJRT8WJB;
+						ProvisioningStyle = Manual;
 					};
 					D2CCF7531DBF46DC00EF9752 = {
 						CreatedOnToolsVersion = 8.0;
@@ -256,6 +265,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		357C3E971DC7BDC40018A07E /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run dd91786f75cb40ae4bf775ac82d3af8c38f3ef97 79f265a5fd56838a962c4745efc95d52bd061979b51fbe9b5d1c514c19ee73ea";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D2CCF73C1DBF46DB00EF9752 /* Sources */ = {
@@ -415,12 +441,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 69T295ARCG;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CDMJRT8WJB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = OctoPhone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cz.badluckjosev.OctoPhone;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.ajty.OctoPhone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5d453496-d3b1-4158-9304-45c368700454";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development cz.ajty.OctoPhone";
 				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -428,12 +463,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 69T295ARCG;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CDMJRT8WJB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = OctoPhone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cz.badluckjosev.OctoPhone;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.ajty.OctoPhone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "07cd2e85-ff21-449a-b79b-02eca56798f6";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cz.ajty.OctoPhone";
 				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -514,6 +558,7 @@
 				D2CCF76A1DBF46DC00EF9752 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2CCF76B1DBF46DC00EF9752 /* Build configuration list for PBXNativeTarget "OctoPhoneTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +567,7 @@
 				D2CCF76D1DBF46DC00EF9752 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2CCF76E1DBF46DC00EF9752 /* Build configuration list for PBXNativeTarget "OctoPhoneUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +576,7 @@
 				D2CCF7701DBF46DC00EF9752 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
