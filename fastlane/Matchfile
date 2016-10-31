@@ -1,4 +1,4 @@
-git_url "git@git.ajty.cz:internal/ios-codesigning.git"
+#git_url "git@git.ajty.cz:internal/ios-codesigning.git"
 
 type "development" # The default type, can be: appstore, adhoc or development
 
