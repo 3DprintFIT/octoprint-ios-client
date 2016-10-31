@@ -1,0 +1,20 @@
+language: ruby
+
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode8
+
+before_install:
+  - bundle install
+
+before_script:
+  - match development
+  - match appstore
+
+branches:
+  only:
+    - master
+
+script: 
+  fastlane beta
