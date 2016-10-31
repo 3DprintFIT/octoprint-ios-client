@@ -17,4 +17,4 @@ branches:
 
 
 script: 
-  fastlane beta
+  match development && fastlane beta
