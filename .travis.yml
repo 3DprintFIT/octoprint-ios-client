@@ -4,17 +4,17 @@ matrix:
   include:
     - os: osx
       osx_image: xcode8
-      env:
-        - DISPLAY=:99.0
 
 before_install:
   - bundle install
+
+before_script:
+  - match development
+  - match appstore
 
 branches:
   only:
     - master
 
-
-
 script: 
-  match development && match appstore && fastlane beta
+  fastlane beta
