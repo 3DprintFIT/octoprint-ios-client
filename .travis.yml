@@ -17,4 +17,4 @@ branches:
 
 
 script: 
-  match development && fastlane beta
+  match development && match appstore && fastlane beta
