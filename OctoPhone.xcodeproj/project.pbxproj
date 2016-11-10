@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		357C3E9A1DC7BE4A0018A07E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E981DC7BE4A0018A07E /* Fabric.framework */; };
 		357C3E9B1DC7BE4A0018A07E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E991DC7BE4A0018A07E /* Crashlytics.framework */; };
+		D2510B081DD48A78004C30EA /* OctoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2510B071DD48A78004C30EA /* OctoApi.swift */; };
+		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
+		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
+		D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0F1DD491A4004C30EA /* RealmSwift.framework */; };
 		D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */; };
 		D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7451DBF46DB00EF9752 /* ViewController.swift */; };
 		D2CCF7491DBF46DB00EF9752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF7471DBF46DB00EF9752 /* Main.storyboard */; };
@@ -38,6 +42,10 @@
 /* Begin PBXFileReference section */
 		357C3E981DC7BE4A0018A07E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		357C3E991DC7BE4A0018A07E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		D2510B071DD48A78004C30EA /* OctoApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoApi.swift; sourceTree = "<group>"; };
+		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		D2510B0F1DD491A4004C30EA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2CCF7451DBF46DB00EF9752 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +68,9 @@
 			files = (
 				357C3E9B1DC7BE4A0018A07E /* Crashlytics.framework in Frameworks */,
 				357C3E9A1DC7BE4A0018A07E /* Fabric.framework in Frameworks */,
+				D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */,
+				D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */,
+				D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +91,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D2510B061DD4894E004C30EA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D2510B071DD48A78004C30EA /* OctoApi.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		D2510B091DD4911A004C30EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2510B0F1DD491A4004C30EA /* RealmSwift.framework */,
+				D2510B0A1DD4911A004C30EA /* Alamofire.framework */,
+				D2510B0B1DD4911A004C30EA /* Realm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D2CCF7371DBF46DB00EF9752 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +118,7 @@
 				D2CCF7571DBF46DC00EF9752 /* OctoPhoneTests */,
 				D2CCF7621DBF46DC00EF9752 /* OctoPhoneUITests */,
 				D2CCF7411DBF46DB00EF9752 /* Products */,
+				D2510B091DD4911A004C30EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +135,7 @@
 		D2CCF7421DBF46DB00EF9752 /* OctoPhone */ = {
 			isa = PBXGroup;
 			children = (
+				D2510B061DD4894E004C30EA /* API */,
 				D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */,
 				D2CCF7451DBF46DB00EF9752 /* ViewController.swift */,
 				D2CCF7471DBF46DB00EF9752 /* Main.storyboard */,
@@ -143,6 +174,7 @@
 				D2CCF73C1DBF46DB00EF9752 /* Sources */,
 				D2CCF73D1DBF46DB00EF9752 /* Frameworks */,
 				D2CCF73E1DBF46DB00EF9752 /* Resources */,
+				D2510B0E1DD4913D004C30EA /* Carthage */,
 				357C3E971DC7BDC40018A07E /* Fabric */,
 			);
 			buildRules = (
@@ -281,6 +313,23 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run dd91786f75cb40ae4bf775ac82d3af8c38f3ef97 79f265a5fd56838a962c4745efc95d52bd061979b51fbe9b5d1c514c19ee73ea";
 		};
+		D2510B0E1DD4913D004C30EA /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -290,6 +339,7 @@
 			files = (
 				D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
+				D2510B081DD48A78004C30EA /* OctoApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +497,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = OctoPhone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -469,6 +520,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = OctoPhone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
