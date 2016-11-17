@@ -13,6 +13,7 @@
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
 		D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0F1DD491A4004C30EA /* RealmSwift.framework */; };
+		D2510B131DD49A8D004C30EA /* PrinterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2510B121DD49A8D004C30EA /* PrinterType.swift */; };
 		D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */; };
 		D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7451DBF46DB00EF9752 /* ViewController.swift */; };
 		D2CCF7491DBF46DB00EF9752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF7471DBF46DB00EF9752 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D2510B0F1DD491A4004C30EA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		D2510B121DD49A8D004C30EA /* PrinterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterType.swift; sourceTree = "<group>"; };
 		D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2CCF7451DBF46DB00EF9752 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		D2510B061DD4894E004C30EA /* API */ = {
 			isa = PBXGroup;
 			children = (
+				D2510B111DD49A54004C30EA /* Model */,
 				D2510B071DD48A78004C30EA /* OctoApi.swift */,
 			);
 			path = API;
@@ -107,6 +110,14 @@
 				D2510B0B1DD4911A004C30EA /* Realm.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2510B111DD49A54004C30EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2510B121DD49A8D004C30EA /* PrinterType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D2CCF7371DBF46DB00EF9752 = {
@@ -339,6 +350,7 @@
 			files = (
 				D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
+				D2510B131DD49A8D004C30EA /* PrinterType.swift in Sources */,
 				D2510B081DD48A78004C30EA /* OctoApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
