@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		357C3E9A1DC7BE4A0018A07E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E981DC7BE4A0018A07E /* Fabric.framework */; };
 		357C3E9B1DC7BE4A0018A07E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E991DC7BE4A0018A07E /* Crashlytics.framework */; };
+		D203DE741DDFCB22000DEAA0 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE731DDFCB22000DEAA0 /* NetworkController.swift */; };
+		D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */; };
 		D2510B081DD48A78004C30EA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2510B071DD48A78004C30EA /* Router.swift */; };
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		357C3E981DC7BE4A0018A07E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		357C3E991DC7BE4A0018A07E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		D203DE731DDFCB22000DEAA0 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		D2510B071DD48A78004C30EA /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -108,10 +112,27 @@
 			path = "View Related";
 			sourceTree = "<group>";
 		};
+		D203DE751DDFCB59000DEAA0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D203DE761DDFCB62000DEAA0 /* Data */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D203DE761DDFCB62000DEAA0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		D2510B061DD4894E004C30EA /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				D2510B071DD48A78004C30EA /* Router.swift */,
+				D203DE731DDFCB22000DEAA0 /* NetworkController.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -152,6 +173,7 @@
 		D2CCF7421DBF46DB00EF9752 /* OctoPhone */ = {
 			isa = PBXGroup;
 			children = (
+				D203DE751DDFCB59000DEAA0 /* Utils */,
 				D203DE721DDFCA04000DEAA0 /* View Related */,
 				D2510B061DD4894E004C30EA /* Networking */,
 				D203DE711DDFC9DA000DEAA0 /* Supporting Files */,
@@ -349,6 +371,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D203DE741DDFCB22000DEAA0 /* NetworkController.swift in Sources */,
+				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
 				D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
 				D2510B081DD48A78004C30EA /* Router.swift in Sources */,
