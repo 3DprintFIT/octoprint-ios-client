@@ -13,10 +13,8 @@
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
 		D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0F1DD491A4004C30EA /* RealmSwift.framework */; };
-		D2510B131DD49A8D004C30EA /* PrinterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2510B121DD49A8D004C30EA /* PrinterType.swift */; };
 		D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */; };
 		D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7451DBF46DB00EF9752 /* ViewController.swift */; };
-		D2CCF7491DBF46DB00EF9752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF7471DBF46DB00EF9752 /* Main.storyboard */; };
 		D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */; };
 		D2CCF74E1DBF46DB00EF9752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74C1DBF46DB00EF9752 /* LaunchScreen.storyboard */; };
 		D2CCF7591DBF46DC00EF9752 /* OctoPhoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7581DBF46DC00EF9752 /* OctoPhoneTests.swift */; };
@@ -47,11 +45,9 @@
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D2510B0F1DD491A4004C30EA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		D2510B121DD49A8D004C30EA /* PrinterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterType.swift; sourceTree = "<group>"; };
 		D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2CCF7451DBF46DB00EF9752 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D2CCF7481DBF46DB00EF9752 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2CCF74D1DBF46DB00EF9752 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2CCF74F1DBF46DB00EF9752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,13 +89,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D2510B061DD4894E004C30EA /* API */ = {
+		D203DE711DDFC9DA000DEAA0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D2510B111DD49A54004C30EA /* Model */,
+				D2CCF74F1DBF46DB00EF9752 /* Info.plist */,
+				D2CCF74C1DBF46DB00EF9752 /* LaunchScreen.storyboard */,
+				D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */,
+				D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D203DE721DDFCA04000DEAA0 /* View Related */ = {
+			isa = PBXGroup;
+			children = (
+				D2CCF7451DBF46DB00EF9752 /* ViewController.swift */,
+			);
+			path = "View Related";
+			sourceTree = "<group>";
+		};
+		D2510B061DD4894E004C30EA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
 				D2510B071DD48A78004C30EA /* Router.swift */,
 			);
-			path = API;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		D2510B091DD4911A004C30EA /* Frameworks */ = {
@@ -110,14 +124,6 @@
 				D2510B0B1DD4911A004C30EA /* Realm.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D2510B111DD49A54004C30EA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D2510B121DD49A8D004C30EA /* PrinterType.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		D2CCF7371DBF46DB00EF9752 = {
@@ -146,13 +152,9 @@
 		D2CCF7421DBF46DB00EF9752 /* OctoPhone */ = {
 			isa = PBXGroup;
 			children = (
-				D2510B061DD4894E004C30EA /* API */,
-				D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */,
-				D2CCF7451DBF46DB00EF9752 /* ViewController.swift */,
-				D2CCF7471DBF46DB00EF9752 /* Main.storyboard */,
-				D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */,
-				D2CCF74C1DBF46DB00EF9752 /* LaunchScreen.storyboard */,
-				D2CCF74F1DBF46DB00EF9752 /* Info.plist */,
+				D203DE721DDFCA04000DEAA0 /* View Related */,
+				D2510B061DD4894E004C30EA /* Networking */,
+				D203DE711DDFC9DA000DEAA0 /* Supporting Files */,
 			);
 			path = OctoPhone;
 			sourceTree = "<group>";
@@ -289,7 +291,6 @@
 			files = (
 				D2CCF74E1DBF46DB00EF9752 /* LaunchScreen.storyboard in Resources */,
 				D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */,
-				D2CCF7491DBF46DB00EF9752 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +351,6 @@
 			files = (
 				D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
-				D2510B131DD49A8D004C30EA /* PrinterType.swift in Sources */,
 				D2510B081DD48A78004C30EA /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,14 +387,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D2CCF7471DBF46DB00EF9752 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D2CCF7481DBF46DB00EF9752 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D2CCF74C1DBF46DB00EF9752 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
