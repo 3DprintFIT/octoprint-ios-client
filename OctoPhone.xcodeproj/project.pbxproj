@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		357C3E9A1DC7BE4A0018A07E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E981DC7BE4A0018A07E /* Fabric.framework */; };
 		357C3E9B1DC7BE4A0018A07E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E991DC7BE4A0018A07E /* Crashlytics.framework */; };
-		D2510B081DD48A78004C30EA /* OctoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2510B071DD48A78004C30EA /* OctoApi.swift */; };
+		D2510B081DD48A78004C30EA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2510B071DD48A78004C30EA /* Router.swift */; };
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
 		D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0F1DD491A4004C30EA /* RealmSwift.framework */; };
@@ -43,7 +43,7 @@
 /* Begin PBXFileReference section */
 		357C3E981DC7BE4A0018A07E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		357C3E991DC7BE4A0018A07E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		D2510B071DD48A78004C30EA /* OctoApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoApi.swift; sourceTree = "<group>"; };
+		D2510B071DD48A78004C30EA /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D2510B0F1DD491A4004C30EA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				D2510B111DD49A54004C30EA /* Model */,
-				D2510B071DD48A78004C30EA /* OctoApi.swift */,
+				D2510B071DD48A78004C30EA /* Router.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 				D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
 				D2510B131DD49A8D004C30EA /* PrinterType.swift in Sources */,
-				D2510B081DD48A78004C30EA /* OctoApi.swift in Sources */,
+				D2510B081DD48A78004C30EA /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
