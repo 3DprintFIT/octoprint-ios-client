@@ -47,6 +47,27 @@ enum Router: URLRequestConvertible {
     case readSDState
     case issueArbitraryPrinterCommand(parameters: Parameters)
 
+    //MARK - Printer profile operations
+    case readAllPrinterProfiles
+    case createPrinterProfile(parameters: Parameters)
+    case updatePrinterProfile(name: String, parameters: Parameters)
+    case deletePrinterProfile(name: String)
+
+    //MARK: - Job operations
+    case issueJobCommand(parameters: Parameters)
+    case readJobInformations
+
+    //MARK: - Logs
+    case readAllLogs
+    case deleteLog(path: String)
+
+    //MARK: - Slicing
+    case readAllSlicersAndProfiles
+    case readSlicerProfiles(slicer: String)
+    case readSclicerProfile(slicer: String, profile: String)
+    case createSlicerProfile(slicer: String, profile: String)
+    case deleteSlicerProfile(slicer: String, profile: String)
+
     //MARK: - Networking data
     var requestData: (method: HTTPMethod, path: String, parameters: Parameters?) {
         switch self {
@@ -71,6 +92,23 @@ enum Router: URLRequestConvertible {
         case .issueSDCommand(let parameters): return (.post, "printer/sd", parameters) // init, refresh, release
         case .readSDState: return (.get, "printer/sd", nil)
         case .issueArbitraryPrinterCommand(parameters: let parameters): return (.post, "printer/command", parameters)
+
+        case .readAllPrinterProfiles: return (.get, "printerprofiles", nil)
+        case .createPrinterProfile(let parameters): return (.post, "printerprofiles", parameters)
+        case .updatePrinterProfile(let name, let parameters): return (.patch, "printerprofiles/\(name)", parameters) // TODO: !needs review!
+        case .deletePrinterProfile(let name): return (.delete, "printerprofiles/\(name)", nil)
+
+        case .issueJobCommand(let parameters): return (.post, "job", parameters) // start, cancel, restart, pause[pause, resume, toggle]?
+        case .readJobInformations: return (.get, "job", nil)
+
+        case .readAllLogs: return (.get, "logs", nil)
+        case .deleteLog(let path): return (.delete, "logs/\(path)", nil)
+
+        case .readAllSlicersAndProfiles: return (.get, "slicing", nil)
+        case .readSlicerProfiles(let slicer): return (.get, "slicing/\(slicer)/profiles", nil)
+        case .readSclicerProfile(let slicer, let profile): return (.get, "slicing/\(slicer)/profiles/\(profile)", nil)
+        case .createSlicerProfile(let slicer, let profile): return (.put, "slicing/\(slicer)/profiles/\(profile)", nil)
+        case .deleteSlicerProfile(let slicer, let profile): return (.delete, "slicing/\(slicer)/profiles/\(profile)", nil)
         }
     }
 
