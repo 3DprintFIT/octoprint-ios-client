@@ -29,12 +29,12 @@ enum Router: URLRequestConvertible {
     case readFiles(at: FileLocation)
     case createFile(at: FileLocation, parameters: Parameters)
     case readFile(name: String, at: FileLocation)
-    case issueFile(name: String, at: FileLocation, parameters: Parameters)
+    case issueFileCommand(name: String, at: FileLocation, parameters: Parameters)
     case deleteFile(name: String, at: FileLocation)
 
     //MARK: - Connection
     case getAllConnections
-    case issuePrinterCommand(parameters: Parameters)
+    case issueConnectionCommand(parameters: Parameters)
 
     //MARK: - Printer operations
     case readPrinterState(parameters: Parameters)
@@ -56,11 +56,11 @@ enum Router: URLRequestConvertible {
         case .readFiles(let location): return (.get, "files/\(location.rawValue)", nil)
         case .createFile(let location, let parameters): return (.post, "files/\(location.rawValue)", parameters)
         case .readFile(let name, let location): return (.get, "files/\(location.rawValue)/\(name)", nil)
-        case .issueFile(let name, let location, let parameters): return (.post, "files/\(location.rawValue)/\(name)", parameters) // slice, select nebo connect, disconnect, fake_ack
+        case .issueFileCommand(let name, let location, let parameters): return (.post, "files/\(location.rawValue)/\(name)", parameters) // slice, select
         case .deleteFile(let name, let location): return (.delete, "files/\(location)/\(name)", nil)
 
         case .getAllConnections: return (.get, "connection", nil)
-        case .issuePrinterCommand(let parameters): return (.post, "connection", parameters)
+        case .issueConnectionCommand(let parameters): return (.post, "connection", parameters) // connect, disconnect, fake_ack
 
         case .readPrinterState(let parameters): return (.get, "printer", parameters)
         case .issuePrinterHeadCommand(let parameters): return (.post, "printer/printhead", parameters) // jog, home, feedrate
