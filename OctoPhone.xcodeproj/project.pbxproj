@@ -136,6 +136,13 @@
 			isa = PBXGroup;
 			children = (
 				D203DE7D1DDFCD43000DEAA0 /* Api Version */,
+				D2B6EFFC1DE20C0800F9CE0A /* Files */,
+				D2B6EFFD1DE20C2000F9CE0A /* Connection */,
+				D2B6EFFE1DE20C2600F9CE0A /* Printer */,
+				D2B6F0021DE20C8200F9CE0A /* Printer Profiles */,
+				D2B6EFFF1DE20C3600F9CE0A /* Jobs */,
+				D2B6F0001DE20C3D00F9CE0A /* Logs */,
+				D2B6F0011DE20C4500F9CE0A /* Slicing */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -167,6 +174,55 @@
 				D2510B0B1DD4911A004C30EA /* Realm.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2B6EFFC1DE20C0800F9CE0A /* Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		D2B6EFFD1DE20C2000F9CE0A /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		D2B6EFFE1DE20C2600F9CE0A /* Printer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Printer;
+			sourceTree = "<group>";
+		};
+		D2B6EFFF1DE20C3600F9CE0A /* Jobs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Jobs;
+			sourceTree = "<group>";
+		};
+		D2B6F0001DE20C3D00F9CE0A /* Logs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Logs;
+			sourceTree = "<group>";
+		};
+		D2B6F0011DE20C4500F9CE0A /* Slicing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Slicing;
+			sourceTree = "<group>";
+		};
+		D2B6F0021DE20C8200F9CE0A /* Printer Profiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Printer Profiles";
 			sourceTree = "<group>";
 		};
 		D2CCF7371DBF46DB00EF9752 = {
