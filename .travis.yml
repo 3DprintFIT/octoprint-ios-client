@@ -12,6 +12,9 @@ before_install:
 before_script:
   - match development
   - match appstore
+  
+after_success:
+  - bash < (curl -s https://codecov.io/bash)
 
 branches:
   only:
