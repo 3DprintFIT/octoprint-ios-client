@@ -23,6 +23,4 @@ class NetworkController: NSObject {
         self.contextManager = contextManager
         self.sessionManager = sessionManager
     }
-
-
 }

@@ -20,6 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		Fabric.with([Crashlytics.self])
 
+        let contextManager = ContextManager();
+        let networkController = NetworkController(contextManager: contextManager)
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        if let window = window {
+            window.backgroundColor = UIColor.white
+            window.rootViewController = UINavigationController(rootViewController: PrinterLoginViewController(contextManager: contextManager, networkController: networkController))
+            window.makeKeyAndVisible()
+        }
+
         return true
     }
 

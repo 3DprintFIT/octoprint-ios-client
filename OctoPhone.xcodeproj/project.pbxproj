@@ -17,6 +17,7 @@
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
 		D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0F1DD491A4004C30EA /* RealmSwift.framework */; };
+		D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */; };
 		D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */; };
 		D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7451DBF46DB00EF9752 /* ViewController.swift */; };
 		D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D2510B0F1DD491A4004C30EA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewController.swift; sourceTree = "<group>"; };
 		D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2CCF7451DBF46DB00EF9752 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		D203DE721DDFCA04000DEAA0 /* View Related */ = {
 			isa = PBXGroup;
 			children = (
+				D2B6F0031DE214B500F9CE0A /* Printer Login */,
 				D2CCF7451DBF46DB00EF9752 /* ViewController.swift */,
 			);
 			path = "View Related";
@@ -223,6 +226,14 @@
 			children = (
 			);
 			path = "Printer Profiles";
+			sourceTree = "<group>";
+		};
+		D2B6F0031DE214B500F9CE0A /* Printer Login */ = {
+			isa = PBXGroup;
+			children = (
+				D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */,
+			);
+			path = "Printer Login";
 			sourceTree = "<group>";
 		};
 		D2CCF7371DBF46DB00EF9752 = {
@@ -455,6 +466,7 @@
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
 				D203DE7C1DDFCCAE000DEAA0 /* NetworkOperation.swift in Sources */,
 				D203DE7F1DDFCD6E000DEAA0 /* ApiVersionOperation.swift in Sources */,
+				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
 				D2510B081DD48A78004C30EA /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
