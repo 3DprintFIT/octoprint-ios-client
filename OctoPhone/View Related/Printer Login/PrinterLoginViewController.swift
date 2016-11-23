@@ -14,6 +14,10 @@ final class PrinterLoginViewController: UIViewController {
 
     private let networkController: NetworkController
 
+    private let urlField = UITextField()
+
+    private let tokenField = UITextField()
+
     init(contextManager: ContextManager, networkController: NetworkController) {
         self.contextManager = contextManager
         self.networkController = networkController
@@ -28,7 +32,16 @@ final class PrinterLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.addSubview(urlField)
+        view.addSubview(tokenField)
+
+        urlField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        urlField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        tokenField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        tokenField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+
+        tokenField.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        urlField.bottomAnchor.constraint(equalTo: tokenField.topAnchor, constant: 10).isActive = true
     }
 
     override func didReceiveMemoryWarning() {
