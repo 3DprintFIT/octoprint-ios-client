@@ -14,9 +14,17 @@ final class PrinterLoginViewController: UIViewController {
 
     private let networkController: NetworkController
 
-    private let urlField = UITextField()
+    private let urlField = UITextField(frame: CGRect.zero)
 
     private let tokenField = UITextField()
+
+    private let loginButton = UIButton()
+
+    struct Sizes {
+        static let textFieldWidth: CGFloat = 60
+        static let fieldheight: CGFloat = 44
+        static let fieldSpacing: CGFloat = 15
+    }
 
     init(contextManager: ContextManager, networkController: NetworkController) {
         self.contextManager = contextManager
@@ -32,32 +40,38 @@ final class PrinterLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupUI()
+    }
+
+    func login() {
+
+    }
+
+    //MARK - Private functions
+
+    private func setupUI() {
+        urlField.translatesAutoresizingMaskIntoConstraints = false
+        tokenField.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+
         view.addSubview(urlField)
         view.addSubview(tokenField)
+        view.addSubview(loginButton)
 
-        urlField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        urlField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        tokenField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        tokenField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        urlField.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        urlField.widthAnchor.constraint(equalToConstant: Sizes.textFieldWidth).isActive = true
+        urlField.heightAnchor.constraint(equalToConstant: Sizes.fieldSpacing).isActive = true
+        urlField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
-        tokenField.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        urlField.bottomAnchor.constraint(equalTo: tokenField.topAnchor, constant: 10).isActive = true
+        tokenField.topAnchor.constraint(equalTo: urlField.topAnchor, constant: Sizes.fieldSpacing).isActive = true
+        tokenField.widthAnchor.constraint(equalTo: urlField.widthAnchor, constant: 10).isActive = true
+        tokenField.heightAnchor.constraint(equalTo: urlField.heightAnchor).isActive = true
+        tokenField.centerXAnchor.constraint(equalTo: urlField.centerXAnchor).isActive = true
+
+        urlField.placeholder = "Printer URL"
+        tokenField.placeholder = "Access token"
+
+        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
