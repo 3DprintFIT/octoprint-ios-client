@@ -18,10 +18,11 @@ final class PrinterLoginViewController: UIViewController {
 
     private let tokenField = UITextField()
 
-    private let loginButton = UIButton()
+    private let loginButton = UIButton(type: .system)
 
     struct Sizes {
-        static let textFieldWidth: CGFloat = 60
+        static let groupTopSpacing: CGFloat = 50
+        static let textFieldWidth: CGFloat = 180
         static let fieldheight: CGFloat = 44
         static let fieldSpacing: CGFloat = 15
     }
@@ -44,7 +45,7 @@ final class PrinterLoginViewController: UIViewController {
     }
 
     func login() {
-
+        validateForm()
     }
 
     //MARK - Private functions
@@ -58,20 +59,40 @@ final class PrinterLoginViewController: UIViewController {
         view.addSubview(tokenField)
         view.addSubview(loginButton)
 
-        urlField.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        urlField.topAnchor.constraint(equalTo: view.topAnchor, constant: Sizes.groupTopSpacing).isActive = true
         urlField.widthAnchor.constraint(equalToConstant: Sizes.textFieldWidth).isActive = true
         urlField.heightAnchor.constraint(equalToConstant: Sizes.fieldSpacing).isActive = true
         urlField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
-        tokenField.topAnchor.constraint(equalTo: urlField.topAnchor, constant: Sizes.fieldSpacing).isActive = true
-        tokenField.widthAnchor.constraint(equalTo: urlField.widthAnchor, constant: 10).isActive = true
+        tokenField.topAnchor.constraint(equalTo: urlField.bottomAnchor, constant: Sizes.fieldSpacing).isActive = true
+        tokenField.widthAnchor.constraint(equalTo: urlField.widthAnchor).isActive = true
         tokenField.heightAnchor.constraint(equalTo: urlField.heightAnchor).isActive = true
         tokenField.centerXAnchor.constraint(equalTo: urlField.centerXAnchor).isActive = true
 
+        loginButton.topAnchor.constraint(equalTo: tokenField.bottomAnchor, constant: Sizes.fieldSpacing).isActive = true
+        loginButton.centerXAnchor.constraint(equalTo: urlField.centerXAnchor).isActive = true
+
         urlField.placeholder = "Printer URL"
         tokenField.placeholder = "Access token"
+        loginButton.setTitle("Login", for: .normal)
 
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+
+        edgesForExtendedLayout = []
+    }
+
+    private func validateForm() {
+        guard let url = urlField.text, let token = tokenField.text else {
+            print("Form fields must be filled in.")
+            return
+        }
+
+        guard url.characters.count > 5, token.characters.count > 2 else {
+            print("Form values are not valid.")
+            return
+        }
+
+        networkController.
     }
 
 }
