@@ -54,6 +54,7 @@
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D2510B0F1DD491A4004C30EA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		D2A713811DE7069F00BDC0C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewController.swift; sourceTree = "<group>"; };
 		D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -241,6 +242,7 @@
 			children = (
 				357C3E981DC7BE4A0018A07E /* Fabric.framework */,
 				357C3E991DC7BE4A0018A07E /* Crashlytics.framework */,
+				D2A713811DE7069F00BDC0C4 /* README.md */,
 				D2CCF7421DBF46DB00EF9752 /* OctoPhone */,
 				D2CCF7571DBF46DC00EF9752 /* OctoPhoneTests */,
 				D2CCF7621DBF46DC00EF9752 /* OctoPhoneUITests */,
