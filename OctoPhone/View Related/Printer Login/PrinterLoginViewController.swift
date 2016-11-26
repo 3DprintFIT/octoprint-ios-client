@@ -91,8 +91,6 @@ final class PrinterLoginViewController: UIViewController {
             print("Form values are not valid.")
             return
         }
-
-        networkController.
     }
 
 }
