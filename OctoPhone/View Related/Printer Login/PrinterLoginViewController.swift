@@ -14,7 +14,7 @@ final class PrinterLoginViewController: UIViewController {
 
     private let networkController: NetworkController
 
-    private let urlField = UITextField(frame: CGRect.zero)
+    private let urlField = UITextField()
 
     private let tokenField = UITextField()
 
@@ -41,7 +41,7 @@ final class PrinterLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupUI()
+        configureView()
     }
 
     func login() {
@@ -50,14 +50,13 @@ final class PrinterLoginViewController: UIViewController {
 
     //MARK - Private functions
 
-    private func setupUI() {
-        urlField.translatesAutoresizingMaskIntoConstraints = false
-        tokenField.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
+    private func configureView() {
+        let components = [urlField, tokenField, loginButton]
 
-        view.addSubview(urlField)
-        view.addSubview(tokenField)
-        view.addSubview(loginButton)
+        components.forEach { component in
+            component.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(component)
+        }
 
         urlField.topAnchor.constraint(equalTo: view.topAnchor, constant: Sizes.groupTopSpacing).isActive = true
         urlField.widthAnchor.constraint(equalToConstant: Sizes.textFieldWidth).isActive = true
