@@ -21,5 +21,5 @@ branches:
     - dev
 
 script:
-  fastlane beta
-  swiftlint
+  - fastlane beta
+  - swiftlint
