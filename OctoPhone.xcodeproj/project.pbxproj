@@ -13,6 +13,7 @@
 		D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */; };
 		D203DE7C1DDFCCAE000DEAA0 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE7B1DDFCCAE000DEAA0 /* NetworkOperation.swift */; };
 		D203DE7F1DDFCD6E000DEAA0 /* ApiVersionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE7E1DDFCD6E000DEAA0 /* ApiVersionOperation.swift */; };
+		D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D21B9DE81DEA1B8A005C34CD /* Localizable.strings */; };
 		D2510B081DD48A78004C30EA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2510B071DD48A78004C30EA /* Router.swift */; };
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
@@ -50,6 +51,7 @@
 		D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		D203DE7B1DDFCCAE000DEAA0 /* NetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
 		D203DE7E1DDFCD6E000DEAA0 /* ApiVersionOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiVersionOperation.swift; sourceTree = "<group>"; };
+		D21B9DE71DEA1B8A005C34CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2510B071DD48A78004C30EA /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				357C3E981DC7BE4A0018A07E /* Fabric.framework */,
 				357C3E991DC7BE4A0018A07E /* Crashlytics.framework */,
 				D2A713811DE7069F00BDC0C4 /* README.md */,
+				D21B9DE81DEA1B8A005C34CD /* Localizable.strings */,
 				D2CCF7421DBF46DB00EF9752 /* OctoPhone */,
 				D2CCF7571DBF46DC00EF9752 /* OctoPhoneTests */,
 				D2CCF7621DBF46DC00EF9752 /* OctoPhoneUITests */,
@@ -403,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2CCF74E1DBF46DB00EF9752 /* LaunchScreen.storyboard in Resources */,
+				D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */,
 				D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,6 +509,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D21B9DE81DEA1B8A005C34CD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D21B9DE71DEA1B8A005C34CD /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		D2CCF74C1DBF46DB00EF9752 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

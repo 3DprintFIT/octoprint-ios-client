@@ -71,9 +71,9 @@ final class PrinterLoginViewController: UIViewController {
         loginButton.topAnchor.constraint(equalTo: tokenField.bottomAnchor, constant: Sizes.fieldSpacing).isActive = true
         loginButton.centerXAnchor.constraint(equalTo: urlField.centerXAnchor).isActive = true
 
-        urlField.placeholder = "Printer URL"
-        tokenField.placeholder = "Access token"
-        loginButton.setTitle("Login", for: .normal)
+        urlField.placeholder = NSLocalizedString("PRINTER_URL", comment: "")
+        tokenField.placeholder = NSLocalizedString("PRINTER_ACCESS_TOKEN",comment: "")
+        loginButton.setTitle(NSLocalizedString("LOGIN", comment: ""), for: .normal)
 
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
 
