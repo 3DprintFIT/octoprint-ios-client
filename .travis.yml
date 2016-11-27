@@ -6,7 +6,6 @@ matrix:
       osx_image: xcode8
 
 before_install:
-  - brew install carthage
   - bundle install
 
 before_script:
