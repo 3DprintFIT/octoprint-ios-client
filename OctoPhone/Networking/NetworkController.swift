@@ -11,16 +11,24 @@ import Alamofire
 
 
 class NetworkController: NSObject {
+
     private let queue = OperationQueue()
 
     private let contextManager: ContextManager
 
     private let sessionManager: SessionManager
 
+    private let operationConfiguration: OperationConfiguration
+
     init(contextManager: ContextManager) {
         let sessionManager = SessionManager()
 
         self.contextManager = contextManager
         self.sessionManager = sessionManager
+
+        operationConfiguration = OperationConfiguration(
+            contextManager: contextManager,
+            sessionManager: sessionManager
+        )
     }
 }

@@ -17,6 +17,11 @@ class NetworkOperation: Operation {
 
     var error: Error?
 
+    init(configuration: OperationConfiguration) {
+        contextManager = configuration.contextManager
+        sessionManager = configuration.sessionManager
+    }
+
     var internalFinished = false
     override var isFinished: Bool {
         get {
@@ -26,4 +31,11 @@ class NetworkOperation: Operation {
             internalFinished = newValue
         }
     }
+}
+
+
+struct OperationConfiguration {
+    var contextManager: ContextManager
+
+    var sessionManager: SessionManager
 }
