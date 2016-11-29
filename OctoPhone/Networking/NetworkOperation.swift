@@ -11,15 +11,18 @@ import Alamofire
 
 
 class NetworkOperation: Operation {
-    var contextManager: ContextManager!
+    var contextManager: ContextManager
 
-    var sessionManager: SessionManager!
+    var sessionManager: SessionManager
+
+    var baseURL: URL
 
     var error: Error?
 
     init(configuration: OperationConfiguration) {
         contextManager = configuration.contextManager
         sessionManager = configuration.sessionManager
+        baseURL = configuration.baseURL
     }
 
     var internalFinished = false
@@ -38,4 +41,6 @@ struct OperationConfiguration {
     var contextManager: ContextManager
 
     var sessionManager: SessionManager
+
+    var baseURL: URL
 }

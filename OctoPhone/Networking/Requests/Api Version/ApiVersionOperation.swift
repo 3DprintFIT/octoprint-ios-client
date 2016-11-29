@@ -13,7 +13,7 @@ import Alamofire
 class ApiVersionOperation: NetworkOperation {
 
     override func start() {
-        sessionManager.request(Router.apiVersion).validate().responseJSON(completionHandler: receive)
+        sessionManager.request(Router.apiVersion(on: URL(string: "")!)).validate().responseJSON(completionHandler: receive)
     }
 
     public func receive(response: DataResponse<Any>) {

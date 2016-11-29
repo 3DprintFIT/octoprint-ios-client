@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import RealmSwift
+
+
+final class Printer: Object {
+    dynamic var accessToken = ""
+
+    dynamic var url: URL?
+}
+
 
 final class PrinterLoginViewController: UIViewController {
 
     private let contextManager: ContextManager
 
-    private let networkController: NetworkController
+    private let networkController: PrinterController
 
     private let urlField = UITextField()
 
@@ -27,7 +36,7 @@ final class PrinterLoginViewController: UIViewController {
         static let fieldSpacing: CGFloat = 15
     }
 
-    init(contextManager: ContextManager, networkController: NetworkController) {
+    init(contextManager: ContextManager, networkController: PrinterController) {
         self.contextManager = contextManager
         self.networkController = networkController
 
@@ -81,15 +90,17 @@ final class PrinterLoginViewController: UIViewController {
     }
 
     private func validateForm() {
-        guard let url = urlField.text, let token = tokenField.text else {
+        guard let urlString = urlField.text, let token = tokenField.text else {
             print("Form fields must be filled in.")
             return
         }
 
-        guard url.characters.count > 5, token.characters.count > 2 else {
+        guard let url = URL(string: urlString), token.characters.count > 2 else {
             print("Form values are not valid.")
             return
         }
+
+        _ = networkController.login(with: token, to: url)
     }
 
 }

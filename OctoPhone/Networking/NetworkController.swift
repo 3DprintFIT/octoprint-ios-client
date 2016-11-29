@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 
-class NetworkController: NSObject {
+class PrinterController: NSObject {
 
     private let queue = OperationQueue()
 
@@ -20,15 +20,28 @@ class NetworkController: NSObject {
 
     private let operationConfiguration: OperationConfiguration
 
-    init(contextManager: ContextManager) {
+    private let printerURL: URL
+
+    init(printerURL: URL, contextManager: ContextManager) {
         let sessionManager = SessionManager()
 
         self.contextManager = contextManager
         self.sessionManager = sessionManager
+        self.printerURL = printerURL
 
         operationConfiguration = OperationConfiguration(
             contextManager: contextManager,
-            sessionManager: sessionManager
+            sessionManager: sessionManager,
+            baseURL: printerURL
         )
+    }
+
+    func login(with token: String, to printerUrl: URL) -> LoginPromise {
+        let promise = LoginPromise(with: token, printerUrl: printerUrl)
+        let loginOperation = LoginOperation(configuration: operationConfiguration, loginPromise: promise)
+
+        queue.addOperation(loginOperation)
+
+        return promise
     }
 }

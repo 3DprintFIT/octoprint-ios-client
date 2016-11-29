@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		Fabric.with([Crashlytics.self])
 
         let contextManager = ContextManager();
-        let networkController = NetworkController(contextManager: contextManager)
+        let networkController = PrinterController(printerURL: URL(string: "localhost")!, contextManager: contextManager)
 
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {

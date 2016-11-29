@@ -22,93 +22,93 @@ enum Router: URLRequestConvertible {
     }
 
     //MARK: - API Informations
-    case apiVersion
+    case apiVersion(on: URL)
 
     //MARK: - Files
-    case readAllFiles
-    case readFiles(at: FileLocation)
-    case createFile(at: FileLocation, parameters: Parameters)
-    case readFile(name: String, at: FileLocation)
-    case issueFileCommand(name: String, at: FileLocation, parameters: Parameters)
-    case deleteFile(name: String, at: FileLocation)
+    case readAllFiles(from: URL)
+    case readFiles(from: URL, at: FileLocation)
+    case createFile(on: URL, at: FileLocation, parameters: Parameters)
+    case readFile(from: URL, name: String, at: FileLocation)
+    case issueFileCommand(on: URL, name: String, at: FileLocation, parameters: Parameters)
+    case deleteFile(on: URL, name: String, at: FileLocation)
 
     //MARK: - Connection
-    case getAllConnections
-    case issueConnectionCommand(parameters: Parameters)
+    case getAllConnections(from: URL)
+    case issueConnectionCommand(to: URL, parameters: Parameters)
 
     //MARK: - Printer operations
-    case readPrinterState(parameters: Parameters)
-    case issuePrinterHeadCommand(parameters: Parameters)
-    case issueToolCommand(parameters: Parameters)
-    case readToolState
-    case issueBedCommand(paramters: Parameters)
-    case readBedState
-    case issueSDCommand(parameters: Parameters)
-    case readSDState
-    case issueArbitraryPrinterCommand(parameters: Parameters)
+    case readPrinterState(from: URL, parameters: Parameters)
+    case issuePrinterHeadCommand(to: URL, parameters: Parameters)
+    case issueToolCommand(on: URL, parameters: Parameters)
+    case readToolState(from: URL)
+    case issueBedCommand(from: URL, paramters: Parameters)
+    case readBedState(from: URL)
+    case issueSDCommand(on: URL, parameters: Parameters)
+    case readSDState(from: URL)
+    case issueArbitraryPrinterCommand(to: URL, parameters: Parameters)
 
     //MARK - Printer profile operations
-    case readAllPrinterProfiles
-    case createPrinterProfile(parameters: Parameters)
-    case updatePrinterProfile(name: String, parameters: Parameters)
-    case deletePrinterProfile(name: String)
+    case readAllPrinterProfiles(from: URL)
+    case createPrinterProfile(on: URL, parameters: Parameters)
+    case updatePrinterProfile(on: URL, name: String, parameters: Parameters)
+    case deletePrinterProfile(on: URL, name: String)
 
     //MARK: - Job operations
-    case issueJobCommand(parameters: Parameters)
-    case readJobInformations
+    case issueJobCommand(on: URL, parameters: Parameters)
+    case readJobInformations(from: URL)
 
     //MARK: - Logs
-    case readAllLogs
-    case deleteLog(path: String)
+    case readAllLogs(from: URL)
+    case deleteLog(on: URL, path: String)
 
     //MARK: - Slicing
-    case readAllSlicersAndProfiles
-    case readSlicerProfiles(slicer: String)
-    case readSclicerProfile(slicer: String, profile: String)
-    case createSlicerProfile(slicer: String, profile: String)
-    case deleteSlicerProfile(slicer: String, profile: String)
+    case readAllSlicersAndProfiles(from: URL)
+    case readSlicerProfiles(from: URL, slicer: String)
+    case readSclicerProfile(from: URL, slicer: String, profile: String)
+    case createSlicerProfile(on: URL, slicer: String, profile: String)
+    case deleteSlicerProfile(on: URL, slicer: String, profile: String)
 
     //MARK: - Networking data
-    var requestData: (method: HTTPMethod, path: String, parameters: Parameters?) {
+    var requestData: (baseURL: URL, method: HTTPMethod, path: String, parameters: Parameters?) {
         switch self {
-        case .apiVersion: return(.get, "version", nil)
+        case .apiVersion(let url): return(url, .get, "version", nil)
 
-        case .readAllFiles(): return (.get, "files", nil)
-        case .readFiles(let location): return (.get, "files/\(location.rawValue)", nil)
-        case .createFile(let location, let parameters): return (.post, "files/\(location.rawValue)", parameters)
-        case .readFile(let name, let location): return (.get, "files/\(location.rawValue)/\(name)", nil)
-        case .issueFileCommand(let name, let location, let parameters): return (.post, "files/\(location.rawValue)/\(name)", parameters) // slice, select
-        case .deleteFile(let name, let location): return (.delete, "files/\(location)/\(name)", nil)
+        case .readAllFiles(let url): return (url, .get, "files", nil)
+        case .readFiles(let url, let location): return (url, .get, "files/\(location.rawValue)", nil)
+        case .createFile(let url, let location, let parameters): return (url, .post, "files/\(location.rawValue)", parameters)
+        case .readFile(let url, let name, let location): return (url, .get, "files/\(location.rawValue)/\(name)", nil)
+        case .issueFileCommand(let url, let name, let location, let parameters): return (url, .post, "files/\(location.rawValue)/\(name)", parameters) // slice, select
+        case .deleteFile(let url, let name, let location): return (url, .delete, "files/\(location)/\(name)", nil)
 
-        case .getAllConnections: return (.get, "connection", nil)
-        case .issueConnectionCommand(let parameters): return (.post, "connection", parameters) // connect, disconnect, fake_ack
+        case .getAllConnections(let url): return (url, .get, "connection", nil)
+        case .issueConnectionCommand(let url, let parameters): return (url, .post, "connection", parameters) // connect, disconnect, fake_ack
 
-        case .readPrinterState(let parameters): return (.get, "printer", parameters)
-        case .issuePrinterHeadCommand(let parameters): return (.post, "printer/printhead", parameters) // jog, home, feedrate
-        case .issueToolCommand(let parameters): return (.post, "printer/tool", parameters) // target, offset, select, extrude, flowrate
-        case .readToolState: return (.get, "printer/tool", nil)
-        case .issueBedCommand(let paramters): return (.post, "printer/bed", paramters) // target, offset
-        case .readBedState: return (.get, "printer/bed", nil)
-        case .issueSDCommand(let parameters): return (.post, "printer/sd", parameters) // init, refresh, release
-        case .readSDState: return (.get, "printer/sd", nil)
-        case .issueArbitraryPrinterCommand(parameters: let parameters): return (.post, "printer/command", parameters)
+        case .readPrinterState(let url, let parameters): return (url, .get, "printer", parameters)
+        case .issuePrinterHeadCommand(let url, let parameters): return (url, .post, "printer/printhead", parameters) // jog, home, feedrate
+        case .issueToolCommand(let url, let parameters): return (url, .post, "printer/tool", parameters) // target, offset, select, extrude, flowrate
+        case .readToolState(let url): return (url, .get, "printer/tool", nil)
+        case .issueBedCommand(let url, let paramters): return (url, .post, "printer/bed", paramters) // target, offset
+        case .readBedState(let url): return (url, .get, "printer/bed", nil)
+        case .issueSDCommand(let url, let parameters): return (url, .post, "printer/sd", parameters) // init, refresh, release
+        case .readSDState(let url): return (url, .get, "printer/sd", nil)
+        case .issueArbitraryPrinterCommand(let url, parameters: let parameters): return (url, .post, "printer/command", parameters)
 
-        case .readAllPrinterProfiles: return (.get, "printerprofiles", nil)
-        case .createPrinterProfile(let parameters): return (.post, "printerprofiles", parameters)
-        case .updatePrinterProfile(let name, let parameters): return (.patch, "printerprofiles/\(name)", parameters) // TODO: !needs review!
-        case .deletePrinterProfile(let name): return (.delete, "printerprofiles/\(name)", nil)
+        case .readAllPrinterProfiles(let url): return (url, .get, "printerprofiles", nil)
+        case .createPrinterProfile(let url, let parameters): return (url, .post, "printerprofiles", parameters)
+        case .updatePrinterProfile(let url, let name, let parameters): return (url, .patch, "printerprofiles/\(name)", parameters) // TODO: !needs review!
+        case .deletePrinterProfile(let url, let name): return (url, .delete, "printerprofiles/\(name)", nil)
 
-        case .issueJobCommand(let parameters): return (.post, "job", parameters) // start, cancel, restart, pause[pause, resume, toggle]?
-        case .readJobInformations: return (.get, "job", nil)
+        case .issueJobCommand(let url, let parameters): return (url, .post, "job", parameters) // start, cancel, restart, pause[pause, resume, toggle]?
+        case .readJobInformations(let url): return (url, .get, "job", nil)
 
-        case .readAllLogs: return (.get, "logs", nil)
-        case .deleteLog(let path): return (.delete, "logs/\(path)", nil)
+        case .readAllLogs(let url): return (url, .get, "logs", nil)
+        case .deleteLog(let url, let path): return (url, .delete, "logs/\(path)", nil)
 
-        case .readAllSlicersAndProfiles: return (.get, "slicing", nil)
-        case .readSlicerProfiles(let slicer): return (.get, "slicing/\(slicer)/profiles", nil)
-        case .readSclicerProfile(let slicer, let profile): return (.get, "slicing/\(slicer)/profiles/\(profile)", nil)
-        case .createSlicerProfile(let slicer, let profile): return (.put, "slicing/\(slicer)/profiles/\(profile)", nil)
-        case .deleteSlicerProfile(let slicer, let profile): return (.delete, "slicing/\(slicer)/profiles/\(profile)", nil)
+        case .readAllSlicersAndProfiles(let url): return (url, .get, "slicing", nil)
+        case .readSlicerProfiles(let url, let slicer): return (url, .get, "slicing/\(slicer)/profiles", nil)
+        case .readSclicerProfile(let url, let slicer, let profile): return (url, .get, "slicing/\(slicer)/profiles/\(profile)", nil)
+        case .createSlicerProfile(let url, let slicer, let profile): return (url, .put, "slicing/\(slicer)/profiles/\(profile)", nil)
+        case .deleteSlicerProfile(let url, let slicer, let profile): return (url, .delete, "slicing/\(slicer)/profiles/\(profile)", nil)
         }
     }
 
