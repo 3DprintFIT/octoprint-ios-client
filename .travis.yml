@@ -6,7 +6,7 @@ matrix:
       osx_image: xcode8
 
 before_script:
-  - carthage bootstrap
+  - carthage bootstrap --platform iOS
   - match development
   - match appstore
 
@@ -28,6 +28,5 @@ branches:
     - dev
 
 script:
-  - carthage build --platform iOS
   - fastlane beta
   - swiftlint
