@@ -9,7 +9,6 @@
 import Foundation
 import Alamofire
 
-
 class AuthenticatateOperation: NetworkOperation {
 
     private let token: String

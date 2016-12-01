@@ -9,7 +9,6 @@
 import Foundation
 import Alamofire
 
-
 class NetworkOperation: Operation {
     var contextManager: ContextManager
 
@@ -35,7 +34,6 @@ class NetworkOperation: Operation {
         }
     }
 }
-
 
 struct OperationConfiguration {
     var contextManager: ContextManager

@@ -9,7 +9,6 @@
 import Foundation
 import Alamofire
 
-
 class PrinterController: NSObject {
 
     private let queue = OperationQueue()

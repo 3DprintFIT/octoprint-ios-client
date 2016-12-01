@@ -9,7 +9,6 @@
 import Foundation
 import RealmSwift
 
-
 class ContextManager {
     public func createContext() throws -> Realm {
         return try Realm()

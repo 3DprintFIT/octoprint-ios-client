@@ -9,18 +9,14 @@
 import Foundation
 import RealmSwift
 
-
 /// Real printer device
 final class Printer: Object {
-
 
     /// Printer URL
     dynamic var url = ""
 
-
     /// User's access token for authorization to printer
     dynamic var accessToken = ""
-
 
     /// Creates new Printer instance
     ///

@@ -9,7 +9,6 @@
 import UIKit
 import RealmSwift
 
-
 /// Gives user ability to add new printer
 final class PrinterLoginViewController: UIViewController {
 
@@ -36,7 +35,6 @@ final class PrinterLoginViewController: UIViewController {
         /// Space between fields
         static let fieldSpacing: CGFloat = 15
     }
-
 
     /// Creates new PrinterAuthViewController instance
     ///
@@ -76,21 +74,34 @@ final class PrinterLoginViewController: UIViewController {
             view.addSubview(component)
         }
 
-        urlField.topAnchor.constraint(equalTo: view.topAnchor, constant: Sizes.groupTopSpacing).isActive = true
-        urlField.widthAnchor.constraint(equalToConstant: Sizes.textFieldWidth).isActive = true
-        urlField.heightAnchor.constraint(equalToConstant: Sizes.fieldSpacing).isActive = true
-        urlField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        let constraints = [
+            urlField.topAnchor.constraint(
+                equalTo: view.topAnchor,
+                constant: Sizes.groupTopSpacing
+            ),
+            urlField.widthAnchor.constraint(equalToConstant: Sizes.textFieldWidth),
+            urlField.heightAnchor.constraint(equalToConstant: Sizes.fieldSpacing),
+            urlField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-        tokenField.topAnchor.constraint(equalTo: urlField.bottomAnchor, constant: Sizes.fieldSpacing).isActive = true
-        tokenField.widthAnchor.constraint(equalTo: urlField.widthAnchor).isActive = true
-        tokenField.heightAnchor.constraint(equalTo: urlField.heightAnchor).isActive = true
-        tokenField.centerXAnchor.constraint(equalTo: urlField.centerXAnchor).isActive = true
+            tokenField.topAnchor.constraint(
+                equalTo: urlField.bottomAnchor,
+                constant: Sizes.fieldSpacing
+            ),
+            tokenField.widthAnchor.constraint(equalTo: urlField.widthAnchor),
+            tokenField.heightAnchor.constraint(equalTo: urlField.heightAnchor),
+            tokenField.centerXAnchor.constraint(equalTo: urlField.centerXAnchor),
 
-        loginButton.topAnchor.constraint(equalTo: tokenField.bottomAnchor, constant: Sizes.fieldSpacing).isActive = true
-        loginButton.centerXAnchor.constraint(equalTo: urlField.centerXAnchor).isActive = true
+            loginButton.topAnchor.constraint(
+                equalTo: tokenField.bottomAnchor,
+                constant: Sizes.fieldSpacing
+            ),
+            loginButton.centerXAnchor.constraint(equalTo: urlField.centerXAnchor)
+        ]
+
+        constraints.forEach { $0.isActive = true }
 
         urlField.placeholder = NSLocalizedString("PRINTER_URL", comment: "")
-        tokenField.placeholder = NSLocalizedString("PRINTER_ACCESS_TOKEN",comment: "")
+        tokenField.placeholder = NSLocalizedString("PRINTER_ACCESS_TOKEN", comment: "")
         loginButton.setTitle(NSLocalizedString("LOGIN", comment: ""), for: .normal)
 
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
