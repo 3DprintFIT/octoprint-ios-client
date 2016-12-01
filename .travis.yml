@@ -5,12 +5,19 @@ matrix:
     - os: osx
       osx_image: xcode8
 
-before_install:
-  - bundle install
-
 before_script:
+  - carthage bootstrap --platform iOS
   - match development
   - match appstore
+
+before_install:
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+  - bundle install
+
+before_deploy:
+  - carthage build --no-skip-current
+  - carthage archive $FRAMEWORK_NAME
 
 after_success:
   - bash < (curl -s https://codecov.io/bash)
@@ -21,6 +28,5 @@ branches:
     - dev
 
 script:
-  - carthage build --platform iOS
   - fastlane beta
   - swiftlint
