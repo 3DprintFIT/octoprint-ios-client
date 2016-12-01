@@ -112,15 +112,16 @@ enum Router: URLRequestConvertible {
         }
     }
 
-    static let baseURLString = "https://example.com"
-
     // MARK: URLRequestConvertible
     func asURLRequest() throws -> URLRequest {
-        let url = try Router.baseURLString.asURL()
         let requestData = self.requestData
 
-        var urlRequest = URLRequest(url: url.appendingPathComponent(requestData.path))
+        print(requestData)
+
+        var urlRequest = URLRequest(url: requestData.baseURL.appendingPathComponent(requestData.path))
         urlRequest.httpMethod = requestData.method.rawValue
+
+        print(urlRequest.allHTTPHeaderFields)
 
         urlRequest = try URLEncoding.default.encode(urlRequest, with: requestData.parameters)
         

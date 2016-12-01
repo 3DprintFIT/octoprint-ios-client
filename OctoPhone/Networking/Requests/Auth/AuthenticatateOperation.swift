@@ -10,24 +10,23 @@ import Foundation
 import Alamofire
 
 
-class LoginOperation: NetworkOperation {
+class AuthenticatateOperation: NetworkOperation {
 
     private let token: String
 
-    private let url: URL
+    private let authenticationPromise: AuthenticationPromise
 
-    init(configuration: OperationConfiguration, loginPromise: LoginPromise) {
-        self.token = loginPromise.token
-        self.url = loginPromise.printerUrl
+    init(configuration: OperationConfiguration, authenticationPromise: AuthenticationPromise) {
+        self.token = authenticationPromise.token
+        self.authenticationPromise = authenticationPromise
 
         super.init(configuration: configuration)
     }
 
     override func start() {
         do {
-            var request = try Router.apiVersion(on: URL(string: "")!).asURLRequest()
+            var request = try Router.apiVersion(on: authenticationPromise.printerURL).asURLRequest()
 
-            request.url = url
             request.addValue(token, forHTTPHeaderField: "X-Api-Key")
 
             sessionManager.request(request).validate().responseJSON(completionHandler: handle)

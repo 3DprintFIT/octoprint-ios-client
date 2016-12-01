@@ -24,23 +24,31 @@ class PrinterController: NSObject {
 
     init(printerURL: URL, contextManager: ContextManager) {
         let sessionManager = SessionManager()
+        var apiURL = printerURL
+
+        if apiURL.lastPathComponent != "api" {
+            apiURL.appendPathComponent("api")
+        }
 
         self.contextManager = contextManager
         self.sessionManager = sessionManager
-        self.printerURL = printerURL
+        self.printerURL = apiURL
 
         operationConfiguration = OperationConfiguration(
             contextManager: contextManager,
             sessionManager: sessionManager,
-            baseURL: printerURL
+            baseURL: apiURL
         )
     }
 
-    func login(with token: String, to printerUrl: URL) -> LoginPromise {
-        let promise = LoginPromise(with: token, printerUrl: printerUrl)
-        let loginOperation = LoginOperation(configuration: operationConfiguration, loginPromise: promise)
+    func autheticate(with token: String) -> AuthenticationPromise {
+        let promise = AuthenticationPromise(with: token, printerURL: printerURL)
+        let authOperation = AuthenticatateOperation(
+            configuration: operationConfiguration,
+            authenticationPromise: promise
+        )
 
-        queue.addOperation(loginOperation)
+        queue.addOperation(authOperation)
 
         return promise
     }

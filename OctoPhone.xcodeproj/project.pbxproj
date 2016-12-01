@@ -9,19 +9,19 @@
 /* Begin PBXBuildFile section */
 		357C3E9A1DC7BE4A0018A07E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E981DC7BE4A0018A07E /* Fabric.framework */; };
 		357C3E9B1DC7BE4A0018A07E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E991DC7BE4A0018A07E /* Crashlytics.framework */; };
-		D203DE741DDFCB22000DEAA0 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE731DDFCB22000DEAA0 /* NetworkController.swift */; };
+		D203DE741DDFCB22000DEAA0 /* PrinterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE731DDFCB22000DEAA0 /* PrinterController.swift */; };
 		D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */; };
 		D203DE7C1DDFCCAE000DEAA0 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE7B1DDFCCAE000DEAA0 /* NetworkOperation.swift */; };
 		D203DE7F1DDFCD6E000DEAA0 /* ApiVersionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE7E1DDFCD6E000DEAA0 /* ApiVersionOperation.swift */; };
-		D2072FD11DEDCAEC00E1BBD3 /* PrintersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2072FD01DEDCAEC00E1BBD3 /* PrintersCollectionViewController.swift */; };
-		D20CDBD51DECCF74002AAAEC /* LoginPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CDBD41DECCF74002AAAEC /* LoginPromise.swift */; };
+		D2072FD41DEDCD6D00E1BBD3 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */; };
+		D20CDBD51DECCF74002AAAEC /* AuthenticationPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CDBD41DECCF74002AAAEC /* AuthenticationPromise.swift */; };
 		D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D21B9DE81DEA1B8A005C34CD /* Localizable.strings */; };
 		D2510B081DD48A78004C30EA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2510B071DD48A78004C30EA /* Router.swift */; };
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
 		D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0F1DD491A4004C30EA /* RealmSwift.framework */; };
 		D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */; };
-		D2BD33881DEA4F740068607F /* LoginOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD33871DEA4F740068607F /* LoginOperation.swift */; };
+		D2BD33881DEA4F740068607F /* AuthenticatateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD33871DEA4F740068607F /* AuthenticatateOperation.swift */; };
 		D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */; };
 		D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7451DBF46DB00EF9752 /* ViewController.swift */; };
 		D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */; };
@@ -50,12 +50,12 @@
 /* Begin PBXFileReference section */
 		357C3E981DC7BE4A0018A07E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		357C3E991DC7BE4A0018A07E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		D203DE731DDFCB22000DEAA0 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		D203DE731DDFCB22000DEAA0 /* PrinterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterController.swift; sourceTree = "<group>"; };
 		D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		D203DE7B1DDFCCAE000DEAA0 /* NetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
 		D203DE7E1DDFCD6E000DEAA0 /* ApiVersionOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiVersionOperation.swift; sourceTree = "<group>"; };
-		D2072FD01DEDCAEC00E1BBD3 /* PrintersCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintersCollectionViewController.swift; path = PrintersCollectionViewController/PrintersCollectionViewController.swift; sourceTree = "<group>"; };
-		D20CDBD41DECCF74002AAAEC /* LoginPromise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPromise.swift; sourceTree = "<group>"; };
+		D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
+		D20CDBD41DECCF74002AAAEC /* AuthenticationPromise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationPromise.swift; sourceTree = "<group>"; };
 		D21B9DE71DEA1B8A005C34CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2510B071DD48A78004C30EA /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		D2510B0F1DD491A4004C30EA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		D2A713811DE7069F00BDC0C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewController.swift; sourceTree = "<group>"; };
-		D2BD33871DEA4F740068607F /* LoginOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginOperation.swift; sourceTree = "<group>"; };
+		D2BD33871DEA4F740068607F /* AuthenticatateOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatateOperation.swift; sourceTree = "<group>"; };
 		D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2CCF7451DBF46DB00EF9752 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +122,6 @@
 		D203DE721DDFCA04000DEAA0 /* View Related */ = {
 			isa = PBXGroup;
 			children = (
-				D2072FCF1DEDCABD00E1BBD3 /* Printer List */,
 				D2B6F0031DE214B500F9CE0A /* Printer Login */,
 				D2CCF7451DBF46DB00EF9752 /* ViewController.swift */,
 			);
@@ -169,12 +168,12 @@
 			path = "Api Version";
 			sourceTree = "<group>";
 		};
-		D2072FCF1DEDCABD00E1BBD3 /* Printer List */ = {
+		D2072FD21DEDCD4B00E1BBD3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D2072FD01DEDCAEC00E1BBD3 /* PrintersCollectionViewController.swift */,
+				D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */,
 			);
-			name = "Printer List";
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D2510B061DD4894E004C30EA /* Networking */ = {
@@ -182,7 +181,7 @@
 			children = (
 				D203DE7A1DDFCC8E000DEAA0 /* Requests */,
 				D2510B071DD48A78004C30EA /* Router.swift */,
-				D203DE731DDFCB22000DEAA0 /* NetworkController.swift */,
+				D203DE731DDFCB22000DEAA0 /* PrinterController.swift */,
 				D203DE7B1DDFCCAE000DEAA0 /* NetworkOperation.swift */,
 			);
 			path = Networking;
@@ -258,8 +257,8 @@
 		D2BD33861DEA4F4D0068607F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				D2BD33871DEA4F740068607F /* LoginOperation.swift */,
-				D20CDBD41DECCF74002AAAEC /* LoginPromise.swift */,
+				D2BD33871DEA4F740068607F /* AuthenticatateOperation.swift */,
+				D20CDBD41DECCF74002AAAEC /* AuthenticationPromise.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -292,6 +291,7 @@
 		D2CCF7421DBF46DB00EF9752 /* OctoPhone */ = {
 			isa = PBXGroup;
 			children = (
+				D2072FD21DEDCD4B00E1BBD3 /* Model */,
 				D203DE751DDFCB59000DEAA0 /* Utils */,
 				D2510B061DD4894E004C30EA /* Networking */,
 				D203DE721DDFCA04000DEAA0 /* View Related */,
@@ -491,11 +491,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D203DE741DDFCB22000DEAA0 /* NetworkController.swift in Sources */,
-				D2072FD11DEDCAEC00E1BBD3 /* PrintersCollectionViewController.swift in Sources */,
-				D2BD33881DEA4F740068607F /* LoginOperation.swift in Sources */,
+				D2072FD41DEDCD6D00E1BBD3 /* Printer.swift in Sources */,
+				D203DE741DDFCB22000DEAA0 /* PrinterController.swift in Sources */,
+				D2BD33881DEA4F740068607F /* AuthenticatateOperation.swift in Sources */,
 				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
-				D20CDBD51DECCF74002AAAEC /* LoginPromise.swift in Sources */,
+				D20CDBD51DECCF74002AAAEC /* AuthenticationPromise.swift in Sources */,
 				D2CCF7461DBF46DB00EF9752 /* ViewController.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
 				D203DE7C1DDFCCAE000DEAA0 /* NetworkOperation.swift in Sources */,

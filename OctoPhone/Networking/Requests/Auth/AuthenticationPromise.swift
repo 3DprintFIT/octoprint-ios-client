@@ -9,9 +9,9 @@
 import Foundation
 
 
-final class LoginPromise {
+final class AuthenticationPromise {
 
-    enum LoginResult {
+    enum AuthenticationResult {
         case success
         case connectionFailed
         case unauthorized
@@ -19,12 +19,12 @@ final class LoginPromise {
 
     let token: String
 
-    let printerUrl: URL
+    let printerURL: URL
 
-    var finishedWithResult: (LoginResult) -> Void = { _ in }
+    var finishedWithResult: (AuthenticationResult) -> Void = { _ in }
 
-    init(with token: String, printerUrl: URL) {
+    init(with token: String, printerURL: URL) {
         self.token = token
-        self.printerUrl = printerUrl
+        self.printerURL = printerURL
     }
 }

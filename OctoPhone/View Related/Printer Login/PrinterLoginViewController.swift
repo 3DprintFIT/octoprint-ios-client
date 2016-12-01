@@ -10,55 +10,64 @@ import UIKit
 import RealmSwift
 
 
-final class Printer: Object {
-    dynamic var accessToken = ""
-
-    dynamic var url: URL?
-}
-
-
+/// Gives user ability to add new printer
 final class PrinterLoginViewController: UIViewController {
 
+    /// Configured data context
     private let contextManager: ContextManager
 
-    private let networkController: PrinterController
-
+    /// Printer URL text field
     private let urlField = UITextField()
 
+    /// User's access token for printer
     private let tokenField = UITextField()
 
+    /// Login button
     private let loginButton = UIButton(type: .system)
 
+    /// UI sizes contastants
     struct Sizes {
+        /// Spacing from top of the screen
         static let groupTopSpacing: CGFloat = 50
+        /// Text input width
         static let textFieldWidth: CGFloat = 180
+        /// Unified form field height
         static let fieldheight: CGFloat = 44
+        /// Space between fields
         static let fieldSpacing: CGFloat = 15
     }
 
-    init(contextManager: ContextManager, networkController: PrinterController) {
+
+    /// Creates new PrinterAuthViewController instance
+    ///
+    /// - Parameter contextManager: Data context dependency - used
+    ///   to create new Printer object
+    init(contextManager: ContextManager) {
         self.contextManager = contextManager
-        self.networkController = networkController
 
         super.init(nibName: nil, bundle: nil)
     }
-    
+
+    /// Legacy required initializer
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// Standard library API - setups controller
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureView()
     }
 
+    /// User action handler for login tapped action
     func login() {
         validateForm()
     }
 
     //MARK - Private functions
 
+    /// Configures all subviews
     private func configureView() {
         let components = [urlField, tokenField, loginButton]
 
@@ -89,18 +98,36 @@ final class PrinterLoginViewController: UIViewController {
         edgesForExtendedLayout = []
     }
 
+    /// Validates inputs from user, creates auth request if valid
     private func validateForm() {
         guard let urlString = urlField.text, let token = tokenField.text else {
             print("Form fields must be filled in.")
             return
         }
 
-        guard let url = URL(string: urlString), token.characters.count > 2 else {
+        guard let printerURL = URL(string: urlString), token.characters.count > 2 else {
             print("Form values are not valid.")
             return
         }
 
-        _ = networkController.login(with: token, to: url)
+        let printerController = PrinterController(
+            printerURL: printerURL,
+            contextManager: contextManager
+        )
+
+        let authPromise = printerController.autheticate(with: token)
+
+        authPromise.finishedWithResult = handleLogin
     }
 
+    /// Handles authentication request result
+    ///
+    /// - Parameter result: Authentication request result
+    private func handleLogin(result: AuthenticationPromise.AuthenticationResult) {
+        switch result {
+        case .success: print("Logged in")
+        case .unauthorized: print("Access token not valid")
+        case .connectionFailed: print("Uknown connection error")
+        }
+    }
 }
