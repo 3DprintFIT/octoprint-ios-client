@@ -28,6 +28,8 @@
 		D2CCF74E1DBF46DB00EF9752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74C1DBF46DB00EF9752 /* LaunchScreen.storyboard */; };
 		D2CCF7591DBF46DC00EF9752 /* OctoPhoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7581DBF46DC00EF9752 /* OctoPhoneTests.swift */; };
 		D2CCF7641DBF46DC00EF9752 /* OctoPhoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7631DBF46DC00EF9752 /* OctoPhoneUITests.swift */; };
+		D2FE62501DF4BE8000A1E402 /* BrowseBonjourOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FE624F1DF4BE8000A1E402 /* BrowseBonjourOperation.swift */; };
+		D2FE62521DF4BEA300A1E402 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */; };
 		D2FF97241DF0DFC3005CA7B2 /* PrinterListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF97231DF0DFC3005CA7B2 /* PrinterListCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,8 @@
 		D2CCF75F1DBF46DC00EF9752 /* OctoPhoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OctoPhoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7631DBF46DC00EF9752 /* OctoPhoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoPhoneUITests.swift; sourceTree = "<group>"; };
 		D2CCF7651DBF46DC00EF9752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2FE624F1DF4BE8000A1E402 /* BrowseBonjourOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseBonjourOperation.swift; sourceTree = "<group>"; };
+		D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
 		D2FF97231DF0DFC3005CA7B2 /* PrinterListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +138,7 @@
 		D203DE751DDFCB59000DEAA0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D2FE624E1DF4BE3500A1E402 /* Operations */,
 				D203DE761DDFCB62000DEAA0 /* Data */,
 			);
 			path = Utils;
@@ -327,6 +332,15 @@
 				D2CCF7651DBF46DC00EF9752 /* Info.plist */,
 			);
 			path = OctoPhoneUITests;
+			sourceTree = "<group>";
+		};
+		D2FE624E1DF4BE3500A1E402 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				D2FE624F1DF4BE8000A1E402 /* BrowseBonjourOperation.swift */,
+				D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */,
+			);
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		D2FF97221DF0DF01005CA7B2 /* Printer List */ = {
@@ -525,6 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2FE62501DF4BE8000A1E402 /* BrowseBonjourOperation.swift in Sources */,
 				D2072FD41DEDCD6D00E1BBD3 /* Printer.swift in Sources */,
 				D203DE741DDFCB22000DEAA0 /* PrinterController.swift in Sources */,
 				D2BD33881DEA4F740068607F /* AuthenticatateOperation.swift in Sources */,
@@ -532,6 +547,7 @@
 				D2A601301DF3870F006B833E /* PrinterOverviewCollectionViewCell.swift in Sources */,
 				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
 				D20CDBD51DECCF74002AAAEC /* AuthenticationPromise.swift in Sources */,
+				D2FE62521DF4BEA300A1E402 /* BaseOperation.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
 				D203DE7C1DDFCCAE000DEAA0 /* NetworkOperation.swift in Sources */,
 				D203DE7F1DDFCD6E000DEAA0 /* ApiVersionOperation.swift in Sources */,
