@@ -60,8 +60,7 @@ extension PrinterListCollcetionViewController {
     override func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
-        ) -> UICollectionViewCell
-    {
+    ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: PrinterOverviewCollectionViewCell.identifier,
             for: indexPath
@@ -71,7 +70,7 @@ extension PrinterListCollcetionViewController {
     }
 }
 
-//MARK: - UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 extension PrinterListCollcetionViewController {
-    
+
 }
