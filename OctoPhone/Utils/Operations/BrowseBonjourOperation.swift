@@ -21,7 +21,7 @@ class BrowseBonjourOperation: BaseOperation {
     private let serviceBrowser = NetServiceBrowser()
 
     /// Currently reachable services
-    private var services = [NetService]()
+    fileprivate var services = Set<NetService>()
 
     /// Creates new instance of domain browser,
     /// but does not start browsing immediately
@@ -41,18 +41,33 @@ class BrowseBonjourOperation: BaseOperation {
             inDomain: BrowseBonjourOperation.serviceDomain
         )
     }
+
+    /// Takes care of operation finish
+    fileprivate func finish() {
+        serviceBrowser.delegate = nil
+        serviceBrowser.stop()
+        isFinished = true
+    }
 }
 
 extension BrowseBonjourOperation: NetServiceBrowserDelegate {
-    public func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {}
 
-    public func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {}
-
-    public func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {}
-
-    public func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        print(service)
+    public func netServiceBrowser(
+        _ browser: NetServiceBrowser,
+        didNotSearch errorDict: [String : NSNumber]
+    ) {
+        finish()
     }
 
-    public func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {}
+    public func netServiceBrowser(
+        _ browser: NetServiceBrowser,
+        didFind service: NetService,
+        moreComing: Bool
+    ) {
+        services.insert(service)
+
+        if !moreComing {
+            finish()
+        }
+    }
 }
