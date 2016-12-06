@@ -14,6 +14,9 @@ class PrinterListCollcetionViewController: UICollectionViewController {
     /// Data context manager
     private let contextManager: ContextManager
 
+    /// Operation tasks queue
+    private let queue = OperationQueue()
+
     /// New Printer list controller instance
     /// operating on given context
     ///
@@ -21,7 +24,7 @@ class PrinterListCollcetionViewController: UICollectionViewController {
     init(contextManager: ContextManager) {
         self.contextManager = contextManager
 
-        super.init(nibName: nil, bundle: nil)
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
 
     /// Required initializer
@@ -33,14 +36,39 @@ class PrinterListCollcetionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         configureView()
+        fetchData()
+    }
+
+    // MARK: UI callbacks
+
+    /// Shows controller with printer addition form
+    func showPrinterAdditionController() {
+        let navigationController = UINavigationController(
+            rootViewController: PrinterLoginViewController(contextManager: contextManager)
+        )
+
+        present(navigationController, animated: true, completion: nil)
     }
 
     /// Configures all view-related properties
     private func configureView() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(showPrinterAdditionController)
+        )
+
+        collectionView?.backgroundColor = .white
+
         collectionView?.register(
             PrinterOverviewCollectionViewCell.self,
             forCellWithReuseIdentifier: PrinterOverviewCollectionViewCell.identifier
         )
+    }
+
+    /// Loads controller data
+    private func fetchData() {
+        queue.addOperation(BrowseBonjourOperation())
     }
 }
 

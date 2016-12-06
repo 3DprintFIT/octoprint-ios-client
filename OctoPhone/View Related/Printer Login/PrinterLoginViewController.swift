@@ -63,6 +63,13 @@ final class PrinterLoginViewController: UIViewController {
         validateForm()
     }
 
+    //MARK - UI callbacks
+
+    /// Closes current controller
+    func closeController() {
+        dismiss(animated: true, completion: nil)
+    }
+
     //MARK - Private functions
 
     /// Configures all subviews
@@ -73,6 +80,8 @@ final class PrinterLoginViewController: UIViewController {
             component.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(component)
         }
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(closeController))
 
         let constraints = [
             urlField.topAnchor.constraint(
