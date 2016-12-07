@@ -17,6 +17,9 @@ class PrinterListCollcetionViewController: UICollectionViewController {
     /// Operation tasks queue
     private let queue = OperationQueue()
 
+    /// List of printers in local network
+    fileprivate var localPrinters = [NetService]()
+
     /// New Printer list controller instance
     /// operating on given context
     ///
@@ -68,7 +71,16 @@ class PrinterListCollcetionViewController: UICollectionViewController {
 
     /// Loads controller data
     private func fetchData() {
-        queue.addOperation(BrowseBonjourOperation())
+        let bonjourOperation = BrowseBonjourOperation()
+
+        bonjourOperation.completionBlock = { [weak self] in
+            guard let weakSelf = self else { return }
+
+            weakSelf.localPrinters = bonjourOperation.services.map({ $0 })
+            weakSelf.collectionView?.reloadData()
+        }
+
+        queue.addOperation(bonjourOperation)
     }
 }
 
@@ -82,7 +94,11 @@ extension PrinterListCollcetionViewController {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 5
+        switch section {
+        case 0: return 0
+        case 1: return localPrinters.count
+        default: return 0
+        }
     }
 
     override func collectionView(
