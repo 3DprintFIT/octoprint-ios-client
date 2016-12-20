@@ -90,31 +90,51 @@ extension PrinterListCollcetionViewController {
         return 2 // Local printers and user printers
     }
 
-    override func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case 0: return 0
+        case 0: return 3
         case 1: return localPrinters.count
         default: return 0
         }
     }
 
-    override func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: PrinterOverviewCollectionViewCell.identifier,
-            for: indexPath
-        )
+            withReuseIdentifier: PrinterOverviewCollectionViewCell.identifier, for: indexPath)
 
+        cell.backgroundColor = .red
+        
         return cell
     }
 }
 
 // MARK: - UICollectionViewDelegate
 extension PrinterListCollcetionViewController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let tabbarController = UITabBarController()
+        let printerOverviewController = PrinterOverviewViewController()
+        let filesController = FilesViewController()
+        let printerSettingsController = PrinterSettingsViewController()
+        
+        tabbarController.viewControllers = [
+            printerOverviewController,
+            filesController,
+            printerSettingsController
+        ]
+        
+        tabbarController.view.backgroundColor = .white
+        
+        navigationController?.pushViewController(tabbarController, animated: true)
+    }
+}
 
+extension PrinterListCollcetionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: collectionView.frame.width, height: 150)
+    }
 }
