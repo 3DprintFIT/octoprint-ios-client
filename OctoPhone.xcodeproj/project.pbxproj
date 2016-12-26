@@ -20,6 +20,7 @@
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
 		D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0F1DD491A4004C30EA /* RealmSwift.framework */; };
+		D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28919791E11783500E3BBEB /* Localizable.Generated.swift */; };
 		D28EC5351E09E6490089C027 /* PrinterOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5341E09E6490089C027 /* PrinterOverviewViewController.swift */; };
 		D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5361E09E65F0089C027 /* FilesViewController.swift */; };
 		D28EC5391E09E6740089C027 /* PrinterSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5381E09E6740089C027 /* PrinterSettingsViewController.swift */; };
@@ -67,6 +68,7 @@
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D2510B0F1DD491A4004C30EA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		D28919791E11783500E3BBEB /* Localizable.Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.Generated.swift; sourceTree = "<group>"; };
 		D28EC5341E09E6490089C027 /* PrinterOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterOverviewViewController.swift; sourceTree = "<group>"; };
 		D28EC5361E09E65F0089C027 /* FilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		D28EC5381E09E6740089C027 /* PrinterSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterSettingsViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D28919781E1177FC00E3BBEB /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				D28919791E11783500E3BBEB /* Localizable.Generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		D28EC5311E09E5AD0089C027 /* Printer Overview */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +350,7 @@
 		D2CCF7421DBF46DB00EF9752 /* OctoPhone */ = {
 			isa = PBXGroup;
 			children = (
+				D28919781E1177FC00E3BBEB /* Generated */,
 				D2072FD21DEDCD4B00E1BBD3 /* Model */,
 				D203DE751DDFCB59000DEAA0 /* Utils */,
 				D2510B061DD4894E004C30EA /* Networking */,
@@ -397,6 +408,7 @@
 				D2510B0E1DD4913D004C30EA /* Carthage */,
 				357C3E971DC7BDC40018A07E /* Fabric */,
 				D2A601311DF39777006B833E /* Swiftlint */,
+				D28919771E11745F00E3BBEB /* Swiftgen */,
 			);
 			buildRules = (
 			);
@@ -549,7 +561,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "if which carthage >/dev/null; then\n    carthage copy-frameworks\nelse\n    echo \"warning: Carthage not installed\"\nfi";
+		};
+		D28919771E11745F00E3BBEB /* Swiftgen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftgen;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n    swiftgen strings -t swift3 \"$PROJECT_DIR/en.lproj/Localizable.strings\" -o \"OctoPhone/Generated/Localizable.Generated.swift\"\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		D2A601311DF39777006B833E /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -589,6 +615,7 @@
 				D203DE7F1DDFCD6E000DEAA0 /* ApiVersionOperation.swift in Sources */,
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
 				D2510B081DD48A78004C30EA /* Router.swift in Sources */,
+				D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

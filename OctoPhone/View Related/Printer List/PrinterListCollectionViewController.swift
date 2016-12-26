@@ -112,17 +112,20 @@ extension PrinterListCollcetionViewController {
 
 // MARK: - UICollectionViewDelegate
 extension PrinterListCollcetionViewController {
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
+
         let tabbarController = UITabBarController()
         let printerOverviewController = PrinterOverviewViewController()
         let filesController = FilesViewController()
         let printerSettingsController = PrinterSettingsViewController()
+
+        printerOverviewController.title = tr(.printer)
+        filesController.title = tr(.files)
+        printerSettingsController.title = tr(.settings)
         
-        tabbarController.viewControllers = [
-            printerOverviewController,
-            filesController,
-            printerSettingsController
-        ]
+        tabbarController.viewControllers = [printerOverviewController, filesController,
+                                            printerSettingsController]
         
         tabbarController.view.backgroundColor = .white
         

@@ -1,3 +1,9 @@
-"PRINTER_URL" = "Printer URL";
-"PRINTER_ACCESS_TOKEN" = "Access token";
-"LOGIN" = "Login";
+// Printer overview tabbar
+"Printer" = "Printer";
+"Files" = "Files";
+"Settings" = "Settings";
+
+// Printer connection
+"Printer URL" = "Printer URL";
+"Printer Access Token" = "Access token";
+"Login" = "Login";

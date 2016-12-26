@@ -109,9 +109,9 @@ final class PrinterLoginViewController: UIViewController {
 
         constraints.forEach { $0.isActive = true }
 
-        urlField.placeholder = NSLocalizedString("PRINTER_URL", comment: "")
-        tokenField.placeholder = NSLocalizedString("PRINTER_ACCESS_TOKEN", comment: "")
-        loginButton.setTitle(NSLocalizedString("LOGIN", comment: ""), for: .normal)
+        urlField.placeholder = tr(.printerURL)
+        tokenField.placeholder = tr(.printerAccessToken)
+        loginButton.setTitle(tr(.login), for: .normal)
 
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
 
