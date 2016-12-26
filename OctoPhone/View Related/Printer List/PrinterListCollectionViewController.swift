@@ -105,7 +105,7 @@ extension PrinterListCollcetionViewController {
             withReuseIdentifier: PrinterOverviewCollectionViewCell.identifier, for: indexPath)
 
         cell.backgroundColor = .red
-        
+
         return cell
     }
 }
@@ -123,12 +123,11 @@ extension PrinterListCollcetionViewController {
         printerOverviewController.title = tr(.printer)
         filesController.title = tr(.files)
         printerSettingsController.title = tr(.settings)
-        
+
         tabbarController.viewControllers = [printerOverviewController, filesController,
                                             printerSettingsController]
-        
         tabbarController.view.backgroundColor = .white
-        
+
         navigationController?.pushViewController(tabbarController, animated: true)
     }
 }
@@ -137,7 +136,7 @@ extension PrinterListCollcetionViewController: UICollectionViewDelegateFlowLayou
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         return CGSize(width: collectionView.frame.width, height: 150)
     }
 }

@@ -81,7 +81,9 @@ final class PrinterLoginViewController: UIViewController {
             view.addSubview(component)
         }
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(closeController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                            target: self,
+                                                            action: #selector(closeController))
 
         let constraints = [
             urlField.topAnchor.constraint(

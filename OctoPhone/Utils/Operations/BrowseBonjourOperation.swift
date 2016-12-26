@@ -79,11 +79,11 @@ extension BrowseBonjourOperation: NetServiceBrowserDelegate {
 
     }
 
+    public func netServiceBrowser(_ browser: NetServiceBrowser,
+                                  didRemoveDomain domainString: String, moreComing: Bool) {
 
-    public func netServiceBrowser(_ browser: NetServiceBrowser, didRemoveDomain domainString: String, moreComing: Bool) {
         finish()
     }
-
 
     public func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
         finish()
