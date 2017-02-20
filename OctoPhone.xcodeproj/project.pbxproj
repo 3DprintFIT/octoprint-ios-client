@@ -16,6 +16,9 @@
 		D2072FD41DEDCD6D00E1BBD3 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */; };
 		D20CDBD51DECCF74002AAAEC /* AuthenticationPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CDBD41DECCF74002AAAEC /* AuthenticationPromise.swift */; };
 		D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D21B9DE81DEA1B8A005C34CD /* Localizable.strings */; };
+		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
+		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
+		D23B90481E5B7F930005560B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90451E5B7F930005560B /* Result.framework */; };
 		D2510B081DD48A78004C30EA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2510B071DD48A78004C30EA /* Router.swift */; };
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
@@ -65,6 +68,9 @@
 		D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
 		D20CDBD41DECCF74002AAAEC /* AuthenticationPromise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationPromise.swift; sourceTree = "<group>"; };
 		D21B9DE71DEA1B8A005C34CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
+		D23B90451E5B7F930005560B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		D2510B071DD48A78004C30EA /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -104,6 +110,9 @@
 				D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */,
 				D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */,
 				D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */,
+				D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */,
+				D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */,
+				D23B90481E5B7F930005560B /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +228,9 @@
 		D2510B091DD4911A004C30EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D23B90431E5B7F930005560B /* ReactiveCocoa.framework */,
+				D23B90441E5B7F930005560B /* ReactiveSwift.framework */,
+				D23B90451E5B7F930005560B /* Result.framework */,
 				D2510B0F1DD491A4004C30EA /* RealmSwift.framework */,
 				D2510B0A1DD4911A004C30EA /* Alamofire.framework */,
 				D2510B0B1DD4911A004C30EA /* Realm.framework */,
@@ -566,6 +578,9 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 			);
 			name = Carthage;
 			outputPaths = (
