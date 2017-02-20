@@ -139,17 +139,25 @@ final class PrinterLoginViewController: UIViewController {
 
         let authPromise = printerController.autheticate(with: token)
 
-        authPromise.finishedWithResult = handleLogin
-    }
+        // Handles authentication request result
+        authPromise.finishedWithResult = { [weak self] result in
+            switch result {
+            case .unauthorized: print("Access token not valid")
+            case .connectionFailed: print("Uknown connection error")
+            case .success:
+                do {
+                    let realm = try self?.contextManager.createContext()
+                    let printer = Printer(url: printerURL, accessToken: token)
 
-    /// Handles authentication request result
-    ///
-    /// - Parameter result: Authentication request result
-    private func handleLogin(result: AuthenticationPromise.AuthenticationResult) {
-        switch result {
-        case .success: print("Logged in")
-        case .unauthorized: print("Access token not valid")
-        case .connectionFailed: print("Uknown connection error")
+                    try realm?.write {
+                        realm?.add(printer)
+                    }
+
+                    self?.dismiss(animated: true, completion: nil)
+                } catch {
+                    print("Could not write to realm")
+                }
+            }
         }
     }
 }
