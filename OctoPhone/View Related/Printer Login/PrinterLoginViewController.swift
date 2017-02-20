@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import ReactiveSwift
+import ReactiveCocoa
 
 /// Gives user ability to add new printer
 final class PrinterLoginViewController: UIViewController {
@@ -54,6 +56,23 @@ final class PrinterLoginViewController: UIViewController {
     /// Standard library API - setups controller
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let urlSignal = urlField.reactive
+            .continuousTextValues
+            .skipNil()
+            .map({ return URL(string: $0) })
+
+        let tokenSignal = tokenField.reactive
+            .continuousTextValues
+            .skipNil()
+
+        let formValidSignal = Signal.combineLatest(urlSignal, tokenSignal)
+            .map { url, token in return url != nil && token.characters.count > 0 }
+
+        loginButton.reactive.isEnabled <~ formValidSignal
+        loginButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self ] _ in
+            self?.login()
+        }
 
         configureView()
     }
@@ -114,8 +133,6 @@ final class PrinterLoginViewController: UIViewController {
         urlField.placeholder = tr(.printerURL)
         tokenField.placeholder = tr(.printerAccessToken)
         loginButton.setTitle(tr(.login), for: .normal)
-
-        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
 
         edgesForExtendedLayout = []
     }
