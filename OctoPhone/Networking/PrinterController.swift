@@ -34,20 +34,15 @@ class PrinterController: NSObject {
     ///   - contextManager: Data manager
     init(printerURL: URL, contextManager: ContextManager) {
         let sessionManager = SessionManager()
-        var apiURL = printerURL
-
-        if apiURL.lastPathComponent != "api" {
-            apiURL.appendPathComponent("api")
-        }
 
         self.contextManager = contextManager
         self.sessionManager = sessionManager
-        self.printerURL = apiURL
+        self.printerURL = printerURL
 
         operationConfiguration = OperationConfiguration(
             contextManager: contextManager,
             sessionManager: sessionManager,
-            baseURL: apiURL
+            baseURL: printerURL
         )
     }
 
