@@ -42,6 +42,7 @@ class PrinterOverviewCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// Configure cell subviews
     private func configureView() {
         let subviews = [photo, statusLabel, printProgress]
 
