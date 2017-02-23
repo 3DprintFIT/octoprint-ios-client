@@ -13,6 +13,7 @@
 		D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */; };
 		D203DE7C1DDFCCAE000DEAA0 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE7B1DDFCCAE000DEAA0 /* NetworkOperation.swift */; };
 		D203DE7F1DDFCD6E000DEAA0 /* ApiVersionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE7E1DDFCD6E000DEAA0 /* ApiVersionOperation.swift */; };
+		D2063D001E5F8352004C2908 /* PrinterLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */; };
 		D2072FD41DEDCD6D00E1BBD3 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */; };
 		D20CDBD51DECCF74002AAAEC /* AuthenticationPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20CDBD41DECCF74002AAAEC /* AuthenticationPromise.swift */; };
 		D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D21B9DE81DEA1B8A005C34CD /* Localizable.strings */; };
@@ -65,6 +66,7 @@
 		D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		D203DE7B1DDFCCAE000DEAA0 /* NetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
 		D203DE7E1DDFCD6E000DEAA0 /* ApiVersionOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiVersionOperation.swift; sourceTree = "<group>"; };
+		D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewModel.swift; sourceTree = "<group>"; };
 		D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
 		D20CDBD41DECCF74002AAAEC /* AuthenticationPromise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationPromise.swift; sourceTree = "<group>"; };
 		D21B9DE71DEA1B8A005C34CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */,
+				D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */,
 			);
 			path = "Printer Login";
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
 				D2510B081DD48A78004C30EA /* Router.swift in Sources */,
 				D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */,
+				D2063D001E5F8352004C2908 /* PrinterLoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,6 +26,9 @@ final class PrinterLoginViewController: UIViewController {
     /// Login button
     private let loginButton = UIButton(type: .system)
 
+    /// Printer login view model
+    private let viewModel: PrinterLoginViewModelType = PrinterLoginViewModel()
+
     /// UI sizes contastants
     struct Sizes {
         /// Spacing from top of the screen
@@ -57,29 +60,7 @@ final class PrinterLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let urlSignal = urlField.reactive
-            .continuousTextValues
-            .skipNil()
-            .map({ return URL(string: $0) })
-
-        let tokenSignal = tokenField.reactive
-            .continuousTextValues
-            .skipNil()
-
-        let formValidSignal = Signal.combineLatest(urlSignal, tokenSignal)
-            .map { url, token in return url != nil && token.characters.count > 0 }
-
-        loginButton.reactive.isEnabled <~ formValidSignal
-        loginButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self ] _ in
-            self?.login()
-        }
-
         configureView()
-    }
-
-    /// User action handler for login tapped action
-    func login() {
-        validateForm()
     }
 
     //MARK - UI callbacks
@@ -135,46 +116,19 @@ final class PrinterLoginViewController: UIViewController {
         loginButton.setTitle(tr(.login), for: .normal)
 
         edgesForExtendedLayout = []
-    }
 
-    /// Validates inputs from user, creates auth request if valid
-    private func validateForm() {
-        guard let urlString = urlField.text, let token = tokenField.text else {
-            print("Form fields must be filled in.")
-            return
+        urlField.reactive.continuousTextValues.observeValues { [weak self] url in
+            self?.viewModel.inputs.printerUrlChanged(url)
         }
 
-        guard let printerURL = URL(string: urlString), token.characters.count > 2 else {
-            print("Form values are not valid.")
-            return
+        tokenField.reactive.continuousTextValues.observeValues { [weak self] token in
+            self?.viewModel.inputs.tokenChanged(token)
         }
 
-        let printerController = PrinterController(
-            printerURL: printerURL,
-            contextManager: contextManager
-        )
-
-        let authPromise = printerController.autheticate(with: token)
-
-        // Handles authentication request result
-        authPromise.finishedWithResult = { [weak self] result in
-            switch result {
-            case .unauthorized: print("Access token not valid")
-            case .connectionFailed: print("Uknown connection error")
-            case .success:
-                do {
-                    let realm = try self?.contextManager.createContext()
-                    let printer = Printer(url: printerURL, accessToken: token)
-
-                    try realm?.write {
-                        realm?.add(printer)
-                    }
-
-                    self?.dismiss(animated: true, completion: nil)
-                } catch {
-                    print("Could not write to realm")
-                }
-            }
+        loginButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+            self?.viewModel.inputs.loginButtonPressed()
         }
+
+        loginButton.reactive.isEnabled <~ viewModel.outputs.isFormValid
     }
 }
