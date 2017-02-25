@@ -11,6 +11,17 @@ import ReactiveSwift
 import Result
 
 protocol PrinterLoginViewModelInputs {
+    /// Call when view did load
+    func viewDidLoad()
+
+    /// Call when view will appear on screen
+    func viewWillAppear()
+
+    /// Call when printer name is changed
+    ///
+    /// - Parameter name: New printer name
+    func printerNameChanged(_ name: String?)
+
     /// String value of URL textfield text
     ///
     /// - Parameter url: Entered url text
@@ -27,7 +38,7 @@ protocol PrinterLoginViewModelInputs {
 
 protocol PrinterLoginViewModelOutputs {
     /// Bool value for form validation
-    var isFormValid: SignalProducer<Bool, NoError> { get }
+    var isFormValid: Signal<Bool, NoError> { get }
 }
 
 protocol PrinterLoginViewModelType: PrinterLoginViewModelInputs, PrinterLoginViewModelOutputs {
@@ -46,32 +57,64 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
 
     // MARK: Outputs
 
-    let isFormValid: SignalProducer<Bool, NoError>
+    let isFormValid: Signal<Bool, NoError>
 
     // MARK: Properties
 
+    /// Model property for printer name
+    private let printerNameProperty = MutableProperty<String?>(nil)
+
     /// Model property for printer URL
-    private let printerUrlProperty = MutableProperty<URL?>(nil)
+    private let printerUrlProperty = MutableProperty<String?>(nil)
 
     /// Model property for printer login token
     private let tokenProperty = MutableProperty<String?>(nil)
 
-    init() {
-        let urlAndToken = SignalProducer.combineLatest(printerUrlProperty.producer.skipNil(),
-                                                       tokenProperty.producer.skipNil())
+    /// Model property for button press action
+    private let loginButtonPressedProperty = MutableProperty(())
 
-        isFormValid = urlAndToken.map({ url, token in
-            return !url.isFileURL && url.absoluteString.characters.count > 0 &&
-                token.characters.count > 0
-        })
+    /// Model property for view did load action
+    private let viewDidLoadProperty = MutableProperty(())
+
+    /// Model property for view will appear action
+    private let viewWillAppearProperty = MutableProperty(())
+
+    init() {
+        let formValues = Signal.combineLatest(
+            printerNameProperty.signal.skipNil(),
+            printerUrlProperty.signal.skipNil(),
+            tokenProperty.signal.skipNil()
+        )
+
+        isFormValid = Signal.merge([
+            viewWillAppearProperty.signal.map({ _ in false }).take(first: 1),
+            formValues.map(PrinterLoginViewModel.isValid)
+        ])
+
+        loginButtonPressedProperty.signal
+            .combineLatest(with: formValues)
+            .map({ $0.1 })
+            .observeValues { name, url, token in
+                print("logon to \(url) with token \(token) named: \(name)")
+            }
     }
 
     // MARK: Inputs
 
-    func printerUrlChanged(_ url: String?) {
-        guard let url = url else { printerUrlProperty.value = nil; return }
+    func viewDidLoad() {
+        viewDidLoadProperty.value = ()
+    }
 
-        printerUrlProperty.value = URL(string: url)
+    func viewWillAppear() {
+        viewWillAppearProperty.value = ()
+    }
+
+    func printerNameChanged(_ name: String?) {
+        printerNameProperty.value = name
+    }
+
+    func printerUrlChanged(_ url: String?) {
+        printerUrlProperty.value = url
     }
 
     func tokenChanged(_ token: String?) {
@@ -79,6 +122,22 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
     }
 
     func loginButtonPressed() {
-        print("logging user in")
+        loginButtonPressedProperty.value = ()
+    }
+
+    // MARK: Private functions
+
+    /// Validate form values
+    ///
+    /// - Parameters:
+    ///   - name: User-friendly printer name
+    ///   - url: Printer base URL path
+    ///   - token: Access token
+    /// - Returns: True if form values are valid
+    private static func isValid(_ name: String, _ url: String, token: String) -> Bool {
+        guard let url = URL(string: url) else { return false }
+
+        return !name.characters.isEmpty && !url.absoluteString.characters.isEmpty
+            && !url.isFileURL && !token.characters.isEmpty
     }
 }

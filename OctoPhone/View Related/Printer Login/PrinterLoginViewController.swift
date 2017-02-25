@@ -17,6 +17,9 @@ final class PrinterLoginViewController: UIViewController {
     /// Configured data context
     private let contextManager: ContextManager
 
+    /// User-friendly name of printer
+    private let printerNameField = UITextField()
+
     /// Printer URL text field
     private let urlField = UITextField()
 
@@ -36,9 +39,9 @@ final class PrinterLoginViewController: UIViewController {
         /// Text input width
         static let textFieldWidth: CGFloat = 180
         /// Unified form field height
-        static let fieldheight: CGFloat = 44
+        static let fieldheight: CGFloat = 21
         /// Space between fields
-        static let fieldSpacing: CGFloat = 15
+        static let fieldSpacing: CGFloat = 12
     }
 
     /// Creates new PrinterAuthViewController instance
@@ -61,24 +64,33 @@ final class PrinterLoginViewController: UIViewController {
         super.viewDidLoad()
 
         configureView()
+        viewModel.inputs.viewDidLoad()
     }
 
-    //MARK - UI callbacks
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        viewModel.viewWillAppear()
+    }
+
+    // MARK: - UI callbacks
 
     /// Closes current controller
     func closeController() {
         dismiss(animated: true, completion: nil)
     }
 
-    //MARK - Private functions
+    // MARK: - Private functions
 
     /// Configures all subviews
+    // swiftlint:disable function_body_length
     private func configureView() {
-        let components = [urlField, tokenField, loginButton]
+        let components = [printerNameField, urlField, tokenField, loginButton]
 
         components.forEach { component in
             component.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(component)
+            component.backgroundColor = .red
         }
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
@@ -86,12 +98,19 @@ final class PrinterLoginViewController: UIViewController {
                                                             action: #selector(closeController))
 
         let constraints = [
-            urlField.topAnchor.constraint(
+            printerNameField.topAnchor.constraint(
                 equalTo: view.topAnchor,
                 constant: Sizes.groupTopSpacing
             ),
+            printerNameField.widthAnchor.constraint(equalToConstant: Sizes.textFieldWidth),
+            printerNameField.heightAnchor.constraint(equalToConstant: Sizes.fieldheight),
+            printerNameField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            urlField.topAnchor.constraint(
+                equalTo: printerNameField.bottomAnchor,
+                constant: Sizes.fieldSpacing
+            ),
             urlField.widthAnchor.constraint(equalToConstant: Sizes.textFieldWidth),
-            urlField.heightAnchor.constraint(equalToConstant: Sizes.fieldSpacing),
+            urlField.heightAnchor.constraint(equalTo: printerNameField.heightAnchor),
             urlField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
             tokenField.topAnchor.constraint(
@@ -99,7 +118,7 @@ final class PrinterLoginViewController: UIViewController {
                 constant: Sizes.fieldSpacing
             ),
             tokenField.widthAnchor.constraint(equalTo: urlField.widthAnchor),
-            tokenField.heightAnchor.constraint(equalTo: urlField.heightAnchor),
+            tokenField.heightAnchor.constraint(equalTo: printerNameField.heightAnchor),
             tokenField.centerXAnchor.constraint(equalTo: urlField.centerXAnchor),
 
             loginButton.topAnchor.constraint(
@@ -111,11 +130,16 @@ final class PrinterLoginViewController: UIViewController {
 
         constraints.forEach { $0.isActive = true }
 
+        printerNameField.placeholder = tr(.printerName)
         urlField.placeholder = tr(.printerURL)
         tokenField.placeholder = tr(.printerAccessToken)
         loginButton.setTitle(tr(.login), for: .normal)
 
         edgesForExtendedLayout = []
+
+        printerNameField.reactive.continuousTextValues.observeValues { [weak self] name in
+            self?.viewModel.inputs.printerNameChanged(name)
+        }
 
         urlField.reactive.continuousTextValues.observeValues { [weak self] url in
             self?.viewModel.inputs.printerUrlChanged(url)
@@ -131,4 +155,5 @@ final class PrinterLoginViewController: UIViewController {
 
         loginButton.reactive.isEnabled <~ viewModel.outputs.isFormValid
     }
+    // swiftlint:enable function_body_length
 }

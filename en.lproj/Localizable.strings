@@ -4,6 +4,7 @@
 "Settings" = "Settings";
 
 // Printer connection
+"Printer Name" = "Printer name";
 "Printer URL" = "Printer URL";
 "Printer Access Token" = "Access token";
 "Login" = "Login";
