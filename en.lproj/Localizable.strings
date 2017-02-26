@@ -1,10 +1,27 @@
-// Printer overview tabbar
+// *
+// * Common
+// *
+"An error occured" = "Ooops, an error occured"
+
+
+// *
+// * Printer overview tabbar
+// *
 "Printer" = "Printer";
 "Files" = "Files";
 "Settings" = "Settings";
 
-// Printer connection
+
+// *
+// * Printer login
+// *
 "Printer Name" = "Printer name";
 "Printer URL" = "Printer URL";
 "Printer Access Token" = "Access token";
 "Login" = "Login";
+
+
+// *
+// * Networking
+// *
+"Invalid credentials"
