@@ -46,8 +46,10 @@ class PrinterListCollcetionViewController: UICollectionViewController {
 
     /// Shows controller with printer addition form
     func showPrinterAdditionController() {
+        let viewModel = PrinterLoginViewModel(contextManager: contextManager)
+
         let navigationController = UINavigationController(
-            rootViewController: PrinterLoginViewController(contextManager: contextManager)
+            rootViewController: PrinterLoginViewController(viewModel: viewModel)
         )
 
         present(navigationController, animated: true, completion: nil)

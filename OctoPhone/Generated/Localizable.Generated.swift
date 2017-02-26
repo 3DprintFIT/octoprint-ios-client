@@ -7,8 +7,12 @@ import Foundation
 
 // swiftlint:disable type_body_length
 enum L10n {
+  /// Ooops, an error occured
+  case anErrorOccured
   /// Files
   case files
+  /// Invalid Credentials
+  case invalidCredentials
   /// Login
   case login
   /// Printer
@@ -29,8 +33,12 @@ extension L10n: CustomStringConvertible {
 
   var string: String {
     switch self {
+      case .anErrorOccured:
+        return L10n.tr(key: "An error occured")
       case .files:
         return L10n.tr(key: "Files")
+      case .invalidCredentials:
+        return L10n.tr(key: "Invalid credentials")
       case .login:
         return L10n.tr(key: "Login")
       case .printer:

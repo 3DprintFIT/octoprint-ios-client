@@ -46,19 +46,13 @@ class PrinterController: NSObject {
         )
     }
 
-    /// Authenticate to printer
+    /// Validate user credentials
     ///
-    /// - Parameter token: Access token
-    /// - Returns: Authentication promise
-    func autheticate(with token: String) -> AuthenticationPromise {
-        let promise = AuthenticationPromise(with: token, printerURL: printerURL)
-        let authOperation = AuthenticatateOperation(
-            configuration: operationConfiguration,
-            authenticationPromise: promise
-        )
+    /// - Parameters:
+    ///   - token: User secret token
+    ///   - name: User-friendly name
+    /// - Returns: Request result
+    func autheticate(withToken token: String, printerName name: String) {
 
-        queue.addOperation(authOperation)
-
-        return promise
     }
 }

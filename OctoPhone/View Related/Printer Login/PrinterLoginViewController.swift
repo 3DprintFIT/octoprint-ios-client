@@ -14,9 +14,6 @@ import ReactiveCocoa
 /// Gives user ability to add new printer
 final class PrinterLoginViewController: UIViewController {
 
-    /// Configured data context
-    private let contextManager: ContextManager
-
     /// User-friendly name of printer
     private let printerNameField = UITextField()
 
@@ -30,7 +27,7 @@ final class PrinterLoginViewController: UIViewController {
     private let loginButton = UIButton(type: .system)
 
     /// Printer login view model
-    private let viewModel: PrinterLoginViewModelType = PrinterLoginViewModel()
+    private let viewModel: PrinterLoginViewModelType
 
     /// UI sizes contastants
     struct Sizes {
@@ -48,8 +45,8 @@ final class PrinterLoginViewController: UIViewController {
     ///
     /// - Parameter contextManager: Data context dependency - used
     ///   to create new Printer object
-    init(contextManager: ContextManager) {
-        self.contextManager = contextManager
+    init(viewModel: PrinterLoginViewModelType) {
+        self.viewModel = viewModel
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -90,7 +87,6 @@ final class PrinterLoginViewController: UIViewController {
         components.forEach { component in
             component.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(component)
-            component.backgroundColor = .red
         }
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,

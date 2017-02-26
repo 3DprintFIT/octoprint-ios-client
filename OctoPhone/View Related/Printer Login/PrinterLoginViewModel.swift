@@ -79,7 +79,13 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
     /// Model property for view will appear action
     private let viewWillAppearProperty = MutableProperty(())
 
-    init() {
+    // MARK: Networking
+
+    private let contextManager: ContextManager
+
+    init(contextManager: ContextManager) {
+        self.contextManager = contextManager
+
         let formValues = Signal.combineLatest(
             printerNameProperty.signal.skipNil(),
             printerUrlProperty.signal.skipNil(),
@@ -94,9 +100,17 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
         loginButtonPressedProperty.signal
             .combineLatest(with: formValues)
             .map({ $0.1 })
-            .observeValues { name, url, token in
-                print("logon to \(url) with token \(token) named: \(name)")
-            }
+            .map({ name, url, token in
+                return (
+                    PrinterController(
+                        printerURL: URL(string: url)!,
+                        contextManager: contextManager
+                    ),
+                    name,
+                    token
+                )
+            })
+            .observeValues(PrinterLoginViewModel.connectToPrinter)
     }
 
     // MARK: Inputs
@@ -126,6 +140,12 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
     }
 
     // MARK: Private functions
+
+    private static func connectToPrinter(_ printerController: PrinterController,
+                                         _ name: String, _ token: String) {
+
+        printerController.autheticate(withToken: token, printerName: name)
+    }
 
     /// Validate form values
     ///

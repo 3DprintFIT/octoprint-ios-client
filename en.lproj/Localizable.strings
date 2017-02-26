@@ -1,7 +1,7 @@
 // *
 // * Common
 // *
-"An error occured" = "Ooops, an error occured"
+"An error occured" = "Ooops, an error occured";
 
 
 // *
@@ -24,4 +24,4 @@
 // *
 // * Networking
 // *
-"Invalid credentials"
+"Invalid credentials" = "Invalid Credentials";
