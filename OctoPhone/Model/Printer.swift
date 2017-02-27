@@ -19,6 +19,9 @@ final class Printer: Object {
     /// User's access token for authorization to printer
     dynamic var accessToken = ""
 
+    /// User-frindly printer name
+    dynamic var name = ""
+
     // MARK: - Computed properties
 
     /// Printer URL based on stored property
@@ -40,12 +43,14 @@ final class Printer: Object {
     ///   - accessToken: User's access token
     convenience init(
         url: URL,
-        accessToken: String
+        accessToken: String,
+        name: String
         ) {
         self.init()
 
         self.url = url
         self.accessToken = accessToken
+        self.name = name
     }
 
     // MARK: - Realm API
