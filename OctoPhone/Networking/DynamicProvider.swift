@@ -11,6 +11,9 @@ import Moya
 import ReactiveSwift
 import ReactiveMoya
 
+/// Defines properties required by Target,
+/// but does not require base URL as it's
+/// added dynamically
 protocol TargetPart {
     /// The path to be appended to `baseURL` to form the full `URL`.
     var path: String { get }
@@ -34,6 +37,8 @@ protocol TargetPart {
     var validate: Bool { get }
 }
 
+/// Layer between actual requests provider and target type,
+/// allows to use dynamic base URL created during run time
 struct DynamicTarget: TargetType {
     let baseURL: URL
 
@@ -59,7 +64,9 @@ struct DynamicTarget: TargetType {
     }
 }
 
+/// Requests provider allowing to pass base URL during run time
 final class DynamicProvider<Target: TargetPart>: ReactiveSwiftMoyaProvider<DynamicTarget> {
+    /// Request base URL
     private let baseURL: URL
 
     init(
@@ -77,6 +84,10 @@ final class DynamicProvider<Target: TargetPart>: ReactiveSwiftMoyaProvider<Dynam
             stubClosure, manager: manager, plugins: plugins, trackInflights: trackInflights)
     }
 
+    /// Creates request from TargetPart
+    ///
+    /// - Parameter target: Target without base URL
+    /// - Returns: Response signal
     func request(_ target: Target) -> SignalProducer<Response, MoyaError> {
         let dynamicTarget = DynamicTarget(baseURL: baseURL, target: target)
 
