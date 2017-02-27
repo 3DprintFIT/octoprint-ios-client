@@ -100,16 +100,7 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
         loginButtonPressedProperty.signal
             .combineLatest(with: formValues)
             .map({ $0.1 })
-            .map({ name, url, token in
-                return (
-                    PrinterController(
-                        printerURL: URL(string: url)!,
-                        contextManager: contextManager
-                    ),
-                    name,
-                    token
-                )
-            })
+            .map({ _, _, _ in })
             .observeValues(PrinterLoginViewModel.connectToPrinter)
     }
 
@@ -141,10 +132,8 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
 
     // MARK: Private functions
 
-    private static func connectToPrinter(_ printerController: PrinterController,
-                                         _ name: String, _ token: String) {
+    private static func connectToPrinter() {
 
-        printerController.autheticate(withToken: token, printerName: name)
     }
 
     /// Validate form values
