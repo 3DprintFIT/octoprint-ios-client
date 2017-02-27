@@ -13,6 +13,8 @@
 		D2063D001E5F8352004C2908 /* PrinterLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */; };
 		D2072FD41DEDCD6D00E1BBD3 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */; };
 		D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D21B9DE81DEA1B8A005C34CD /* Localizable.strings */; };
+		D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */; };
+		D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F3F8C1E649EC300351761 /* PrinterListCellViewModel.swift */; };
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
 		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
 		D23B90481E5B7F930005560B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90451E5B7F930005560B /* Result.framework */; };
@@ -65,6 +67,8 @@
 		D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewModel.swift; sourceTree = "<group>"; };
 		D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
 		D21B9DE71DEA1B8A005C34CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewModel.swift; sourceTree = "<group>"; };
+		D21F3F8C1E649EC300351761 /* PrinterListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCellViewModel.swift; sourceTree = "<group>"; };
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D23B90451E5B7F930005560B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -336,6 +340,8 @@
 			isa = PBXGroup;
 			children = (
 				D2FF97231DF0DFC3005CA7B2 /* PrinterListViewController.swift */,
+				D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */,
+				D21F3F8C1E649EC300351761 /* PrinterListCellViewModel.swift */,
 			);
 			path = "Printer List";
 			sourceTree = "<group>";
@@ -557,10 +563,12 @@
 				D28EC5351E09E6490089C027 /* PrinterOverviewViewController.swift in Sources */,
 				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
 				D27C97101E63BA1800641A1A /* DynamicProvider.swift in Sources */,
+				D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */,
 				D2FE62521DF4BEA300A1E402 /* BaseOperation.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
 				D283C77E1E118788004E0EAC /* FilesCollectionViewCell.swift in Sources */,
 				D27C97121E63BAE000641A1A /* OctoPrintAPI.swift in Sources */,
+				D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */,
 				D28EC5391E09E6740089C027 /* PrinterSettingsViewController.swift in Sources */,
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
 				D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */,

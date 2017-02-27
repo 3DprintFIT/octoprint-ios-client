@@ -23,6 +23,16 @@ class PrinterOverviewCollectionViewCell: UICollectionViewCell {
     /// Printing progress view
     let printProgress = UIProgressView()
 
+    /// Cell view model
+    var viewModel: PrinterListCellViewModelType? {
+        didSet {
+            // guard let viewModel = viewModel else { return }
+
+            // nameLabel.text = viewmModel.printerName
+            // urlLabel.text = viewModel.printerURL
+        }
+    }
+
     /// Holds all view size constants
     struct Sizes {
         /// Height of the printer photo view
@@ -64,5 +74,14 @@ class PrinterOverviewCollectionViewCell: UICollectionViewCell {
         ]
 
         constraints.forEach { $0.isActive = true }
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        viewModel = nil
+
+        // nameLabel.text = viewmModel.printerName
+        // urlLabel.text = viewModel.printerURL
     }
 }
