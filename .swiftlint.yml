@@ -1,6 +1,7 @@
+disabled_rules:
+  - force_cast
 excluded:
   - Carthage
   - Pods
-  - OctoPhone/Networking/Router.swift # this one is too complex for lint
   - OctoPhoneTests
   - OctoPhoneUITests
