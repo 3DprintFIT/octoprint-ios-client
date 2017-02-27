@@ -24,6 +24,8 @@
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
 		D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0F1DD491A4004C30EA /* RealmSwift.framework */; };
+		D27C970C1E63986900641A1A /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C970B1E63986900641A1A /* ReactiveMoya.framework */; };
+		D27C970E1E63A00B00641A1A /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C970D1E63A00B00641A1A /* Moya.framework */; };
 		D283C77E1E118788004E0EAC /* FilesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283C77D1E118788004E0EAC /* FilesCollectionViewCell.swift */; };
 		D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28919791E11783500E3BBEB /* Localizable.Generated.swift */; };
 		D28EC5351E09E6490089C027 /* PrinterOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5341E09E6490089C027 /* PrinterOverviewViewController.swift */; };
@@ -77,6 +79,8 @@
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D2510B0F1DD491A4004C30EA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		D27C970B1E63986900641A1A /* ReactiveMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMoya.framework; path = Carthage/Build/iOS/ReactiveMoya.framework; sourceTree = "<group>"; };
+		D27C970D1E63A00B00641A1A /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = Carthage/Build/iOS/Moya.framework; sourceTree = "<group>"; };
 		D283C77D1E118788004E0EAC /* FilesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesCollectionViewCell.swift; sourceTree = "<group>"; };
 		D28919791E11783500E3BBEB /* Localizable.Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.Generated.swift; sourceTree = "<group>"; };
 		D28EC5341E09E6490089C027 /* PrinterOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterOverviewViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */,
 				D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */,
 				D23B90481E5B7F930005560B /* Result.framework in Frameworks */,
+				D27C970C1E63986900641A1A /* ReactiveMoya.framework in Frameworks */,
+				D27C970E1E63A00B00641A1A /* Moya.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +236,8 @@
 		D2510B091DD4911A004C30EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D27C970D1E63A00B00641A1A /* Moya.framework */,
+				D27C970B1E63986900641A1A /* ReactiveMoya.framework */,
 				D23B90431E5B7F930005560B /* ReactiveCocoa.framework */,
 				D23B90441E5B7F930005560B /* ReactiveSwift.framework */,
 				D23B90451E5B7F930005560B /* Result.framework */,
@@ -584,13 +592,15 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Moya.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveMoya.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "if which carthage >/dev/null; then\n    carthage copy-frameworks\nelse\n    echo \"warning: Carthage not installed\"\nfi";
+			shellScript = "carthage copy-frameworks";
 		};
 		D28919771E11745F00E3BBEB /* Swiftgen */ = {
 			isa = PBXShellScriptBuildPhase;
