@@ -54,6 +54,11 @@ final class Printer: Object {
     }
 
     // MARK: - Realm API
+
+    override static func primaryKey() -> String? {
+        return "_url"
+    }
+
     override static func ignoredProperties() -> [String] {
         return ["url"]
     }
