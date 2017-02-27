@@ -10,6 +10,7 @@ import Foundation
 import Moya
 
 typealias Parameters = [String: Any]
+typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 
 /// Targets definition
 ///
@@ -33,7 +34,7 @@ extension OctoPrintAPI: TargetPart {
 
     var task: Task { return requestData.task }
 
-    var validate: Bool { return true }
+    var validate: Bool { return false }
 
     /// Target to endpoint data maping
     var requestData: (path: String, method: Moya.Method, task: Task, parameters: Parameters?) {
