@@ -7,8 +7,11 @@
 //
 
 import Foundation
-import ReactiveSwift
 import Result
+import Moya
+import ReactiveSwift
+import ReactiveMoya
+import RealmSwift
 
 protocol PrinterLoginViewModelInputs {
     /// Call when view did load
@@ -39,6 +42,12 @@ protocol PrinterLoginViewModelInputs {
 protocol PrinterLoginViewModelOutputs {
     /// Bool value for form validation
     var isFormValid: Signal<Bool, NoError> { get }
+
+    /// OctoPrint requests provider
+    var configuredProvider: Signal<OctoPrintProvider, NoError> { get }
+
+    /// Errors which should be displayed
+    var displayError: Signal<(title: String, message: String), NoError> { get }
 }
 
 protocol PrinterLoginViewModelType: PrinterLoginViewModelInputs, PrinterLoginViewModelOutputs {
@@ -58,6 +67,10 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
     // MARK: Outputs
 
     let isFormValid: Signal<Bool, NoError>
+
+    let configuredProvider: Signal<OctoPrintProvider, NoError>
+
+    let displayError: Signal<(title: String, message: String), NoError>
 
     // MARK: Properties
 
@@ -79,6 +92,12 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
     /// Model property for view will appear action
     private let viewWillAppearProperty = MutableProperty(())
 
+    /// Requests provider property
+    private let providerProperty = MutableProperty<OctoPrintProvider?>(nil)
+
+    /// Error description property
+    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+
     // MARK: Networking
 
     private let contextManager: ContextManager
@@ -92,16 +111,49 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
             tokenProperty.signal.skipNil()
         )
 
+        displayError = displayErrorProperty.signal.skipNil()
+        configuredProvider = providerProperty.signal.skipNil()
+
         isFormValid = Signal.merge([
             viewWillAppearProperty.signal.map({ _ in false }).take(first: 1),
             formValues.map(PrinterLoginViewModel.isValid)
         ])
 
-        loginButtonPressedProperty.signal
-            .combineLatest(with: formValues)
-            .map({ $0.1 })
-            .map({ _, _, _ in })
-            .observeValues(PrinterLoginViewModel.connectToPrinter)
+        formValues
+            .sample(on: loginButtonPressedProperty.signal)
+            .map({ name, url, token -> (Printer, OctoPrintProvider) in
+                let printer = Printer(url: URL(string: url)!, accessToken: token, name: name)
+                let tokenPlugin = TokenPlugin(token: token)
+                let provider = OctoPrintProvider(baseURL: printer.url, plugins: [tokenPlugin])
+
+                return (printer, provider)
+            })
+            .flatMap(.latest) { printer, provider -> SignalProducer<(Printer, OctoPrintProvider), MoyaError> in
+                return provider.request(.version)
+                        .filterSuccessfulStatusCodes()
+                        .map({ _ in return (printer, provider) })
+            }
+            .observeResult { result in
+                if case let .success(printer, provider) = result {
+                    do {
+                        let realm = try self.contextManager.createContext()
+
+                        try realm.write {
+                            realm.add(printer, update: true)
+                        }
+                    } catch { }
+
+                    self.providerProperty.value = provider
+                }
+
+                if case let .failure(error) = result {
+                    if case let .statusCode(response) = error, response.statusCode == 401 {
+                        self.displayErrorProperty.value = (tr(.loginError), tr(.incorrectCredentials))
+                    } else {
+                        self.displayErrorProperty.value = (tr(.loginError), tr(.couldNotConnectToPrinter))
+                    }
+                }
+            }
     }
 
     // MARK: Inputs
@@ -128,12 +180,6 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
 
     func loginButtonPressed() {
         loginButtonPressedProperty.value = ()
-    }
-
-    // MARK: Private functions
-
-    private static func connectToPrinter() {
-
     }
 
     /// Validate form values

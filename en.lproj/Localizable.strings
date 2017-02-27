@@ -2,6 +2,7 @@
 // * Common
 // *
 "An error occured" = "Ooops, an error occured";
+"Ok" = "Ok";
 
 
 // *
@@ -19,9 +20,6 @@
 "Printer URL" = "Printer URL";
 "Printer Access Token" = "Access token";
 "Login" = "Login";
-
-
-// *
-// * Networking
-// *
-"Invalid credentials" = "Invalid Credentials";
+"Login Error" = "Login Error";
+"Incorrect Credentials" = "The credentials you entered are incorrect.";
+"Could not connect to printer" = "Can not connect to the printer.";

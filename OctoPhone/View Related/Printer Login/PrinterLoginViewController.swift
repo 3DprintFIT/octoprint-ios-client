@@ -150,6 +150,22 @@ final class PrinterLoginViewController: UIViewController {
         }
 
         loginButton.reactive.isEnabled <~ viewModel.outputs.isFormValid
+
+        viewModel.outputs.displayError
+            .observe(on: UIScheduler())
+            .observeValues { [weak self] title, message in
+            let alertController = UIAlertController(title: title,
+                                                    message: message, preferredStyle: .alert)
+
+            alertController.addAction(UIAlertAction(title: tr(.ok), style: .default, handler: nil))
+            self?.present(alertController, animated: true, completion: nil)
+        }
+
+        viewModel.outputs.configuredProvider
+            .observe(on: UIScheduler())
+            .observeValues { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
     }
     // swiftlint:enable function_body_length
 }
