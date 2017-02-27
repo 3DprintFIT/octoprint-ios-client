@@ -1,5 +1,5 @@
 //
-//  PrinterListCollectionViewController.swift
+//  PrinterListViewController.swift
 //  OctoPhone
 //
 //  Created by Josef Dolezal on 01/12/2016.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 /// Represents list of users printers
-class PrinterListCollcetionViewController: UICollectionViewController {
+class PrinterListViewController: UICollectionViewController {
     /// Data context manager
     private let contextManager: ContextManager
 
@@ -87,7 +87,7 @@ class PrinterListCollcetionViewController: UICollectionViewController {
 }
 
 // MARK: - UICollectionViewDataSource
-extension PrinterListCollcetionViewController {
+extension PrinterListViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2 // Local printers and user printers
     }
@@ -113,7 +113,7 @@ extension PrinterListCollcetionViewController {
 }
 
 // MARK: - UICollectionViewDelegate
-extension PrinterListCollcetionViewController {
+extension PrinterListViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
 
@@ -134,7 +134,7 @@ extension PrinterListCollcetionViewController {
     }
 }
 
-extension PrinterListCollcetionViewController: UICollectionViewDelegateFlowLayout {
+extension PrinterListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

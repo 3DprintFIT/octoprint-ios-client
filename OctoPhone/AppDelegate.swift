@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window.backgroundColor = UIColor.white
         window.rootViewController = UINavigationController(
-            rootViewController: PrinterListCollcetionViewController(contextManager: contextManager)
+            rootViewController: PrinterListViewController(contextManager: contextManager)
         )
         window.makeKeyAndVisible()
 
