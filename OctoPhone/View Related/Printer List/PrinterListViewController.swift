@@ -8,24 +8,29 @@
 
 import Foundation
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
+
+/// Printer list flow delegate interface
+protocol PrinterListViewControllerDelegate: class {
+    /// Call when requests provider is selected
+    func selectedPrinterPrinterProvider()
+
+    /// Call when add printer button is tapped by user
+    func addPrinterButtonTapped()
+}
 
 /// Represents list of users printers
 class PrinterListViewController: UICollectionViewController {
-    /// Data context manager
-    private let contextManager: ContextManager
 
-    /// Operation tasks queue
-    private let queue = OperationQueue()
+    /// Flow delegate
+    weak var delegate: PrinterListViewControllerDelegate?
 
-    /// List of printers in local network
-    fileprivate var localPrinters = [NetService]()
-
-    /// New Printer list controller instance
-    /// operating on given context
     ///
-    /// - Parameter contextManager: Data context manager
-    init(contextManager: ContextManager) {
-        self.contextManager = contextManager
+    fileprivate let viewModel: PrinterListViewModelType
+
+    init(viewModel: PrinterListViewModelType) {
+        self.viewModel = viewModel
 
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -38,51 +43,30 @@ class PrinterListViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureView()
-        fetchData()
-    }
+        let dataChangedSignal = Signal.merge([
+            viewModel.outputs.networkPrintersChanged,
+            viewModel.outputs.storedPrintersChanged
+        ])
 
-    // MARK: UI callbacks
-
-    /// Shows controller with printer addition form
-    func showPrinterAdditionController() {
-        let viewModel = PrinterLoginViewModel(contextManager: contextManager)
-
-        let navigationController = UINavigationController(
-            rootViewController: PrinterLoginViewController(viewModel: viewModel)
-        )
-
-        present(navigationController, animated: true, completion: nil)
-    }
-
-    /// Configures all view-related properties
-    private func configureView() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
-            action: #selector(showPrinterAdditionController)
+            action: #selector(addPrinterButtonTapped)
         )
 
-        collectionView?.backgroundColor = .white
+        if let collectionView = collectionView {
+            collectionView.backgroundColor = .white
+            collectionView.register(
+                PrinterOverviewCollectionViewCell.self,
+                forCellWithReuseIdentifier: PrinterOverviewCollectionViewCell.identifier
+            )
 
-        collectionView?.register(
-            PrinterOverviewCollectionViewCell.self,
-            forCellWithReuseIdentifier: PrinterOverviewCollectionViewCell.identifier
-        )
+            collectionView.reactive.reloadData <~ dataChangedSignal
+        }
     }
 
-    /// Loads controller data
-    private func fetchData() {
-        let bonjourOperation = BrowseBonjourOperation()
-
-        bonjourOperation.completionBlock = { [weak self] in
-            guard let weakSelf = self else { return }
-
-            weakSelf.localPrinters = bonjourOperation.services.map({ $0 })
-            weakSelf.collectionView?.reloadData()
-        }
-
-        queue.addOperation(bonjourOperation)
+    func addPrinterButtonTapped() {
+        delegate?.addPrinterButtonTapped()
     }
 }
 
@@ -95,8 +79,8 @@ extension PrinterListViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case 0: return 3
-        case 1: return localPrinters.count
+        case 0: return viewModel.outputs.storedPrintersCount
+        case 1: return viewModel.outputs.networkPrintersCount
         default: return 0
         }
     }
@@ -104,9 +88,10 @@ extension PrinterListViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: PrinterOverviewCollectionViewCell.identifier, for: indexPath)
+            withReuseIdentifier: PrinterOverviewCollectionViewCell.identifier, for: indexPath
+        ) as! PrinterOverviewCollectionViewCell
 
-        cell.backgroundColor = .red
+        cell.viewModel = viewModel.outputs.storedPrinterCellViewModel(for: indexPath.row)
 
         return cell
     }
@@ -116,6 +101,8 @@ extension PrinterListViewController {
 extension PrinterListViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
+
+        delegate?.selectedPrinterPrinterProvider()
 
         let tabbarController = UITabBarController()
         let printerOverviewController = PrinterOverviewViewController()

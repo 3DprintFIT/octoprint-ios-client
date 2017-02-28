@@ -23,10 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         let contextManager = ContextManager()
+        let viewModel = PrinterListViewModel(contextManager: contextManager)
 
         window.backgroundColor = UIColor.white
         window.rootViewController = UINavigationController(
-            rootViewController: PrinterListViewController(contextManager: contextManager)
+            rootViewController: PrinterListViewController(viewModel: viewModel)
         )
         window.makeKeyAndVisible()
 
