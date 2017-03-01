@@ -15,7 +15,7 @@ import UIKit
 final class AppCoordinator: Coordinator {
 
     /// App wide database connections manager
-    private let contextManager: ContextManager
+    private let contextManager: ContextManagerType
 
     override init(navigationController: UINavigationController?) {
         self.contextManager = ContextManager()

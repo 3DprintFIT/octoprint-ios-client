@@ -100,9 +100,9 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
 
     // MARK: Networking
 
-    private let contextManager: ContextManager
+    private let contextManager: ContextManagerType
 
-    init(contextManager: ContextManager) {
+    init(contextManager: ContextManagerType) {
         self.contextManager = contextManager
 
         let formValues = Signal.combineLatest(

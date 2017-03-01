@@ -47,7 +47,7 @@ class ContextCoordinator: CoordinatorType {
     var completed: () -> Void = { }
 
     /// Database connections manager
-    let contextManager: ContextManager
+    let contextManager: ContextManagerType
 
     /// Stack of coordinators created with this coordinator
     var childCoordinators = [CoordinatorType]()
@@ -57,7 +57,7 @@ class ContextCoordinator: CoordinatorType {
     /// - Parameters:
     ///   - navigationController: Main app flow controller
     ///   - contextManager: Database connections manager
-    init(navigationController: UINavigationController?, contextManager: ContextManager) {
+    init(navigationController: UINavigationController?, contextManager: ContextManagerType) {
         self.navigationController = navigationController
         self.contextManager = contextManager
     }

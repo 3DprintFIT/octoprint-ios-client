@@ -74,9 +74,9 @@ final class PrinterListViewModel: PrinterListViewModelType {
     private var storedPrintersToken: NotificationToken?
 
     /// Database context manager
-    private let contextManager: ContextManager
+    private let contextManager: ContextManagerType
 
-    init(contextManager: ContextManager) {
+    init(contextManager: ContextManagerType) {
         let (printersSignal, printersObserver) = Signal<(), NoError>.pipe()
 
         self.contextManager = contextManager
