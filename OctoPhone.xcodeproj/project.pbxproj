@@ -13,6 +13,7 @@
 		D2063D001E5F8352004C2908 /* PrinterLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */; };
 		D2072FD41DEDCD6D00E1BBD3 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */; };
 		D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D21B9DE81DEA1B8A005C34CD /* Localizable.strings */; };
+		D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C10471E66D3A500D88546 /* AppCoordinator.swift */; };
 		D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */; };
 		D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F3F8C1E649EC300351761 /* PrinterListCellViewModel.swift */; };
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
@@ -38,6 +39,9 @@
 		D2CCF74E1DBF46DB00EF9752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74C1DBF46DB00EF9752 /* LaunchScreen.storyboard */; };
 		D2CCF7591DBF46DC00EF9752 /* OctoPhoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7581DBF46DC00EF9752 /* OctoPhoneTests.swift */; };
 		D2CCF7641DBF46DC00EF9752 /* OctoPhoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7631DBF46DC00EF9752 /* OctoPhoneUITests.swift */; };
+		D2D331401E67177100C9C005 /* PrinterLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D3313F1E67177100C9C005 /* PrinterLoginCoordinator.swift */; };
+		D2EF39291E66F06800A17057 /* PrinterListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF39281E66F06800A17057 /* PrinterListCoordinator.swift */; };
+		D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF392A1E66F08700A17057 /* Coordinator.swift */; };
 		D2FE62501DF4BE8000A1E402 /* BrowseBonjourOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FE624F1DF4BE8000A1E402 /* BrowseBonjourOperation.swift */; };
 		D2FE62521DF4BEA300A1E402 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */; };
 		D2FF97241DF0DFC3005CA7B2 /* PrinterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF97231DF0DFC3005CA7B2 /* PrinterListViewController.swift */; };
@@ -67,6 +71,7 @@
 		D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewModel.swift; sourceTree = "<group>"; };
 		D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
 		D21B9DE71DEA1B8A005C34CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D21C10471E66D3A500D88546 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewModel.swift; sourceTree = "<group>"; };
 		D21F3F8C1E649EC300351761 /* PrinterListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCellViewModel.swift; sourceTree = "<group>"; };
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
@@ -99,6 +104,9 @@
 		D2CCF75F1DBF46DC00EF9752 /* OctoPhoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OctoPhoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7631DBF46DC00EF9752 /* OctoPhoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoPhoneUITests.swift; sourceTree = "<group>"; };
 		D2CCF7651DBF46DC00EF9752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2D3313F1E67177100C9C005 /* PrinterLoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginCoordinator.swift; sourceTree = "<group>"; };
+		D2EF39281E66F06800A17057 /* PrinterListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCoordinator.swift; sourceTree = "<group>"; };
+		D2EF392A1E66F08700A17057 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D2FE624F1DF4BE8000A1E402 /* BrowseBonjourOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseBonjourOperation.swift; sourceTree = "<group>"; };
 		D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
 		D2FF97231DF0DFC3005CA7B2 /* PrinterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +195,17 @@
 				D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D21C10441E66D17200D88546 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				D2EF392A1E66F08700A17057 /* Coordinator.swift */,
+				D21C10471E66D3A500D88546 /* AppCoordinator.swift */,
+				D2EF39281E66F06800A17057 /* PrinterListCoordinator.swift */,
+				D2D3313F1E67177100C9C005 /* PrinterLoginCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		D247C3A41E12713100BF0BA6 /* Views */ = {
@@ -300,8 +319,9 @@
 			isa = PBXGroup;
 			children = (
 				D28919781E1177FC00E3BBEB /* Generated */,
-				D2072FD21DEDCD4B00E1BBD3 /* Model */,
 				D203DE751DDFCB59000DEAA0 /* Utils */,
+				D2072FD21DEDCD4B00E1BBD3 /* Model */,
+				D21C10441E66D17200D88546 /* Coordinators */,
 				D2510B061DD4894E004C30EA /* Networking */,
 				D203DE721DDFCA04000DEAA0 /* View Related */,
 				D203DE711DDFC9DA000DEAA0 /* Supporting Files */,
@@ -560,19 +580,23 @@
 				D2FF97241DF0DFC3005CA7B2 /* PrinterListViewController.swift in Sources */,
 				D2A601301DF3870F006B833E /* PrinterOverviewCollectionViewCell.swift in Sources */,
 				D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */,
+				D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */,
 				D28EC5351E09E6490089C027 /* PrinterOverviewViewController.swift in Sources */,
 				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
 				D27C97101E63BA1800641A1A /* DynamicProvider.swift in Sources */,
 				D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */,
 				D2FE62521DF4BEA300A1E402 /* BaseOperation.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
+				D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */,
 				D283C77E1E118788004E0EAC /* FilesCollectionViewCell.swift in Sources */,
 				D27C97121E63BAE000641A1A /* OctoPrintAPI.swift in Sources */,
 				D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */,
 				D28EC5391E09E6740089C027 /* PrinterSettingsViewController.swift in Sources */,
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
 				D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */,
+				D2EF39291E66F06800A17057 /* PrinterListCoordinator.swift in Sources */,
 				D2063D001E5F8352004C2908 /* PrinterLoginViewModel.swift in Sources */,
+				D2D331401E67177100C9C005 /* PrinterLoginCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

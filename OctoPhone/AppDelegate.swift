@@ -7,31 +7,33 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    /// Base app window
     var window: UIWindow?
+
+    /// Initial flow coordinator
+    var coordinator: CoordinatorType?
 
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     ) -> Bool {
-		Fabric.with([Crashlytics.self])
-
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let contextManager = ContextManager()
-        let viewModel = PrinterListViewModel(contextManager: contextManager)
+        let navigationController = UINavigationController()
+        let coordinator = AppCoordinator(navigationController: navigationController)
 
         window.backgroundColor = UIColor.white
-        window.rootViewController = UINavigationController(
-            rootViewController: PrinterListViewController(viewModel: viewModel)
-        )
+        window.rootViewController = navigationController
+
+        coordinator.start()
+
         window.makeKeyAndVisible()
 
         self.window = window
+        self.coordinator = coordinator
         return true
     }
 

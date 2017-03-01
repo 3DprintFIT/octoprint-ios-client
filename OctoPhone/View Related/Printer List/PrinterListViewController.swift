@@ -26,18 +26,13 @@ class PrinterListViewController: UICollectionViewController {
     /// Flow delegate
     weak var delegate: PrinterListViewControllerDelegate?
 
-    ///
-    fileprivate let viewModel: PrinterListViewModelType
+    /// Controller view model
+    fileprivate var viewModel: PrinterListViewModelType!
 
-    init(viewModel: PrinterListViewModelType) {
+    convenience init(viewModel: PrinterListViewModelType) {
+        self.init(collectionViewLayout: UICollectionViewFlowLayout())
+
         self.viewModel = viewModel
-
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
-
-    /// Required initializer
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -103,21 +98,6 @@ extension PrinterListViewController {
                                  didSelectItemAt indexPath: IndexPath) {
 
         delegate?.selectedPrinterPrinterProvider()
-
-        let tabbarController = UITabBarController()
-        let printerOverviewController = PrinterOverviewViewController()
-        let filesController = FilesViewController()
-        let printerSettingsController = PrinterSettingsViewController()
-
-        printerOverviewController.title = tr(.printer)
-        filesController.title = tr(.files)
-        printerSettingsController.title = tr(.settings)
-
-        tabbarController.viewControllers = [printerOverviewController, filesController,
-                                            printerSettingsController]
-        tabbarController.view.backgroundColor = .white
-
-        navigationController?.pushViewController(tabbarController, animated: true)
     }
 }
 

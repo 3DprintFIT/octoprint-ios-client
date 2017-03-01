@@ -11,8 +11,20 @@ import RealmSwift
 import ReactiveSwift
 import ReactiveCocoa
 
+/// Interface for flow delegate
+protocol PrinterLoginViewControllerDelegate: class {
+    /// Called when user cancels login flow
+    func didCancelLogin()
+
+    /// Called when user is successfully logged to selected printer
+    func successfullyLoggedIn()
+}
+
 /// Gives user ability to add new printer
 final class PrinterLoginViewController: UIViewController {
+
+    /// Login flow delegate
+    weak var delegate: PrinterLoginViewControllerDelegate?
 
     /// User-friendly name of printer
     private let printerNameField = UITextField()
@@ -27,7 +39,7 @@ final class PrinterLoginViewController: UIViewController {
     private let loginButton = UIButton(type: .system)
 
     /// Printer login view model
-    private let viewModel: PrinterLoginViewModelType
+    private var viewModel: PrinterLoginViewModelType!
 
     /// UI sizes contastants
     struct Sizes {
@@ -45,15 +57,10 @@ final class PrinterLoginViewController: UIViewController {
     ///
     /// - Parameter contextManager: Data context dependency - used
     ///   to create new Printer object
-    init(viewModel: PrinterLoginViewModelType) {
+    convenience init(viewModel: PrinterLoginViewModelType) {
+        self.init()
+
         self.viewModel = viewModel
-
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    /// Legacy required initializer
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     /// Standard library API - setups controller
@@ -73,8 +80,8 @@ final class PrinterLoginViewController: UIViewController {
     // MARK: - UI callbacks
 
     /// Closes current controller
-    func closeController() {
-        dismiss(animated: true, completion: nil)
+    func didTapCancel() {
+        delegate?.didCancelLogin()
     }
 
     // MARK: - Private functions
@@ -91,7 +98,7 @@ final class PrinterLoginViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
                                                             target: self,
-                                                            action: #selector(closeController))
+                                                            action: #selector(didTapCancel))
 
         let constraints = [
             printerNameField.topAnchor.constraint(
@@ -164,7 +171,7 @@ final class PrinterLoginViewController: UIViewController {
         viewModel.outputs.configuredProvider
             .observe(on: UIScheduler())
             .observeValues { [weak self] _ in
-                self?.dismiss(animated: true, completion: nil)
+                self?.delegate?.successfullyLoggedIn()
             }
     }
     // swiftlint:enable function_body_length
