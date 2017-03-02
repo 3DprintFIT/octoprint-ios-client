@@ -13,6 +13,13 @@ import Result
 
 /// Defines all inputs API for view model
 protocol PrinterListViewModelInputs {
+    /// Call when user selected stored printer at index path
+    ///
+    /// - Parameter indexPath: Index path of selected printer
+    func selectedStoredPrinter(at indexPath: IndexPath)
+
+    /// Call when user tapped button for printer addition
+    func addPrinterButtonTapped()
 
 }
 
@@ -76,9 +83,12 @@ final class PrinterListViewModel: PrinterListViewModelType {
     /// Database context manager
     private let contextManager: ContextManagerType
 
-    init(contextManager: ContextManagerType) {
+    private weak var delegate: PrinterListViewControllerDelegate?
+
+    init(delegate: PrinterListViewControllerDelegate, contextManager: ContextManagerType) {
         let (printersSignal, printersObserver) = Signal<(), NoError>.pipe()
 
+        self.delegate = delegate
         self.contextManager = contextManager
         self.storedPrintersChanged = printersSignal
         self.networkPrintersChanged = networkPrintersProperty.signal.map({ _ in })
@@ -104,6 +114,19 @@ final class PrinterListViewModel: PrinterListViewModelType {
     }
 
     // MARK: Inputs
+
+    func selectedStoredPrinter(at indexPath: IndexPath) {
+        // At this point, stored printers must not be nil
+        assert(storedPrinters != nil)
+
+        let provider = OctoPrintProvider(baseURL: storedPrinters![indexPath.row].url)
+
+        delegate?.selectedPrinterProvider(provider: provider)
+    }
+
+    func addPrinterButtonTapped() {
+        delegate?.addPrinterButtonTapped()
+    }
 
     // MARK: Cleanup
 

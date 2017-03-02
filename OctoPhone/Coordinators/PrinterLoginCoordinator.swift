@@ -13,10 +13,8 @@ import UIKit
 final class PrinterLoginCoordinator: ContextCoordinator {
 
     override func start() {
-        let viewModel = PrinterLoginViewModel(contextManager: contextManager)
+        let viewModel = PrinterLoginViewModel(delegate: self, contextManager: contextManager)
         let controller = PrinterLoginViewController(viewModel: viewModel)
-
-        controller.delegate = self
 
         navigationController?.present(UINavigationController(rootViewController: controller),
                                       animated: true, completion: nil)

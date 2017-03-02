@@ -12,10 +12,8 @@ import Foundation
 final class PrinterListCoordinator: ContextCoordinator {
 
     override func start() {
-        let viewModel = PrinterListViewModel(contextManager: contextManager)
+        let viewModel = PrinterListViewModel(delegate: self, contextManager: contextManager)
         let controller = PrinterListViewController(viewModel: viewModel)
-
-        controller.delegate = self
 
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -23,8 +21,8 @@ final class PrinterListCoordinator: ContextCoordinator {
 
 // MARK: - Delegate for printer list controller flow
 extension PrinterListCoordinator: PrinterListViewControllerDelegate {
-    func selectedPrinterPrinterProvider() {
-        print("selected prionter")
+    func selectedPrinterProvider(provider: OctoPrintProvider) {
+        print("selected \(provider)")
     }
 
     func addPrinterButtonTapped() {

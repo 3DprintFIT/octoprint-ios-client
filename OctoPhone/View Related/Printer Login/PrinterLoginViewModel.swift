@@ -37,14 +37,14 @@ protocol PrinterLoginViewModelInputs {
 
     /// Call when login button is pressed
     func loginButtonPressed()
+
+    /// Call when cancel button is tapped
+    func cancelLoginPressed()
 }
 
 protocol PrinterLoginViewModelOutputs {
     /// Bool value for form validation
     var isFormValid: Signal<Bool, NoError> { get }
-
-    /// OctoPrint requests provider
-    var configuredProvider: Signal<OctoPrintProvider, NoError> { get }
 
     /// Errors which should be displayed
     var displayError: Signal<(title: String, message: String), NoError> { get }
@@ -67,8 +67,6 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
     // MARK: Outputs
 
     let isFormValid: Signal<Bool, NoError>
-
-    let configuredProvider: Signal<OctoPrintProvider, NoError>
 
     let displayError: Signal<(title: String, message: String), NoError>
 
@@ -98,11 +96,14 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
     /// Error description property
     private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
 
-    // MARK: Networking
-
+    /// Database connection manager
     private let contextManager: ContextManagerType
 
-    init(contextManager: ContextManagerType) {
+    /// View controller delegate
+    private weak var delegate: PrinterLoginViewControllerDelegate?
+
+    init(delegate: PrinterLoginViewControllerDelegate, contextManager: ContextManagerType) {
+        self.delegate = delegate
         self.contextManager = contextManager
 
         let formValues = Signal.combineLatest(
@@ -112,7 +113,6 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
         )
 
         displayError = displayErrorProperty.signal.skipNil()
-        configuredProvider = providerProperty.signal.skipNil()
 
         isFormValid = Signal.merge([
             viewWillAppearProperty.signal.map({ _ in false }).take(first: 1),
@@ -128,29 +128,31 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
 
                 return (printer, provider)
             })
-            .flatMap(.latest) { printer, provider -> SignalProducer<(Printer, OctoPrintProvider), MoyaError> in
+            .flatMap(.latest) { printer, provider -> SignalProducer<Printer, MoyaError> in
                 return provider.request(.version)
                         .filterSuccessfulStatusCodes()
-                        .map({ _ in return (printer, provider) })
+                        .map({ _ in return (printer) })
             }
-            .observeResult { result in
-                if case let .success(printer, provider) = result {
+            .observeResult { [weak self] result in
+                guard let weakSelf = self else { return }
+
+                if case let .success(printer) = result {
                     do {
-                        let realm = try self.contextManager.createContext()
+                        let realm = try weakSelf.contextManager.createContext()
 
                         try realm.write {
                             realm.add(printer, update: true)
                         }
                     } catch { }
 
-                    self.providerProperty.value = provider
+                    weakSelf.delegate?.successfullyLoggedIn()
                 }
 
                 if case let .failure(error) = result {
                     if case let .statusCode(response) = error, response.statusCode == 401 {
-                        self.displayErrorProperty.value = (tr(.loginError), tr(.incorrectCredentials))
+                        weakSelf.displayErrorProperty.value = (tr(.loginError), tr(.incorrectCredentials))
                     } else {
-                        self.displayErrorProperty.value = (tr(.loginError), tr(.couldNotConnectToPrinter))
+                        weakSelf.displayErrorProperty.value = (tr(.loginError), tr(.couldNotConnectToPrinter))
                     }
                 }
             }
@@ -180,6 +182,10 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
 
     func loginButtonPressed() {
         loginButtonPressedProperty.value = ()
+    }
+
+    func cancelLoginPressed() {
+        delegate?.didCancelLogin()
     }
 
     /// Validate form values

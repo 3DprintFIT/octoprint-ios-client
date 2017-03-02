@@ -22,10 +22,6 @@ protocol PrinterLoginViewControllerDelegate: class {
 
 /// Gives user ability to add new printer
 final class PrinterLoginViewController: UIViewController {
-
-    /// Login flow delegate
-    weak var delegate: PrinterLoginViewControllerDelegate?
-
     /// User-friendly name of printer
     private let printerNameField = UITextField()
 
@@ -74,14 +70,14 @@ final class PrinterLoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        viewModel.viewWillAppear()
+        viewModel.inputs.viewWillAppear()
     }
 
     // MARK: - UI callbacks
 
     /// Closes current controller
     func didTapCancel() {
-        delegate?.didCancelLogin()
+        viewModel.inputs.cancelLoginPressed()
     }
 
     // MARK: - Private functions
@@ -167,12 +163,6 @@ final class PrinterLoginViewController: UIViewController {
             alertController.addAction(UIAlertAction(title: tr(.ok), style: .default, handler: nil))
             self?.present(alertController, animated: true, completion: nil)
         }
-
-        viewModel.outputs.configuredProvider
-            .observe(on: UIScheduler())
-            .observeValues { [weak self] _ in
-                self?.delegate?.successfullyLoggedIn()
-            }
     }
     // swiftlint:enable function_body_length
 }

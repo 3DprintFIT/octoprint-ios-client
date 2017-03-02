@@ -14,7 +14,7 @@ import ReactiveCocoa
 /// Printer list flow delegate interface
 protocol PrinterListViewControllerDelegate: class {
     /// Call when requests provider is selected
-    func selectedPrinterPrinterProvider()
+    func selectedPrinterProvider(provider: OctoPrintProvider)
 
     /// Call when add printer button is tapped by user
     func addPrinterButtonTapped()
@@ -22,10 +22,6 @@ protocol PrinterListViewControllerDelegate: class {
 
 /// Represents list of users printers
 class PrinterListViewController: UICollectionViewController {
-
-    /// Flow delegate
-    weak var delegate: PrinterListViewControllerDelegate?
-
     /// Controller view model
     fileprivate var viewModel: PrinterListViewModelType!
 
@@ -61,7 +57,7 @@ class PrinterListViewController: UICollectionViewController {
     }
 
     func addPrinterButtonTapped() {
-        delegate?.addPrinterButtonTapped()
+        viewModel.inputs.addPrinterButtonTapped()
     }
 }
 
@@ -97,7 +93,7 @@ extension PrinterListViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
 
-        delegate?.selectedPrinterPrinterProvider()
+        viewModel.inputs.selectedStoredPrinter(at: indexPath)
     }
 }
 
