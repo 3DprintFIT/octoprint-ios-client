@@ -102,6 +102,7 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
     /// View controller delegate
     private weak var delegate: PrinterLoginViewControllerDelegate?
 
+    // swiftlint:disable function_body_length
     init(delegate: PrinterLoginViewControllerDelegate, contextManager: ContextManagerType) {
         self.delegate = delegate
         self.contextManager = contextManager
@@ -165,6 +166,7 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
                 }
         }
     }
+    // swiftlint:enable function_body_length
 
     // MARK: Inputs
 

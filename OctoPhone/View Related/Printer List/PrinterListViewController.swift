@@ -48,8 +48,8 @@ class PrinterListViewController: UICollectionViewController {
         if let collectionView = collectionView {
             collectionView.backgroundColor = .white
             collectionView.register(
-                PrinterOverviewCollectionViewCell.self,
-                forCellWithReuseIdentifier: PrinterOverviewCollectionViewCell.identifier
+                PrinterListCollectionViewCell.self,
+                forCellWithReuseIdentifier: PrinterListCollectionViewCell.identifier
             )
 
             collectionView.reactive.reloadData <~ dataChangedSignal
@@ -79,8 +79,8 @@ extension PrinterListViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: PrinterOverviewCollectionViewCell.identifier, for: indexPath
-        ) as! PrinterOverviewCollectionViewCell
+            withReuseIdentifier: PrinterListCollectionViewCell.identifier, for: indexPath
+        ) as! PrinterListCollectionViewCell
 
         cell.viewModel = viewModel.outputs.storedPrinterCellViewModel(for: indexPath.row)
 

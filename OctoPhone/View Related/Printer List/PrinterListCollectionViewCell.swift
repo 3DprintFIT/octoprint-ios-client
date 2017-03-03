@@ -1,5 +1,5 @@
 //
-//  PrinterOverviewCollectionViewCell.swift
+//  PrinterListCollectionViewCell.swift
 //  OctoPhone
 //
 //  Created by Josef Dolezal on 04/12/2016.
@@ -9,7 +9,7 @@
 import UIKit
 
 /// Real word printer overview
-class PrinterOverviewCollectionViewCell: UICollectionViewCell {
+class PrinterListCollectionViewCell: UICollectionViewCell {
 
     /// CollectionView reuse identifier
     static let identifier = "PrinterOverviewCollectionViewCell"
