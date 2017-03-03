@@ -119,7 +119,7 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
             formValues.map(PrinterLoginViewModel.isValid)
         ])
 
-        formValues
+        let loginEvent = formValues
             .sample(on: loginButtonPressedProperty.signal)
             .map({ name, url, token -> (Printer, OctoPrintProvider) in
                 let printer = Printer(url: URL(string: url)!, accessToken: token, name: name)
@@ -128,34 +128,42 @@ final class PrinterLoginViewModel: PrinterLoginViewModelType {
 
                 return (printer, provider)
             })
-            .flatMap(.latest) { printer, provider -> SignalProducer<Printer, MoyaError> in
+            .flatMap(.latest) { printer, provider in
                 return provider.request(.version)
-                        .filterSuccessfulStatusCodes()
-                        .map({ _ in return (printer) })
-            }
-            .observeResult { [weak self] result in
+                    .filterSuccessfulStatusCodes()
+                    .map({_ in return printer })
+                    .materialize()
+        }
+
+        // Observe for successful login
+        loginEvent.signal
+            .map({ $0.event.value })
+            .skipNil()
+            .observeValues { [weak self] printer in
                 guard let weakSelf = self else { return }
 
-                if case let .success(printer) = result {
-                    do {
-                        let realm = try weakSelf.contextManager.createContext()
+                do {
+                    let realm = try weakSelf.contextManager.createContext()
 
-                        try realm.write {
-                            realm.add(printer, update: true)
-                        }
-                    } catch { }
-
-                    weakSelf.delegate?.successfullyLoggedIn()
-                }
-
-                if case let .failure(error) = result {
-                    if case let .statusCode(response) = error, response.statusCode == 401 {
-                        weakSelf.displayErrorProperty.value = (tr(.loginError), tr(.incorrectCredentials))
-                    } else {
-                        weakSelf.displayErrorProperty.value = (tr(.loginError), tr(.couldNotConnectToPrinter))
+                    try realm.write {
+                        realm.add(printer, update: true)
                     }
+                } catch { }
+
+                weakSelf.delegate?.successfullyLoggedIn()
+        }
+
+        // Observe for errors while logging in
+        loginEvent.signal
+            .map({ $0.event.error })
+            .skipNil()
+            .observeValues { [weak self] error in
+                if case let .statusCode(response) = error, response.statusCode == 401 {
+                    self?.displayErrorProperty.value = (tr(.loginError), tr(.incorrectCredentials))
+                } else {
+                    self?.displayErrorProperty.value = (tr(.loginError), tr(.couldNotConnectToPrinter))
                 }
-            }
+        }
     }
 
     // MARK: Inputs
