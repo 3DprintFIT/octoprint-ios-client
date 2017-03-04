@@ -17,6 +17,7 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - version: OctoPrint API version
 enum OctoPrintAPI {
     case version
+    case files
 }
 
 // MARK: - TargetPart implementation
@@ -40,6 +41,7 @@ extension OctoPrintAPI: TargetPart {
     var requestData: (path: String, method: Moya.Method, task: Task, parameters: Parameters?) {
         switch self {
         case .version: return ("api/version", .get, .request, nil)
+        case .files: return ("api/files", .get, .request, nil)
         }
     }
 }
