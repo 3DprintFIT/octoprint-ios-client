@@ -1,5 +1,5 @@
 //
-//  FilesViewController.swift
+//  SettingsViewController.swift
 //  OctoPhone
 //
 //  Created by Josef Dolezal on 20/12/16.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-/// Lists stored files on printer
-class FilesViewController: UIViewController {
+/// Printer settings and configurations
+class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

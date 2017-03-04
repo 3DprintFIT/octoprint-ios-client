@@ -9,8 +9,6 @@
 // * Printer overview tabbar
 // *
 "Printer" = "Printer";
-"Files" = "Files";
-"Settings" = "Settings";
 
 
 // *
@@ -23,3 +21,21 @@
 "Login Error" = "Login Error";
 "Incorrect Credentials" = "The credentials you entered are incorrect.";
 "Could not connect to printer" = "Can not connect to the printer.";
+
+
+// *
+// * Detail
+// *
+"Printer detail" = "Printer detail";
+
+
+// *
+// * Files
+// *
+"Files" = "Files";
+
+
+// *
+// * Settings
+// *
+"Settings" = "Settings";

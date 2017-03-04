@@ -65,3 +65,25 @@ class ContextCoordinator: CoordinatorType {
     /// Starts the coordinator flow
     func start() { }
 }
+
+/// Base coordinator for flows appearencing on tabbar controller
+class TabCoordinator: ContextCoordinator {
+    /// Controller for tabbed flows
+    weak var tabbarController: UITabBarController?
+
+    init(
+        tabbarController: UITabBarController?,
+        navigationController: UINavigationController?,
+        contextManager: ContextManagerType
+    ) {
+        self.tabbarController = tabbarController
+
+        super.init(navigationController: navigationController, contextManager: contextManager)
+    }
+
+    func addTab(controller: UIViewController) {
+        let currentControllers = tabbarController?.viewControllers ?? []
+
+        tabbarController?.viewControllers = currentControllers + [controller]
+    }
+}

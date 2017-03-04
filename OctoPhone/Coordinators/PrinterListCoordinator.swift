@@ -22,7 +22,17 @@ final class PrinterListCoordinator: ContextCoordinator {
 // MARK: - Delegate for printer list controller flow
 extension PrinterListCoordinator: PrinterListViewControllerDelegate {
     func selectedPrinterProvider(provider: OctoPrintProvider) {
-        print("selected \(provider)")
+        let coordinator = OverviewCoordinator(
+            navigationController: navigationController,
+            contextManager: contextManager
+        )
+
+        coordinator.completed = { [weak self] in
+            self?.childCoordinators.removeLast()
+        }
+
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 
     func addPrinterButtonTapped() {
