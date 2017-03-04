@@ -19,6 +19,9 @@
 		D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401601E6A39480082129A /* DetailCoordinator.swift */; };
 		D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401621E6A3B3F0082129A /* FilesCoordinator.swift */; };
 		D22401651E6A3B670082129A /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401641E6A3B670082129A /* SettingsCoordinator.swift */; };
+		D224016B1E6AD5E90082129A /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224016A1E6AD5E90082129A /* File.swift */; };
+		D224016F1E6AD7780082129A /* GCodeAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224016E1E6AD7780082129A /* GCodeAnalysis.swift */; };
+		D22401711E6AD7D30082129A /* FilePrintStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401701E6AD7D30082129A /* FilePrintStats.swift */; };
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
 		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
 		D23B90481E5B7F930005560B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90451E5B7F930005560B /* Result.framework */; };
@@ -81,6 +84,9 @@
 		D22401601E6A39480082129A /* DetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		D22401621E6A3B3F0082129A /* FilesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesCoordinator.swift; sourceTree = "<group>"; };
 		D22401641E6A3B670082129A /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		D224016A1E6AD5E90082129A /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		D224016E1E6AD7780082129A /* GCodeAnalysis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCodeAnalysis.swift; sourceTree = "<group>"; };
+		D22401701E6AD7D30082129A /* FilePrintStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePrintStats.swift; sourceTree = "<group>"; };
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D23B90451E5B7F930005560B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -201,6 +207,9 @@
 			isa = PBXGroup;
 			children = (
 				D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */,
+				D224016A1E6AD5E90082129A /* File.swift */,
+				D224016E1E6AD7780082129A /* GCodeAnalysis.swift */,
+				D22401701E6AD7D30082129A /* FilePrintStats.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -595,12 +604,15 @@
 				D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */,
 				D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */,
 				D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */,
+				D224016B1E6AD5E90082129A /* File.swift in Sources */,
 				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
 				D27C97101E63BA1800641A1A /* DynamicProvider.swift in Sources */,
 				D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */,
 				D2FE62521DF4BEA300A1E402 /* BaseOperation.swift in Sources */,
+				D224016F1E6AD7780082129A /* GCodeAnalysis.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
 				D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */,
+				D22401711E6AD7D30082129A /* FilePrintStats.swift in Sources */,
 				D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */,
 				D283C77E1E118788004E0EAC /* FilesCollectionViewCell.swift in Sources */,
 				D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */,
