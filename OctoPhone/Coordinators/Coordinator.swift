@@ -71,12 +71,17 @@ class TabCoordinator: ContextCoordinator {
     /// Controller for tabbed flows
     weak var tabbarController: UITabBarController?
 
+    /// Network connection provider
+    let provider: OctoPrintProvider
+
     init(
         tabbarController: UITabBarController?,
         navigationController: UINavigationController?,
-        contextManager: ContextManagerType
+        contextManager: ContextManagerType,
+        provider: OctoPrintProvider
     ) {
         self.tabbarController = tabbarController
+        self.provider = provider
 
         super.init(navigationController: navigationController, contextManager: contextManager)
     }

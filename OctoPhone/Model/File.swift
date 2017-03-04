@@ -44,9 +44,7 @@ final class File: Object {
     /// Print statistics informations
     dynamic var printStats: FilePrintStats?
 
-
-    // MARK: - Computed properties
-    
+    // MARK: - Computed properties    
     /// File type
     var type: FileType {
         get {

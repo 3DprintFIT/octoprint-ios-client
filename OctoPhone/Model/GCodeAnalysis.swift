@@ -12,7 +12,6 @@ import RealmSwift
 /// Computed analysis for gcode
 final class GCodeAnalysis: Object {
     // MARK: - Stored properties
-    
     /// Estimated printing time of gcode file
     dynamic var estimatedPrintTime = 0
 

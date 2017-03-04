@@ -24,7 +24,8 @@ extension PrinterListCoordinator: PrinterListViewControllerDelegate {
     func selectedPrinterProvider(provider: OctoPrintProvider) {
         let coordinator = OverviewCoordinator(
             navigationController: navigationController,
-            contextManager: contextManager
+            contextManager: contextManager,
+            provider: provider
         )
 
         coordinator.completed = { [weak self] in

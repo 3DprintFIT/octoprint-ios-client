@@ -11,7 +11,8 @@ import Foundation
 /// Stored files list coordinator
 final class FilesCoordinator: TabCoordinator {
     override func start() {
-        let controller = FilesViewController()
+        let viewModel = FilesViewModel(provider: provider, contextManager: contextManager)
+        let controller = FilesViewController(viewModel: viewModel)
 
         controller.title = tr(.files)
         addTab(controller: controller)
