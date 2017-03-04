@@ -26,6 +26,9 @@
 		D22401761E6AF0150082129A /* Realm+ReactiveSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401751E6AF0150082129A /* Realm+ReactiveSwift.swift */; };
 		D22401781E6AFDF70082129A /* JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401771E6AFDF70082129A /* JSONAble.swift */; };
 		D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224017B1E6B02F50082129A /* SignalProducer+JSONAble.swift */; };
+		D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224017E1E6B0E110082129A /* File+JSONAble.swift */; };
+		D22401811E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401801E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift */; };
+		D22401831E6B12C10082129A /* FilePrinterStats+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401821E6B12C10082129A /* FilePrinterStats+JSONAble.swift */; };
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
 		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
 		D23B90481E5B7F930005560B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90451E5B7F930005560B /* Result.framework */; };
@@ -95,6 +98,9 @@
 		D22401751E6AF0150082129A /* Realm+ReactiveSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+ReactiveSwift.swift"; sourceTree = "<group>"; };
 		D22401771E6AFDF70082129A /* JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONAble.swift; sourceTree = "<group>"; };
 		D224017B1E6B02F50082129A /* SignalProducer+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignalProducer+JSONAble.swift"; sourceTree = "<group>"; };
+		D224017E1E6B0E110082129A /* File+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "File+JSONAble.swift"; sourceTree = "<group>"; };
+		D22401801E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GCodeAnalysis+JSONAble.swift"; sourceTree = "<group>"; };
+		D22401821E6B12C10082129A /* FilePrinterStats+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilePrinterStats+JSONAble.swift"; sourceTree = "<group>"; };
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D23B90451E5B7F930005560B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -247,6 +253,32 @@
 			path = "Reactive Extensions";
 			sourceTree = "<group>";
 		};
+		D224017D1E6B0DE40082129A /* Model Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				D224017E1E6B0E110082129A /* File+JSONAble.swift */,
+				D22401801E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift */,
+				D22401821E6B12C10082129A /* FilePrinterStats+JSONAble.swift */,
+			);
+			path = "Model Mapping";
+			sourceTree = "<group>";
+		};
+		D22401841E6B141B0082129A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D22401851E6B142A0082129A /* Model Mapping */,
+			);
+			name = Networking;
+			path = "Networking/Model Mapping";
+			sourceTree = "<group>";
+		};
+		D22401851E6B142A0082129A /* Model Mapping */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Model Mapping";
+			sourceTree = "<group>";
+		};
 		D247C3A41E12713100BF0BA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +289,7 @@
 		D2510B061DD4894E004C30EA /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D224017D1E6B0DE40082129A /* Model Mapping */,
 				D27C970F1E63BA1800641A1A /* DynamicProvider.swift */,
 				D27C97111E63BAE000641A1A /* OctoPrintAPI.swift */,
 				D27C97151E63C25D00641A1A /* TokenPlugin.swift */,
@@ -373,6 +406,7 @@
 		D2CCF7571DBF46DC00EF9752 /* OctoPhoneTests */ = {
 			isa = PBXGroup;
 			children = (
+				D22401841E6B141B0082129A /* Networking */,
 				D2CCF7581DBF46DC00EF9752 /* OctoPhoneTests.swift */,
 				D2CCF75A1DBF46DC00EF9752 /* Info.plist */,
 			);
@@ -625,6 +659,7 @@
 				D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */,
 				D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */,
 				D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */,
+				D22401831E6B12C10082129A /* FilePrinterStats+JSONAble.swift in Sources */,
 				D224016B1E6AD5E90082129A /* File.swift in Sources */,
 				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
 				D27C97101E63BA1800641A1A /* DynamicProvider.swift in Sources */,
@@ -635,6 +670,7 @@
 				D22401761E6AF0150082129A /* Realm+ReactiveSwift.swift in Sources */,
 				D22401731E6AE1320082129A /* FilesViewModel.swift in Sources */,
 				D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */,
+				D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */,
 				D22401711E6AD7D30082129A /* FilePrintStats.swift in Sources */,
 				D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */,
 				D283C77E1E118788004E0EAC /* FilesCollectionViewCell.swift in Sources */,
@@ -648,6 +684,7 @@
 				D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */,
 				D2EF39291E66F06800A17057 /* PrinterListCoordinator.swift in Sources */,
 				D2063D001E5F8352004C2908 /* PrinterLoginViewModel.swift in Sources */,
+				D22401811E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift in Sources */,
 				D2D331401E67177100C9C005 /* PrinterLoginCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
