@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import RealmSwift
 import ReactiveSwift
+import Result
 
 /// Inputs from files view controller
 protocol FilesViewModelInputs {
@@ -17,7 +19,7 @@ protocol FilesViewModelInputs {
 
 /// Outputs for files view controller
 protocol FilesViewModelOutputs {
-
+    var filesListChanged: SignalProducer<(), NoError> { get }
 }
 
 /// Common interface for files view models
@@ -35,6 +37,7 @@ final class FilesViewModel: FilesViewModelType {
     var outputs: FilesViewModelOutputs { return self }
 
     // MARK: Outputs
+    let filesListChanged: SignalProducer<(), NoError>
 
     // MARK: Properties
 
@@ -47,9 +50,20 @@ final class FilesViewModel: FilesViewModelType {
     /// Database connections manager
     private let contextManager: ContextManagerType
 
+    private var files: Results<File>?
+
     init(provider: OctoPrintProvider, contextManager: ContextManagerType) {
         self.provider = provider
         self.contextManager = contextManager
+
+        do {
+            let realm = try contextManager.createContext()
+
+            files = realm.objects(File.self)
+        } catch { }
+
+        self.filesListChanged = files?.producer ?? SignalProducer(value: ())
+
     }
 
     // MARK: Inputs

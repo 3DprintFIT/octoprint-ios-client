@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
 
 /// Lists stored files on printer
-class FilesViewController: UIViewController {
+class FilesViewController: UICollectionViewController {
 
     /// Controller view model
     private var viewModel: FilesViewModelType!
 
     convenience init(viewModel: FilesViewModelType) {
-        self.init()
+        self.init(collectionViewLayout: UICollectionViewFlowLayout())
 
         self.viewModel = viewModel
+
+        if let collectionView = collectionView {
+            collectionView.reactive.reloadData <~ viewModel.outputs.filesListChanged
+        }
     }
 
     override func viewDidLoad() {
