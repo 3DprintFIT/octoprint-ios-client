@@ -3,7 +3,7 @@ language: ruby
 matrix:
   include:
     - os: osx
-      osx_image: xcode8.1
+      osx_image: xcode8.2
 
 before_script:
   - carthage bootstrap --platform iOS
@@ -13,7 +13,7 @@ before_script:
 before_install:
   - brew update
   - brew outdated carthage || brew upgrade carthage
-  - bundle install
+  - gem install fastlane
 
 before_deploy:
   - carthage build --no-skip-current
