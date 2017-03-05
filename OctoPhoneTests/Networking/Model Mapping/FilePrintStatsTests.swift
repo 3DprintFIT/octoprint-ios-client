@@ -21,13 +21,14 @@ class FilePrintStatsSpec: QuickSpec {
             let last: [String: Any] = ["date": lastDate, "success": lastSuccess]
             let data: [String: Any] = ["failure": failures, "success": successes, "last": last]
 
-            let stats = try? FilePrintStats.fromJSON(json: data)
-
-            expect(stats) != nil
-            expect(stats!.failures) == failures
-            expect(stats!.successes) == successes
-            expect(stats!.lastPrint) == lastDate
-            expect(stats!.wasLastPrintSuccess) == lastSuccess
+            expect{ try FilePrintStats.fromJSON(json: data) }.notTo(throwError())
+            if let stats = try? FilePrintStats.fromJSON(json: data) {
+                expect(stats).toNot(beNil())
+                expect(stats.failures) == failures
+                expect(stats.successes) == successes
+                expect(stats.lastPrint) == lastDate
+                expect(stats.wasLastPrintSuccess) == lastSuccess
+            }
         }
 
         it("should throw when json is not valid") {

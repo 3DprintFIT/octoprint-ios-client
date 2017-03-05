@@ -16,14 +16,15 @@ class GCodeAnalysisSpec: QuickSpec {
             let estimatedPrintTime = 1188
             let filamentLength = 810
             let filamentVolume = 5.36
-            let data: [String : Any] = ["estimatedPrintTime": estimatedPrintTime, "filament": ["length": filamentLength, "volume": filamentVolume]]
+            let data: [String : Any] = ["estimatedPrintTime": estimatedPrintTime, "filament": [ "tool0": ["length": filamentLength, "volume": filamentVolume]]]
 
-            let analysis = try? GCodeAnalysis.fromJSON(json: data)
-
-            expect(analysis) != nil
-            expect(analysis!.estimatedPrintTime) == estimatedPrintTime
-            expect(analysis!.filamentVolume) == filamentVolume
-            expect(analysis!.filamentLength) == filamentLength
+            expect{ try GCodeAnalysis.fromJSON(json: data) }.toNot(throwError())
+            if let analysis = try? GCodeAnalysis.fromJSON(json: data) {
+                expect(analysis).toNot(beNil())
+                expect(analysis.estimatedPrintTime) == estimatedPrintTime
+                expect(analysis.filamentVolume) == filamentVolume
+                expect(analysis.filamentLength) == filamentLength
+            }
         }
 
         it("throws on invalid JSON") { 

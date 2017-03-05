@@ -17,9 +17,6 @@ final class File: Object {
     /// File name
     dynamic var name = ""
 
-    /// Path to file
-    dynamic var path = ""
-
     /// Serialized value of file type
     private dynamic var _type = FileType.machineCode.rawValue
 
@@ -69,7 +66,6 @@ final class File: Object {
     ///
     /// - Parameters:
     ///   - name: File name
-    ///   - path: File path
     ///   - type: File type
     ///   - origin: File origin
     ///   - size: File size
@@ -78,14 +74,13 @@ final class File: Object {
     ///   - download: Download path
     ///   - gcodeAnalysis: GCode analysis
     ///   - printStats: Print statistics
-    convenience init(name: String, path: String, type: FileType, origin: FileOrigin, size: Int,
-                     date: Int, resource: String, download: String, gcodeAnalysis: GCodeAnalysis?,
-                     printStats: FilePrintStats?) {
+    convenience init(name: String, type: FileType, origin: FileOrigin, size: Int, date: Int,
+                     resource: String, download: String, gcodeAnalysis: GCodeAnalysis? = nil,
+                     printStats: FilePrintStats? = nil) {
 
         self.init()
 
         self.name = name
-        self.path = path
         self._type = type.rawValue
         self._origin = origin.rawValue
         self.size = size

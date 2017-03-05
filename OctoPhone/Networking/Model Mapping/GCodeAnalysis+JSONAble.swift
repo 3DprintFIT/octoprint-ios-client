@@ -13,8 +13,9 @@ extension GCodeAnalysis: JSONAble {
         guard
             let estimatedTime = json["estimatedPrintTime"] as? Int,
             let filamentJSON = json["filament"] as? [String: Any],
-            let length = filamentJSON["length"] as? Int,
-            let volume = filamentJSON["volume"] as? Double else
+            let toolJSON = filamentJSON["tool0"] as? [String: Any],
+            let length = toolJSON["length"] as? Int,
+            let volume = toolJSON["volume"] as? Double else
         {
             throw JSONAbleError.errorMappingJSONToObject(json: json)
         }

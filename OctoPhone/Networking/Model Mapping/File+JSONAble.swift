@@ -12,7 +12,6 @@ extension File: JSONAble {
     static func fromJSON(json: [String : Any]) throws -> File {
         guard
             let name = json["name"] as? String,
-            let path = json["path"] as? String,
             let typeStr = json["type"] as? String,
             let type = FileType(rawValue: typeStr),
             let originStr = json["origin"] as? String,
@@ -21,18 +20,22 @@ extension File: JSONAble {
             let date = json["date"] as? Int,
             let refs = json["refs"] as? [String: Any],
             let resource = refs["resource"] as? String,
-            let download = refs["download"] as? String,
-            let analysisJSON = json["gcodeAnalysis"] as? [String: Any],
-            let statsJSON = json["print"] as? [String: Any] else
+            let download = refs["download"] as? String else
         {
             throw JSONAbleError.errorMappingJSONToObject(json: json)
         }
 
-        let analysis = try GCodeAnalysis.fromJSON(json: analysisJSON)
-        let stats = try FilePrintStats.fromJSON(json: statsJSON)
+        let file = File(name: name, type: type, origin: origin, size: size, date: date,
+                    resource: resource, download: download)
 
-        return File(name: name, path: path, type: type, origin: origin, size: size, date: date,
-                    resource: resource, download: download, gcodeAnalysis: analysis,
-                    printStats: stats)
+        if let analysisJSON = json["gcodeAnalysis"] as? [String: Any] {
+            file.gcodeAnalysis = try GCodeAnalysis.fromJSON(json: analysisJSON)
+        }
+
+        if let statsJSON = json["print"] as? [String: Any] {
+            file.printStats = try FilePrintStats.fromJSON(json: statsJSON)
+        }
+
+        return file
     }
 }
