@@ -5,19 +5,10 @@ matrix:
     - os: osx
       osx_image: xcode8.2
 
-before_script:
-  - carthage bootstrap --platform iOS
-  - match development
-  - match appstore
-
 before_install:
   - brew update
-  - brew outdated carthage || brew upgrade carthage
+  - brew outdated carthage || brew upgrade carthage swiftlint
   - gem install fastlane
-
-before_deploy:
-  - carthage build --no-skip-current
-  - carthage archive $FRAMEWORK_NAME
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
@@ -29,4 +20,3 @@ branches:
 
 script:
   - fastlane beta
-  - swiftlint

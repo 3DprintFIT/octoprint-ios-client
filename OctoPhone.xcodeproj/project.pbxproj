@@ -74,13 +74,6 @@
 			remoteGlobalIDString = D2CCF73F1DBF46DB00EF9752;
 			remoteInfo = OctoPhone;
 		};
-		D2CCF7601DBF46DC00EF9752 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D2CCF7381DBF46DB00EF9752 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D2CCF73F1DBF46DB00EF9752;
-			remoteInfo = OctoPhone;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -139,8 +132,6 @@
 		D2CCF74F1DBF46DB00EF9752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2CCF7541DBF46DC00EF9752 /* OctoPhoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OctoPhoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF75A1DBF46DC00EF9752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2CCF75F1DBF46DC00EF9752 /* OctoPhoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OctoPhoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2CCF7651DBF46DC00EF9752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2D3313F1E67177100C9C005 /* PrinterLoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginCoordinator.swift; sourceTree = "<group>"; };
 		D2DD507E1E6A34DB0090D21A /* OverviewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCoordinator.swift; sourceTree = "<group>"; };
 		D2EF39281E66F06800A17057 /* PrinterListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCoordinator.swift; sourceTree = "<group>"; };
@@ -174,13 +165,6 @@
 			files = (
 				D224018A1E6B28700082129A /* Nimble.framework in Frameworks */,
 				D224018B1E6B28700082129A /* Quick.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D2CCF75C1DBF46DC00EF9752 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +375,6 @@
 				D21B9DE81DEA1B8A005C34CD /* Localizable.strings */,
 				D2CCF7421DBF46DB00EF9752 /* OctoPhone */,
 				D2CCF7571DBF46DC00EF9752 /* OctoPhoneTests */,
-				D2CCF7621DBF46DC00EF9752 /* OctoPhoneUITests */,
 				D2CCF7411DBF46DB00EF9752 /* Products */,
 				D2510B091DD4911A004C30EA /* Frameworks */,
 			);
@@ -402,7 +385,6 @@
 			children = (
 				D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */,
 				D2CCF7541DBF46DC00EF9752 /* OctoPhoneTests.xctest */,
-				D2CCF75F1DBF46DC00EF9752 /* OctoPhoneUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -428,14 +410,6 @@
 				D2CCF75A1DBF46DC00EF9752 /* Info.plist */,
 			);
 			path = OctoPhoneTests;
-			sourceTree = "<group>";
-		};
-		D2CCF7621DBF46DC00EF9752 /* OctoPhoneUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D2CCF7651DBF46DC00EF9752 /* Info.plist */,
-			);
-			path = OctoPhoneUITests;
 			sourceTree = "<group>";
 		};
 		D2FE624E1DF4BE3500A1E402 /* Operations */ = {
@@ -501,24 +475,6 @@
 			productReference = D2CCF7541DBF46DC00EF9752 /* OctoPhoneTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D2CCF75E1DBF46DC00EF9752 /* OctoPhoneUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D2CCF76E1DBF46DC00EF9752 /* Build configuration list for PBXNativeTarget "OctoPhoneUITests" */;
-			buildPhases = (
-				D2CCF75B1DBF46DC00EF9752 /* Sources */,
-				D2CCF75C1DBF46DC00EF9752 /* Frameworks */,
-				D2CCF75D1DBF46DC00EF9752 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D2CCF7611DBF46DC00EF9752 /* PBXTargetDependency */,
-			);
-			name = OctoPhoneUITests;
-			productName = OctoPhoneUITests;
-			productReference = D2CCF75F1DBF46DC00EF9752 /* OctoPhoneUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -535,12 +491,6 @@
 						ProvisioningStyle = Manual;
 					};
 					D2CCF7531DBF46DC00EF9752 = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 69T295ARCG;
-						ProvisioningStyle = Automatic;
-						TestTargetID = D2CCF73F1DBF46DB00EF9752;
-					};
-					D2CCF75E1DBF46DC00EF9752 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 69T295ARCG;
 						ProvisioningStyle = Automatic;
@@ -563,7 +513,6 @@
 			targets = (
 				D2CCF73F1DBF46DB00EF9752 /* OctoPhone */,
 				D2CCF7531DBF46DC00EF9752 /* OctoPhoneTests */,
-				D2CCF75E1DBF46DC00EF9752 /* OctoPhoneUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -580,13 +529,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D2CCF7521DBF46DC00EF9752 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D2CCF75D1DBF46DC00EF9752 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -735,13 +677,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2CCF75B1DBF46DC00EF9752 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -749,11 +684,6 @@
 			isa = PBXTargetDependency;
 			target = D2CCF73F1DBF46DB00EF9752 /* OctoPhone */;
 			targetProxy = D2CCF7551DBF46DC00EF9752 /* PBXContainerItemProxy */;
-		};
-		D2CCF7611DBF46DC00EF9752 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D2CCF73F1DBF46DB00EF9752 /* OctoPhone */;
-			targetProxy = D2CCF7601DBF46DC00EF9752 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -956,34 +886,6 @@
 			};
 			name = Release;
 		};
-		D2CCF76F1DBF46DC00EF9752 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 69T295ARCG;
-				INFOPLIST_FILE = OctoPhoneUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cz.badluckjosev.OctoPhoneUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = OctoPhone;
-			};
-			name = Debug;
-		};
-		D2CCF7701DBF46DC00EF9752 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 69T295ARCG;
-				INFOPLIST_FILE = OctoPhoneUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cz.badluckjosev.OctoPhoneUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = OctoPhone;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1010,15 +912,6 @@
 			buildConfigurations = (
 				D2CCF76C1DBF46DC00EF9752 /* Debug */,
 				D2CCF76D1DBF46DC00EF9752 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D2CCF76E1DBF46DC00EF9752 /* Build configuration list for PBXNativeTarget "OctoPhoneUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D2CCF76F1DBF46DC00EF9752 /* Debug */,
-				D2CCF7701DBF46DC00EF9752 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
