@@ -21,7 +21,11 @@ protocol ContextManagerType: class {
 /// Preconfigured local database manager
 final class ContextManager: ContextManagerType {
     public func createContext() throws -> Realm {
-        return try Realm()
+        var configuration = Realm.Configuration.defaultConfiguration
+
+        configuration.deleteRealmIfMigrationNeeded = true
+
+        return try Realm(configuration: configuration)
     }
 }
 
