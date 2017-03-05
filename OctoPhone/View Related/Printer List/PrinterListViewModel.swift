@@ -119,7 +119,10 @@ final class PrinterListViewModel: PrinterListViewModelType {
         // At this point, stored printers must not be nil
         assert(storedPrinters != nil)
 
-        let provider = OctoPrintProvider(baseURL: storedPrinters![indexPath.row].url)
+        let printer = storedPrinters![indexPath.row]
+        let tokenPlugin = TokenPlugin(token: printer.accessToken)
+        let provider = OctoPrintProvider(baseURL: storedPrinters![indexPath.row].url,
+                                         plugins: [tokenPlugin])
 
         delegate?.selectedPrinterProvider(provider: provider)
     }
