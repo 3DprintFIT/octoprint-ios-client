@@ -13,19 +13,38 @@ import ReactiveSwift
 extension SignalProducerProtocol where Value == Any, Error == MoyaError {
     /// Maps downloaded JSON to object
     ///
-    /// - Parameter classType: Object type
+    /// - Parameter classType:
+    /// - Returns:
+
+    /// Maps downloaded JSON to object
+    ///
+    /// - Parameters:
+    ///   - classType: Object type
+    ///   - keyPath: Search for object at specific keyPath
     /// - Returns: New producer with mapped JSON
-    func mapTo<T: JSONAble>(object classType: T.Type) -> SignalProducer<T, MoyaError> {
+    func mapTo<T: JSONAble>(object classType: T.Type,
+                            forKeyPath keyPath: String? = nil) -> SignalProducer<T, MoyaError> {
+
         return producer.flatMap(.latest) { json -> SignalProducer<T, MoyaError> in
             guard let dict = json as? [String: Any] else {
                 return SignalProducer(error: .underlying(JSONAbleError.invalidJSON(json: json)))
             }
 
+            var finalDict = dict
+
+            if let keyPath = keyPath {
+                guard let dict = dict[keyPath] as? [String: Value] else {
+                    return SignalProducer(error: .underlying(JSONAbleError.invalidJSON(json: json)))
+                }
+
+                finalDict = dict
+            }
+
             do {
-                return SignalProducer(value: try T.fromJSON(json: dict))
+                return SignalProducer(value: try T.fromJSON(json: finalDict))
             } catch {
                 return SignalProducer(
-                    error: .underlying(JSONAbleError.errorMappingJSONToObject(json: dict))
+                    error: .underlying(error)
                 )
             }
         }
@@ -35,21 +54,38 @@ extension SignalProducerProtocol where Value == Any, Error == MoyaError {
     ///
     /// - Parameter classType: Object type
     /// - Returns: New producer with mapped JSON
-    func mapTo<T: JSONAble>(collectionOf classType: T.Type) -> SignalProducer<[T], MoyaError> {
+    func mapTo<T: JSONAble>(collectionOf classType: T.Type,
+                            forKeyPath keyPath: String? = nil) -> SignalProducer<[T], MoyaError> {
+
         return producer.flatMap(.latest) { json -> SignalProducer<[T], MoyaError> in
-            guard let dict = json as? [[String: Any]] else {
-                return SignalProducer(error: .underlying(JSONAbleError.invalidJSON(json: json)))
+            var finalDict = [[String: Any]]()
+
+            if let keyPath = keyPath {
+                guard
+                    let dict = json as? [String: Any],
+                    let subDict = dict[keyPath] as? [[String: Any]] else
+                {
+                    return SignalProducer(error: .underlying(JSONAbleError.invalidJSON(json: json)))
+                }
+
+                finalDict = subDict
+            } else {
+                guard let dict = json as? [[String: Any]] else {
+                    return SignalProducer(error: .underlying(JSONAbleError.invalidJSON(json: json)))
+                }
+
+                finalDict = dict
             }
 
             var objects = [T]()
 
             // To track which object failed to map, we have to iterater over each of them
-            for singleDict in dict {
+            for singleDict in finalDict {
                 do {
                     objects.append(try T.fromJSON(json: singleDict))
                 } catch {
                     return SignalProducer(
-                        error: .underlying(JSONAbleError.errorMappingJSONToObject(json: singleDict))
+                        error: .underlying(error)
                     )
                 }
             }
