@@ -6,4 +6,32 @@
 //  Copyright © 2017 Josef Dolezal. All rights reserved.
 //
 
-import Foundation
+import Nimble
+import Quick
+@testable import OctoPhone
+
+class FilePrintStatsSpec: QuickSpec {
+    override func spec() {
+        it("converts from JSON") {
+            let failures = 4
+            let successes = 23
+            let lastDate = 1387144346
+            let lastSuccess = true
+
+            let last: [String: Any] = ["date": lastDate, "success": lastSuccess]
+            let data: [String: Any] = ["failure": failures, "success": successes, "last": last]
+
+            let stats = try? FilePrintStats.fromJSON(json: data)
+
+            expect(stats) != nil
+            expect(stats!.failures) == failures
+            expect(stats!.successes) == successes
+            expect(stats!.lastPrint) == lastDate
+            expect(stats!.wasLastPrintSuccess) == lastSuccess
+        }
+
+        it("should throw when json is not valid") {
+            expect{ try FilePrintStats.fromJSON(json: [:]) }.to(throwError())
+        }
+    }
+}

@@ -23,7 +23,7 @@ extension File: JSONAble {
             let resource = refs["resource"] as? String,
             let download = refs["download"] as? String,
             let analysisJSON = json["gcodeAnalysis"] as? [String: Any],
-            let statsJSON = json["print"] as? [String: Any?] else
+            let statsJSON = json["print"] as? [String: Any] else
         {
             throw JSONAbleError.errorMappingJSONToObject(json: json)
         }

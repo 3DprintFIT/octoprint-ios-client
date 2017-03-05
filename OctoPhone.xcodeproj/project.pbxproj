@@ -29,6 +29,11 @@
 		D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224017E1E6B0E110082129A /* File+JSONAble.swift */; };
 		D22401811E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401801E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift */; };
 		D22401831E6B12C10082129A /* FilePrinterStats+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401821E6B12C10082129A /* FilePrinterStats+JSONAble.swift */; };
+		D224018A1E6B28700082129A /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D22401881E6B28700082129A /* Nimble.framework */; };
+		D224018B1E6B28700082129A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D22401891E6B28700082129A /* Quick.framework */; };
+		D224018F1E6B29150082129A /* FileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224018E1E6B29150082129A /* FileTests.swift */; };
+		D22401911E6B2EA40082129A /* GCodeAnalysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401901E6B2EA40082129A /* GCodeAnalysisTests.swift */; };
+		D22401931E6C0FE70082129A /* FilePrintStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401921E6C0FE70082129A /* FilePrintStatsTests.swift */; };
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
 		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
 		D23B90481E5B7F930005560B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90451E5B7F930005560B /* Result.framework */; };
@@ -50,8 +55,6 @@
 		D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */; };
 		D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */; };
 		D2CCF74E1DBF46DB00EF9752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74C1DBF46DB00EF9752 /* LaunchScreen.storyboard */; };
-		D2CCF7591DBF46DC00EF9752 /* OctoPhoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7581DBF46DC00EF9752 /* OctoPhoneTests.swift */; };
-		D2CCF7641DBF46DC00EF9752 /* OctoPhoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7631DBF46DC00EF9752 /* OctoPhoneUITests.swift */; };
 		D2D331401E67177100C9C005 /* PrinterLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D3313F1E67177100C9C005 /* PrinterLoginCoordinator.swift */; };
 		D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD507E1E6A34DB0090D21A /* OverviewCoordinator.swift */; };
 		D2EF39291E66F06800A17057 /* PrinterListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF39281E66F06800A17057 /* PrinterListCoordinator.swift */; };
@@ -101,6 +104,11 @@
 		D224017E1E6B0E110082129A /* File+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "File+JSONAble.swift"; sourceTree = "<group>"; };
 		D22401801E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GCodeAnalysis+JSONAble.swift"; sourceTree = "<group>"; };
 		D22401821E6B12C10082129A /* FilePrinterStats+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilePrinterStats+JSONAble.swift"; sourceTree = "<group>"; };
+		D22401881E6B28700082129A /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		D22401891E6B28700082129A /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		D224018E1E6B29150082129A /* FileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; };
+		D22401901E6B2EA40082129A /* GCodeAnalysisTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCodeAnalysisTests.swift; sourceTree = "<group>"; };
+		D22401921E6C0FE70082129A /* FilePrintStatsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePrintStatsTests.swift; sourceTree = "<group>"; };
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D23B90451E5B7F930005560B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -126,10 +134,8 @@
 		D2CCF74D1DBF46DB00EF9752 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2CCF74F1DBF46DB00EF9752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2CCF7541DBF46DC00EF9752 /* OctoPhoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OctoPhoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2CCF7581DBF46DC00EF9752 /* OctoPhoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoPhoneTests.swift; sourceTree = "<group>"; };
 		D2CCF75A1DBF46DC00EF9752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2CCF75F1DBF46DC00EF9752 /* OctoPhoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OctoPhoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2CCF7631DBF46DC00EF9752 /* OctoPhoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoPhoneUITests.swift; sourceTree = "<group>"; };
 		D2CCF7651DBF46DC00EF9752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2D3313F1E67177100C9C005 /* PrinterLoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginCoordinator.swift; sourceTree = "<group>"; };
 		D2DD507E1E6A34DB0090D21A /* OverviewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCoordinator.swift; sourceTree = "<group>"; };
@@ -162,6 +168,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D224018A1E6B28700082129A /* Nimble.framework in Frameworks */,
+				D224018B1E6B28700082129A /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +283,9 @@
 		D22401851E6B142A0082129A /* Model Mapping */ = {
 			isa = PBXGroup;
 			children = (
+				D224018E1E6B29150082129A /* FileTests.swift */,
+				D22401901E6B2EA40082129A /* GCodeAnalysisTests.swift */,
+				D22401921E6C0FE70082129A /* FilePrintStatsTests.swift */,
 			);
 			name = "Model Mapping";
 			sourceTree = "<group>";
@@ -301,6 +312,8 @@
 		D2510B091DD4911A004C30EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D22401881E6B28700082129A /* Nimble.framework */,
+				D22401891E6B28700082129A /* Quick.framework */,
 				D27C970D1E63A00B00641A1A /* Moya.framework */,
 				D27C970B1E63986900641A1A /* ReactiveMoya.framework */,
 				D23B90431E5B7F930005560B /* ReactiveCocoa.framework */,
@@ -407,7 +420,6 @@
 			isa = PBXGroup;
 			children = (
 				D22401841E6B141B0082129A /* Networking */,
-				D2CCF7581DBF46DC00EF9752 /* OctoPhoneTests.swift */,
 				D2CCF75A1DBF46DC00EF9752 /* Info.plist */,
 			);
 			path = OctoPhoneTests;
@@ -416,7 +428,6 @@
 		D2CCF7621DBF46DC00EF9752 /* OctoPhoneUITests */ = {
 			isa = PBXGroup;
 			children = (
-				D2CCF7631DBF46DC00EF9752 /* OctoPhoneUITests.swift */,
 				D2CCF7651DBF46DC00EF9752 /* Info.plist */,
 			);
 			path = OctoPhoneUITests;
@@ -472,6 +483,7 @@
 				D2CCF7501DBF46DC00EF9752 /* Sources */,
 				D2CCF7511DBF46DC00EF9752 /* Frameworks */,
 				D2CCF7521DBF46DC00EF9752 /* Resources */,
+				D224018D1E6B28CE0082129A /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -592,6 +604,22 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run dd91786f75cb40ae4bf775ac82d3af8c38f3ef97 79f265a5fd56838a962c4745efc95d52bd061979b51fbe9b5d1c514c19ee73ea";
 		};
+		D224018D1E6B28CE0082129A /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "carthage copy-frameworks";
+		};
 		D2510B0E1DD4913D004C30EA /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -693,7 +721,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2CCF7591DBF46DC00EF9752 /* OctoPhoneTests.swift in Sources */,
+				D22401911E6B2EA40082129A /* GCodeAnalysisTests.swift in Sources */,
+				D224018F1E6B29150082129A /* FileTests.swift in Sources */,
+				D22401931E6C0FE70082129A /* FilePrintStatsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,7 +731,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2CCF7641DBF46DC00EF9752 /* OctoPhoneUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -887,6 +916,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 69T295ARCG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OctoPhoneTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.badluckjosev.OctoPhoneTests;
@@ -902,6 +935,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 69T295ARCG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OctoPhoneTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.badluckjosev.OctoPhoneTests;
