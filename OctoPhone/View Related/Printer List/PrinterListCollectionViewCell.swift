@@ -30,6 +30,7 @@ class PrinterListCollectionViewCell: UICollectionViewCell {
 
             // nameLabel.text = viewmModel.printerName
             // urlLabel.text = viewModel.printerURL
+            backgroundColor = .red
         }
     }
 

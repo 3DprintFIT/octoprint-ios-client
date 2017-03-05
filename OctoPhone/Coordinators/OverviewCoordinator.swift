@@ -23,6 +23,7 @@ final class OverviewCoordinator: ContextCoordinator {
     override func start() {
         let tabbarController = UITabBarController()
         tabbarController.viewControllers = []
+        tabbarController.view.backgroundColor = .white
 
         let detailCoordinator = DetailCoordinator(tabbarController: tabbarController,
                                                   navigationController: navigationController,

@@ -47,6 +47,8 @@ class PrinterListViewController: UICollectionViewController {
 
         if let collectionView = collectionView {
             collectionView.backgroundColor = .white
+            collectionView.bounces = true
+            collectionView.alwaysBounceVertical = true
             collectionView.register(
                 PrinterListCollectionViewCell.self,
                 forCellWithReuseIdentifier: PrinterListCollectionViewCell.identifier

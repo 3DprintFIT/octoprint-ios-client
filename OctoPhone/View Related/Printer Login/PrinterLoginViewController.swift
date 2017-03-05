@@ -134,6 +134,7 @@ final class PrinterLoginViewController: UIViewController {
         tokenField.placeholder = tr(.printerAccessToken)
         loginButton.setTitle(tr(.login), for: .normal)
 
+        view.backgroundColor = .white
         edgesForExtendedLayout = []
 
         printerNameField.reactive.continuousTextValues.observeValues { [weak self] name in

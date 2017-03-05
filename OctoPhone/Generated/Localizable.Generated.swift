@@ -31,6 +31,8 @@ enum L10n {
   case printerAccessToken
   /// Printer detail
   case printerDetail
+  /// Printer list
+  case printerList
   /// Printer name
   case printerName
   /// Printer URL
@@ -69,6 +71,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Printer Access Token")
       case .printerDetail:
         return L10n.tr(key: "Printer detail")
+      case .printerList:
+        return L10n.tr(key: "Printer list")
       case .printerName:
         return L10n.tr(key: "Printer Name")
       case .printerURL:

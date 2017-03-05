@@ -15,6 +15,8 @@ final class PrinterListCoordinator: ContextCoordinator {
         let viewModel = PrinterListViewModel(delegate: self, contextManager: contextManager)
         let controller = PrinterListViewController(viewModel: viewModel)
 
+        controller.title = tr(.printerList)
+
         navigationController?.pushViewController(controller, animated: true)
     }
 }

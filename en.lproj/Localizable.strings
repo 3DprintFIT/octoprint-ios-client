@@ -5,6 +5,11 @@
 "Ok" = "Ok";
 "Connection Error" = "Connection Error";
 
+// *
+// * Printer list
+// *
+"Printer list" = "Printer list";
+
 
 // *
 // * Printer overview tabbar
