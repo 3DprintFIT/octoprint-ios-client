@@ -9,10 +9,14 @@ import Foundation
 enum L10n {
   /// Ooops, an error occured
   case anErrorOccured
+  /// Connection Error
+  case connectionError
   /// Can not connect to the printer.
   case couldNotConnectToPrinter
   /// Files
   case files
+  /// Files list could not be loaded.
+  case filesListCouldNotBeLoaded
   /// The credentials you entered are incorrect.
   case incorrectCredentials
   /// Login
@@ -43,10 +47,14 @@ extension L10n: CustomStringConvertible {
     switch self {
       case .anErrorOccured:
         return L10n.tr(key: "An error occured")
+      case .connectionError:
+        return L10n.tr(key: "Connection Error")
       case .couldNotConnectToPrinter:
         return L10n.tr(key: "Could not connect to printer")
       case .files:
         return L10n.tr(key: "Files")
+      case .filesListCouldNotBeLoaded:
+        return L10n.tr(key: "Files list could not be loaded")
       case .incorrectCredentials:
         return L10n.tr(key: "Incorrect Credentials")
       case .login:

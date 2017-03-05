@@ -3,6 +3,7 @@
 // *
 "An error occured" = "Ooops, an error occured";
 "Ok" = "Ok";
+"Connection Error" = "Connection Error";
 
 
 // *
@@ -33,6 +34,7 @@
 // * Files
 // *
 "Files" = "Files";
+"Files list could not be loaded" = "Files list could not be loaded.";
 
 
 // *

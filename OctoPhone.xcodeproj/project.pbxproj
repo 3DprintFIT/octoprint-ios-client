@@ -51,6 +51,8 @@
 		D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5361E09E65F0089C027 /* FilesViewController.swift */; };
 		D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5381E09E6740089C027 /* SettingsViewController.swift */; };
 		D2A601301DF3870F006B833E /* PrinterListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A6012F1DF3870F006B833E /* PrinterListCollectionViewCell.swift */; };
+		D2ACD7441E6C43CA00F2603A /* FileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACD7431E6C43CA00F2603A /* FileCollectionViewCell.swift */; };
+		D2ACD7481E6C451100F2603A /* FileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACD7471E6C451100F2603A /* FileCellViewModel.swift */; };
 		D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */; };
 		D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */; };
 		D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */; };
@@ -125,8 +127,10 @@
 		D28EC5341E09E6490089C027 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D28EC5361E09E65F0089C027 /* FilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		D28EC5381E09E6740089C027 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		D2A6012F1DF3870F006B833E /* PrinterListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrinterListCollectionViewCell.swift; path = "../Printer List/PrinterListCollectionViewCell.swift"; sourceTree = "<group>"; };
+		D2A6012F1DF3870F006B833E /* PrinterListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2A713811DE7069F00BDC0C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D2ACD7431E6C43CA00F2603A /* FileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCollectionViewCell.swift; sourceTree = "<group>"; };
+		D2ACD7471E6C451100F2603A /* FileCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCellViewModel.swift; sourceTree = "<group>"; };
 		D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewController.swift; sourceTree = "<group>"; };
 		D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -345,8 +349,10 @@
 		D28EC5321E09E5C20089C027 /* Files */ = {
 			isa = PBXGroup;
 			children = (
+				D2ACD7431E6C43CA00F2603A /* FileCollectionViewCell.swift */,
 				D28EC5361E09E65F0089C027 /* FilesViewController.swift */,
 				D22401721E6AE1320082129A /* FilesViewModel.swift */,
+				D2ACD7471E6C451100F2603A /* FileCellViewModel.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -370,7 +376,6 @@
 		D2B6F0031DE214B500F9CE0A /* Printer Login */ = {
 			isa = PBXGroup;
 			children = (
-				D2A6012F1DF3870F006B833E /* PrinterListCollectionViewCell.swift */,
 				D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */,
 				D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */,
 			);
@@ -445,9 +450,10 @@
 		D2FF97221DF0DF01005CA7B2 /* Printer List */ = {
 			isa = PBXGroup;
 			children = (
+				D2A6012F1DF3870F006B833E /* PrinterListCollectionViewCell.swift */,
+				D21F3F8C1E649EC300351761 /* PrinterListCellViewModel.swift */,
 				D2FF97231DF0DFC3005CA7B2 /* PrinterListViewController.swift */,
 				D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */,
-				D21F3F8C1E649EC300351761 /* PrinterListCellViewModel.swift */,
 			);
 			path = "Printer List";
 			sourceTree = "<group>";
@@ -685,8 +691,10 @@
 				D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */,
 				D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */,
 				D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */,
+				D2ACD7441E6C43CA00F2603A /* FileCollectionViewCell.swift in Sources */,
 				D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */,
 				D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */,
+				D2ACD7481E6C451100F2603A /* FileCellViewModel.swift in Sources */,
 				D22401831E6B12C10082129A /* FilePrinterStats+JSONAble.swift in Sources */,
 				D224016B1E6AD5E90082129A /* File.swift in Sources */,
 				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
