@@ -75,7 +75,7 @@ final class DynamicProvider<Target: TargetPart>: ReactiveSwiftMoyaProvider<Dynam
         requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
         stubClosure: @escaping StubClosure = MoyaProvider.neverStub,
         manager: Manager = ReactiveSwiftMoyaProvider<DynamicTarget>.defaultAlamofireManager(),
-        plugins: [PluginType] = [], stubScheduler: DateSchedulerProtocol? = nil,
+        plugins: [PluginType] = [], stubScheduler: DateScheduler? = nil,
         trackInflights: Bool = false
     ) {
         self.baseURL = baseURL
