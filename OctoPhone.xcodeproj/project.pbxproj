@@ -810,7 +810,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CDMJRT8WJB;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -822,8 +822,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.ajty.OctoPhone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7f4d93ae-95be-4421-9b36-eb44919fd4f3";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cz.ajty.OctoPhone";
+				PROVISIONING_PROFILE = "d9c27772-60c6-4278-8758-ca7b2056d0f5";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development cz.ajty.OctoPhone";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -833,7 +833,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CDMJRT8WJB;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -845,8 +845,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.ajty.OctoPhone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "07cd2e85-ff21-449a-b79b-02eca56798f6";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore cz.ajty.OctoPhone";
+				PROVISIONING_PROFILE = "d9c27772-60c6-4278-8758-ca7b2056d0f5";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development cz.ajty.OctoPhone";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
