@@ -42,6 +42,7 @@ platform :ios do
     )
     increment_version_number
     gym
+    xcov
     crashlytics
   end
 
