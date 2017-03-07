@@ -66,6 +66,7 @@
 		D2FE62521DF4BEA300A1E402 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */; };
 		D2FEDE6A1E6EBCB200184CEC /* PrinterLoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE691E6EBCB200184CEC /* PrinterLoginViewModelTests.swift */; };
 		D2FEDE6D1E6EC3F900184CEC /* Version.json in Resources */ = {isa = PBXBuildFile; fileRef = D2FEDE6C1E6EC3F900184CEC /* Version.json */; };
+		D2FEDE701E6ED1C900184CEC /* PrinterListCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE6F1E6ED1C900184CEC /* PrinterListCellViewModelTests.swift */; };
 		D2FF97241DF0DFC3005CA7B2 /* PrinterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF97231DF0DFC3005CA7B2 /* PrinterListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,7 @@
 		D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
 		D2FEDE691E6EBCB200184CEC /* PrinterLoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewModelTests.swift; sourceTree = "<group>"; };
 		D2FEDE6C1E6EC3F900184CEC /* Version.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Version.json; sourceTree = "<group>"; };
+		D2FEDE6F1E6ED1C900184CEC /* PrinterListCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCellViewModelTests.swift; sourceTree = "<group>"; };
 		D2FF97231DF0DFC3005CA7B2 /* PrinterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,7 +193,6 @@
 		D203DE721DDFCA04000DEAA0 /* View Related */ = {
 			isa = PBXGroup;
 			children = (
-				D247C3A41E12713100BF0BA6 /* Views */,
 				D2A6012C1DF386D0006B833E /* Cells */,
 				D2B6F0031DE214B500F9CE0A /* Printer Login */,
 				D2FF97221DF0DF01005CA7B2 /* Printer List */,
@@ -283,13 +284,6 @@
 				D22401921E6C0FE70082129A /* FilePrintStatsTests.swift */,
 			);
 			name = "Model Mapping";
-			sourceTree = "<group>";
-		};
-		D247C3A41E12713100BF0BA6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		D2510B061DD4894E004C30EA /* Networking */ = {
@@ -434,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				D2FEDE681E6EBC6D00184CEC /* Printer Login */,
+				D2FEDE6E1E6ED19500184CEC /* Printer List */,
 			);
 			name = "View Related";
 			path = "VIew Related";
@@ -453,6 +448,14 @@
 				D2FEDE6C1E6EC3F900184CEC /* Version.json */,
 			);
 			path = "Stubbed Responses";
+			sourceTree = "<group>";
+		};
+		D2FEDE6E1E6ED19500184CEC /* Printer List */ = {
+			isa = PBXGroup;
+			children = (
+				D2FEDE6F1E6ED1C900184CEC /* PrinterListCellViewModelTests.swift */,
+			);
+			path = "Printer List";
 			sourceTree = "<group>";
 		};
 		D2FF97221DF0DF01005CA7B2 /* Printer List */ = {
@@ -707,6 +710,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2ACD74C1E6CCCC200F2603A /* TokenPluginTests.swift in Sources */,
+				D2FEDE701E6ED1C900184CEC /* PrinterListCellViewModelTests.swift in Sources */,
 				D22401911E6B2EA40082129A /* GCodeAnalysisTests.swift in Sources */,
 				D224018F1E6B29150082129A /* FileTests.swift in Sources */,
 				D2FEDE6A1E6EBCB200184CEC /* PrinterLoginViewModelTests.swift in Sources */,
