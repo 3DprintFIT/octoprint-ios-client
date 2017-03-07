@@ -11,6 +11,7 @@ import RealmSwift
 import ReactiveSwift
 import Result
 
+// Adds producer property to Realm Results collection
 extension Results {
     /// Data change signal producer
     var producer: SignalProducer<(), NoError> {

@@ -10,12 +10,8 @@ import Foundation
 import Moya
 import ReactiveSwift
 
+// Allows to map JSON to Realm Object
 extension SignalProducerProtocol where Value == Any, Error == MoyaError {
-    /// Maps downloaded JSON to object
-    ///
-    /// - Parameter classType:
-    /// - Returns:
-
     /// Maps downloaded JSON to object
     ///
     /// - Parameters:
