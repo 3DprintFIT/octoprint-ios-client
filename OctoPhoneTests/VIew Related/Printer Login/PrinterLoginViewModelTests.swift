@@ -63,6 +63,14 @@ class PrinterLoginViewModelSpec: QuickSpec {
             expect(loginCanceled).toNot(beNil())
             expect(loginCanceled) == true
         }
+
+        it("requires valid url string as priner address") { 
+            subject.inputs.printerNameChanged("My Printer")
+            subject.inputs.tokenChanged("Secret token")
+            subject.inputs.printerUrlChanged("Invalid url")
+            expect(buttonEnabled) == false
+            subject.inputs.printerUrlChanged("http://localhost")
+        }
     }
 }
 
