@@ -50,7 +50,7 @@ protocol PrinterLoginViewModelOutputs {
     var displayError: Signal<(title: String, message: String), NoError> { get }
 }
 
-protocol PrinterLoginViewModelType: PrinterLoginViewModelInputs, PrinterLoginViewModelOutputs {
+protocol PrinterLoginViewModelType {
     /// View model inputs
     var inputs: PrinterLoginViewModelInputs { get }
 
@@ -58,7 +58,8 @@ protocol PrinterLoginViewModelType: PrinterLoginViewModelInputs, PrinterLoginVie
     var outputs: PrinterLoginViewModelOutputs { get }
 }
 
-final class PrinterLoginViewModel: PrinterLoginViewModelType {
+final class PrinterLoginViewModel: PrinterLoginViewModelType, PrinterLoginViewModelInputs,
+PrinterLoginViewModelOutputs {
 
     var inputs: PrinterLoginViewModelInputs { return self }
 

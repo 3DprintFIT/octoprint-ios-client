@@ -51,7 +51,7 @@ class FilesViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        viewModel.viewWilAppear()
+        viewModel.inputs.viewWilAppear()
     }
 }
 
@@ -72,7 +72,7 @@ extension FilesViewController {
             for: indexPath
         ) as! FileCollectionViewCell
 
-        cell.viewModel = viewModel.fileCellViewModel(for: indexPath.row)
+        cell.viewModel = viewModel.outputs.fileCellViewModel(for: indexPath.row)
 
         return cell
     }

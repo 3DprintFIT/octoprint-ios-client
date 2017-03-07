@@ -44,7 +44,7 @@ protocol PrinterListViewModelOutputs {
 }
 
 /// Defines interface for all printer list view models
-protocol PrinterListViewModelType: PrinterListViewModelInputs, PrinterListViewModelOutputs {
+protocol PrinterListViewModelType {
     /// Printer list view model inputs
     var inputs: PrinterListViewModelInputs { get }
 
@@ -53,7 +53,8 @@ protocol PrinterListViewModelType: PrinterListViewModelInputs, PrinterListViewMo
 }
 
 /// View model type for printer list
-final class PrinterListViewModel: PrinterListViewModelType {
+final class PrinterListViewModel: PrinterListViewModelType, PrinterListViewModelInputs,
+PrinterListViewModelOutputs {
 
     var inputs: PrinterListViewModelInputs { return self }
 

@@ -36,7 +36,7 @@ protocol FilesViewModelOutputs {
 }
 
 /// Common interface for files view models
-protocol FilesViewModelType: FilesViewModelInputs, FilesViewModelOutputs {
+protocol FilesViewModelType {
     /// Available inputs
     var inputs: FilesViewModelInputs { get }
 
@@ -44,7 +44,7 @@ protocol FilesViewModelType: FilesViewModelInputs, FilesViewModelOutputs {
     var outputs: FilesViewModelOutputs { get }
 }
 
-final class FilesViewModel: FilesViewModelType {
+final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewModelOutputs {
     var inputs: FilesViewModelInputs { return self }
 
     var outputs: FilesViewModelOutputs { return self }
