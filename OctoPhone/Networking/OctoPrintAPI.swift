@@ -31,7 +31,12 @@ extension OctoPrintAPI: TargetPart {
 
     var parameterEncoding: ParameterEncoding { return Moya.JSONEncoding.default }
 
-    var sampleData: Data { return Data() }
+    var sampleData: Data {
+        switch self {
+        case .version: return stubbedResponse("Version")
+        default: return Data()
+        }
+    }
 
     var task: Task { return requestData.task }
 
@@ -45,3 +50,15 @@ extension OctoPrintAPI: TargetPart {
         }
     }
 }
+
+/// Reads data for stubbed data
+///
+/// - Parameter fileName: Name of resource with stabbed data
+/// - Returns: Data representation of stored resource
+//swiftlint:disable force_try
+fileprivate func stubbedResponse(_ fileName: String) -> Data {
+    let path = Bundle().path(forResource: fileName, ofType: "json")
+
+    return try! Data(contentsOf: URL(fileURLWithPath: path!))
+}
+//swiftlint:enable force_try

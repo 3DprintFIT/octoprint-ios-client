@@ -64,6 +64,8 @@
 		D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF392A1E66F08700A17057 /* Coordinator.swift */; };
 		D2FE62501DF4BE8000A1E402 /* BrowseBonjourOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FE624F1DF4BE8000A1E402 /* BrowseBonjourOperation.swift */; };
 		D2FE62521DF4BEA300A1E402 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */; };
+		D2FEDE6A1E6EBCB200184CEC /* PrinterLoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE691E6EBCB200184CEC /* PrinterLoginViewModelTests.swift */; };
+		D2FEDE6D1E6EC3F900184CEC /* Version.json in Resources */ = {isa = PBXBuildFile; fileRef = D2FEDE6C1E6EC3F900184CEC /* Version.json */; };
 		D2FF97241DF0DFC3005CA7B2 /* PrinterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF97231DF0DFC3005CA7B2 /* PrinterListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +142,8 @@
 		D2EF392A1E66F08700A17057 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D2FE624F1DF4BE8000A1E402 /* BrowseBonjourOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseBonjourOperation.swift; sourceTree = "<group>"; };
 		D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
+		D2FEDE691E6EBCB200184CEC /* PrinterLoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewModelTests.swift; sourceTree = "<group>"; };
+		D2FEDE6C1E6EC3F900184CEC /* Version.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Version.json; sourceTree = "<group>"; };
 		D2FF97231DF0DFC3005CA7B2 /* PrinterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -291,6 +295,7 @@
 		D2510B061DD4894E004C30EA /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D2FEDE6B1E6EC3C300184CEC /* Stubbed Responses */,
 				D224017D1E6B0DE40082129A /* Model Mapping */,
 				D27C970F1E63BA1800641A1A /* DynamicProvider.swift */,
 				D27C97111E63BAE000641A1A /* OctoPrintAPI.swift */,
@@ -410,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				D22401841E6B141B0082129A /* Networking */,
+				D2FEDE671E6EBC5900184CEC /* View Related */,
 				D2CCF75A1DBF46DC00EF9752 /* Info.plist */,
 			);
 			path = OctoPhoneTests;
@@ -422,6 +428,31 @@
 				D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		D2FEDE671E6EBC5900184CEC /* View Related */ = {
+			isa = PBXGroup;
+			children = (
+				D2FEDE681E6EBC6D00184CEC /* Printer Login */,
+			);
+			name = "View Related";
+			path = "VIew Related";
+			sourceTree = "<group>";
+		};
+		D2FEDE681E6EBC6D00184CEC /* Printer Login */ = {
+			isa = PBXGroup;
+			children = (
+				D2FEDE691E6EBCB200184CEC /* PrinterLoginViewModelTests.swift */,
+			);
+			path = "Printer Login";
+			sourceTree = "<group>";
+		};
+		D2FEDE6B1E6EC3C300184CEC /* Stubbed Responses */ = {
+			isa = PBXGroup;
+			children = (
+				D2FEDE6C1E6EC3F900184CEC /* Version.json */,
+			);
+			path = "Stubbed Responses";
 			sourceTree = "<group>";
 		};
 		D2FF97221DF0DF01005CA7B2 /* Printer List */ = {
@@ -527,6 +558,7 @@
 			files = (
 				D2CCF74E1DBF46DB00EF9752 /* LaunchScreen.storyboard in Resources */,
 				D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */,
+				D2FEDE6D1E6EC3F900184CEC /* Version.json in Resources */,
 				D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -677,6 +709,7 @@
 				D2ACD74C1E6CCCC200F2603A /* TokenPluginTests.swift in Sources */,
 				D22401911E6B2EA40082129A /* GCodeAnalysisTests.swift in Sources */,
 				D224018F1E6B29150082129A /* FileTests.swift in Sources */,
+				D2FEDE6A1E6EBCB200184CEC /* PrinterLoginViewModelTests.swift in Sources */,
 				D22401931E6C0FE70082129A /* FilePrintStatsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
