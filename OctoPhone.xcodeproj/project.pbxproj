@@ -45,7 +45,6 @@
 		D27C97101E63BA1800641A1A /* DynamicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C970F1E63BA1800641A1A /* DynamicProvider.swift */; };
 		D27C97121E63BAE000641A1A /* OctoPrintAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C97111E63BAE000641A1A /* OctoPrintAPI.swift */; };
 		D27C97161E63C25D00641A1A /* TokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C97151E63C25D00641A1A /* TokenPlugin.swift */; };
-		D283C77E1E118788004E0EAC /* FilesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283C77D1E118788004E0EAC /* FilesCollectionViewCell.swift */; };
 		D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28919791E11783500E3BBEB /* Localizable.Generated.swift */; };
 		D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5341E09E6490089C027 /* DetailViewController.swift */; };
 		D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5361E09E65F0089C027 /* FilesViewController.swift */; };
@@ -62,8 +61,6 @@
 		D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD507E1E6A34DB0090D21A /* OverviewCoordinator.swift */; };
 		D2EF39291E66F06800A17057 /* PrinterListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF39281E66F06800A17057 /* PrinterListCoordinator.swift */; };
 		D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF392A1E66F08700A17057 /* Coordinator.swift */; };
-		D2FE62501DF4BE8000A1E402 /* BrowseBonjourOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FE624F1DF4BE8000A1E402 /* BrowseBonjourOperation.swift */; };
-		D2FE62521DF4BEA300A1E402 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */; };
 		D2FEDE6A1E6EBCB200184CEC /* PrinterLoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE691E6EBCB200184CEC /* PrinterLoginViewModelTests.swift */; };
 		D2FEDE6D1E6EC3F900184CEC /* Version.json in Resources */ = {isa = PBXBuildFile; fileRef = D2FEDE6C1E6EC3F900184CEC /* Version.json */; };
 		D2FEDE701E6ED1C900184CEC /* PrinterListCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE6F1E6ED1C900184CEC /* PrinterListCellViewModelTests.swift */; };
@@ -120,7 +117,6 @@
 		D27C970F1E63BA1800641A1A /* DynamicProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProvider.swift; sourceTree = "<group>"; };
 		D27C97111E63BAE000641A1A /* OctoPrintAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoPrintAPI.swift; sourceTree = "<group>"; };
 		D27C97151E63C25D00641A1A /* TokenPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenPlugin.swift; sourceTree = "<group>"; };
-		D283C77D1E118788004E0EAC /* FilesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesCollectionViewCell.swift; sourceTree = "<group>"; };
 		D28919791E11783500E3BBEB /* Localizable.Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.Generated.swift; sourceTree = "<group>"; };
 		D28EC5341E09E6490089C027 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D28EC5361E09E65F0089C027 /* FilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
@@ -142,8 +138,6 @@
 		D2DD507E1E6A34DB0090D21A /* OverviewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCoordinator.swift; sourceTree = "<group>"; };
 		D2EF39281E66F06800A17057 /* PrinterListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCoordinator.swift; sourceTree = "<group>"; };
 		D2EF392A1E66F08700A17057 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		D2FE624F1DF4BE8000A1E402 /* BrowseBonjourOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseBonjourOperation.swift; sourceTree = "<group>"; };
-		D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
 		D2FEDE691E6EBCB200184CEC /* PrinterLoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewModelTests.swift; sourceTree = "<group>"; };
 		D2FEDE6C1E6EC3F900184CEC /* Version.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Version.json; sourceTree = "<group>"; };
 		D2FEDE6F1E6ED1C900184CEC /* PrinterListCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCellViewModelTests.swift; sourceTree = "<group>"; };
@@ -195,7 +189,6 @@
 		D203DE721DDFCA04000DEAA0 /* View Related */ = {
 			isa = PBXGroup;
 			children = (
-				D2A6012C1DF386D0006B833E /* Cells */,
 				D2B6F0031DE214B500F9CE0A /* Printer Login */,
 				D2FF97221DF0DF01005CA7B2 /* Printer List */,
 				D28EC5311E09E5AD0089C027 /* Detail */,
@@ -209,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				D22401741E6AEF900082129A /* Reactive Extensions */,
-				D2FE624E1DF4BE3500A1E402 /* Operations */,
 				D203DE761DDFCB62000DEAA0 /* Data */,
 			);
 			path = Utils;
@@ -353,14 +345,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		D2A6012C1DF386D0006B833E /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				D283C77D1E118788004E0EAC /* FilesCollectionViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		D2B6F0031DE214B500F9CE0A /* Printer Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,15 +399,6 @@
 				D2CCF75A1DBF46DC00EF9752 /* Info.plist */,
 			);
 			path = OctoPhoneTests;
-			sourceTree = "<group>";
-		};
-		D2FE624E1DF4BE3500A1E402 /* Operations */ = {
-			isa = PBXGroup;
-			children = (
-				D2FE624F1DF4BE8000A1E402 /* BrowseBonjourOperation.swift */,
-				D2FE62511DF4BEA300A1E402 /* BaseOperation.swift */,
-			);
-			path = Operations;
 			sourceTree = "<group>";
 		};
 		D2FEDE671E6EBC5900184CEC /* View Related */ = {
@@ -667,7 +642,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D27C97161E63C25D00641A1A /* TokenPlugin.swift in Sources */,
-				D2FE62501DF4BE8000A1E402 /* BrowseBonjourOperation.swift in Sources */,
 				D2072FD41DEDCD6D00E1BBD3 /* Printer.swift in Sources */,
 				D2FF97241DF0DFC3005CA7B2 /* PrinterListViewController.swift in Sources */,
 				D2A601301DF3870F006B833E /* PrinterListCollectionViewCell.swift in Sources */,
@@ -683,7 +657,6 @@
 				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
 				D27C97101E63BA1800641A1A /* DynamicProvider.swift in Sources */,
 				D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */,
-				D2FE62521DF4BEA300A1E402 /* BaseOperation.swift in Sources */,
 				D224016F1E6AD7780082129A /* GCodeAnalysis.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
 				D22401761E6AF0150082129A /* Realm+ReactiveSwift.swift in Sources */,
@@ -692,7 +665,6 @@
 				D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */,
 				D22401711E6AD7D30082129A /* FilePrintStats.swift in Sources */,
 				D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */,
-				D283C77E1E118788004E0EAC /* FilesCollectionViewCell.swift in Sources */,
 				D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */,
 				D27C97121E63BAE000641A1A /* OctoPrintAPI.swift in Sources */,
 				D22401781E6AFDF70082129A /* JSONAble.swift in Sources */,
