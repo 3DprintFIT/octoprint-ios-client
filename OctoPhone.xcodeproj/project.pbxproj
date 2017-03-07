@@ -65,6 +65,8 @@
 		D2FEDE6D1E6EC3F900184CEC /* Version.json in Resources */ = {isa = PBXBuildFile; fileRef = D2FEDE6C1E6EC3F900184CEC /* Version.json */; };
 		D2FEDE701E6ED1C900184CEC /* PrinterListCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE6F1E6ED1C900184CEC /* PrinterListCellViewModelTests.swift */; };
 		D2FEDE721E6ED36200184CEC /* PrinterListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE711E6ED36200184CEC /* PrinterListViewModelTests.swift */; };
+		D2FEDE761E6EE8B500184CEC /* Realm+ReactiveSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE751E6EE8B500184CEC /* Realm+ReactiveSwiftTests.swift */; };
+		D2FEDE781E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE771E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift */; };
 		D2FF97241DF0DFC3005CA7B2 /* PrinterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF97231DF0DFC3005CA7B2 /* PrinterListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +144,8 @@
 		D2FEDE6C1E6EC3F900184CEC /* Version.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Version.json; sourceTree = "<group>"; };
 		D2FEDE6F1E6ED1C900184CEC /* PrinterListCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCellViewModelTests.swift; sourceTree = "<group>"; };
 		D2FEDE711E6ED36200184CEC /* PrinterListViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewModelTests.swift; sourceTree = "<group>"; };
+		D2FEDE751E6EE8B500184CEC /* Realm+ReactiveSwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+ReactiveSwiftTests.swift"; sourceTree = "<group>"; };
+		D2FEDE771E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignalProducer+JSONAbleTests.swift"; sourceTree = "<group>"; };
 		D2FF97231DF0DFC3005CA7B2 /* PrinterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -394,6 +398,7 @@
 		D2CCF7571DBF46DC00EF9752 /* OctoPhoneTests */ = {
 			isa = PBXGroup;
 			children = (
+				D2FEDE731E6EE81B00184CEC /* Utils */,
 				D22401841E6B141B0082129A /* Networking */,
 				D2FEDE671E6EBC5900184CEC /* View Related */,
 				D2CCF75A1DBF46DC00EF9752 /* Info.plist */,
@@ -434,6 +439,23 @@
 				D2FEDE711E6ED36200184CEC /* PrinterListViewModelTests.swift */,
 			);
 			path = "Printer List";
+			sourceTree = "<group>";
+		};
+		D2FEDE731E6EE81B00184CEC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D2FEDE741E6EE82200184CEC /* Reactive Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D2FEDE741E6EE82200184CEC /* Reactive Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D2FEDE751E6EE8B500184CEC /* Realm+ReactiveSwiftTests.swift */,
+				D2FEDE771E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift */,
+			);
+			path = "Reactive Extensions";
 			sourceTree = "<group>";
 		};
 		D2FF97221DF0DF01005CA7B2 /* Printer List */ = {
@@ -684,7 +706,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2FEDE761E6EE8B500184CEC /* Realm+ReactiveSwiftTests.swift in Sources */,
 				D2FEDE721E6ED36200184CEC /* PrinterListViewModelTests.swift in Sources */,
+				D2FEDE781E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift in Sources */,
 				D2ACD74C1E6CCCC200F2603A /* TokenPluginTests.swift in Sources */,
 				D2FEDE701E6ED1C900184CEC /* PrinterListCellViewModelTests.swift in Sources */,
 				D22401911E6B2EA40082129A /* GCodeAnalysisTests.swift in Sources */,
