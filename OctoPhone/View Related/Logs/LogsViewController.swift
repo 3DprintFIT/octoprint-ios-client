@@ -15,11 +15,12 @@ class LogsViewController: UICollectionViewController {
     private var viewModel: LogsViewModelType!
 
     convenience init(viewModel: LogsViewModelType) {
-        self.init()
+        self.init(collectionViewLayout: UICollectionViewFlowLayout())
 
         self.viewModel = viewModel
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()    }
+        super.viewDidLoad()
+    }
 }

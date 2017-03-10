@@ -23,8 +23,12 @@ enum L10n {
   case login
   /// Login Error
   case loginError
+  /// Logs
+  case logs
   /// Ok
   case ok
+  /// Print profiles
+  case printProfiles
   /// Printer
   case printer
   /// Access token
@@ -37,8 +41,14 @@ enum L10n {
   case printerName
   /// Printer URL
   case printerURL
+  /// SD card management
+  case sdCardManagement
   /// Settings
   case settings
+  /// Slicing
+  case slicing
+  /// Terminal
+  case terminal
 }
 // swiftlint:enable type_body_length
 
@@ -63,8 +73,12 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Login")
       case .loginError:
         return L10n.tr(key: "Login Error")
+      case .logs:
+        return L10n.tr(key: "Logs")
       case .ok:
         return L10n.tr(key: "Ok")
+      case .printProfiles:
+        return L10n.tr(key: "Print profiles")
       case .printer:
         return L10n.tr(key: "Printer")
       case .printerAccessToken:
@@ -77,8 +91,14 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Printer Name")
       case .printerURL:
         return L10n.tr(key: "Printer URL")
+      case .sdCardManagement:
+        return L10n.tr(key: "SD card management")
       case .settings:
         return L10n.tr(key: "Settings")
+      case .slicing:
+        return L10n.tr(key: "Slicing")
+      case .terminal:
+        return L10n.tr(key: "Terminal")
     }
   }
 

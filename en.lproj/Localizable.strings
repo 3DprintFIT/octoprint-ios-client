@@ -46,3 +46,33 @@
 // * Settings
 // *
 "Settings" = "Settings";
+
+
+// *
+// * Terminal
+// *
+"Terminal" = "Terminal";
+
+
+// *
+// * Logs
+// *
+"Logs" = "Logs";
+
+
+// *
+// * Slicing
+// *
+"Slicing" = "Slicing";
+
+
+// *
+// * Print profiles
+// *
+"Print profiles" = "Print profiles";
+
+
+// *
+// * SD card management
+// *
+"SD card management" = "SD card management";

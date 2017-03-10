@@ -10,12 +10,48 @@ import Foundation
 
 /// Settings page inputs
 protocol SettingsViewModelInputs {
+    /// Call when terminal cell is selected
+    func terminalCellSelected()
 
+    /// Call when logs cell is selected
+    func logsCellSelected()
+
+    /// Call when slicing cell is selected
+    func slicingCellSelected()
+
+    /// Call when print profiles cell is selected
+    func printProfilesCellSelected()
+
+    /// Call when sd car management cell is selected
+    func sdCardManagementCellSelected()
 }
 
 /// Outputs for view controller
 protocol SettingsViewModelOutputs {
+    /// Configured view model for terminal cell
+    ///
+    /// - Returns: Settings cell view model
+    func terminalCellViewModel() -> SettingsCellViewModelType
 
+    /// Configured view model for logs cell
+    ///
+    /// - Returns: Settings cell view model
+    func logsCellViewModel() -> SettingsCellViewModelType
+
+    /// Configured view model for slicing cell
+    ///
+    /// - Returns: Settings cell view model
+    func slicingCellViewModel() -> SettingsCellViewModelType
+
+    /// Configured view model for print profiles cell
+    ///
+    /// - Returns: Settings cell view model
+    func printProfilesCellViewModel() -> SettingsCellViewModelType
+
+    /// Configured view model for cd card management cell
+    ///
+    /// - Returns: Settings cell view model
+    func sdCardManagementCellViewModel() -> SettingsCellViewModelType
 }
 
 /// Common interface for settings view model
@@ -34,4 +70,56 @@ SettingsViewModelOutputs {
     var inputs: SettingsViewModelInputs { return self }
 
     var outputs: SettingsViewModelOutputs { return self }
+
+    // MARK: Properties
+
+    /// View controller navigation delegate
+    private weak var delegate: SettingsViewControllerDelegate?
+
+    init(delegate: SettingsViewControllerDelegate) {
+        self.delegate = delegate
+    }
+
+    // MARK: Inputs
+
+    func terminalCellSelected() {
+        delegate?.terminalCellSelected()
+    }
+
+    func logsCellSelected() {
+        delegate?.logsCellSelected()
+    }
+
+    func slicingCellSelected() {
+        delegate?.slicingCellSelected()
+    }
+
+    func printProfilesCellSelected() {
+        delegate?.printProfilesCellSelected()
+    }
+
+    func sdCardManagementCellSelected() {
+        delegate?.sdCardManagementCellSelected()
+    }
+
+    // MARK: Outputs
+    func terminalCellViewModel() -> SettingsCellViewModelType {
+        return SettingsCellViewModel(name: tr(.terminal))
+    }
+
+    func logsCellViewModel() -> SettingsCellViewModelType {
+        return SettingsCellViewModel(name: tr(.logs))
+    }
+
+    func slicingCellViewModel() -> SettingsCellViewModelType {
+        return SettingsCellViewModel(name: tr(.slicing))
+    }
+
+    func printProfilesCellViewModel() -> SettingsCellViewModelType {
+        return SettingsCellViewModel(name: tr(.printProfiles))
+    }
+
+    func sdCardManagementCellViewModel() -> SettingsCellViewModelType {
+        return SettingsCellViewModel(name: tr(.sdCardManagement))
+    }
 }

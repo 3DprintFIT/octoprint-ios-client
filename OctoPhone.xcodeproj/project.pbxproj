@@ -40,6 +40,15 @@
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
 		D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0F1DD491A4004C30EA /* RealmSwift.framework */; };
+		D26B500B1E734A5500795462 /* TerminalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B500A1E734A5500795462 /* TerminalCoordinator.swift */; };
+		D26B500D1E734C6000795462 /* LogsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B500C1E734C6000795462 /* LogsCoordinator.swift */; };
+		D26B500F1E734CB600795462 /* SlicingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B500E1E734CB600795462 /* SlicingCoordinator.swift */; };
+		D26B50131E734DAA00795462 /* SlicingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B50121E734DAA00795462 /* SlicingViewModel.swift */; };
+		D26B50151E734EFE00795462 /* PrintProfilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B50141E734EFE00795462 /* PrintProfilesViewModel.swift */; };
+		D26B50171E734FEC00795462 /* SlicingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B50161E734FEC00795462 /* SlicingViewController.swift */; };
+		D26B50191E73510000795462 /* PrintProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B50181E73510000795462 /* PrintProfilesViewController.swift */; };
+		D26B501B1E7353C700795462 /* PrintProfilesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B501A1E7353C700795462 /* PrintProfilesCoordinator.swift */; };
+		D26B501D1E73542400795462 /* SDCardManagementCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B501C1E73542400795462 /* SDCardManagementCoordinator.swift */; };
 		D27C970C1E63986900641A1A /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C970B1E63986900641A1A /* ReactiveMoya.framework */; };
 		D27C970E1E63A00B00641A1A /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C970D1E63A00B00641A1A /* Moya.framework */; };
 		D27C97101E63BA1800641A1A /* DynamicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C970F1E63BA1800641A1A /* DynamicProvider.swift */; };
@@ -73,6 +82,8 @@
 		D2D990D31E71EDF60094DA64 /* LogDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990D21E71EDF60094DA64 /* LogDetailViewModel.swift */; };
 		D2D990D51E71F3D40094DA64 /* TerminalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990D41E71F3D40094DA64 /* TerminalViewModel.swift */; };
 		D2D990D71E71F5020094DA64 /* SDCardManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990D61E71F5020094DA64 /* SDCardManagementViewModel.swift */; };
+		D2D990D91E7207130094DA64 /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990D81E7207130094DA64 /* SettingsCollectionViewCell.swift */; };
+		D2D990DB1E72073D0094DA64 /* SettingsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990DA1E72073D0094DA64 /* SettingsCellViewModel.swift */; };
 		D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD507E1E6A34DB0090D21A /* OverviewCoordinator.swift */; };
 		D2EF39291E66F06800A17057 /* PrinterListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF39281E66F06800A17057 /* PrinterListCoordinator.swift */; };
 		D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF392A1E66F08700A17057 /* Coordinator.swift */; };
@@ -129,6 +140,15 @@
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D2510B0F1DD491A4004C30EA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		D26B500A1E734A5500795462 /* TerminalCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalCoordinator.swift; sourceTree = "<group>"; };
+		D26B500C1E734C6000795462 /* LogsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsCoordinator.swift; sourceTree = "<group>"; };
+		D26B500E1E734CB600795462 /* SlicingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingCoordinator.swift; sourceTree = "<group>"; };
+		D26B50121E734DAA00795462 /* SlicingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingViewModel.swift; sourceTree = "<group>"; };
+		D26B50141E734EFE00795462 /* PrintProfilesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfilesViewModel.swift; sourceTree = "<group>"; };
+		D26B50161E734FEC00795462 /* SlicingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingViewController.swift; sourceTree = "<group>"; };
+		D26B50181E73510000795462 /* PrintProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfilesViewController.swift; sourceTree = "<group>"; };
+		D26B501A1E7353C700795462 /* PrintProfilesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfilesCoordinator.swift; sourceTree = "<group>"; };
+		D26B501C1E73542400795462 /* SDCardManagementCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementCoordinator.swift; sourceTree = "<group>"; };
 		D27C970B1E63986900641A1A /* ReactiveMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMoya.framework; path = Carthage/Build/iOS/ReactiveMoya.framework; sourceTree = "<group>"; };
 		D27C970D1E63A00B00641A1A /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = Carthage/Build/iOS/Moya.framework; sourceTree = "<group>"; };
 		D27C970F1E63BA1800641A1A /* DynamicProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProvider.swift; sourceTree = "<group>"; };
@@ -167,6 +187,8 @@
 		D2D990D21E71EDF60094DA64 /* LogDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewModel.swift; sourceTree = "<group>"; };
 		D2D990D41E71F3D40094DA64 /* TerminalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalViewModel.swift; sourceTree = "<group>"; };
 		D2D990D61E71F5020094DA64 /* SDCardManagementViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementViewModel.swift; sourceTree = "<group>"; };
+		D2D990D81E7207130094DA64 /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
+		D2D990DA1E72073D0094DA64 /* SettingsCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCellViewModel.swift; sourceTree = "<group>"; };
 		D2DD507E1E6A34DB0090D21A /* OverviewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCoordinator.swift; sourceTree = "<group>"; };
 		D2EF39281E66F06800A17057 /* PrinterListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCoordinator.swift; sourceTree = "<group>"; };
 		D2EF392A1E66F08700A17057 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -231,9 +253,11 @@
 				D28EC5321E09E5C20089C027 /* Files */,
 				D2FEDE7B1E6F4AE400184CEC /* File Detail */,
 				D28EC5331E09E5ED0089C027 /* Settings */,
+				D2FEDE7F1E6F4B0E00184CEC /* Terminal */,
 				D2FEDE7C1E6F4AEE00184CEC /* Logs */,
 				D2FEDE7D1E6F4AF600184CEC /* Log Detail */,
-				D2FEDE7F1E6F4B0E00184CEC /* Terminal */,
+				D26B50111E734D4000795462 /* Slicing */,
+				D26B50101E734D2E00795462 /* Print Profiles */,
 				D2FEDE7E1E6F4B0600184CEC /* SD Card Management */,
 			);
 			path = "View Related";
@@ -278,6 +302,11 @@
 				D22401601E6A39480082129A /* DetailCoordinator.swift */,
 				D22401621E6A3B3F0082129A /* FilesCoordinator.swift */,
 				D22401641E6A3B670082129A /* SettingsCoordinator.swift */,
+				D26B500A1E734A5500795462 /* TerminalCoordinator.swift */,
+				D26B500C1E734C6000795462 /* LogsCoordinator.swift */,
+				D26B500E1E734CB600795462 /* SlicingCoordinator.swift */,
+				D26B501A1E7353C700795462 /* PrintProfilesCoordinator.swift */,
+				D26B501C1E73542400795462 /* SDCardManagementCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -351,6 +380,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D26B50101E734D2E00795462 /* Print Profiles */ = {
+			isa = PBXGroup;
+			children = (
+				D26B50141E734EFE00795462 /* PrintProfilesViewModel.swift */,
+				D26B50181E73510000795462 /* PrintProfilesViewController.swift */,
+			);
+			path = "Print Profiles";
+			sourceTree = "<group>";
+		};
+		D26B50111E734D4000795462 /* Slicing */ = {
+			isa = PBXGroup;
+			children = (
+				D26B50121E734DAA00795462 /* SlicingViewModel.swift */,
+				D26B50161E734FEC00795462 /* SlicingViewController.swift */,
+			);
+			path = Slicing;
+			sourceTree = "<group>";
+		};
 		D28919781E1177FC00E3BBEB /* Generated */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,7 +429,9 @@
 			isa = PBXGroup;
 			children = (
 				D2D990CE1E71E95B0094DA64 /* SettingsViewModel.swift */,
+				D2D990DA1E72073D0094DA64 /* SettingsCellViewModel.swift */,
 				D28EC5381E09E6740089C027 /* SettingsViewController.swift */,
+				D2D990D81E7207130094DA64 /* SettingsCollectionViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -770,18 +819,24 @@
 				D2D990B91E6F66C70094DA64 /* CurrentPrintViewModel.swift in Sources */,
 				D2A601301DF3870F006B833E /* PrinterListCollectionViewCell.swift in Sources */,
 				D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */,
+				D26B501D1E73542400795462 /* SDCardManagementCoordinator.swift in Sources */,
 				D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */,
 				D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */,
 				D2ACD7441E6C43CA00F2603A /* FileCollectionViewCell.swift in Sources */,
 				D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */,
 				D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */,
 				D2D990C51E6F6ABD0094DA64 /* LogsViewController.swift in Sources */,
+				D26B50171E734FEC00795462 /* SlicingViewController.swift in Sources */,
 				D2ACD7481E6C451100F2603A /* FileCellViewModel.swift in Sources */,
 				D2D990CD1E71E7E90094DA64 /* FileDetailViewModel.swift in Sources */,
 				D2D990BB1E6F67FA0094DA64 /* CurrentPrintViewController.swift in Sources */,
+				D26B50191E73510000795462 /* PrintProfilesViewController.swift in Sources */,
 				D2D990D11E71EB820094DA64 /* LogsViewModel.swift in Sources */,
+				D26B501B1E7353C700795462 /* PrintProfilesCoordinator.swift in Sources */,
 				D22401831E6B12C10082129A /* FilePrinterStats+JSONAble.swift in Sources */,
 				D224016B1E6AD5E90082129A /* File.swift in Sources */,
+				D2D990D91E7207130094DA64 /* SettingsCollectionViewCell.swift in Sources */,
+				D26B500D1E734C6000795462 /* LogsCoordinator.swift in Sources */,
 				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
 				D27C97101E63BA1800641A1A /* DynamicProvider.swift in Sources */,
 				D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */,
@@ -793,12 +848,14 @@
 				D2D990D71E71F5020094DA64 /* SDCardManagementViewModel.swift in Sources */,
 				D22401731E6AE1320082129A /* FilesViewModel.swift in Sources */,
 				D2D990BD1E6F688B0094DA64 /* PrinterControlViewModel.swift in Sources */,
+				D26B500B1E734A5500795462 /* TerminalCoordinator.swift in Sources */,
 				D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */,
 				D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */,
 				D2D990CB1E71E65D0094DA64 /* SDCardManagementViewController.swift in Sources */,
 				D2D990C31E6F6AA10094DA64 /* FIleDetailViewController.swift in Sources */,
 				D22401711E6AD7D30082129A /* FilePrintStats.swift in Sources */,
 				D2D990D31E71EDF60094DA64 /* LogDetailViewModel.swift in Sources */,
+				D2D990DB1E72073D0094DA64 /* SettingsCellViewModel.swift in Sources */,
 				D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */,
 				D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */,
 				D27C97121E63BAE000641A1A /* OctoPrintAPI.swift in Sources */,
@@ -808,6 +865,9 @@
 				D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */,
 				D2D990C71E6F6AE10094DA64 /* LogDetailViewController.swift in Sources */,
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
+				D26B50131E734DAA00795462 /* SlicingViewModel.swift in Sources */,
+				D26B500F1E734CB600795462 /* SlicingCoordinator.swift in Sources */,
+				D26B50151E734EFE00795462 /* PrintProfilesViewModel.swift in Sources */,
 				D22401651E6A3B670082129A /* SettingsCoordinator.swift in Sources */,
 				D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */,
 				D2EF39291E66F06800A17057 /* PrinterListCoordinator.swift in Sources */,

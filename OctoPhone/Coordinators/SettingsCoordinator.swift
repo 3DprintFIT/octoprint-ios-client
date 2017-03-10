@@ -11,9 +11,47 @@ import Foundation
 /// Printer settings flow controller
 final class SettingsCoordinator: TabCoordinator {
     override func start() {
-        let controller = SettingsViewController()
+        let viewModel = SettingsViewModel(delegate: self)
+        let controller = SettingsViewController(viewModel: viewModel)
 
         controller.title = tr(.settings)
         addTab(controller: controller)
+    }
+}
+
+extension SettingsCoordinator: SettingsViewControllerDelegate {
+    func terminalCellSelected() {
+        let coordinator = TerminalCoordinator(navigationController: navigationController)
+
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+
+    func logsCellSelected() {
+        let coordinator = LogsCoordinator(navigationController: navigationController)
+
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+
+    func slicingCellSelected() {
+        let coordinator = SlicingCoordinator(navigationController: navigationController)
+
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+
+    func printProfilesCellSelected() {
+        let coordinator = PrintProfilesCoordinator(navigationController: navigationController)
+
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+
+    func sdCardManagementCellSelected() {
+        let coordinator = SDCardManagementCoordinator(navigationController: navigationController)
+
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 }
