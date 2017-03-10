@@ -21,7 +21,7 @@ protocol PrinterListViewControllerDelegate: class {
 }
 
 /// Represents list of users printers
-class PrinterListViewController: UICollectionViewController {
+class PrinterListViewController: BaseCollectionViewController {
     /// Controller view model
     fileprivate var viewModel: PrinterListViewModelType!
 
@@ -46,9 +46,6 @@ class PrinterListViewController: UICollectionViewController {
         )
 
         if let collectionView = collectionView {
-            collectionView.backgroundColor = .white
-            collectionView.bounces = true
-            collectionView.alwaysBounceVertical = true
             collectionView.register(
                 PrinterListCollectionViewCell.self,
                 forCellWithReuseIdentifier: PrinterListCollectionViewCell.identifier

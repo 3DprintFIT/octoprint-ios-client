@@ -49,6 +49,8 @@
 		D26B50191E73510000795462 /* PrintProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B50181E73510000795462 /* PrintProfilesViewController.swift */; };
 		D26B501B1E7353C700795462 /* PrintProfilesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B501A1E7353C700795462 /* PrintProfilesCoordinator.swift */; };
 		D26B501D1E73542400795462 /* SDCardManagementCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B501C1E73542400795462 /* SDCardManagementCoordinator.swift */; };
+		D26B501F1E7364BF00795462 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B501E1E7364BF00795462 /* BaseCollectionViewController.swift */; };
+		D26B50211E73668200795462 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B50201E73668200795462 /* BaseViewController.swift */; };
 		D27C970C1E63986900641A1A /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C970B1E63986900641A1A /* ReactiveMoya.framework */; };
 		D27C970E1E63A00B00641A1A /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C970D1E63A00B00641A1A /* Moya.framework */; };
 		D27C97101E63BA1800641A1A /* DynamicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C970F1E63BA1800641A1A /* DynamicProvider.swift */; };
@@ -149,6 +151,8 @@
 		D26B50181E73510000795462 /* PrintProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfilesViewController.swift; sourceTree = "<group>"; };
 		D26B501A1E7353C700795462 /* PrintProfilesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfilesCoordinator.swift; sourceTree = "<group>"; };
 		D26B501C1E73542400795462 /* SDCardManagementCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementCoordinator.swift; sourceTree = "<group>"; };
+		D26B501E1E7364BF00795462 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		D26B50201E73668200795462 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D27C970B1E63986900641A1A /* ReactiveMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMoya.framework; path = Carthage/Build/iOS/ReactiveMoya.framework; sourceTree = "<group>"; };
 		D27C970D1E63A00B00641A1A /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = Carthage/Build/iOS/Moya.framework; sourceTree = "<group>"; };
 		D27C970F1E63BA1800641A1A /* DynamicProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProvider.swift; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				D26B50111E734D4000795462 /* Slicing */,
 				D26B50101E734D2E00795462 /* Print Profiles */,
 				D2FEDE7E1E6F4B0600184CEC /* SD Card Management */,
+				D26B501E1E7364BF00795462 /* BaseCollectionViewController.swift */,
+				D26B50201E73668200795462 /* BaseViewController.swift */,
 			);
 			path = "View Related";
 			sourceTree = "<group>";
@@ -831,6 +837,7 @@
 				D2D990CD1E71E7E90094DA64 /* FileDetailViewModel.swift in Sources */,
 				D2D990BB1E6F67FA0094DA64 /* CurrentPrintViewController.swift in Sources */,
 				D26B50191E73510000795462 /* PrintProfilesViewController.swift in Sources */,
+				D26B501F1E7364BF00795462 /* BaseCollectionViewController.swift in Sources */,
 				D2D990D11E71EB820094DA64 /* LogsViewModel.swift in Sources */,
 				D26B501B1E7353C700795462 /* PrintProfilesCoordinator.swift in Sources */,
 				D22401831E6B12C10082129A /* FilePrinterStats+JSONAble.swift in Sources */,
@@ -857,6 +864,7 @@
 				D2D990D31E71EDF60094DA64 /* LogDetailViewModel.swift in Sources */,
 				D2D990DB1E72073D0094DA64 /* SettingsCellViewModel.swift in Sources */,
 				D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */,
+				D26B50211E73668200795462 /* BaseViewController.swift in Sources */,
 				D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */,
 				D27C97121E63BAE000641A1A /* OctoPrintAPI.swift in Sources */,
 				D2D990C11E6F6A800094DA64 /* PrinterControlViewController.swift in Sources */,

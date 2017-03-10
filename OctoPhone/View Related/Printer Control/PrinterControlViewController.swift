@@ -9,7 +9,7 @@
 import UIKit
 
 /// Manual printer control view controller
-class PrinterControlViewController: UIViewController {
+class PrinterControlViewController: BaseViewController {
     /// Control logic
     private var viewModel: PrinterControlViewModelType!
 

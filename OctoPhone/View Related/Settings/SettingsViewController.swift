@@ -27,7 +27,7 @@ protocol SettingsViewControllerDelegate: class {
 }
 
 /// Printer settings and configurations
-class SettingsViewController: UICollectionViewController {
+class SettingsViewController: BaseCollectionViewController {
 
     /// Settings logic
     fileprivate var viewModel: SettingsViewModelType!
@@ -41,9 +41,6 @@ class SettingsViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView?.backgroundColor = .white
-        collectionView?.bounces = true
-        collectionView?.alwaysBounceVertical = true
         collectionView?.register(SettingsCollectionViewCell.self,
                                  forCellWithReuseIdentifier: SettingsCollectionViewCell.identifier)
     }

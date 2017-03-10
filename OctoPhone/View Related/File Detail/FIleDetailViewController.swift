@@ -9,7 +9,7 @@
 import UIKit
 
 /// Printer stored file detail controller
-class FIleDetailViewController: UICollectionViewController {
+class FIleDetailViewController: BaseCollectionViewController {
 
     /// Controller logic
     private var viewModel: FileDetailViewModelType!

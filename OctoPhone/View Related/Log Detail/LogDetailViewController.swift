@@ -9,7 +9,7 @@
 import UIKit
 
 /// Log detail screen controller
-class LogDetailViewController: UIViewController {
+class LogDetailViewController: BaseViewController {
 
     /// Log detail logic
     private var viewModel: LogDetailViewModelType!

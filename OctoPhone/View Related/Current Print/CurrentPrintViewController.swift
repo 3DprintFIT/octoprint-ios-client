@@ -9,7 +9,7 @@
 import UIKit
 
 /// Detail of current print
-class CurrentPrintViewController: UICollectionViewController {
+class CurrentPrintViewController: BaseCollectionViewController {
 
     /// Controller logic
     private var viewModel: CurrentPrintViewModelType!

@@ -21,7 +21,7 @@ protocol PrinterLoginViewControllerDelegate: class {
 }
 
 /// Gives user ability to add new printer
-final class PrinterLoginViewController: UIViewController {
+final class PrinterLoginViewController: BaseViewController {
     /// User-friendly name of printer
     private let printerNameField = UITextField()
 
@@ -134,7 +134,6 @@ final class PrinterLoginViewController: UIViewController {
         tokenField.placeholder = tr(.printerAccessToken)
         loginButton.setTitle(tr(.login), for: .normal)
 
-        view.backgroundColor = .white
         edgesForExtendedLayout = []
 
         printerNameField.reactive.continuousTextValues.observeValues { [weak self] name in

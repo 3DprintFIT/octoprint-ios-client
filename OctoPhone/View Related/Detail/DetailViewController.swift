@@ -9,7 +9,7 @@
 import UIKit
 
 /// Shows basic informations about printer
-class DetailViewController: UIViewController {
+class DetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

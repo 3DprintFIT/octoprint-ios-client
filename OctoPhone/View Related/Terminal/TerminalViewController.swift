@@ -9,13 +9,13 @@
 import UIKit
 
 /// CLI terminal controller
-class TerminalViewController: UIViewController {
+class TerminalViewController: BaseCollectionViewController {
 
     /// Terminal logic
     private var viewModel: TerminalViewModelType!
 
     convenience init(viewModel: TerminalViewModelType) {
-        self.init()
+        self.init(collectionViewLayout: UICollectionViewFlowLayout())
 
         self.viewModel = viewModel
     }

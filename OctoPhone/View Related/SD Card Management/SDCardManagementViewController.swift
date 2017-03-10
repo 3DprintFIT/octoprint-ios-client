@@ -9,7 +9,7 @@
 import UIKit
 
 /// Controller for SD Card operations and management
-class SDCardManagementViewController: UIViewController {
+class SDCardManagementViewController: BaseViewController {
 
     /// Card management logic
     private var viewModel: SDCardManagementViewModelType!

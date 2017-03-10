@@ -9,7 +9,7 @@
 import UIKit
 
 /// Slicing profiles screen controller
-class SlicingViewController: UICollectionViewController {
+class SlicingViewController: BaseCollectionViewController {
 
     /// Slicing controller logic
     private var viewModel: SlicingViewModelType!

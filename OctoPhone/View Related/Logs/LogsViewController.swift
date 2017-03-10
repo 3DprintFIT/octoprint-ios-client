@@ -9,7 +9,7 @@
 import UIKit
 
 /// Logs list controller
-class LogsViewController: UICollectionViewController {
+class LogsViewController: BaseCollectionViewController {
 
     /// Logs controller logic
     private var viewModel: LogsViewModelType!

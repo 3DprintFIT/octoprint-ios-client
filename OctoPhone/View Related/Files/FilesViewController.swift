@@ -11,7 +11,7 @@ import ReactiveSwift
 import ReactiveCocoa
 
 /// Lists stored files on printer
-class FilesViewController: UICollectionViewController {
+class FilesViewController: BaseCollectionViewController {
 
     /// Controller view model
     fileprivate var viewModel: FilesViewModelType!
@@ -27,9 +27,6 @@ class FilesViewController: UICollectionViewController {
 
         if let collectionView = collectionView {
             collectionView.reactive.reloadData <~ viewModel.outputs.filesListChanged
-            collectionView.backgroundColor = .white
-            collectionView.bounces = true
-            collectionView.alwaysBounceVertical = true
         }
 
         viewModel.outputs.displayError

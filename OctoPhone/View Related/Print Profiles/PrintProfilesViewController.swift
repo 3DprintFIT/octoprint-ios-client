@@ -9,7 +9,7 @@
 import UIKit
 
 /// Print profiles list screen controller
-class PrintProfilesViewController: UICollectionViewController {
+class PrintProfilesViewController: BaseCollectionViewController {
 
     /// Controller logic
     private var viewModel: PrintProfilesViewModelType!
