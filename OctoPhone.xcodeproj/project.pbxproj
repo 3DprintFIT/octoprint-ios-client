@@ -34,6 +34,8 @@
 		D224018F1E6B29150082129A /* FileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224018E1E6B29150082129A /* FileTests.swift */; };
 		D22401911E6B2EA40082129A /* GCodeAnalysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401901E6B2EA40082129A /* GCodeAnalysisTests.swift */; };
 		D22401931E6C0FE70082129A /* FilePrintStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401921E6C0FE70082129A /* FilePrintStatsTests.swift */; };
+		D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E671E75AB8500C797AB /* TerminalInputView.swift */; };
+		D2315E6D1E75E99300C797AB /* UIStackView+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E6C1E75E99300C797AB /* UIStackView+CustomInit.swift */; };
 		D2315E6F1E75F53A00C797AB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2315E6E1E75F53A00C797AB /* SnapKit.framework */; };
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
 		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
@@ -137,6 +139,9 @@
 		D224018E1E6B29150082129A /* FileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; };
 		D22401901E6B2EA40082129A /* GCodeAnalysisTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCodeAnalysisTests.swift; sourceTree = "<group>"; };
 		D22401921E6C0FE70082129A /* FilePrintStatsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePrintStatsTests.swift; sourceTree = "<group>"; };
+		D2315E671E75AB8500C797AB /* TerminalInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalInputView.swift; sourceTree = "<group>"; };
+		D2315E6A1E75BE8400C797AB /* UIPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UIPlayground.playground; sourceTree = "<group>"; };
+		D2315E6C1E75E99300C797AB /* UIStackView+CustomInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+CustomInit.swift"; sourceTree = "<group>"; };
 		D2315E6E1E75F53A00C797AB /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
@@ -275,6 +280,7 @@
 		D203DE751DDFCB59000DEAA0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D2315E6B1E75E96600C797AB /* Extensions */,
 				D22401741E6AEF900082129A /* Reactive Extensions */,
 				D203DE761DDFCB62000DEAA0 /* Data */,
 			);
@@ -357,6 +363,31 @@
 				D22401921E6C0FE70082129A /* FilePrintStatsTests.swift */,
 			);
 			name = "Model Mapping";
+			sourceTree = "<group>";
+		};
+		D2315E661E75AA1200C797AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2315E671E75AB8500C797AB /* TerminalInputView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2315E691E75BE5C00C797AB /* UI Playground */ = {
+			isa = PBXGroup;
+			children = (
+				D2315E6A1E75BE8400C797AB /* UIPlayground.playground */,
+			);
+			name = "UI Playground";
+			path = "UI Playgrounds";
+			sourceTree = "<group>";
+		};
+		D2315E6B1E75E96600C797AB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D2315E6C1E75E99300C797AB /* UIStackView+CustomInit.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D2510B061DD4894E004C30EA /* Networking */ = {
@@ -481,6 +512,7 @@
 		D2CCF7421DBF46DB00EF9752 /* OctoPhone */ = {
 			isa = PBXGroup;
 			children = (
+				D2315E691E75BE5C00C797AB /* UI Playground */,
 				D28919781E1177FC00E3BBEB /* Generated */,
 				D203DE751DDFCB59000DEAA0 /* Utils */,
 				D2072FD21DEDCD4B00E1BBD3 /* Model */,
@@ -612,6 +644,7 @@
 		D2FEDE7F1E6F4B0E00184CEC /* Terminal */ = {
 			isa = PBXGroup;
 			children = (
+				D2315E661E75AA1200C797AB /* View */,
 				D2D990D41E71F3D40094DA64 /* TerminalViewModel.swift */,
 				D2D990C81E71E6420094DA64 /* TerminalViewController.swift */,
 			);
@@ -863,12 +896,14 @@
 				D26B500B1E734A5500795462 /* TerminalCoordinator.swift in Sources */,
 				D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */,
 				D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */,
+				D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */,
 				D2D990CB1E71E65D0094DA64 /* SDCardManagementViewController.swift in Sources */,
 				D2D990C31E6F6AA10094DA64 /* FIleDetailViewController.swift in Sources */,
 				D22401711E6AD7D30082129A /* FilePrintStats.swift in Sources */,
 				D2D990D31E71EDF60094DA64 /* LogDetailViewModel.swift in Sources */,
 				D2D990DB1E72073D0094DA64 /* SettingsCellViewModel.swift in Sources */,
 				D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */,
+				D2315E6D1E75E99300C797AB /* UIStackView+CustomInit.swift in Sources */,
 				D26B50211E73668200795462 /* BaseViewController.swift in Sources */,
 				D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */,
 				D27C97121E63BAE000641A1A /* OctoPrintAPI.swift in Sources */,

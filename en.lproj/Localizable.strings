@@ -52,7 +52,9 @@
 // * Terminal
 // *
 "Terminal" = "Terminal";
-
+"Send Command Indicator" = "$";
+"Command" = "Command";
+"Send" = "Send";
 
 // *
 // * Logs

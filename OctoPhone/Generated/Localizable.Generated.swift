@@ -9,6 +9,8 @@ import Foundation
 enum L10n {
   /// Ooops, an error occured
   case anErrorOccured
+  /// Command
+  case command
   /// Connection Error
   case connectionError
   /// Can not connect to the printer.
@@ -43,6 +45,10 @@ enum L10n {
   case printerURL
   /// SD card management
   case sdCardManagement
+  /// Send
+  case send
+  /// $
+  case sendCommandIndicator
   /// Settings
   case settings
   /// Slicing
@@ -59,6 +65,8 @@ extension L10n: CustomStringConvertible {
     switch self {
       case .anErrorOccured:
         return L10n.tr(key: "An error occured")
+      case .command:
+        return L10n.tr(key: "Command")
       case .connectionError:
         return L10n.tr(key: "Connection Error")
       case .couldNotConnectToPrinter:
@@ -93,6 +101,10 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Printer URL")
       case .sdCardManagement:
         return L10n.tr(key: "SD card management")
+      case .send:
+        return L10n.tr(key: "Send")
+      case .sendCommandIndicator:
+        return L10n.tr(key: "Send Command Indicator")
       case .settings:
         return L10n.tr(key: "Settings")
       case .slicing:
