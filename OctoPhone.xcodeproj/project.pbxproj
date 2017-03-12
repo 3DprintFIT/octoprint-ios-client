@@ -34,6 +34,7 @@
 		D224018F1E6B29150082129A /* FileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224018E1E6B29150082129A /* FileTests.swift */; };
 		D22401911E6B2EA40082129A /* GCodeAnalysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401901E6B2EA40082129A /* GCodeAnalysisTests.swift */; };
 		D22401931E6C0FE70082129A /* FilePrintStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401921E6C0FE70082129A /* FilePrintStatsTests.swift */; };
+		D2315E6F1E75F53A00C797AB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2315E6E1E75F53A00C797AB /* SnapKit.framework */; };
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
 		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
 		D23B90481E5B7F930005560B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90451E5B7F930005560B /* Result.framework */; };
@@ -136,6 +137,7 @@
 		D224018E1E6B29150082129A /* FileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; };
 		D22401901E6B2EA40082129A /* GCodeAnalysisTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCodeAnalysisTests.swift; sourceTree = "<group>"; };
 		D22401921E6C0FE70082129A /* FilePrintStatsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePrintStatsTests.swift; sourceTree = "<group>"; };
+		D2315E6E1E75F53A00C797AB /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D23B90451E5B7F930005560B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				D23B90481E5B7F930005560B /* Result.framework in Frameworks */,
 				D27C970C1E63986900641A1A /* ReactiveMoya.framework in Frameworks */,
 				D27C970E1E63A00B00641A1A /* Moya.framework in Frameworks */,
+				D2315E6F1E75F53A00C797AB /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +375,7 @@
 		D2510B091DD4911A004C30EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2315E6E1E75F53A00C797AB /* SnapKit.framework */,
 				D22401881E6B28700082129A /* Nimble.framework */,
 				D22401891E6B28700082129A /* Quick.framework */,
 				D27C970D1E63A00B00641A1A /* Moya.framework */,
@@ -776,6 +780,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Moya.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveMoya.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			name = Carthage;
 			outputPaths = (
