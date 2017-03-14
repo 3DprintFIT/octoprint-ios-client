@@ -69,6 +69,7 @@ class PrinterListViewModelTests: QuickSpec {
         }
 
         it("supply correct network provider when printer is selected") {
+            expect(subject.outputs.storedPrintersCount) == 0
             expect(selectedProvider).to(beNil())
 
             let realm = try! contextManager.createContext()

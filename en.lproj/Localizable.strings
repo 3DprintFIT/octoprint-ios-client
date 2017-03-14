@@ -55,6 +55,9 @@
 "Send Command Indicator" = "$";
 "Command" = "Command";
 "Send" = "Send";
+"Can not create requested command" = "Can not create requested command.";
+"Can not load stored commands" = "Can not load stored commands";
+
 
 // *
 // * Logs

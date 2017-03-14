@@ -21,7 +21,8 @@ final class SettingsCoordinator: TabCoordinator {
 
 extension SettingsCoordinator: SettingsViewControllerDelegate {
     func terminalCellSelected() {
-        let coordinator = TerminalCoordinator(navigationController: navigationController)
+        let coordinator = TerminalCoordinator(navigationController: navigationController,
+                                              contextManager: contextManager, provider: provider)
 
         childCoordinators.append(coordinator)
         coordinator.start()

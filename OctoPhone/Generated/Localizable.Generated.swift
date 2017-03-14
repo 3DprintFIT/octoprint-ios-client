@@ -9,6 +9,10 @@ import Foundation
 enum L10n {
   /// Ooops, an error occured
   case anErrorOccured
+  /// Can not create requested command.
+  case canNotCreateRequestedCommand
+  /// Can not load stored commands
+  case canNotLoadStoredCommands
   /// Command
   case command
   /// Connection Error
@@ -65,6 +69,10 @@ extension L10n: CustomStringConvertible {
     switch self {
       case .anErrorOccured:
         return L10n.tr(key: "An error occured")
+      case .canNotCreateRequestedCommand:
+        return L10n.tr(key: "Can not create requested command")
+      case .canNotLoadStoredCommands:
+        return L10n.tr(key: "Can not load stored commands")
       case .command:
         return L10n.tr(key: "Command")
       case .connectionError:

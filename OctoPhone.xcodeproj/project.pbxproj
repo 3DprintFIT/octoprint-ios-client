@@ -92,6 +92,10 @@
 		D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD507E1E6A34DB0090D21A /* OverviewCoordinator.swift */; };
 		D2EF39291E66F06800A17057 /* PrinterListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF39281E66F06800A17057 /* PrinterListCoordinator.swift */; };
 		D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF392A1E66F08700A17057 /* Coordinator.swift */; };
+		D2F765881E77F06900A5BC11 /* TerminalViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F765871E77F06900A5BC11 /* TerminalViewModelTests.swift */; };
+		D2F7658A1E77F8BF00A5BC11 /* SendCommand.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F765891E77F8BF00A5BC11 /* SendCommand.json */; };
+		D2F7658C1E78102300A5BC11 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7658B1E78102300A5BC11 /* Command.swift */; };
+		D2F765961E788C3000A5BC11 /* CommandCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F765951E788C3000A5BC11 /* CommandCellViewModel.swift */; };
 		D2FEDE6A1E6EBCB200184CEC /* PrinterLoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE691E6EBCB200184CEC /* PrinterLoginViewModelTests.swift */; };
 		D2FEDE6D1E6EC3F900184CEC /* Version.json in Resources */ = {isa = PBXBuildFile; fileRef = D2FEDE6C1E6EC3F900184CEC /* Version.json */; };
 		D2FEDE701E6ED1C900184CEC /* PrinterListCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE6F1E6ED1C900184CEC /* PrinterListCellViewModelTests.swift */; };
@@ -203,6 +207,10 @@
 		D2DD507E1E6A34DB0090D21A /* OverviewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCoordinator.swift; sourceTree = "<group>"; };
 		D2EF39281E66F06800A17057 /* PrinterListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCoordinator.swift; sourceTree = "<group>"; };
 		D2EF392A1E66F08700A17057 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		D2F765871E77F06900A5BC11 /* TerminalViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalViewModelTests.swift; sourceTree = "<group>"; };
+		D2F765891E77F8BF00A5BC11 /* SendCommand.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SendCommand.json; sourceTree = "<group>"; };
+		D2F7658B1E78102300A5BC11 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		D2F765951E788C3000A5BC11 /* CommandCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandCellViewModel.swift; sourceTree = "<group>"; };
 		D2FEDE691E6EBCB200184CEC /* PrinterLoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewModelTests.swift; sourceTree = "<group>"; };
 		D2FEDE6C1E6EC3F900184CEC /* Version.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Version.json; sourceTree = "<group>"; };
 		D2FEDE6F1E6ED1C900184CEC /* PrinterListCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCellViewModelTests.swift; sourceTree = "<group>"; };
@@ -302,6 +310,7 @@
 				D224016A1E6AD5E90082129A /* File.swift */,
 				D224016E1E6AD7780082129A /* GCodeAnalysis.swift */,
 				D22401701E6AD7D30082129A /* FilePrintStats.swift */,
+				D2F7658B1E78102300A5BC11 /* Command.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -535,11 +544,20 @@
 			path = OctoPhoneTests;
 			sourceTree = "<group>";
 		};
+		D2F765861E77EF4900A5BC11 /* Terminal */ = {
+			isa = PBXGroup;
+			children = (
+				D2F765871E77F06900A5BC11 /* TerminalViewModelTests.swift */,
+			);
+			path = Terminal;
+			sourceTree = "<group>";
+		};
 		D2FEDE671E6EBC5900184CEC /* View Related */ = {
 			isa = PBXGroup;
 			children = (
 				D2FEDE681E6EBC6D00184CEC /* Printer Login */,
 				D2FEDE6E1E6ED19500184CEC /* Printer List */,
+				D2F765861E77EF4900A5BC11 /* Terminal */,
 			);
 			name = "View Related";
 			path = "VIew Related";
@@ -557,6 +575,7 @@
 			isa = PBXGroup;
 			children = (
 				D2FEDE6C1E6EC3F900184CEC /* Version.json */,
+				D2F765891E77F8BF00A5BC11 /* SendCommand.json */,
 			);
 			path = "Stubbed Responses";
 			sourceTree = "<group>";
@@ -647,6 +666,7 @@
 				D2315E661E75AA1200C797AB /* View */,
 				D2D990D41E71F3D40094DA64 /* TerminalViewModel.swift */,
 				D2D990C81E71E6420094DA64 /* TerminalViewController.swift */,
+				D2F765951E788C3000A5BC11 /* CommandCellViewModel.swift */,
 			);
 			path = Terminal;
 			sourceTree = "<group>";
@@ -752,6 +772,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2F7658A1E77F8BF00A5BC11 /* SendCommand.json in Resources */,
 				D2CCF74E1DBF46DB00EF9752 /* LaunchScreen.storyboard in Resources */,
 				D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */,
 				D2FEDE6D1E6EC3F900184CEC /* Version.json in Resources */,
@@ -893,6 +914,7 @@
 				D2D990D71E71F5020094DA64 /* SDCardManagementViewModel.swift in Sources */,
 				D22401731E6AE1320082129A /* FilesViewModel.swift in Sources */,
 				D2D990BD1E6F688B0094DA64 /* PrinterControlViewModel.swift in Sources */,
+				D2F7658C1E78102300A5BC11 /* Command.swift in Sources */,
 				D26B500B1E734A5500795462 /* TerminalCoordinator.swift in Sources */,
 				D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */,
 				D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */,
@@ -912,6 +934,7 @@
 				D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */,
 				D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */,
 				D2D990C71E6F6AE10094DA64 /* LogDetailViewController.swift in Sources */,
+				D2F765961E788C3000A5BC11 /* CommandCellViewModel.swift in Sources */,
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
 				D26B50131E734DAA00795462 /* SlicingViewModel.swift in Sources */,
 				D26B500F1E734CB600795462 /* SlicingCoordinator.swift in Sources */,
@@ -930,6 +953,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2F765881E77F06900A5BC11 /* TerminalViewModelTests.swift in Sources */,
 				D2FEDE761E6EE8B500184CEC /* Realm+ReactiveSwiftTests.swift in Sources */,
 				D2FEDE721E6ED36200184CEC /* PrinterListViewModelTests.swift in Sources */,
 				D2FEDE781E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift in Sources */,

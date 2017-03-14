@@ -20,8 +20,8 @@ class TerminalViewController: BaseCollectionViewController {
     /// Terminal input view
     private let terminalInputView = TerminalInputView()
 
-    /// Bottom constraint which makes for keyboard animations
-    private var terminalVIewBottomConstraint: Constraint?
+    /// Bottom constraint for keyboard appearence animations
+    private var terminalViewBottomConstraint: Constraint?
 
     override func loadView() {
         super.loadView()
@@ -31,7 +31,7 @@ class TerminalViewController: BaseCollectionViewController {
         terminalInputView.snp.makeConstraints { [weak self] make in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(42)
-            self?.terminalVIewBottomConstraint = make.bottom.equalToSuperview().constraint
+            self?.terminalViewBottomConstraint = make.bottom.equalToSuperview().constraint
         }
     }
 
@@ -40,12 +40,20 @@ class TerminalViewController: BaseCollectionViewController {
 
         self.viewModel = viewModel
 
+        terminalInputView.sendButton.reactive.isEnabled <~ viewModel.outputs.isCommandValid
+        terminalInputView.commandField.reactive.continuousTextValues.observeValues { [weak self] value in
+            self?.viewModel.inputs.commandChanged(value)
+        }
+        terminalInputView.sendButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self]_ in
+            self?.viewModel.inputs.sendButtonPressed()
+        }
+
         // Change input position based on keyboard frame
         NotificationCenter.default.reactive.keyboardChange.signal
             .observe(on: UIScheduler())
             .filter({ $0.isLocal })
             .observeValues { [weak self] context in
-                self?.terminalVIewBottomConstraint?.update(offset: -1 * context.endFrame.height)
+                self?.terminalViewBottomConstraint?.update(offset: -1 * context.endFrame.height)
 
                 UIView.animate(withDuration: context.animationDuration, animations: {
                     self?.view.layoutIfNeeded()

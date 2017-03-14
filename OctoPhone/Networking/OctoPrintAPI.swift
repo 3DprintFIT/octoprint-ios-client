@@ -15,8 +15,14 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// Targets definition
 ///
 /// - version: OctoPrint API version
+/// - sendCommand: Sends arbitrary command to printer
+/// - files: Downloads list of stored files on printer
 enum OctoPrintAPI {
+    // Command
     case version
+    // Printer
+    case sendCommand(String)
+    // Files
     case files
 }
 
@@ -34,6 +40,8 @@ extension OctoPrintAPI: TargetPart {
     var sampleData: Data {
         switch self {
         case .version: return stubbedResponse("Version")
+        case .sendCommand: return stubbedResponse("SendCommand")
+
         default: return Data()
         }
     }
@@ -45,7 +53,11 @@ extension OctoPrintAPI: TargetPart {
     /// Target to endpoint data maping
     var requestData: (path: String, method: Moya.Method, task: Task, parameters: Parameters?) {
         switch self {
+        // Common
         case .version: return ("api/version", .get, .request, nil)
+        // Printer
+        case let .sendCommand(command): return ("api/printer/command", .get, .request, ["command": command])
+        // Files
         case .files: return ("api/files", .get, .request, nil)
         }
     }
