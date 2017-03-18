@@ -57,7 +57,8 @@
 "Send" = "Send";
 "Can not create requested command" = "Can not create requested command.";
 "Can not load stored commands" = "Can not load stored commands";
-
+"Command executing failed" = "";
+"Requested command could not be executed";
 
 // *
 // * Logs

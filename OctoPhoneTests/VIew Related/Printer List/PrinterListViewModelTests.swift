@@ -30,7 +30,7 @@ class PrinterListViewModelTests: QuickSpec {
 
             contextManager = InMemoryContextManager()
             subject = PrinterListViewModel(delegate: self, contextManager: contextManager)
-            subject.outputs.storedPrintersChanged.observeValues{ printersCountChanged += 1 }
+            subject.outputs.storedPrintersChanged.startWithValues { printersCountChanged += 1 }
         }
 
         afterEach {

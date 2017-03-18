@@ -32,9 +32,9 @@ protocol PrinterListViewModelOutputs {
     var networkPrintersCount: Int { get }
 
     /// Stored printers list changed indicator
-    var storedPrintersChanged: Signal<(), NoError> { get }
+    var storedPrintersChanged: SignalProducer<(), NoError> { get }
 
-    var networkPrintersChanged: Signal<(), NoError> { get }
+    var networkPrintersChanged: SignalProducer<(), NoError> { get }
 
     /// Creates new view model for local printer cell
     ///
@@ -66,9 +66,9 @@ PrinterListViewModelOutputs {
 
     var networkPrintersCount: Int { return networkPrintersProperty.value.count }
 
-    let storedPrintersChanged: Signal<(), NoError>
+    let storedPrintersChanged: SignalProducer<(), NoError>
 
-    let networkPrintersChanged: Signal<(), NoError>
+    let networkPrintersChanged: SignalProducer<(), NoError>
 
     // MARK: Private properies
 
@@ -84,25 +84,20 @@ PrinterListViewModelOutputs {
     /// Database context manager
     private let contextManager: ContextManagerType
 
+    /// Controller navigation delegate
     private weak var delegate: PrinterListViewControllerDelegate?
 
     init(delegate: PrinterListViewControllerDelegate, contextManager: ContextManagerType) {
-        let (printersSignal, printersObserver) = Signal<(), NoError>.pipe()
-
         self.delegate = delegate
         self.contextManager = contextManager
-        self.storedPrintersChanged = printersSignal
-        self.networkPrintersChanged = networkPrintersProperty.signal.map({ _ in })
+        self.networkPrintersChanged = networkPrintersProperty.producer.map({ _ in })
 
         do {
             let realm = try contextManager.createContext()
-
             storedPrinters = realm.objects(Printer.self)
-
-            storedPrintersToken = storedPrinters?.addNotificationBlock({ _ in
-                 printersObserver.send(value: ())
-            })
         } catch {}
+
+        self.storedPrintersChanged = storedPrinters?.producer ?? SignalProducer(value: ())
     }
 
     // MARK: Output functions

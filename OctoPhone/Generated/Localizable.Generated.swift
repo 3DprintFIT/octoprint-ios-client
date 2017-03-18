@@ -15,6 +15,8 @@ enum L10n {
   case canNotLoadStoredCommands
   /// Command
   case command
+  /// 
+  case commandExecutingFailed
   /// Connection Error
   case connectionError
   /// Can not connect to the printer.
@@ -47,6 +49,8 @@ enum L10n {
   case printerName
   /// Printer URL
   case printerURL
+  /// Requested command could not be executed
+  case requestedCommandCouldNotBeExecuted
   /// SD card management
   case sdCardManagement
   /// Send
@@ -75,6 +79,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Can not load stored commands")
       case .command:
         return L10n.tr(key: "Command")
+      case .commandExecutingFailed:
+        return L10n.tr(key: "Command executing failed")
       case .connectionError:
         return L10n.tr(key: "Connection Error")
       case .couldNotConnectToPrinter:
@@ -107,6 +113,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Printer Name")
       case .printerURL:
         return L10n.tr(key: "Printer URL")
+      case .requestedCommandCouldNotBeExecuted:
+        return L10n.tr(key: "Requested command could not be executed")
       case .sdCardManagement:
         return L10n.tr(key: "SD card management")
       case .send:

@@ -97,7 +97,7 @@ TerminalViewModelOutputs {
             let realm = try contextManager.createContext()
             commands = realm.objects(Command.self)
         } catch {
-            displayErrorProperty.value = (tr(.anErrorOccured), "")
+            displayErrorProperty.value = (tr(.anErrorOccured), tr(.canNotLoadStoredCommands))
         }
 
         self.commandsChanged = commands?.producer ?? SignalProducer<(), NoError>(value: ())
@@ -119,7 +119,8 @@ TerminalViewModelOutputs {
                         realm.add(command)
                     }
                 } catch {
-                    weakSelf.displayErrorProperty.value = (tr(.anErrorOccured), "")
+                    weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                           tr(.canNotCreateRequestedCommand))
                 }
         }
     }
@@ -140,6 +141,6 @@ TerminalViewModelOutputs {
 
         let command = commands![index]
 
-        return CommandCellViewModel(provider: provider, command: command)
+        return CommandCellViewModel(provider: provider, contextManager: contextManager, command: command)
     }
 }

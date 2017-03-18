@@ -34,7 +34,7 @@ class PrinterListViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let dataChangedSignal = Signal.merge([
+        let dataChangedSignal = SignalProducer.merge([
             viewModel.outputs.networkPrintersChanged,
             viewModel.outputs.storedPrintersChanged
         ])

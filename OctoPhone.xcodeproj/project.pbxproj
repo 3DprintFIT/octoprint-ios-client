@@ -96,6 +96,8 @@
 		D2F7658A1E77F8BF00A5BC11 /* SendCommand.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F765891E77F8BF00A5BC11 /* SendCommand.json */; };
 		D2F7658C1E78102300A5BC11 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7658B1E78102300A5BC11 /* Command.swift */; };
 		D2F765961E788C3000A5BC11 /* CommandCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F765951E788C3000A5BC11 /* CommandCellViewModel.swift */; };
+		D2F765981E788FAF00A5BC11 /* CommandCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F765971E788FAF00A5BC11 /* CommandCellViewModelTests.swift */; };
+		D2F7659A1E7896CC00A5BC11 /* CommandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F765991E7896CC00A5BC11 /* CommandCollectionViewCell.swift */; };
 		D2FEDE6A1E6EBCB200184CEC /* PrinterLoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE691E6EBCB200184CEC /* PrinterLoginViewModelTests.swift */; };
 		D2FEDE6D1E6EC3F900184CEC /* Version.json in Resources */ = {isa = PBXBuildFile; fileRef = D2FEDE6C1E6EC3F900184CEC /* Version.json */; };
 		D2FEDE701E6ED1C900184CEC /* PrinterListCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FEDE6F1E6ED1C900184CEC /* PrinterListCellViewModelTests.swift */; };
@@ -211,6 +213,8 @@
 		D2F765891E77F8BF00A5BC11 /* SendCommand.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SendCommand.json; sourceTree = "<group>"; };
 		D2F7658B1E78102300A5BC11 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		D2F765951E788C3000A5BC11 /* CommandCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandCellViewModel.swift; sourceTree = "<group>"; };
+		D2F765971E788FAF00A5BC11 /* CommandCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandCellViewModelTests.swift; sourceTree = "<group>"; };
+		D2F765991E7896CC00A5BC11 /* CommandCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2FEDE691E6EBCB200184CEC /* PrinterLoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewModelTests.swift; sourceTree = "<group>"; };
 		D2FEDE6C1E6EC3F900184CEC /* Version.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Version.json; sourceTree = "<group>"; };
 		D2FEDE6F1E6ED1C900184CEC /* PrinterListCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCellViewModelTests.swift; sourceTree = "<group>"; };
@@ -548,6 +552,7 @@
 			isa = PBXGroup;
 			children = (
 				D2F765871E77F06900A5BC11 /* TerminalViewModelTests.swift */,
+				D2F765971E788FAF00A5BC11 /* CommandCellViewModelTests.swift */,
 			);
 			path = Terminal;
 			sourceTree = "<group>";
@@ -665,8 +670,9 @@
 			children = (
 				D2315E661E75AA1200C797AB /* View */,
 				D2D990D41E71F3D40094DA64 /* TerminalViewModel.swift */,
-				D2D990C81E71E6420094DA64 /* TerminalViewController.swift */,
 				D2F765951E788C3000A5BC11 /* CommandCellViewModel.swift */,
+				D2D990C81E71E6420094DA64 /* TerminalViewController.swift */,
+				D2F765991E7896CC00A5BC11 /* CommandCollectionViewCell.swift */,
 			);
 			path = Terminal;
 			sourceTree = "<group>";
@@ -895,6 +901,7 @@
 				D2ACD7481E6C451100F2603A /* FileCellViewModel.swift in Sources */,
 				D2D990CD1E71E7E90094DA64 /* FileDetailViewModel.swift in Sources */,
 				D2D990BB1E6F67FA0094DA64 /* CurrentPrintViewController.swift in Sources */,
+				D2F7659A1E7896CC00A5BC11 /* CommandCollectionViewCell.swift in Sources */,
 				D26B50191E73510000795462 /* PrintProfilesViewController.swift in Sources */,
 				D26B501F1E7364BF00795462 /* BaseCollectionViewController.swift in Sources */,
 				D2D990D11E71EB820094DA64 /* LogsViewModel.swift in Sources */,
@@ -959,6 +966,7 @@
 				D2FEDE781E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift in Sources */,
 				D2ACD74C1E6CCCC200F2603A /* TokenPluginTests.swift in Sources */,
 				D2FEDE701E6ED1C900184CEC /* PrinterListCellViewModelTests.swift in Sources */,
+				D2F765981E788FAF00A5BC11 /* CommandCellViewModelTests.swift in Sources */,
 				D22401911E6B2EA40082129A /* GCodeAnalysisTests.swift in Sources */,
 				D224018F1E6B29150082129A /* FileTests.swift in Sources */,
 				D2FEDE6A1E6EBCB200184CEC /* PrinterLoginViewModelTests.swift in Sources */,

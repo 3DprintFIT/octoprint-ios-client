@@ -15,7 +15,7 @@ import ReactiveCocoa
 class TerminalViewController: BaseCollectionViewController {
 
     /// Terminal logic
-    private var viewModel: TerminalViewModelType!
+    fileprivate var viewModel: TerminalViewModelType!
 
     /// Terminal input view
     private let terminalInputView = TerminalInputView()
@@ -48,12 +48,25 @@ class TerminalViewController: BaseCollectionViewController {
             self?.viewModel.inputs.sendButtonPressed()
         }
 
+        if let collectionView = collectionView {
+            collectionView.reactive.reloadData <~ viewModel.outputs.commandsChanged
+            collectionView.register(CommandCollectionViewCell.self,
+                                    forCellWithReuseIdentifier: CommandCollectionViewCell.identifier)
+        }
+
         // Change input position based on keyboard frame
         NotificationCenter.default.reactive.keyboardChange.signal
             .observe(on: UIScheduler())
             .filter({ $0.isLocal })
             .observeValues { [weak self] context in
-                self?.terminalViewBottomConstraint?.update(offset: -1 * context.endFrame.height)
+                guard let weakSelf = self, let collectionView = self?.collectionView else { return }
+
+                let offset = context.endFrame.height
+                var inset = collectionView.contentInset
+
+                weakSelf.terminalViewBottomConstraint?.update(offset: -offset)
+                inset.bottom = offset + weakSelf.terminalInputView.frame.height
+                collectionView.contentInset = inset
 
                 UIView.animate(withDuration: context.animationDuration, animations: {
                     self?.view.layoutIfNeeded()
@@ -63,5 +76,36 @@ class TerminalViewController: BaseCollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension TerminalViewController {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
+
+        return viewModel.outputs.commandsCount
+    }
+
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CommandCollectionViewCell.identifier, for: indexPath
+            ) as! CommandCollectionViewCell
+
+        cell.viewModel = viewModel.outputs.commandCellViewModel(for: indexPath.row)
+
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension TerminalViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: view.frame.width, height: 42)
     }
 }

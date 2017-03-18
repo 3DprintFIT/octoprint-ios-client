@@ -26,10 +26,10 @@ final class Command: Object {
     // MARK: Properties
 
     /// Actual value of command
-    var value = ""
+    dynamic var value = ""
 
     /// Stored value of command status
-    private var _status = CommandStatus.processing.rawValue
+    private dynamic var _status = CommandStatus.processing.rawValue
 
     /// Current command status
     var status: CommandStatus {

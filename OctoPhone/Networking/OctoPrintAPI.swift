@@ -69,7 +69,7 @@ extension OctoPrintAPI: TargetPart {
 /// - Returns: Data representation of stored resource
 //swiftlint:disable force_try
 fileprivate func stubbedResponse(_ fileName: String) -> Data {
-    let path = Bundle().path(forResource: fileName, ofType: "json")
+    let path = Bundle(for: AppDelegate.self).path(forResource: fileName, ofType: "json")
 
     return try! Data(contentsOf: URL(fileURLWithPath: path!))
 }
