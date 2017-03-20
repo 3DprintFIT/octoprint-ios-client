@@ -29,7 +29,8 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
     }
 
     func logsCellSelected() {
-        let coordinator = LogsCoordinator(navigationController: navigationController)
+        let coordinator = LogsCoordinator(navigationController: navigationController,
+                                          contextManager: contextManager, provider: provider)
 
         childCoordinators.append(coordinator)
         coordinator.start()

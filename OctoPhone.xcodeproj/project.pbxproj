@@ -68,9 +68,13 @@
 		D2ACD7481E6C451100F2603A /* FileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACD7471E6C451100F2603A /* FileCellViewModel.swift */; };
 		D2ACD74C1E6CCCC200F2603A /* TokenPluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACD74B1E6CCCC200F2603A /* TokenPluginTests.swift */; };
 		D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */; };
+		D2C38CC51E7D49A200D06698 /* LogsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CC41E7D49A200D06698 /* LogsViewModelTests.swift */; };
+		D2C38CC71E7D49EB00D06698 /* LogsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CC61E7D49EB00D06698 /* LogsViewModel.swift */; };
 		D2C38CC91E7D4A5800D06698 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CC81E7D4A5800D06698 /* Log.swift */; };
 		D2C38CCB1E7D4D5B00D06698 /* Log+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CCA1E7D4D5B00D06698 /* Log+JSONAble.swift */; };
 		D2C38CCD1E7D4FA500D06698 /* LogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CCC1E7D4FA500D06698 /* LogTests.swift */; };
+		D2C38CCF1E7FEE1400D06698 /* LogCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CCE1E7FEE1400D06698 /* LogCellViewModel.swift */; };
+		D2C38CD11E7FF87D00D06698 /* LogCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CD01E7FF87D00D06698 /* LogCellViewModelTests.swift */; };
 		D2C38CD41E802C6D00D06698 /* OPNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CD31E802C6D00D06698 /* OPNumberFormatter.swift */; };
 		D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */; };
 		D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */; };
@@ -87,7 +91,6 @@
 		D2D990CB1E71E65D0094DA64 /* SDCardManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990CA1E71E65D0094DA64 /* SDCardManagementViewController.swift */; };
 		D2D990CD1E71E7E90094DA64 /* FileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990CC1E71E7E90094DA64 /* FileDetailViewModel.swift */; };
 		D2D990CF1E71E95B0094DA64 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990CE1E71E95B0094DA64 /* SettingsViewModel.swift */; };
-		D2D990D11E71EB820094DA64 /* LogsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990D01E71EB820094DA64 /* LogsViewModel.swift */; };
 		D2D990D31E71EDF60094DA64 /* LogDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990D21E71EDF60094DA64 /* LogDetailViewModel.swift */; };
 		D2D990D51E71F3D40094DA64 /* TerminalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990D41E71F3D40094DA64 /* TerminalViewModel.swift */; };
 		D2D990D71E71F5020094DA64 /* SDCardManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990D61E71F5020094DA64 /* SDCardManagementViewModel.swift */; };
@@ -185,9 +188,13 @@
 		D2ACD7471E6C451100F2603A /* FileCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCellViewModel.swift; sourceTree = "<group>"; };
 		D2ACD74B1E6CCCC200F2603A /* TokenPluginTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenPluginTests.swift; path = OctoPhoneTests/Networking/TokenPluginTests.swift; sourceTree = SOURCE_ROOT; };
 		D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewController.swift; sourceTree = "<group>"; };
+		D2C38CC41E7D49A200D06698 /* LogsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsViewModelTests.swift; sourceTree = "<group>"; };
+		D2C38CC61E7D49EB00D06698 /* LogsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsViewModel.swift; sourceTree = "<group>"; };
 		D2C38CC81E7D4A5800D06698 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		D2C38CCA1E7D4D5B00D06698 /* Log+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+JSONAble.swift"; sourceTree = "<group>"; };
 		D2C38CCC1E7D4FA500D06698 /* LogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTests.swift; sourceTree = "<group>"; };
+		D2C38CCE1E7FEE1400D06698 /* LogCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCellViewModel.swift; sourceTree = "<group>"; };
+		D2C38CD01E7FF87D00D06698 /* LogCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCellViewModelTests.swift; sourceTree = "<group>"; };
 		D2C38CD31E802C6D00D06698 /* OPNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPNumberFormatter.swift; sourceTree = "<group>"; };
 		D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,7 +215,6 @@
 		D2D990CA1E71E65D0094DA64 /* SDCardManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementViewController.swift; sourceTree = "<group>"; };
 		D2D990CC1E71E7E90094DA64 /* FileDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailViewModel.swift; sourceTree = "<group>"; };
 		D2D990CE1E71E95B0094DA64 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		D2D990D01E71EB820094DA64 /* LogsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsViewModel.swift; sourceTree = "<group>"; };
 		D2D990D21E71EDF60094DA64 /* LogDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewModel.swift; sourceTree = "<group>"; };
 		D2D990D41E71F3D40094DA64 /* TerminalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalViewModel.swift; sourceTree = "<group>"; };
 		D2D990D61E71F5020094DA64 /* SDCardManagementViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementViewModel.swift; sourceTree = "<group>"; };
@@ -511,6 +517,15 @@
 			path = "Printer Login";
 			sourceTree = "<group>";
 		};
+		D2C38CC31E7D497F00D06698 /* Logs */ = {
+			isa = PBXGroup;
+			children = (
+				D2C38CC41E7D49A200D06698 /* LogsViewModelTests.swift */,
+				D2C38CD01E7FF87D00D06698 /* LogCellViewModelTests.swift */,
+			);
+			path = Logs;
+			sourceTree = "<group>";
+		};
 		D2C38CD21E8029A300D06698 /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +598,7 @@
 				D2FEDE681E6EBC6D00184CEC /* Printer Login */,
 				D2FEDE6E1E6ED19500184CEC /* Printer List */,
 				D2F765861E77EF4900A5BC11 /* Terminal */,
+				D2C38CC31E7D497F00D06698 /* Logs */,
 			);
 			name = "View Related";
 			path = "VIew Related";
@@ -661,7 +677,8 @@
 		D2FEDE7C1E6F4AEE00184CEC /* Logs */ = {
 			isa = PBXGroup;
 			children = (
-				D2D990D01E71EB820094DA64 /* LogsViewModel.swift */,
+				D2C38CC61E7D49EB00D06698 /* LogsViewModel.swift */,
+				D2C38CCE1E7FEE1400D06698 /* LogCellViewModel.swift */,
 				D2D990C41E6F6ABD0094DA64 /* LogsViewController.swift */,
 			);
 			path = Logs;
@@ -924,7 +941,6 @@
 				D2F7659A1E7896CC00A5BC11 /* CommandCollectionViewCell.swift in Sources */,
 				D26B50191E73510000795462 /* PrintProfilesViewController.swift in Sources */,
 				D26B501F1E7364BF00795462 /* BaseCollectionViewController.swift in Sources */,
-				D2D990D11E71EB820094DA64 /* LogsViewModel.swift in Sources */,
 				D26B501B1E7353C700795462 /* PrintProfilesCoordinator.swift in Sources */,
 				D22401831E6B12C10082129A /* FilePrinterStats+JSONAble.swift in Sources */,
 				D2C38CC91E7D4A5800D06698 /* Log.swift in Sources */,
@@ -958,6 +974,7 @@
 				D26B50211E73668200795462 /* BaseViewController.swift in Sources */,
 				D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */,
 				D27C97121E63BAE000641A1A /* OctoPrintAPI.swift in Sources */,
+				D2C38CC71E7D49EB00D06698 /* LogsViewModel.swift in Sources */,
 				D2D990C11E6F6A800094DA64 /* PrinterControlViewController.swift in Sources */,
 				D22401781E6AFDF70082129A /* JSONAble.swift in Sources */,
 				D2C38CCB1E7D4D5B00D06698 /* Log+JSONAble.swift in Sources */,
@@ -976,6 +993,7 @@
 				D22401811E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift in Sources */,
 				D2D990D51E71F3D40094DA64 /* TerminalViewModel.swift in Sources */,
 				D2D331401E67177100C9C005 /* PrinterLoginCoordinator.swift in Sources */,
+				D2C38CCF1E7FEE1400D06698 /* LogCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,7 +1004,9 @@
 				D2F765881E77F06900A5BC11 /* TerminalViewModelTests.swift in Sources */,
 				D2FEDE761E6EE8B500184CEC /* Realm+ReactiveSwiftTests.swift in Sources */,
 				D2FEDE721E6ED36200184CEC /* PrinterListViewModelTests.swift in Sources */,
+				D2C38CC51E7D49A200D06698 /* LogsViewModelTests.swift in Sources */,
 				D2FEDE781E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift in Sources */,
+				D2C38CD11E7FF87D00D06698 /* LogCellViewModelTests.swift in Sources */,
 				D2ACD74C1E6CCCC200F2603A /* TokenPluginTests.swift in Sources */,
 				D2FEDE701E6ED1C900184CEC /* PrinterListCellViewModelTests.swift in Sources */,
 				D2F765981E788FAF00A5BC11 /* CommandCellViewModelTests.swift in Sources */,
