@@ -59,6 +59,8 @@ enum L10n {
   case sendCommandIndicator
   /// Settings
   case settings
+  /// %@ bytes
+  case sizeInBytes(String)
   /// Slicing
   case slicing
   /// Terminal
@@ -123,6 +125,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Send Command Indicator")
       case .settings:
         return L10n.tr(key: "Settings")
+      case .sizeInBytes(let p1):
+        return L10n.tr(key: "Size in bytes", p1)
       case .slicing:
         return L10n.tr(key: "Slicing")
       case .terminal:

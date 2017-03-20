@@ -64,6 +64,7 @@
 // * Logs
 // *
 "Logs" = "Logs";
+"Size in bytes" = "%@ bytes";
 
 
 // *
