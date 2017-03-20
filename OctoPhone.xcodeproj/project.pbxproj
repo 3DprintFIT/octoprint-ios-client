@@ -71,6 +71,7 @@
 		D2C38CC91E7D4A5800D06698 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CC81E7D4A5800D06698 /* Log.swift */; };
 		D2C38CCB1E7D4D5B00D06698 /* Log+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CCA1E7D4D5B00D06698 /* Log+JSONAble.swift */; };
 		D2C38CCD1E7D4FA500D06698 /* LogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CCC1E7D4FA500D06698 /* LogTests.swift */; };
+		D2C38CD41E802C6D00D06698 /* OPNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CD31E802C6D00D06698 /* OPNumberFormatter.swift */; };
 		D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */; };
 		D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */; };
 		D2CCF74E1DBF46DB00EF9752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74C1DBF46DB00EF9752 /* LaunchScreen.storyboard */; };
@@ -187,6 +188,7 @@
 		D2C38CC81E7D4A5800D06698 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		D2C38CCA1E7D4D5B00D06698 /* Log+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Log+JSONAble.swift"; sourceTree = "<group>"; };
 		D2C38CCC1E7D4FA500D06698 /* LogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTests.swift; sourceTree = "<group>"; };
+		D2C38CD31E802C6D00D06698 /* OPNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPNumberFormatter.swift; sourceTree = "<group>"; };
 		D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 		D203DE751DDFCB59000DEAA0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D2C38CD21E8029A300D06698 /* Formatters */,
 				D2315E6B1E75E96600C797AB /* Extensions */,
 				D22401741E6AEF900082129A /* Reactive Extensions */,
 				D203DE761DDFCB62000DEAA0 /* Data */,
@@ -506,6 +509,14 @@
 				D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */,
 			);
 			path = "Printer Login";
+			sourceTree = "<group>";
+		};
+		D2C38CD21E8029A300D06698 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				D2C38CD31E802C6D00D06698 /* OPNumberFormatter.swift */,
+			);
+			path = Formatters;
 			sourceTree = "<group>";
 		};
 		D2CCF7371DBF46DB00EF9752 = {
@@ -936,6 +947,7 @@
 				D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */,
 				D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */,
 				D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */,
+				D2C38CD41E802C6D00D06698 /* OPNumberFormatter.swift in Sources */,
 				D2D990CB1E71E65D0094DA64 /* SDCardManagementViewController.swift in Sources */,
 				D2D990C31E6F6AA10094DA64 /* FIleDetailViewController.swift in Sources */,
 				D22401711E6AD7D30082129A /* FilePrintStats.swift in Sources */,
