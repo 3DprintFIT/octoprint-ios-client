@@ -9,71 +9,178 @@
 import Nimble
 import Quick
 import ReactiveSwift
+import ReactiveCocoa
 import RealmSwift
 @testable import OctoPhone
 
 class RealmReactiveSwiftTests: QuickSpec {
     override func spec() {
-        var contextManager: InMemoryContextManager!
-        var realm: Realm!
-        var changesEmitted = 0
+        let contextManager = InMemoryContextManager()
 
-        beforeEach {
-            contextManager = InMemoryContextManager()
-            realm = try! contextManager.createContext()
+        var initialChanges = 0
+        var collectionChanges = 0
+        var emittedError: Error!
+        var disposable: Disposable!
+
+        context("collection changes property reacts to realm notifications and emits changes") {
+            beforeEach {
+                initialChanges = 0
+                collectionChanges = 0
+                emittedError = nil
+
+                let realm = try! contextManager.createContext()
+
+                disposable = realm.objects(FilePrintStats.self).reactive.changes.startWithResult { result in
+                    switch result {
+                    case let .success(change):
+                        switch change {
+                        case .initial: initialChanges += 1
+                        case .update: collectionChanges += 1
+                        }
+                    case let .failure(error): emittedError = error
+                    }
+                }
+            }
+
+            afterEach {
+                disposable.dispose()
+                let realm = try! contextManager.createContext()
+                try! realm.write { realm.deleteAll() }
+            }
+
+            it("emits initial change when collection is changed") {
+                expect(initialChanges).toEventually(equal(1))
+                expect(collectionChanges).toEventually(equal(0))
+                expect(emittedError).toEventually(beNil())
+            }
+
+            it("emits changes for crud operations") {
+                let stat = self.createStat()
+                let realm = try! contextManager.createContext()
+
+                try! realm.write { realm.add(stat) }
+
+                expect(initialChanges).toEventually(equal(1))
+                expect(collectionChanges).toEventually(equal(1))
+
+                try! realm.write {
+                    stat.wasLastPrintSuccess = true
+                }
+
+                expect(initialChanges).toEventually(equal(1))
+                expect(collectionChanges).toEventually(equal(2))
+                
+                try! realm.write { realm.delete(stat) }
+                
+                expect(initialChanges).toEventually(equal(1))
+                expect(collectionChanges).toEventually(equal(3))
+                expect(emittedError).to(beNil())
+            }
+
         }
 
-        afterEach {
-            changesEmitted = 0
+        context("collection values property reacts to realm notifications and emits values") {
+            beforeEach {
+                initialChanges = 0
+                collectionChanges = 0
+                emittedError = nil
+
+                let realm = try! contextManager.createContext()
+
+                disposable = realm.objects(FilePrintStats.self).reactive.values.startWithResult { result in
+                    switch result {
+                    case .success: collectionChanges += 1
+                    case let .failure(error): emittedError = error
+                    }
+                }
+            }
+
+            afterEach {
+                disposable?.dispose()
+                let realm = try! contextManager.createContext()
+                try! realm.write { realm.deleteAll() }
+            }
+
+            it("emits value for initial change") {
+                expect(collectionChanges).toEventually(equal(1))
+                expect(emittedError).toEventually(beNil())
+            }
+
+            it("emits value for each crud operation") {
+                let stat = self.createStat()
+                let realm = try! contextManager.createContext()
+
+                try! realm.write { realm.add(stat) }
+
+                expect(collectionChanges).toEventually(equal(2))
+
+                try! realm.write {
+                    stat.wasLastPrintSuccess = true
+                }
+
+                expect(collectionChanges).toEventually(equal(3))
+
+                try! realm.write { realm.delete(stat) }
+
+                expect(collectionChanges).toEventually(equal(4))
+                expect(emittedError).to(beNil())
+            }
         }
 
-        it("emits when object is added to cellection") {
-            let disp = realm.objects(FilePrintStats.self).producer.startWithValues {
-                changesEmitted += 1
+        context("object values property reacts to realm notifications and emits values") {
+            var stat: FilePrintStats!
+            var completed = false
+
+            beforeEach {
+                initialChanges = 0
+                collectionChanges = 0
+                emittedError = nil
+                stat = self.createStat()
+                completed = false
+
+                let realm = try! contextManager.createContext()
+                try! realm.write { realm.add(stat) }
+
+                disposable = stat.reactive.values
+                    .on(completed: {
+                        completed = true
+                    })
+                    .startWithResult({ result in
+                    switch result {
+                    case .success: collectionChanges += 1
+                    case let .failure(error): emittedError = error
+                    }
+                })
             }
 
-            expect(changesEmitted) == 0
-
-            try! realm.write { realm.add(self.createStat()) }
-
-            expect(changesEmitted) == 1
-            disp.dispose()
-        }
-
-        it("emits when object is deleted from collection") {
-            let stat = self.createStat()
-            try! realm.write { realm.add(stat) }
-
-            let disp = realm.objects(FilePrintStats.self).producer.startWithValues {
-                changesEmitted += 1
+            it("emits initial value") {
+                expect(collectionChanges).toEventually(equal(1))
             }
 
-            expect(changesEmitted) == 0
+            it("emits for each crud operation") {
+                let realm = try! contextManager.createContext()
 
-            try! realm.write {
-                realm.delete(stat)
+                try! realm.write {
+                    stat.successes += 1
+                }
+
+                expect(collectionChanges).toEventually(equal(2))
+
+                try! realm.write {
+                    stat.lastPrint = 10
+                }
+
+                expect(collectionChanges).toEventually(equal(3))
             }
 
-            expect(changesEmitted) == 1
-            disp.dispose()
-        }
+            it("sends completed event when object is removed from realm") {
+                expect(completed).toEventually(equal(false))
 
-        it("emits when object in collection is updated") { 
-            let stat = self.createStat()
-            try! realm.write { realm.add(stat) }
+                let realm = try! contextManager.createContext()
+                try! realm.write { realm.delete(stat) }
 
-            let disp = realm.objects(FilePrintStats.self).producer.startWithValues {
-                changesEmitted += 1
+                expect(completed).toEventually(equal(true))
             }
-
-            expect(changesEmitted) == 0
-
-            try! realm.write {
-                stat.successes = 1
-            }
-
-            expect(changesEmitted) == 1
-            disp.dispose()
         }
     }
 
