@@ -38,16 +38,6 @@
                ReferencedContainer = "container:OctoPhone.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2CCF75E1DBF46DC00EF9752"
-               BuildableName = "OctoPhoneUITests.xctest"
-               BlueprintName = "OctoPhoneUITests"
-               ReferencedContainer = "container:OctoPhone.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
