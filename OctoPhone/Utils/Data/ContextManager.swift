@@ -31,13 +31,18 @@ final class ContextManager: ContextManagerType {
 
 /// In memory database manager - for test purposes
 final class InMemoryContextManager: ContextManagerType {
-    /// In memory Realm identifier
-    private static let inMemoryIdentifier = "Realm.InMemory"
+
+    /// In memory realm identifier
+    private let currentIdentifier: String
+
+    init() {
+        currentIdentifier = UUID().uuidString
+    }
 
     public func createContext() throws -> Realm {
         var configuration = Realm.Configuration.defaultConfiguration
 
-        configuration.inMemoryIdentifier = InMemoryContextManager.inMemoryIdentifier
+        configuration.inMemoryIdentifier = currentIdentifier
 
         return try Realm(configuration: configuration)
     }
