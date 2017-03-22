@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import ReactiveSwift
 
 /// Database connections manager
 protocol ContextManagerType: class {
@@ -16,34 +17,55 @@ protocol ContextManagerType: class {
     /// - Returns: New database connection
     /// - Throws: RealmError
     func createContext() throws -> Realm
+
+    /// Creates signal with realm connection as value
+    ///
+    /// - Returns: Realm connection signal producer
+    func createObservableContext() -> SignalProducer<Realm, RealmError>
 }
 
 /// Preconfigured local database manager
-final class ContextManager: ContextManagerType {
-    public func createContext() throws -> Realm {
+class ContextManager: ContextManagerType {
+
+    /// Default configuration for app realm
+    ///
+    /// - Returns: New default configuration
+    public func configuration() -> Realm.Configuration {
         var configuration = Realm.Configuration.defaultConfiguration
 
         configuration.deleteRealmIfMigrationNeeded = true
 
-        return try Realm(configuration: configuration)
+        return configuration
+    }
+
+    public func createContext() throws -> Realm {
+        return try Realm(configuration: configuration())
+    }
+
+    public func createObservableContext() -> SignalProducer<Realm, RealmError> {
+        return SignalProducer({ observer, _ in
+            do {
+                let realm = try Realm(configuration: self.configuration())
+
+                observer.send(value: realm)
+            } catch {
+                observer.send(error: .underlyingError(error))
+            }
+        })
     }
 }
 
 /// In memory database manager - for test purposes
-final class InMemoryContextManager: ContextManagerType {
+class InMemoryContextManager: ContextManager {
 
     /// In memory realm identifier
-    private let currentIdentifier: String
+    private let currentIdentifier = UUID().uuidString
 
-    init() {
-        currentIdentifier = UUID().uuidString
-    }
-
-    public func createContext() throws -> Realm {
+    override func configuration() -> Realm.Configuration {
         var configuration = Realm.Configuration.defaultConfiguration
 
         configuration.inMemoryIdentifier = currentIdentifier
 
-        return try Realm(configuration: configuration)
+        return configuration
     }
 }
