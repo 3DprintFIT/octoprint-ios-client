@@ -27,7 +27,7 @@ enum RealmError: Error {
     case underlyingError(_: Error)
 }
 
-// Adds producer property to Realm Results collection
+// MARK: - Reactive extensions for RealmCollection
 extension Reactive where Base: RealmCollection {
     /// Collection changes producer
     var changes: SignalProducer<RealmCollectionChange<Base>, RealmError> {
@@ -71,6 +71,7 @@ extension Reactive where Base: RealmCollection {
     }
 }
 
+// MARK: - Reactive extensions for Object
 extension Reactive where Base: Object {
     /// Produces new value every time the object was changed
     var values: SignalProducer<Base, RealmError> {
@@ -97,5 +98,14 @@ extension Reactive where Base: Object {
             notificationToken?.stop()
             notificationToken = nil
         })
+    }
+}
+
+// MARK: - Reactive extensions for collection fetch
+extension SignalProducerProtocol where Value == Realm, Error == RealmError {
+    func fetch<Subject: Object>(collectionOf type: Subject.Type)
+        -> SignalProducer<Results<Subject>, RealmError> {
+
+            return flatMap(.latest) { $0.objects(type).reactive.values }
     }
 }

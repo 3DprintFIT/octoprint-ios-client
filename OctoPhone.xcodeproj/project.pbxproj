@@ -60,6 +60,7 @@
 		D27C97121E63BAE000641A1A /* OctoPrintAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C97111E63BAE000641A1A /* OctoPrintAPI.swift */; };
 		D27C97161E63C25D00641A1A /* TokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C97151E63C25D00641A1A /* TokenPlugin.swift */; };
 		D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28919791E11783500E3BBEB /* Localizable.Generated.swift */; };
+		D28DE5421E8477AD0056A9F7 /* CommonOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28DE5411E8477AD0056A9F7 /* CommonOperators.swift */; };
 		D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5341E09E6490089C027 /* DetailViewController.swift */; };
 		D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5361E09E65F0089C027 /* FilesViewController.swift */; };
 		D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5381E09E6740089C027 /* SettingsViewController.swift */; };
@@ -179,6 +180,7 @@
 		D27C97111E63BAE000641A1A /* OctoPrintAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoPrintAPI.swift; sourceTree = "<group>"; };
 		D27C97151E63C25D00641A1A /* TokenPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenPlugin.swift; sourceTree = "<group>"; };
 		D28919791E11783500E3BBEB /* Localizable.Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.Generated.swift; sourceTree = "<group>"; };
+		D28DE5411E8477AD0056A9F7 /* CommonOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonOperators.swift; sourceTree = "<group>"; };
 		D28EC5341E09E6490089C027 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D28EC5361E09E65F0089C027 /* FilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		D28EC5381E09E6740089C027 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			children = (
 				D22401751E6AF0150082129A /* Realm+ReactiveSwift.swift */,
 				D224017B1E6B02F50082129A /* SignalProducer+JSONAble.swift */,
+				D28DE5411E8477AD0056A9F7 /* CommonOperators.swift */,
 			);
 			path = "Reactive Extensions";
 			sourceTree = "<group>";
@@ -993,6 +996,7 @@
 				D22401811E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift in Sources */,
 				D2D990D51E71F3D40094DA64 /* TerminalViewModel.swift in Sources */,
 				D2D331401E67177100C9C005 /* PrinterLoginCoordinator.swift in Sources */,
+				D28DE5421E8477AD0056A9F7 /* CommonOperators.swift in Sources */,
 				D2C38CCF1E7FEE1400D06698 /* LogCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
