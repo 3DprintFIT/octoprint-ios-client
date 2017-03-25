@@ -103,6 +103,11 @@ extension Reactive where Base: Object {
 
 // MARK: - Reactive extensions for collection fetch
 extension SignalProducerProtocol where Value == Realm, Error == RealmError {
+    /// Reactive wrapper for Realm collection query
+    ///
+    /// - Parameter type: Type of object from the query
+    /// - Returns: Signal producer, which sends new results when
+    ///            it's started
     func fetch<Subject: Object>(collectionOf type: Subject.Type)
         -> SignalProducer<Results<Subject>, RealmError> {
 
