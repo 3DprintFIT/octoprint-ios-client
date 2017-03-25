@@ -71,7 +71,7 @@ class LogsViewModelTests: QuickSpec {
             model.outputs.size.startWithValues{ secondName = $0 }
 
             expect(firstName).toEventually(equal("first"))
-            expect(secondName).toEventually(equal("second"))
+            expect(secondName).toEventually(equal("1234 bytes"))
         }
     }
 

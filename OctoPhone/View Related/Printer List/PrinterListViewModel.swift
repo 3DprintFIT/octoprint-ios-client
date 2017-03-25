@@ -28,13 +28,11 @@ protocol PrinterListViewModelOutputs {
     /// Total count of stored printers
     var storedPrintersCount: Int { get }
 
-    /// Total count of printers found on network
-    var networkPrintersCount: Int { get }
-
     /// Stored printers list changed indicator
     var storedPrintersChanged: SignalProducer<(), NoError> { get }
 
-    var networkPrintersChanged: SignalProducer<(), NoError> { get }
+    /// 
+    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
 
     /// Creates new view model for local printer cell
     ///
@@ -62,24 +60,19 @@ PrinterListViewModelOutputs {
 
     // MARK: Output properties
 
-    var storedPrintersCount: Int { return storedPrinters?.count ?? 0 }
-
-    var networkPrintersCount: Int { return networkPrintersProperty.value.count }
+    var storedPrintersCount: Int { return storedPrintersProperty.value?.count ?? 0 }
 
     let storedPrintersChanged: SignalProducer<(), NoError>
 
-    let networkPrintersChanged: SignalProducer<(), NoError>
+    let displayError: SignalProducer<(title: String, message: String), NoError>
 
     // MARK: Private properies
 
     /// Collection of stored printers
-    private var storedPrinters: Results<Printer>?
+    private let storedPrintersProperty = MutableProperty<Results<Printer>?>(nil)
 
-    /// Collection of printers found on network - loaded dynamically
-    private let networkPrintersProperty = MutableProperty<[Printer]>([])
-
-    /// Realm notification token for stored properties
-    private var storedPrintersToken: NotificationToken?
+    /// Holds last occured error
+    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
 
     /// Database context manager
     private let contextManager: ContextManagerType
@@ -90,21 +83,29 @@ PrinterListViewModelOutputs {
     init(delegate: PrinterListViewControllerDelegate, contextManager: ContextManagerType) {
         self.delegate = delegate
         self.contextManager = contextManager
-        self.networkPrintersChanged = networkPrintersProperty.producer.map({ _ in })
+        self.storedPrintersChanged = storedPrintersProperty.producer.ignoreValues()
+        self.displayError = displayErrorProperty.producer.skipNil()
 
-        do {
-            let realm = try contextManager.createContext()
-            storedPrinters = realm.objects(Printer.self)
-        } catch {}
+        contextManager.createObservableContext()
+            .fetch(collectionOf: Printer.self)
+            .startWithResult { [weak self] result in
 
-        self.storedPrintersChanged = storedPrinters?.producer ?? SignalProducer(value: ())
+                switch result {
+                case let .success(printers): self?.storedPrintersProperty.value = printers
+                case .failure: self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                                   tr(.storedPrintersCouldNotBeLoaded))
+                }
+        }
     }
 
     // MARK: Output functions
 
     func storedPrinterCellViewModel(for index: Int) -> PrinterListCellViewModelType {
-        // Safe to unwrap because view controller asks for index -> count must be greater than 0
-        let printer = storedPrinters![index]
+        // If controller asks for specific count, it must be less
+        // than printers count, printers are not nil
+        assert(storedPrintersProperty.value != nil)
+
+        let printer = storedPrintersProperty.value![index]
 
         return PrinterListCellViewModel(printer: printer)
     }
@@ -113,11 +114,11 @@ PrinterListViewModelOutputs {
 
     func selectedStoredPrinter(at indexPath: IndexPath) {
         // At this point, stored printers must not be nil
-        assert(storedPrinters != nil)
+        assert(storedPrintersProperty.value != nil)
 
-        let printer = storedPrinters![indexPath.row]
+        let printer = storedPrintersProperty.value![indexPath.row]
         let tokenPlugin = TokenPlugin(token: printer.accessToken)
-        let provider = OctoPrintProvider(baseURL: storedPrinters![indexPath.row].url,
+        let provider = OctoPrintProvider(baseURL: printer.url,
                                          plugins: [tokenPlugin])
 
         delegate?.selectedPrinterProvider(provider: provider)
@@ -125,11 +126,5 @@ PrinterListViewModelOutputs {
 
     func addPrinterButtonTapped() {
         delegate?.addPrinterButtonTapped()
-    }
-
-    // MARK: Cleanup
-
-    deinit {
-        storedPrintersToken?.stop()
     }
 }

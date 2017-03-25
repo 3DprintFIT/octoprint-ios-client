@@ -35,6 +35,9 @@ class PrinterListViewModelTests: QuickSpec {
 
         afterEach {
             // Force context to flush database
+            let realm = try! contextManager.createContext()
+            try! realm.write { realm.deleteAll() }
+
             subject = nil
             contextManager = nil
             selectedProvider = nil

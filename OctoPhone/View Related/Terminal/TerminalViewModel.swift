@@ -62,7 +62,7 @@ TerminalViewModelOutputs {
 
     let displayError: Signal<(title: String, message: String), NoError>
 
-    var commandsCount: Int { return commands?.count ?? 0 }
+    var commandsCount: Int { return commandsProperty.value?.count ?? 0 }
 
     var commandsChanged: SignalProducer<(), NoError>
 
@@ -74,8 +74,8 @@ TerminalViewModelOutputs {
     /// Stores information about send button pressed action
     private let sendButtonPressedProperty = MutableProperty<Void>(())
 
-    /// Set of created commands
-    private var commands: Results<Command>?
+    /// Collection of terminal commands send to printer
+    private var commandsProperty = MutableProperty<Results<Command>?>(nil)
 
     /// Creates output error signal
     private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
@@ -87,25 +87,27 @@ TerminalViewModelOutputs {
     private let contextManager: ContextManagerType
 
     init(provider: OctoPrintProvider, contextManager: ContextManagerType) {
+        let commandValue = commandProperty.producer.skipNil()
+
         self.provider = provider
         self.contextManager = contextManager
         self.displayError = displayErrorProperty.signal.skipNil()
+        self.commandsChanged = commandsProperty.producer.skipNil().ignoreValues()
 
-        let commandValue = commandProperty.producer.skipNil()
-
-        do {
-            let realm = try contextManager.createContext()
-            commands = realm.objects(Command.self)
-        } catch {
-            displayErrorProperty.value = (tr(.anErrorOccured), tr(.canNotLoadStoredCommands))
-        }
-
-        self.commandsChanged = commands?.producer ?? SignalProducer<(), NoError>(value: ())
-
-        isCommandValid = SignalProducer.merge(
+        self.isCommandValid = SignalProducer.merge(
             SignalProducer<Bool, NoError>.init(value: false),
             commandValue.map({ !$0.isEmpty })
         )
+
+        contextManager.createObservableContext()
+            .fetch(collectionOf: Command.self)
+            .startWithResult({ [weak self] result in
+                switch result {
+                case let .success(printers): self?.commandsProperty.value = printers
+                case .failure: self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                                   tr(.canNotLoadStoredCommands))
+                }
+            })
 
         commandValue
             .sample(on: sendButtonPressedProperty.signal)
@@ -137,9 +139,10 @@ TerminalViewModelOutputs {
 
     // MARK: Output methods
     func commandCellViewModel(for index: Int) -> CommandCellViewModel {
-        assert(commands != nil)
+        assert(commandsProperty.value != nil,
+               "Commands must not be nil when requesting cell for specific command.")
 
-        let command = commands![index]
+        let command = commandsProperty.value![index]
 
         return CommandCellViewModel(provider: provider, contextManager: contextManager, command: command)
     }

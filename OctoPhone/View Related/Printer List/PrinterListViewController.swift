@@ -34,11 +34,6 @@ class PrinterListViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let dataChangedSignal = SignalProducer.merge([
-            viewModel.outputs.networkPrintersChanged,
-            viewModel.outputs.storedPrintersChanged
-        ])
-
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
@@ -51,7 +46,7 @@ class PrinterListViewController: BaseCollectionViewController {
                 forCellWithReuseIdentifier: PrinterListCollectionViewCell.identifier
             )
 
-            collectionView.reactive.reloadData <~ dataChangedSignal
+            collectionView.reactive.reloadData <~ viewModel.outputs.storedPrintersChanged
         }
     }
 
@@ -70,7 +65,6 @@ extension PrinterListViewController {
                                  numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0: return viewModel.outputs.storedPrintersCount
-        case 1: return viewModel.outputs.networkPrintersCount
         default: return 0
         }
     }

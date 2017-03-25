@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import RealmSwift
 import ReactiveSwift
+import RealmSwift
 import Result
 
 /// Inputs from files view controller
@@ -44,6 +44,7 @@ protocol FilesViewModelType {
     var outputs: FilesViewModelOutputs { get }
 }
 
+/// Files list controller logic
 final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewModelOutputs {
     var inputs: FilesViewModelInputs { return self }
 
@@ -53,9 +54,9 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
 
     let filesListChanged: SignalProducer<(), NoError>
 
-    let displayError: Signal<(title: String, message: String), NoError>
+    var filesCount: Int { return filesProperty.value?.count ?? 0 }
 
-    var filesCount: Int { return files?.count ?? 0 }
+    let displayError: Signal<(title: String, message: String), NoError>
 
     // MARK: Properties
 
@@ -65,26 +66,28 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
     /// Property for displayimg errors
     private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
 
+    /// Holds collection of files
+    private let filesProperty = MutableProperty<Results<File>?>(nil)
+
     /// Printer connection provider
     private let provider: OctoPrintProvider
 
     /// Database connections manager
     private let contextManager: ContextManagerType
 
-    private var files: Results<File>?
-
     init(provider: OctoPrintProvider, contextManager: ContextManagerType) {
         self.provider = provider
         self.contextManager = contextManager
-
-        do {
-            let realm = try contextManager.createContext()
-
-            files = realm.objects(File.self)
-        } catch { }
-
-        self.filesListChanged = files?.producer ?? SignalProducer(value: ())
         self.displayError = displayErrorProperty.signal.skipNil()
+        self.filesListChanged = filesProperty.producer.skipNil().ignoreValues()
+
+        contextManager.createObservableContext().fetch(collectionOf: File.self).startWithResult { [weak self] files in
+            switch files {
+            case let .success(files): self?.filesProperty.value = files
+            case .failure: self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                               tr(.filesListCouldNotBeLoaded))
+            }
+        }
 
         // Only call download request once, even when
         // the view is loaded more times
@@ -96,7 +99,9 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
                     .mapJSON()
                     .mapTo(collectionOf: File.self, forKeyPath: "files")
             }
-            .startWithResult { result in
+            .startWithResult { [weak self] result in
+                guard let weakSelf = self else { return }
+
                 switch result {
                 case let .success(files):
                     do {
@@ -105,14 +110,16 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
                         try realm.write {
                             realm.add(files, update: true)
                         }
-                    } catch { }
+                    } catch {
+
+                    }
                 case let .failure(error):
                     if case let .underlying(under) = error {
                         if case let JSONAbleError.errorMappingJSONToObject(json) = under {
                             print(json)
                         }
                     }
-                    self.displayErrorProperty.value = (tr(.connectionError),
+                    weakSelf.displayErrorProperty.value = (tr(.connectionError),
                                                        tr(.filesListCouldNotBeLoaded))
                 }
         }
@@ -125,8 +132,8 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
 
     // MARK: Output functions 
     func fileCellViewModel(for index: Int) -> FileCellViewModelType {
-        assert(files != nil, "Files must not be empty while creating view model")
+        assert(filesProperty.value != nil, "Files must not be empty while creating view model")
 
-        return FileCellViewModel(file: files![index])
+        return FileCellViewModel(file: filesProperty.value![index])
     }
 }

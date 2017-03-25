@@ -11,11 +11,11 @@ enum L10n {
   case anErrorOccured
   /// Can not create requested command.
   case canNotCreateRequestedCommand
-  /// Can not load stored commands
+  /// Can not load stored commands.
   case canNotLoadStoredCommands
   /// Command
   case command
-  /// 
+  /// Yay, command execution failed.
   case commandExecutingFailed
   /// Connection Error
   case connectionError
@@ -49,7 +49,7 @@ enum L10n {
   case printerName
   /// Printer URL
   case printerURL
-  /// Requested command could not be executed
+  /// Requested command could not be executed.
   case requestedCommandCouldNotBeExecuted
   /// SD card management
   case sdCardManagement
@@ -63,6 +63,8 @@ enum L10n {
   case sizeInBytes(String)
   /// Slicing
   case slicing
+  /// Stored printers could not be loaded
+  case storedPrintersCouldNotBeLoaded
   /// Terminal
   case terminal
 }
@@ -129,6 +131,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Size in bytes", p1)
       case .slicing:
         return L10n.tr(key: "Slicing")
+      case .storedPrintersCouldNotBeLoaded:
+        return L10n.tr(key: "Stored printers could not be loaded")
       case .terminal:
         return L10n.tr(key: "Terminal")
     }

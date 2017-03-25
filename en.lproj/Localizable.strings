@@ -9,6 +9,7 @@
 // * Printer list
 // *
 "Printer list" = "Printer list";
+"Stored printers could not be loaded" = "Stored printers could not be loaded";
 
 
 // *
@@ -56,9 +57,9 @@
 "Command" = "Command";
 "Send" = "Send";
 "Can not create requested command" = "Can not create requested command.";
-"Can not load stored commands" = "Can not load stored commands";
-"Command executing failed" = "";
-"Requested command could not be executed";
+"Can not load stored commands" = "Can not load stored commands.";
+"Command executing failed" = "Yay, command execution failed.";
+"Requested command could not be executed" = "Requested command could not be executed.";
 
 // *
 // * Logs
