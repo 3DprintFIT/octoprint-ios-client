@@ -61,11 +61,11 @@ extension SettingsViewController {
             SettingsCollectionViewCell.identifier, for: indexPath) as! SettingsCollectionViewCell
 
         switch indexPath.row {
-        case 0: cell.viewModel = viewModel.outputs.terminalCellViewModel()
-        case 1: cell.viewModel = viewModel.outputs.logsCellViewModel()
-        case 2: cell.viewModel = viewModel.outputs.slicingCellViewModel()
-        case 3: cell.viewModel = viewModel.outputs.printProfilesCellViewModel()
-        case 4: cell.viewModel = viewModel.outputs.sdCardManagementCellViewModel()
+        case 0: cell.viewModel.value = viewModel.outputs.terminalCellViewModel()
+        case 1: cell.viewModel.value = viewModel.outputs.logsCellViewModel()
+        case 2: cell.viewModel.value = viewModel.outputs.slicingCellViewModel()
+        case 3: cell.viewModel.value = viewModel.outputs.printProfilesCellViewModel()
+        case 4: cell.viewModel.value = viewModel.outputs.sdCardManagementCellViewModel()
         default: break
         }
 

@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import ReactiveSwift
+import Result
 
 /// Settings view model output
 protocol SettingsCellViewModelOutputs {
     /// Display name of setting
-    var name: String { get }
+    var name: SignalProducer<String, NoError> { get }
 }
 
 /// Coomon interface for settings cell view model
@@ -26,9 +28,9 @@ final class SettingsCellViewModel: SettingsCellViewModelType, SettingsCellViewMo
     var outputs: SettingsCellViewModelOutputs { return self }
 
     // MARK: - Outputs
-    let name: String
+    let name: SignalProducer<String, NoError>
 
     init(name: String) {
-        self.name = name
+        self.name = SignalProducer(value: name)
     }
 }
