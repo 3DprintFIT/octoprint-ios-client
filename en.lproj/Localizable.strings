@@ -66,6 +66,7 @@
 // *
 "Logs" = "Logs";
 "Size in bytes" = "%@ bytes";
+"Stored logs could not be loaded" = "Stored logs could not be loaded";
 
 
 // *

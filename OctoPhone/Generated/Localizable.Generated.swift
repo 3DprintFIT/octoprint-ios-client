@@ -63,6 +63,8 @@ enum L10n {
   case sizeInBytes(String)
   /// Slicing
   case slicing
+  /// Stored logs could not be loaded
+  case storedLogsCouldNotBeLoaded
   /// Stored printers could not be loaded
   case storedPrintersCouldNotBeLoaded
   /// Terminal
@@ -131,6 +133,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Size in bytes", p1)
       case .slicing:
         return L10n.tr(key: "Slicing")
+      case .storedLogsCouldNotBeLoaded:
+        return L10n.tr(key: "Stored logs could not be loaded")
       case .storedPrintersCouldNotBeLoaded:
         return L10n.tr(key: "Stored printers could not be loaded")
       case .terminal:

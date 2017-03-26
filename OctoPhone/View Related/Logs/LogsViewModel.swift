@@ -25,7 +25,10 @@ protocol LogsViewModelOutputs {
     var logsCount: Int { get }
 
     /// Logs change notification stream
-    var logsListChanged: Signal<(), NoError> { get }
+    var logsListChanged: SignalProducer<(), NoError> { get }
+
+    /// Produces errors which should be propagated to the user
+    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
 
     /// Creates view model for given row
     ///
@@ -57,9 +60,11 @@ final class LogsViewModel: LogsViewModelType, LogsViewModelInputs, LogsViewModel
 
     // MARK: Outputs
 
-    var logsCount: Int { return logs?.count ?? 0 }
+    var logsCount: Int { return logsProperty.value?.count ?? 0 }
 
-    let logsListChanged: Signal<(), NoError>
+    let logsListChanged: SignalProducer<(), NoError>
+
+    let displayError: SignalProducer<(title: String, message: String), NoError>
 
     // MARK: Private properties
 
@@ -70,44 +75,39 @@ final class LogsViewModel: LogsViewModelType, LogsViewModelInputs, LogsViewModel
     private let contextManager: ContextManagerType
 
     /// List of logs currently stored in database
-    private var logs: Results<Log>?
+    private let logsProperty = MutableProperty<Results<Log>?>(nil)
 
-    /// Realm changes observe token
-    private var logsToken: NotificationToken?
-
-    /// Logs change signal and observer
-    private let (logsSignal, logsObserver) = Signal<(), NoError>.pipe()
+    /// Holds last occured error, redirects errors to output
+    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
 
     // MARK: Initializers
 
     init(provider: OctoPrintProvider, contextManager: ContextManagerType) {
         self.provider = provider
         self.contextManager = contextManager
-        self.logsListChanged = logsSignal
+        self.logsListChanged = logsProperty.producer.ignoreValues()
+        self.displayError = displayErrorProperty.producer.skipNil()
 
-        do {
-            let realm = try contextManager.createContext()
-
-            logs = realm.objects(Log.self)
-            logsToken = logs?.addNotificationBlock({ [weak self] _ in
-                self?.logsObserver.send(value: ())
-            })
-        } catch {}
+        contextManager.createObservableContext()
+            .fetch(collectionOf: Log.self)
+            .startWithResult { [weak self] result in
+                switch result {
+                case let .success(logs): self?.logsProperty.value = logs
+                case .failure: self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                                   tr(.storedLogsCouldNotBeLoaded))
+                }
+        }
     }
 
     // MARK: Input methods
 
     // MARK: Output methods
-    func logCellViewModel(for index: Int) -> LogCellViewModelType {
-        assert(logs != nil)
 
-        let log = logs![index]
+    func logCellViewModel(for index: Int) -> LogCellViewModelType {
+        assert(logsProperty.value != nil)
+
+        let log = logsProperty.value![index]
 
         return LogCellViewModel(log: log)
-    }
-
-    deinit {
-        logsToken?.stop()
-        logsObserver.sendCompleted()
     }
 }
