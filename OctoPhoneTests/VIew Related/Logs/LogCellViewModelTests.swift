@@ -30,10 +30,11 @@ class LogCellViewModelTests: QuickSpec {
         }
 
         afterEach {
+            subject = nil
             log = nil
         }
 
-        it("displays initial log data correclty") {
+        it("displays initial log data correctly formatted") {
             var name = ""
             var size = ""
 
@@ -44,15 +45,21 @@ class LogCellViewModelTests: QuickSpec {
             expect(size).toEventually(equal("1 234 bytes"))
         }
 
-        it("updates UI when log data are changed") {
+        it("updates outputs when log data are changed") {
             var name = ""
+            var size = ""
 
             let realm = try! contextManager.createContext()
-            try! realm.write { log.name = "Updated Log" }
+            try! realm.write {
+                log.name = "Updated Log"
+                log.size = 4567
+            }
 
             subject.outputs.name.startWithValues { name = $0 }
+            subject.outputs.size.startWithValues { size = $0 }
 
             expect(name).toEventually(equal("Updated Log"))
+            expect(size).toEventually(equal("4 567 bytes"))
         }
     }
 }
