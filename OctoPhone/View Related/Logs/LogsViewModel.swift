@@ -14,7 +14,10 @@ import Result
 
 /// Inputs from view controller
 protocol LogsViewModelInputs {
-    func
+    /// Call when user selected log file to expand detail
+    ///
+    /// - Parameter index: Index of selected log file in logs collection
+    func selectedLog(at index: Int)
 }
 
 // MARK: - Outputs
@@ -68,6 +71,9 @@ final class LogsViewModel: LogsViewModelType, LogsViewModelInputs, LogsViewModel
 
     // MARK: Private properties
 
+    /// Logs view controller flow delegate
+    private weak var delegate: LogsViewControllerDelegate?
+
     /// Printer requests provider
     private let provider: OctoPrintProvider
 
@@ -82,7 +88,10 @@ final class LogsViewModel: LogsViewModelType, LogsViewModelInputs, LogsViewModel
 
     // MARK: Initializers
 
-    init(provider: OctoPrintProvider, contextManager: ContextManagerType) {
+    init(delegate: LogsViewControllerDelegate, provider: OctoPrintProvider,
+         contextManager: ContextManagerType) {
+
+        self.delegate = delegate
         self.provider = provider
         self.contextManager = contextManager
         self.logsListChanged = logsProperty.producer.ignoreValues()
@@ -102,6 +111,14 @@ final class LogsViewModel: LogsViewModelType, LogsViewModelInputs, LogsViewModel
     }
 
     // MARK: Input methods
+
+    func selectedLog(at index: Int) {
+        assert(logsProperty.value != nil, "Logs must not be empty when log file is selected by user")
+
+        let log = logsProperty.value![index]
+
+        delegate?.selectedLog(log)
+    }
 
     // MARK: Output methods
 

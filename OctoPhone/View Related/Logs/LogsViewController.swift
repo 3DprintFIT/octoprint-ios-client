@@ -10,6 +10,14 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
+/// Logs navigation flow delegate
+protocol LogsViewControllerDelegate: class {
+    /// Called when user selected log to open detail
+    ///
+    /// - Parameter log: Log selected by user
+    func selectedLog(_ log: Log)
+}
+
 /// Logs list controller
 class LogsViewController: BaseCollectionViewController {
 
@@ -55,6 +63,15 @@ extension LogsViewController {
         cell.viewModel.value = viewModel.outputs.logCellViewModel(for: indexPath.row)
 
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension LogsViewController {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
+
+        viewModel.inputs.selectedLog(at: indexPath.row)
     }
 }
 

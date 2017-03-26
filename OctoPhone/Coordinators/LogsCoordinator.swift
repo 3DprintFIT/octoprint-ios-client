@@ -13,7 +13,7 @@ import UIKit
 final class LogsCoordinator: ContextCoordinator {
 
     /// Printer requests provider
-    private let provider: OctoPrintProvider
+    fileprivate let provider: OctoPrintProvider
 
     init(navigationController: UINavigationController?, contextManager: ContextManagerType,
          provider: OctoPrintProvider) {
@@ -24,9 +24,25 @@ final class LogsCoordinator: ContextCoordinator {
     }
 
     override func start() {
-        let viewModel = LogsViewModel(provider: provider, contextManager: contextManager)
+        let viewModel = LogsViewModel(delegate: self, provider: provider,
+                                      contextManager: contextManager)
         let controller = LogsViewController(viewModel: viewModel)
 
         navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+// MARK: - LogsViewControllerDelegate
+extension LogsCoordinator: LogsViewControllerDelegate {
+    func selectedLog(_ log: Log) {
+        let coordinator = LogDetailCoordinator(
+            navigationController: navigationController,
+            contextManager: contextManager,
+            provider: provider,
+            logID: log.referencePath
+        )
+
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 }
