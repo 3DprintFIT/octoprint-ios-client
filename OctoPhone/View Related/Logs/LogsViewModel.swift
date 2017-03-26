@@ -14,7 +14,7 @@ import Result
 
 /// Inputs from view controller
 protocol LogsViewModelInputs {
-
+    func
 }
 
 // MARK: - Outputs

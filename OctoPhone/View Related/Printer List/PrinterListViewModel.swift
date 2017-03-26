@@ -31,7 +31,7 @@ protocol PrinterListViewModelOutputs {
     /// Stored printers list changed indicator
     var storedPrintersChanged: SignalProducer<(), NoError> { get }
 
-    /// 
+    /// Stream of errors which should be presented to the user
     var displayError: SignalProducer<(title: String, message: String), NoError> { get }
 
     /// Creates new view model for local printer cell
