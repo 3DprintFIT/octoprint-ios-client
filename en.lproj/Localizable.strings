@@ -6,6 +6,7 @@
 "Connection Error" = "Connection Error";
 "Database error" = "Database error";
 
+
 // *
 // * Printer list
 // *
@@ -62,6 +63,7 @@
 "Command executing failed" = "Yay, command execution failed.";
 "Requested command could not be executed" = "Requested command could not be executed.";
 
+
 // *
 // * Logs
 // *
@@ -69,7 +71,15 @@
 "Size in bytes" = "%@ bytes";
 "Stored logs could not be loaded" = "Stored logs could not be loaded.";
 "Logs could not be downloaded from printer" = "Logs could not be downloaded from printer.";
-"Could not save downloaded list of logs" = "Could not save downloaded list of logs";
+"Could not save downloaded list of logs" = "Could not save downloaded list of logs.";
+
+
+// *
+// * Logs
+// *
+"Log detail" = "Log detail";
+"Can not open selected log" = "Can not open selected log.";
+"Log file could not be deleted from printer" = "Log file could not be deleted from printer";
 
 
 // *

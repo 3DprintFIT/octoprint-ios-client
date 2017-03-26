@@ -13,6 +13,8 @@ enum L10n {
   case canNotCreateRequestedCommand
   /// Can not load stored commands.
   case canNotLoadStoredCommands
+  /// Can not open selected log.
+  case canNotOpenSelectedLog
   /// Command
   case command
   /// Yay, command execution failed.
@@ -21,7 +23,7 @@ enum L10n {
   case connectionError
   /// Can not connect to the printer.
   case couldNotConnectToPrinter
-  /// Could not save downloaded list of logs
+  /// Could not save downloaded list of logs.
   case couldNotSaveDownloadedListOfLogs
   /// Database error
   case databaseError
@@ -31,6 +33,10 @@ enum L10n {
   case filesListCouldNotBeLoaded
   /// The credentials you entered are incorrect.
   case incorrectCredentials
+  /// Log detail
+  case logDetail
+  /// Log file could not be deleted from printer
+  case logFileCouldNotBeDeletedFromPrinter
   /// Login
   case login
   /// Login Error
@@ -89,6 +95,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Can not create requested command")
       case .canNotLoadStoredCommands:
         return L10n.tr(key: "Can not load stored commands")
+      case .canNotOpenSelectedLog:
+        return L10n.tr(key: "Can not open selected log")
       case .command:
         return L10n.tr(key: "Command")
       case .commandExecutingFailed:
@@ -107,6 +115,10 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Files list could not be loaded")
       case .incorrectCredentials:
         return L10n.tr(key: "Incorrect Credentials")
+      case .logDetail:
+        return L10n.tr(key: "Log detail")
+      case .logFileCouldNotBeDeletedFromPrinter:
+        return L10n.tr(key: "Log file could not be deleted from printer")
       case .login:
         return L10n.tr(key: "Login")
       case .loginError:
