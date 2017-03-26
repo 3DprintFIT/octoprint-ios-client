@@ -97,6 +97,8 @@ final class LogsViewModel: LogsViewModelType, LogsViewModelInputs, LogsViewModel
                                                                    tr(.storedLogsCouldNotBeLoaded))
                 }
         }
+
+        downloadLogList()
     }
 
     // MARK: Input methods
@@ -109,5 +111,34 @@ final class LogsViewModel: LogsViewModelType, LogsViewModelInputs, LogsViewModel
         let log = logsProperty.value![index]
 
         return LogCellViewModel(log: log)
+    }
+
+    // MARK: Internal logic
+
+    /// Requests logs list from printer
+    private func downloadLogList() {
+        provider.request(.logs)
+            .mapJSON()
+            .mapTo(collectionOf: Log.self, forKeyPath: "files")
+            .startWithResult {[weak self] result in
+                guard let weakSelf = self else { return }
+
+                switch result {
+                case let .success(logs):
+                    do {
+                        let realm = try weakSelf.contextManager.createContext()
+
+                        try realm.write {
+                            realm.add(logs, update: true)
+                        }
+                    } catch {
+                        weakSelf.displayErrorProperty.value = (tr(.databaseError),
+                                                               tr(.couldNotSaveDownloadedListOfLogs))
+                    }
+                case .failure:
+                    self?.displayErrorProperty.value = (tr(.connectionError),
+                                                        tr(.logsCouldNotBeDownloadedFromPrinter))
+                }
+        }
     }
 }

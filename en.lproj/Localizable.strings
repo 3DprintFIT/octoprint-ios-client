@@ -4,6 +4,7 @@
 "An error occured" = "Ooops, an error occured";
 "Ok" = "Ok";
 "Connection Error" = "Connection Error";
+"Database error" = "Database error";
 
 // *
 // * Printer list
@@ -66,7 +67,9 @@
 // *
 "Logs" = "Logs";
 "Size in bytes" = "%@ bytes";
-"Stored logs could not be loaded" = "Stored logs could not be loaded";
+"Stored logs could not be loaded" = "Stored logs could not be loaded.";
+"Logs could not be downloaded from printer" = "Logs could not be downloaded from printer.";
+"Could not save downloaded list of logs" = "Could not save downloaded list of logs";
 
 
 // *

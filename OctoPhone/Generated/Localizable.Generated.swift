@@ -21,6 +21,10 @@ enum L10n {
   case connectionError
   /// Can not connect to the printer.
   case couldNotConnectToPrinter
+  /// Could not save downloaded list of logs
+  case couldNotSaveDownloadedListOfLogs
+  /// Database error
+  case databaseError
   /// Files
   case files
   /// Files list could not be loaded.
@@ -33,6 +37,8 @@ enum L10n {
   case loginError
   /// Logs
   case logs
+  /// Logs could not be downloaded from printer.
+  case logsCouldNotBeDownloadedFromPrinter
   /// Ok
   case ok
   /// Print profiles
@@ -63,7 +69,7 @@ enum L10n {
   case sizeInBytes(String)
   /// Slicing
   case slicing
-  /// Stored logs could not be loaded
+  /// Stored logs could not be loaded.
   case storedLogsCouldNotBeLoaded
   /// Stored printers could not be loaded
   case storedPrintersCouldNotBeLoaded
@@ -91,6 +97,10 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Connection Error")
       case .couldNotConnectToPrinter:
         return L10n.tr(key: "Could not connect to printer")
+      case .couldNotSaveDownloadedListOfLogs:
+        return L10n.tr(key: "Could not save downloaded list of logs")
+      case .databaseError:
+        return L10n.tr(key: "Database error")
       case .files:
         return L10n.tr(key: "Files")
       case .filesListCouldNotBeLoaded:
@@ -103,6 +113,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Login Error")
       case .logs:
         return L10n.tr(key: "Logs")
+      case .logsCouldNotBeDownloadedFromPrinter:
+        return L10n.tr(key: "Logs could not be downloaded from printer")
       case .ok:
         return L10n.tr(key: "Ok")
       case .printProfiles:

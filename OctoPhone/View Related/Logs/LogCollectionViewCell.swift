@@ -1,8 +1,8 @@
 //
-//  SettingsCollectionViewCell.swift
+//  LogCollectionViewCell.swift
 //  OctoPhone
 //
-//  Created by Josef Dolezal on 09/03/2017.
+//  Created by Josef Dolezal on 26/03/2017.
 //  Copyright © 2017 Josef Dolezal. All rights reserved.
 //
 
@@ -11,16 +11,16 @@ import SnapKit
 import ReactiveSwift
 
 /// Cell for settings page
-class SettingsCollectionViewCell: UICollectionViewCell {
+class LogCollectionViewCell: UICollectionViewCell {
 
     /// Reuse identifier of cell
-    static let identifier = "SettingsCollectionViewCell"
+    static let identifier = "LogCollectionViewCell"
 
     /// Settings name text label
     private let settingsTextLabel = UILabel()
 
     /// Cell logic
-    let viewModel = MutableProperty<SettingsCellViewModelType?>(nil)
+    let viewModel = MutableProperty<LogCellViewModelType?>(nil)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

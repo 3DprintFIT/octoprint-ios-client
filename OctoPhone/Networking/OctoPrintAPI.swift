@@ -24,6 +24,8 @@ enum OctoPrintAPI {
     case sendCommand(String)
     // Files
     case files
+    // Logs
+    case logs
 }
 
 // MARK: - TargetPart implementation
@@ -59,6 +61,8 @@ extension OctoPrintAPI: TargetPart {
         case let .sendCommand(command): return ("api/printer/command", .get, .request, ["command": command])
         // Files
         case .files: return ("api/files", .get, .request, nil)
+        // Logs
+        case .logs: return ("api/logs", .get, .request, nil)
         }
     }
 }

@@ -12,6 +12,7 @@
 		D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */; };
 		D2063D001E5F8352004C2908 /* PrinterLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */; };
 		D2072FD41DEDCD6D00E1BBD3 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */; };
+		D20E419D1E88508E00CE99BA /* LogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E419C1E88508E00CE99BA /* LogCollectionViewCell.swift */; };
 		D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D21B9DE81DEA1B8A005C34CD /* Localizable.strings */; };
 		D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C10471E66D3A500D88546 /* AppCoordinator.swift */; };
 		D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */; };
@@ -131,6 +132,7 @@
 		D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewModel.swift; sourceTree = "<group>"; };
 		D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
+		D20E419C1E88508E00CE99BA /* LogCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCollectionViewCell.swift; sourceTree = "<group>"; };
 		D21B9DE71DEA1B8A005C34CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D21C10471E66D3A500D88546 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewModel.swift; sourceTree = "<group>"; };
@@ -683,6 +685,7 @@
 				D2C38CC61E7D49EB00D06698 /* LogsViewModel.swift */,
 				D2C38CCE1E7FEE1400D06698 /* LogCellViewModel.swift */,
 				D2D990C41E6F6ABD0094DA64 /* LogsViewController.swift */,
+				D20E419C1E88508E00CE99BA /* LogCollectionViewCell.swift */,
 			);
 			path = Logs;
 			sourceTree = "<group>";
@@ -997,6 +1000,7 @@
 				D2D990D51E71F3D40094DA64 /* TerminalViewModel.swift in Sources */,
 				D2D331401E67177100C9C005 /* PrinterLoginCoordinator.swift in Sources */,
 				D28DE5421E8477AD0056A9F7 /* CommonOperators.swift in Sources */,
+				D20E419D1E88508E00CE99BA /* LogCollectionViewCell.swift in Sources */,
 				D2C38CCF1E7FEE1400D06698 /* LogCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
