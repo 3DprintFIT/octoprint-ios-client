@@ -67,6 +67,19 @@ extension OctoPrintAPI: TargetPart {
     }
 }
 
+// swiftlint:disable variable_name
+/// Default file download destination for Moya requests
+private let DefaultDownloadDestination: DownloadDestination = { temporaryURL, response in
+    let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+    if !directoryURLs.isEmpty {
+        return (directoryURLs[0].appendingPathComponent(response.suggestedFilename!), [])
+    }
+
+    return (temporaryURL, [])
+}
+// swiftlint:enable variable_name
+
 /// Reads data for stubbed data
 ///
 /// - Parameter fileName: Name of resource with stabbed data
