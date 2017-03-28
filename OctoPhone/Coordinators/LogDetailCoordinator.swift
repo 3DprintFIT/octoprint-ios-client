@@ -15,19 +15,19 @@ final class LogDetailCoordinator: ContextCoordinator {
     private let provider: OctoPrintProvider
 
     /// Identifier of selected log
-    private let logID: String
+    private let logReference: String
 
     init(navigationController: UINavigationController?, contextManager: ContextManagerType,
-         provider: OctoPrintProvider, logID: String) {
+         provider: OctoPrintProvider, logReference: String) {
 
         self.provider = provider
-        self.logID = logID
+        self.logReference = logReference
 
         super.init(navigationController: navigationController, contextManager: contextManager)
     }
 
     override func start() {
-        let viewModel = LogDetailViewModel(logID: logID, provider: provider,
+        let viewModel = LogDetailViewModel(logReference: logReference, provider: provider,
                                            contextManager: contextManager)
         let controller = LogDetailViewController(viewModel: viewModel)
 

@@ -15,6 +15,7 @@
 		D20E419D1E88508E00CE99BA /* LogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E419C1E88508E00CE99BA /* LogCollectionViewCell.swift */; };
 		D20E419F1E88626300CE99BA /* LogDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E419E1E88626300CE99BA /* LogDetailCoordinator.swift */; };
 		D20E41A11E88633F00CE99BA /* LogDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E41A01E88633F00CE99BA /* LogDetailViewModel.swift */; };
+		D20E41A31E88747900CE99BA /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E41A21E88747900CE99BA /* LogDetailViewController.swift */; };
 		D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D21B9DE81DEA1B8A005C34CD /* Localizable.strings */; };
 		D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C10471E66D3A500D88546 /* AppCoordinator.swift */; };
 		D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */; };
@@ -90,7 +91,6 @@
 		D2D990C11E6F6A800094DA64 /* PrinterControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990C01E6F6A800094DA64 /* PrinterControlViewController.swift */; };
 		D2D990C31E6F6AA10094DA64 /* FIleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990C21E6F6AA10094DA64 /* FIleDetailViewController.swift */; };
 		D2D990C51E6F6ABD0094DA64 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990C41E6F6ABD0094DA64 /* LogsViewController.swift */; };
-		D2D990C71E6F6AE10094DA64 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990C61E6F6AE10094DA64 /* LogDetailViewController.swift */; };
 		D2D990C91E71E6420094DA64 /* TerminalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990C81E71E6420094DA64 /* TerminalViewController.swift */; };
 		D2D990CB1E71E65D0094DA64 /* SDCardManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990CA1E71E65D0094DA64 /* SDCardManagementViewController.swift */; };
 		D2D990CD1E71E7E90094DA64 /* FileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990CC1E71E7E90094DA64 /* FileDetailViewModel.swift */; };
@@ -136,6 +136,7 @@
 		D20E419C1E88508E00CE99BA /* LogCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCollectionViewCell.swift; sourceTree = "<group>"; };
 		D20E419E1E88626300CE99BA /* LogDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailCoordinator.swift; sourceTree = "<group>"; };
 		D20E41A01E88633F00CE99BA /* LogDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewModel.swift; sourceTree = "<group>"; };
+		D20E41A21E88747900CE99BA /* LogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
 		D21B9DE71DEA1B8A005C34CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D21C10471E66D3A500D88546 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewModel.swift; sourceTree = "<group>"; };
@@ -217,7 +218,6 @@
 		D2D990C01E6F6A800094DA64 /* PrinterControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterControlViewController.swift; sourceTree = "<group>"; };
 		D2D990C21E6F6AA10094DA64 /* FIleDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIleDetailViewController.swift; sourceTree = "<group>"; };
 		D2D990C41E6F6ABD0094DA64 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
-		D2D990C61E6F6AE10094DA64 /* LogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
 		D2D990C81E71E6420094DA64 /* TerminalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalViewController.swift; sourceTree = "<group>"; };
 		D2D990CA1E71E65D0094DA64 /* SDCardManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementViewController.swift; sourceTree = "<group>"; };
 		D2D990CC1E71E7E90094DA64 /* FileDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailViewModel.swift; sourceTree = "<group>"; };
@@ -697,7 +697,7 @@
 			isa = PBXGroup;
 			children = (
 				D20E41A01E88633F00CE99BA /* LogDetailViewModel.swift */,
-				D2D990C61E6F6AE10094DA64 /* LogDetailViewController.swift */,
+				D20E41A21E88747900CE99BA /* LogDetailViewController.swift */,
 			);
 			path = "Log Detail";
 			sourceTree = "<group>";
@@ -942,6 +942,7 @@
 				D2ACD7441E6C43CA00F2603A /* FileCollectionViewCell.swift in Sources */,
 				D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */,
 				D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */,
+				D20E41A31E88747900CE99BA /* LogDetailViewController.swift in Sources */,
 				D2D990C51E6F6ABD0094DA64 /* LogsViewController.swift in Sources */,
 				D26B50171E734FEC00795462 /* SlicingViewController.swift in Sources */,
 				D2ACD7481E6C451100F2603A /* FileCellViewModel.swift in Sources */,
@@ -990,7 +991,6 @@
 				D2C38CCB1E7D4D5B00D06698 /* Log+JSONAble.swift in Sources */,
 				D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */,
 				D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */,
-				D2D990C71E6F6AE10094DA64 /* LogDetailViewController.swift in Sources */,
 				D2F765961E788C3000A5BC11 /* CommandCellViewModel.swift in Sources */,
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
 				D26B50131E734DAA00795462 /* SlicingViewModel.swift in Sources */,

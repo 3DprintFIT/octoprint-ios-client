@@ -11,7 +11,7 @@
 // * Printer list
 // *
 "Printer list" = "Printer list";
-"Stored printers could not be loaded" = "Stored printers could not be loaded";
+"Stored printers could not be loaded" = "Stored printers could not be loaded.";
 
 
 // *
@@ -75,11 +75,17 @@
 
 
 // *
-// * Logs
+// * Log detail
 // *
 "Log detail" = "Log detail";
 "Can not open selected log" = "Can not open selected log.";
-"Log file could not be deleted from printer" = "Log file could not be deleted from printer";
+"Log file could not be deleted from printer" = "Log file could not be deleted from printer.";
+"Unknown file" = "Uknown file";
+"Unknown file size" = "Unknwon file size";
+"Unknown modification date" = "Uknown modofication date";
+"Downloading log file" = "Downloading log file...";
+"Requested log file could not be downloaded" = "Requested log file could not be downloaded";
+"Downloaded file can not be opened" = "Downloaded file can not be opened.";
 
 
 // *

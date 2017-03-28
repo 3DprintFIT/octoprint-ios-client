@@ -15,13 +15,14 @@ extension Log: JSONAble {
             let name = json["name"] as? String,
             let size = json["size"] as? Int,
             let referenceJSON = json["refs"] as? [String: Any],
-            let remotePath = referenceJSON["download"] as? String,
+            let fullRemotePath = referenceJSON["download"] as? String,
+            let remotePath = URL(string: fullRemotePath),
             let referencePath = referenceJSON["resource"] as? String else
         {
             throw JSONAbleError.errorMappingJSONToObject(json: json)
         }
 
         return Log(name: name, size: size, lastModified: lastModified,
-                   remotePath: remotePath, referencePath: referencePath)
+                   remotePath: remotePath.lastPathComponent, referencePath: referencePath)
     }
 }

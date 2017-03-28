@@ -27,6 +27,10 @@ enum L10n {
   case couldNotSaveDownloadedListOfLogs
   /// Database error
   case databaseError
+  /// Downloaded file can not be opened.
+  case downloadedFileCanNotBeOpened
+  /// Downloading log file...
+  case downloadingLogFile
   /// Files
   case files
   /// Files list could not be loaded.
@@ -35,7 +39,7 @@ enum L10n {
   case incorrectCredentials
   /// Log detail
   case logDetail
-  /// Log file could not be deleted from printer
+  /// Log file could not be deleted from printer.
   case logFileCouldNotBeDeletedFromPrinter
   /// Login
   case login
@@ -63,6 +67,8 @@ enum L10n {
   case printerURL
   /// Requested command could not be executed.
   case requestedCommandCouldNotBeExecuted
+  /// Requested log file could not be downloaded
+  case requestedLogFileCouldNotBeDownloaded
   /// SD card management
   case sdCardManagement
   /// Send
@@ -77,10 +83,16 @@ enum L10n {
   case slicing
   /// Stored logs could not be loaded.
   case storedLogsCouldNotBeLoaded
-  /// Stored printers could not be loaded
+  /// Stored printers could not be loaded.
   case storedPrintersCouldNotBeLoaded
   /// Terminal
   case terminal
+  /// Uknown file
+  case unknownFile
+  /// Unknwon file size
+  case unknownFileSize
+  /// Uknown modofication date
+  case unknownModificationDate
 }
 // swiftlint:enable type_body_length
 
@@ -109,6 +121,10 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Could not save downloaded list of logs")
       case .databaseError:
         return L10n.tr(key: "Database error")
+      case .downloadedFileCanNotBeOpened:
+        return L10n.tr(key: "Downloaded file can not be opened")
+      case .downloadingLogFile:
+        return L10n.tr(key: "Downloading log file")
       case .files:
         return L10n.tr(key: "Files")
       case .filesListCouldNotBeLoaded:
@@ -145,6 +161,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Printer URL")
       case .requestedCommandCouldNotBeExecuted:
         return L10n.tr(key: "Requested command could not be executed")
+      case .requestedLogFileCouldNotBeDownloaded:
+        return L10n.tr(key: "Requested log file could not be downloaded")
       case .sdCardManagement:
         return L10n.tr(key: "SD card management")
       case .send:
@@ -163,6 +181,12 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Stored printers could not be loaded")
       case .terminal:
         return L10n.tr(key: "Terminal")
+      case .unknownFile:
+        return L10n.tr(key: "Unknown file")
+      case .unknownFileSize:
+        return L10n.tr(key: "Unknown file size")
+      case .unknownModificationDate:
+        return L10n.tr(key: "Unknown modification date")
     }
   }
 

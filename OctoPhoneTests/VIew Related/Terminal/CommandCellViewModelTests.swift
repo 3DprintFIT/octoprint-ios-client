@@ -20,12 +20,10 @@ class CommandCellViewModelTests: QuickSpec {
         var subject: CommandCellViewModel!
         var contextManager: InMemoryContextManager!
         var outputText = ""
-        var outputError: (String, String)!
 
         beforeEach {
             testedCommand = Command(value: "M105", status: .processing)
             contextManager = InMemoryContextManager()
-            outputError = nil
 
             let realm = try! contextManager.createContext()
             try! realm.write { realm.add(testedCommand) }

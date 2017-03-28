@@ -39,7 +39,7 @@ extension LogsCoordinator: LogsViewControllerDelegate {
             navigationController: navigationController,
             contextManager: contextManager,
             provider: provider,
-            logID: log.referencePath
+            logReference: log.referencePath
         )
 
         childCoordinators.append(coordinator)
