@@ -77,11 +77,13 @@ final class LogCellViewModel: LogCellViewModelType, LogCellViewModelInputs, LogC
             .skipNil()
             .map { tr(.sizeInBytes(OPNumberFormatter.shared.plainNumber($0))) }
 
-        self.logToken = log.addNotificationBlock { [weak self] _ in
+        self.logToken = log.addNotificationBlock { [weak self] change in
             guard let weakSelf = self else { return }
 
-            weakSelf.nameProperty.value = weakSelf.log.name
-            weakSelf.sizeProperty.value = weakSelf.log.size
+            if case .change = change {
+                weakSelf.nameProperty.value = weakSelf.log.name
+                weakSelf.sizeProperty.value = weakSelf.log.size
+            }
         }
 
         // Initial data
