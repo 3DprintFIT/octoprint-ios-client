@@ -37,6 +37,8 @@ enum L10n {
   case filesListCouldNotBeLoaded
   /// The credentials you entered are incorrect.
   case incorrectCredentials
+  /// Log could not be removed.
+  case logCouldNotBeRemoved
   /// Log detail
   case logDetail
   /// Log file could not be deleted from printer.
@@ -131,6 +133,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Files list could not be loaded")
       case .incorrectCredentials:
         return L10n.tr(key: "Incorrect Credentials")
+      case .logCouldNotBeRemoved:
+        return L10n.tr(key: "Log could not be removed")
       case .logDetail:
         return L10n.tr(key: "Log detail")
       case .logFileCouldNotBeDeletedFromPrinter:

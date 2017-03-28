@@ -65,6 +65,7 @@
 		D27C97161E63C25D00641A1A /* TokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C97151E63C25D00641A1A /* TokenPlugin.swift */; };
 		D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28919791E11783500E3BBEB /* Localizable.Generated.swift */; };
 		D28DE5421E8477AD0056A9F7 /* CommonOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28DE5411E8477AD0056A9F7 /* CommonOperators.swift */; };
+		D28E44A51E8A7A81009D4976 /* String+URLEncoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E44A41E8A7A81009D4976 /* String+URLEncoded.swift */; };
 		D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5341E09E6490089C027 /* DetailViewController.swift */; };
 		D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5361E09E65F0089C027 /* FilesViewController.swift */; };
 		D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5381E09E6740089C027 /* SettingsViewController.swift */; };
@@ -187,6 +188,7 @@
 		D27C97151E63C25D00641A1A /* TokenPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenPlugin.swift; sourceTree = "<group>"; };
 		D28919791E11783500E3BBEB /* Localizable.Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.Generated.swift; sourceTree = "<group>"; };
 		D28DE5411E8477AD0056A9F7 /* CommonOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonOperators.swift; sourceTree = "<group>"; };
+		D28E44A41E8A7A81009D4976 /* String+URLEncoded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+URLEncoded.swift"; sourceTree = "<group>"; };
 		D28EC5341E09E6490089C027 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D28EC5361E09E65F0089C027 /* FilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		D28EC5381E09E6740089C027 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				D27C97111E63BAE000641A1A /* OctoPrintAPI.swift */,
 				D27C97151E63C25D00641A1A /* TokenPlugin.swift */,
 				D22401771E6AFDF70082129A /* JSONAble.swift */,
+				D28E44A41E8A7A81009D4976 /* String+URLEncoded.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -998,6 +1001,7 @@
 				D26B50151E734EFE00795462 /* PrintProfilesViewModel.swift in Sources */,
 				D22401651E6A3B670082129A /* SettingsCoordinator.swift in Sources */,
 				D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */,
+				D28E44A51E8A7A81009D4976 /* String+URLEncoded.swift in Sources */,
 				D2EF39291E66F06800A17057 /* PrinterListCoordinator.swift in Sources */,
 				D2063D001E5F8352004C2908 /* PrinterLoginViewModel.swift in Sources */,
 				D22401811E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift in Sources */,

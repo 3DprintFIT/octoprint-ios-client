@@ -27,6 +27,7 @@ enum OctoPrintAPI {
     // Logs
     case logs
     case downloadLog(String)
+    case deleteLog(String)
 }
 
 // MARK: - TargetPart implementation
@@ -65,11 +66,9 @@ extension OctoPrintAPI: TargetPart {
         // Logs
         case .logs: return ("api/logs", .get, .request, nil)
         case let .downloadLog(logName):
-            return ("downloads/logs/\(logName.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")",
-                .get,
-                .download(.request(DefaultDownloadDestination)),
-                nil
-            )
+            return ("downloads/logs/\(logName.urlEncoded)", .get, .download(.request(DefaultDownloadDestination)), nil)
+        case let .deleteLog(logName):
+            return ("api/logs/\(logName.urlEncoded)", .delete, .request, nil)
         }
     }
 }

@@ -42,6 +42,11 @@ extension LogsCoordinator: LogsViewControllerDelegate {
             logReference: log.referencePath
         )
 
+        coordinator.completed = { [weak self] in
+            self?.childCoordinators.removeLast()
+            _ = self?.navigationController?.popViewController(animated: true)
+        }
+
         childCoordinators.append(coordinator)
         coordinator.start()
     }

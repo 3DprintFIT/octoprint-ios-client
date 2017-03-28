@@ -14,7 +14,8 @@ import Result
 
 /// Log detail inputs
 protocol LogDetailViewModelInputs {
-
+    /// Call when the log file should be deleted from printer
+    func deleteLog()
 }
 
 // MARK: - Outputs
@@ -33,8 +34,8 @@ protocol LogDetailViewModelOutputs {
     /// Log content, nil if content is not downloaded yet
     var content: SignalProducer<String?, NoError> { get }
 
-    /// Indicates whether the file is being downloaded
-    var isDownloadingContent: SignalProducer <Bool, NoError> { get }
+    /// Indicates whether the delete log button should be enabled
+    var deleteLogButtonEnabled: SignalProducer<Bool, NoError> { get }
 
     /// Stream of log detail errors
     var displayError: SignalProducer<(title: String, message: String), NoError> { get }
@@ -71,7 +72,7 @@ LogDetailViewModelOutputs {
 
     let content: SignalProducer<String?, NoError>
 
-    let isDownloadingContent: SignalProducer<Bool, NoError>
+    let deleteLogButtonEnabled: SignalProducer<Bool, NoError>
 
     // MARK: Outputs
 
@@ -89,20 +90,27 @@ LogDetailViewModelOutputs {
     private let logProperty = MutableProperty<Log?>(nil)
 
     /// Emits event to download log when value is assigned
-    private let downloadProperty: MutableProperty<()>
+    private let downloadLogProperty: MutableProperty<()>
+
+    /// Emiits event to delete log file from printer
+    private let deleteLogProperty = MutableProperty<()>(())
 
     /// Last occured error which should be presented to user
     private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
 
     /// Keeps state of file downloading
-    private let isDownloadingContentProperty = MutableProperty(false)
+    private let isDeletingLogProperty = MutableProperty(false)
+
+    private weak var delegate: LogDetailViewControllerDelegate?
 
     /// Realm change notification token
     private var logNotification: NotificationToken?
 
     // MARK: Initializers
 
-    init(logReference: String, provider: OctoPrintProvider, contextManager: ContextManagerType) {
+    init(delegate: LogDetailViewControllerDelegate, logReference: String,
+         provider: OctoPrintProvider, contextManager: ContextManagerType) {
+
         self.provider = provider
         self.contextManager = contextManager
 
@@ -122,21 +130,28 @@ LogDetailViewModelOutputs {
                 return nil
             }
 
+        self.delegate = delegate
         self.name = logProducer.map({ $0.name }).prefix(value: tr(.unknownFile))
         self.size = logProducer.map({ $0.name }).prefix(value: tr(.unknownFileSize))
         self.lastModification = logProducer.map({ $0.name }).prefix(value: tr(.unknownModificationDate))
         self.content = contentProducer.prefix(value: tr(.downloadingLogFile))
-        self.isDownloadingContent = isDownloadingContentProperty.producer
         self.displayError = displayErrorProperty.producer.skipNil()
-        self.downloadProperty = MutableProperty(())
+        self.downloadLogProperty = MutableProperty(())
+        self.deleteLogButtonEnabled = isDeletingLogProperty.producer.map({ !$0 })
 
         do {
             let realm = try contextManager.createContext()
             let log = realm.object(ofType: Log.self, forPrimaryKey: logReference)
 
             logProperty.value = log
-            logNotification = log?.addNotificationBlock({ [weak self] _ in
-                self?.logProperty.value = log
+            logNotification = log?.addNotificationBlock({ [weak self] change in
+                var emittedLog: Log? = nil
+
+                if case .change = change {
+                    emittedLog = log
+                }
+
+                self?.logProperty.value = emittedLog
             })
         } catch {
             displayErrorProperty.value = (tr(.anErrorOccured), tr(.canNotOpenSelectedLog))
@@ -147,13 +162,18 @@ LogDetailViewModelOutputs {
 
     // MARK: Input methods
 
+    func deleteLog() {
+        deleteLogProperty.value = ()
+    }
+
     // MARK: Internal logic
 
+    // swiftlint:disable function_body_length
     /// Configures all internal logic signal
     private func setupSignals() {
         logProperty.producer
             .skipNil()
-            .sample(on: downloadProperty.producer)
+            .sample(on: downloadLogProperty.producer)
             .map({ $0.remotePath })
             .flatMap(.latest) { self.provider.request(.downloadLog($0)) }
             .observe(on: UIScheduler())
@@ -176,7 +196,41 @@ LogDetailViewModelOutputs {
                                                            tr(.requestedLogFileCouldNotBeDownloaded))
                 }
             }
+
+        logProperty.producer
+            .skipNil()
+            .sample(on: deleteLogProperty.producer.skip(first: 1))
+            .on(event: { _ in self.isDeletingLogProperty.value = true })
+            .map({ $0.name })
+            .flatMap(.latest) { return self.provider.request(.deleteLog($0)) }
+            .filterSuccessfulStatusCodes()
+            .startWithResult { [weak self] result in
+                guard let weakSelf = self, let log = weakSelf.logProperty.value else { return }
+
+                weakSelf.isDeletingLogProperty.value = false
+
+                switch result {
+                case .success:
+                    do {
+                        weakSelf.delegate?.closeDetail()
+
+                        let realm = try weakSelf.contextManager.createContext()
+
+                        try realm.write {
+                            realm.delete(log)
+                        }
+                    } catch {
+                        weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                               tr(.logCouldNotBeRemoved))
+                    }
+
+                case .failure:
+                    weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                           tr(.logCouldNotBeRemoved))
+                }
+            }
     }
+    // swiftlint:disable function_body_length
 
     deinit {
         logNotification?.stop()

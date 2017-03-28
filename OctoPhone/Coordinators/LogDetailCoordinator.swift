@@ -27,10 +27,17 @@ final class LogDetailCoordinator: ContextCoordinator {
     }
 
     override func start() {
-        let viewModel = LogDetailViewModel(logReference: logReference, provider: provider,
-                                           contextManager: contextManager)
+        let viewModel = LogDetailViewModel(delegate: self, logReference: logReference,
+                                           provider: provider, contextManager: contextManager)
         let controller = LogDetailViewController(viewModel: viewModel)
 
         navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+// MARK: - LogDetailViewControllerDelegate
+extension LogDetailCoordinator: LogDetailViewControllerDelegate {
+    func closeDetail() {
+        completed()
     }
 }

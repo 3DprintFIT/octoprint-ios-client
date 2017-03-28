@@ -86,6 +86,7 @@
 "Downloading log file" = "Downloading log file...";
 "Requested log file could not be downloaded" = "Requested log file could not be downloaded";
 "Downloaded file can not be opened" = "Downloaded file can not be opened.";
+"Log could not be removed" = "Log could not be removed.";
 
 
 // *
