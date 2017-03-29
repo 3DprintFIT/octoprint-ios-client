@@ -5,6 +5,8 @@
 "Ok" = "Ok";
 "Connection Error" = "Connection Error";
 "Database error" = "Database error";
+"Cancel" = "Cancel";
+"Delete" = "Delete";
 
 
 // *
@@ -84,7 +86,9 @@
 "Unknown file size" = "Unknwon file size";
 "Unknown modification date" = "Uknown modofication date";
 "Downloading log file" = "Downloading log file...";
-"Requested log file could not be downloaded" = "Requested log file could not be downloaded";
+"Delete log" = "Delete log";
+"Do you really want to delete log from printer" = "Do you really want to delete log from printer? This action is permanent and cannot be undone.";
+"Requested log file could not be downloaded" = "Requested log file could not be downloaded.";
 "Downloaded file can not be opened" = "Downloaded file can not be opened.";
 "Log could not be removed" = "Log could not be removed.";
 

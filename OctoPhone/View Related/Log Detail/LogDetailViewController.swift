@@ -73,7 +73,19 @@ class LogDetailViewController: BaseViewController {
 
     /// UI action target - called when delete button is tapped
     func deleteLogButtonTapped() {
-        viewModel.inputs.deleteLog()
+        let alertController = UIAlertController(title: nil,
+                                                message: tr(.doYouReallyWantToDeleteLogFromPrinter),
+                                                preferredStyle: .actionSheet)
+
+        let cancelAction = UIAlertAction(title: tr(.cancel), style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: tr(.delete), style: .destructive) { [weak self] _ in
+            self?.viewModel.inputs.deleteLog()
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+
+        present(alertController, animated: true, completion: nil)
     }
 
     /// Binds outputs of View Model to UI and converts

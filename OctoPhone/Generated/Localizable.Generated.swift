@@ -15,6 +15,8 @@ enum L10n {
   case canNotLoadStoredCommands
   /// Can not open selected log.
   case canNotOpenSelectedLog
+  /// Cancel
+  case cancel
   /// Command
   case command
   /// Yay, command execution failed.
@@ -27,6 +29,12 @@ enum L10n {
   case couldNotSaveDownloadedListOfLogs
   /// Database error
   case databaseError
+  /// Delete
+  case delete
+  /// Delete log
+  case deleteLog
+  /// Do you really want to delete log from printer
+  case doYouReallyWantToDeleteLogFromPrinter
   /// Downloaded file can not be opened.
   case downloadedFileCanNotBeOpened
   /// Downloading log file...
@@ -111,6 +119,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Can not load stored commands")
       case .canNotOpenSelectedLog:
         return L10n.tr(key: "Can not open selected log")
+      case .cancel:
+        return L10n.tr(key: "Cancel")
       case .command:
         return L10n.tr(key: "Command")
       case .commandExecutingFailed:
@@ -123,6 +133,12 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Could not save downloaded list of logs")
       case .databaseError:
         return L10n.tr(key: "Database error")
+      case .delete:
+        return L10n.tr(key: "Delete")
+      case .deleteLog:
+        return L10n.tr(key: "Delete log")
+      case .doYouReallyWantToDeleteLogFromPrinter:
+        return L10n.tr(key: "Do you really want to delete log from printer")
       case .downloadedFileCanNotBeOpened:
         return L10n.tr(key: "Downloaded file can not be opened")
       case .downloadingLogFile:
