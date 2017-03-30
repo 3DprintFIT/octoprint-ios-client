@@ -22,7 +22,7 @@ class LogsViewModelTests: QuickSpec {
         var disposable: Disposable!
 
         beforeEach {
-            subject = LogsViewModel(provider: provider, contextManager: contextManager)
+            subject = LogsViewModel(delegate: self, provider: provider, contextManager: contextManager)
             currentCount = 0
 
             let realm = try! contextManager.createContext()
@@ -37,7 +37,7 @@ class LogsViewModelTests: QuickSpec {
 
         it("displays provides correct count of logs") {
             expect(subject.outputs.logsCount) == 0
-            disposable = subject.outputs.logsListChanged.observeValues { currentCount = subject.outputs.logsCount }
+            disposable = subject.outputs.logsListChanged.startWithValues { currentCount = subject.outputs.logsCount }
 
             let first = self.createLog("first")
             let second = self.createLog("second")
@@ -79,5 +79,11 @@ class LogsViewModelTests: QuickSpec {
     private func createLog(_ primaryKey: String) -> Log {
         return Log(name: "\(primaryKey)", size: 1234, lastModified: 5678,
                    remotePath: "RP\(primaryKey)", referencePath: "RF\(primaryKey)")
+    }
+}
+
+extension LogsViewModelTests: LogsViewControllerDelegate {
+    func selectedLog(_ log: Log) {
+
     }
 }

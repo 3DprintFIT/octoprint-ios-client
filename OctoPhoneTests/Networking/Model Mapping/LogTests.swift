@@ -15,7 +15,7 @@ class LogTests: QuickSpec {
         let lastModified = 1393158814
         let name = "serial.log"
         let size = 1798419
-        let remotePath = "http://example.com/downloads/logs/serial.log"
+        let remotePath = "serial.log"
         let referencePath = "http://example.com/api/logs/serial.log"
         let localPath = "/var/logs/11-01-16.log"
 
