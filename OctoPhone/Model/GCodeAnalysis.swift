@@ -16,14 +16,14 @@ final class GCodeAnalysis: Object {
     dynamic var estimatedPrintTime = 0
 
     /// Length of used filament
-    dynamic var filamentLength = 0
+    dynamic var filamentLength = 0.0
 
     /// Volume of used filament
     dynamic var filamentVolume = 0.0
 
     // MARK: - Public API
 
-    convenience init(estimatedPrintTime: Int, filamentLength: Int, filamentVolume: Double) {
+    convenience init(estimatedPrintTime: Int, filamentLength: Double, filamentVolume: Double) {
         self.init()
 
         self.estimatedPrintTime = estimatedPrintTime

@@ -14,7 +14,7 @@ class GCodeAnalysisSpec: QuickSpec {
     override func spec() {
         it("converts from JSON") {
             let estimatedPrintTime = 1188
-            let filamentLength = 810
+            let filamentLength = 810.1
             let filamentVolume = 5.36
             let data: [String : Any] = ["estimatedPrintTime": estimatedPrintTime, "filament": [ "tool0": ["length": filamentLength, "volume": filamentVolume]]]
 

@@ -26,7 +26,7 @@ class FileSpec: QuickSpec {
             let resource = "http://example.com/api/files/local/whistle_v2.gcode"
             let download = "http://example.com/downloads/files/local/whistle_v2.gcode"
             let estimatedPrintTime = 1188
-            let filamentLength = 810
+            let filamentLength = 810.1
             let filamentVolume = 5.36
             let failures = 4
             let successes = 23
