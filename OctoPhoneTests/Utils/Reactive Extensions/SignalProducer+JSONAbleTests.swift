@@ -58,6 +58,16 @@ class SignalProducerJSONAbleTests: QuickSpec {
             expect(emittedCollection).toNot(beNil())
         }
 
+        it("converts dictionary to collection") {
+            let dictionary = ["cura": ["default": true, "displayName": "CuraEngine", "key": "cura"]]
+
+            SignalProducer<Any, MoyaError>(value: dictionary)
+                .mapDictionary(collectionOf: Slicer.self).materialize().map{ $0.value }.skipNil()
+                .startWithValues { _ in emittedCollection = [] }
+
+            expect(emittedCollection).toNot(beNil())
+        }
+
         it("fails conversion with invalid json") {
             SignalProducer<Any, MoyaError>(value: 0)
                 .mapTo(object: GCodeAnalysis.self)
@@ -102,6 +112,24 @@ class SignalProducerJSONAbleTests: QuickSpec {
             SignalProducer<Any, MoyaError>(value: ["key": 0])
                 .mapTo(collectionOf: GCodeAnalysis.self, forKeyPath: "key")
                 .startWithFailed { emittedError = $0 }
+
+            expect(emittedError).toNot(beNil())
+        }
+
+        it("fails conversion with invalid json") {
+            SignalProducer<Any, MoyaError>(value: ["cura", "test"])
+                .mapDictionary(collectionOf: Slicer.self).materialize().map{ $0.error }.skipNil()
+                .startWithValues { emittedError = $0 }
+
+            expect(emittedError).toNot(beNil())
+        }
+
+        it("fails conversion with ivalid object in json") {
+            let dictionary = ["cura": ["default": true, "displayName": "CuraEngine"]]
+
+            SignalProducer<Any, MoyaError>(value: dictionary)
+                .mapDictionary(collectionOf: Slicer.self).materialize().map{ $0.error }.skipNil()
+                .startWithValues { emittedError = $0 }
 
             expect(emittedError).toNot(beNil())
         }

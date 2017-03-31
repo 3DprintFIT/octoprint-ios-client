@@ -89,4 +89,29 @@ extension SignalProducerProtocol where Value == Any, Error == MoyaError {
             return SignalProducer(value: objects)
         }
     }
+
+    /// Maps JSON **object** to collection of objects. Decodes special JSON format,
+    /// where collection is sent as object properties, not as array of objects.
+    ///
+    /// - Parameter classType: Class which is expected to be returned
+    /// - Returns: Collection of objects of given type
+    func mapDictionary<T: JSONAble>(collectionOf classType: T.Type) -> SignalProducer<[T], MoyaError> {
+        return producer.flatMap(.latest) { json -> SignalProducer<[T], MoyaError> in
+            guard let dict = json as? [String: [String: Any]] else {
+                return SignalProducer(error: .underlying(JSONAbleError.invalidJSON(json: json)))
+            }
+
+            var objects = [T]()
+
+            for objectDict in dict {
+                do {
+                    objects.append(try T.fromJSON(json: objectDict.value))
+                } catch {
+                    return SignalProducer(error: .underlying(error))
+                }
+            }
+
+            return SignalProducer(value: objects)
+        }
+    }
 }
