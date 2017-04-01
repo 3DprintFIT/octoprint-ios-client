@@ -37,5 +37,9 @@ final class SlicingProfile: Object {
     }
 
     // MARK: - Realm API
+
+    override static func primaryKey() -> String? {
+        return "ID"
+    }
 }
 // swiftlit:enable variable_name
