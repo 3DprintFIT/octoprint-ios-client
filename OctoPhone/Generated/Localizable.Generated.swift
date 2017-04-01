@@ -25,15 +25,19 @@ enum L10n {
   case connectionError
   /// Can not connect to the printer.
   case couldNotConnectToPrinter
+  /// Could not load list of slicers.
+  case couldNotLoadListOfSlicers
   /// Could not save downloaded list of logs.
   case couldNotSaveDownloadedListOfLogs
+  /// Could not save list of downloaded printers.
+  case couldNotSaveListOfDownloadedPritners
   /// Database error
   case databaseError
   /// Delete
   case delete
   /// Delete log
   case deleteLog
-  /// Do you really want to delete log from printer
+  /// Do you really want to delete log from printer? This action is permanent and cannot be undone.
   case doYouReallyWantToDeleteLogFromPrinter
   /// Downloaded file can not be opened.
   case downloadedFileCanNotBeOpened
@@ -77,7 +81,7 @@ enum L10n {
   case printerURL
   /// Requested command could not be executed.
   case requestedCommandCouldNotBeExecuted
-  /// Requested log file could not be downloaded
+  /// Requested log file could not be downloaded.
   case requestedLogFileCouldNotBeDownloaded
   /// SD card management
   case sdCardManagement
@@ -103,6 +107,8 @@ enum L10n {
   case unknownFileSize
   /// Uknown modofication date
   case unknownModificationDate
+  /// Unknown slicer
+  case unknownSlicer
 }
 // swiftlint:enable type_body_length
 
@@ -129,8 +135,12 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Connection Error")
       case .couldNotConnectToPrinter:
         return L10n.tr(key: "Could not connect to printer")
+      case .couldNotLoadListOfSlicers:
+        return L10n.tr(key: "Could not load list of slicers")
       case .couldNotSaveDownloadedListOfLogs:
         return L10n.tr(key: "Could not save downloaded list of logs")
+      case .couldNotSaveListOfDownloadedPritners:
+        return L10n.tr(key: "Could not save list of downloaded pritners")
       case .databaseError:
         return L10n.tr(key: "Database error")
       case .delete:
@@ -207,6 +217,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Unknown file size")
       case .unknownModificationDate:
         return L10n.tr(key: "Unknown modification date")
+      case .unknownSlicer:
+        return L10n.tr(key: "Unknown slicer")
     }
   }
 

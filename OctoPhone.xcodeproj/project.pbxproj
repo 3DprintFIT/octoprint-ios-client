@@ -47,10 +47,16 @@
 		D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0A1DD4911A004C30EA /* Alamofire.framework */; };
 		D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0B1DD4911A004C30EA /* Realm.framework */; };
 		D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2510B0F1DD491A4004C30EA /* RealmSwift.framework */; };
+		D256793B1E8D059B00D763A3 /* Slicer+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256793A1E8D059B00D763A3 /* Slicer+JSONAble.swift */; };
+		D256793D1E8D073B00D763A3 /* SlicingProfile+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256793C1E8D073B00D763A3 /* SlicingProfile+JSONAble.swift */; };
+		D256793F1E8D07EB00D763A3 /* SlicerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256793E1E8D07EB00D763A3 /* SlicerTests.swift */; };
+		D25679411E8D07F700D763A3 /* SlicingProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25679401E8D07F700D763A3 /* SlicingProfileTests.swift */; };
+		D25679431E8D1DD400D763A3 /* SlicerCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25679421E8D1DD400D763A3 /* SlicerCellViewModel.swift */; };
+		D25679451E8D1DFD00D763A3 /* SlicerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25679441E8D1DFD00D763A3 /* SlicerCollectionViewCell.swift */; };
+		D25679491E8E446300D763A3 /* SlicerCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25679481E8E446300D763A3 /* SlicerCellViewModelTests.swift */; };
 		D26B500B1E734A5500795462 /* TerminalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B500A1E734A5500795462 /* TerminalCoordinator.swift */; };
 		D26B500D1E734C6000795462 /* LogsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B500C1E734C6000795462 /* LogsCoordinator.swift */; };
 		D26B500F1E734CB600795462 /* SlicingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B500E1E734CB600795462 /* SlicingCoordinator.swift */; };
-		D26B50131E734DAA00795462 /* SlicingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B50121E734DAA00795462 /* SlicingViewModel.swift */; };
 		D26B50151E734EFE00795462 /* PrintProfilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B50141E734EFE00795462 /* PrintProfilesViewModel.swift */; };
 		D26B50171E734FEC00795462 /* SlicingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B50161E734FEC00795462 /* SlicingViewController.swift */; };
 		D26B50191E73510000795462 /* PrintProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B50181E73510000795462 /* PrintProfilesViewController.swift */; };
@@ -82,6 +88,10 @@
 		D2C38CCF1E7FEE1400D06698 /* LogCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CCE1E7FEE1400D06698 /* LogCellViewModel.swift */; };
 		D2C38CD11E7FF87D00D06698 /* LogCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CD01E7FF87D00D06698 /* LogCellViewModelTests.swift */; };
 		D2C38CD41E802C6D00D06698 /* OPNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CD31E802C6D00D06698 /* OPNumberFormatter.swift */; };
+		D2CBD72A1E8C435C002EA538 /* SlicingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBD7291E8C435C002EA538 /* SlicingViewModel.swift */; };
+		D2CBD72C1E8C4579002EA538 /* Slicer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBD72B1E8C4579002EA538 /* Slicer.swift */; };
+		D2CBD72E1E8C4A40002EA538 /* SlicingProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBD72D1E8C4A40002EA538 /* SlicingProfile.swift */; };
+		D2CBD7311E8C4EF1002EA538 /* SlicingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBD7301E8C4EF1002EA538 /* SlicingViewModelTests.swift */; };
 		D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */; };
 		D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */; };
 		D2CCF74E1DBF46DB00EF9752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74C1DBF46DB00EF9752 /* LaunchScreen.storyboard */; };
@@ -170,10 +180,16 @@
 		D2510B0A1DD4911A004C30EA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D2510B0B1DD4911A004C30EA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D2510B0F1DD491A4004C30EA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		D256793A1E8D059B00D763A3 /* Slicer+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Slicer+JSONAble.swift"; sourceTree = "<group>"; };
+		D256793C1E8D073B00D763A3 /* SlicingProfile+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SlicingProfile+JSONAble.swift"; sourceTree = "<group>"; };
+		D256793E1E8D07EB00D763A3 /* SlicerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicerTests.swift; sourceTree = "<group>"; };
+		D25679401E8D07F700D763A3 /* SlicingProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfileTests.swift; sourceTree = "<group>"; };
+		D25679421E8D1DD400D763A3 /* SlicerCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicerCellViewModel.swift; sourceTree = "<group>"; };
+		D25679441E8D1DFD00D763A3 /* SlicerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicerCollectionViewCell.swift; sourceTree = "<group>"; };
+		D25679481E8E446300D763A3 /* SlicerCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicerCellViewModelTests.swift; sourceTree = "<group>"; };
 		D26B500A1E734A5500795462 /* TerminalCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalCoordinator.swift; sourceTree = "<group>"; };
 		D26B500C1E734C6000795462 /* LogsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsCoordinator.swift; sourceTree = "<group>"; };
 		D26B500E1E734CB600795462 /* SlicingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingCoordinator.swift; sourceTree = "<group>"; };
-		D26B50121E734DAA00795462 /* SlicingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingViewModel.swift; sourceTree = "<group>"; };
 		D26B50141E734EFE00795462 /* PrintProfilesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfilesViewModel.swift; sourceTree = "<group>"; };
 		D26B50161E734FEC00795462 /* SlicingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingViewController.swift; sourceTree = "<group>"; };
 		D26B50181E73510000795462 /* PrintProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfilesViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +222,10 @@
 		D2C38CCE1E7FEE1400D06698 /* LogCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCellViewModel.swift; sourceTree = "<group>"; };
 		D2C38CD01E7FF87D00D06698 /* LogCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCellViewModelTests.swift; sourceTree = "<group>"; };
 		D2C38CD31E802C6D00D06698 /* OPNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPNumberFormatter.swift; sourceTree = "<group>"; };
+		D2CBD7291E8C435C002EA538 /* SlicingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingViewModel.swift; sourceTree = "<group>"; };
+		D2CBD72B1E8C4579002EA538 /* Slicer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slicer.swift; sourceTree = "<group>"; };
+		D2CBD72D1E8C4A40002EA538 /* SlicingProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfile.swift; sourceTree = "<group>"; };
+		D2CBD7301E8C4EF1002EA538 /* SlicingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingViewModelTests.swift; sourceTree = "<group>"; };
 		D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF7431DBF46DB00EF9752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -339,6 +359,8 @@
 				D22401701E6AD7D30082129A /* FilePrintStats.swift */,
 				D2F7658B1E78102300A5BC11 /* Command.swift */,
 				D2C38CC81E7D4A5800D06698 /* Log.swift */,
+				D2CBD72B1E8C4579002EA538 /* Slicer.swift */,
+				D2CBD72D1E8C4A40002EA538 /* SlicingProfile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -381,6 +403,8 @@
 				D22401801E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift */,
 				D22401821E6B12C10082129A /* FilePrinterStats+JSONAble.swift */,
 				D2C38CCA1E7D4D5B00D06698 /* Log+JSONAble.swift */,
+				D256793A1E8D059B00D763A3 /* Slicer+JSONAble.swift */,
+				D256793C1E8D073B00D763A3 /* SlicingProfile+JSONAble.swift */,
 			);
 			path = "Model Mapping";
 			sourceTree = "<group>";
@@ -402,6 +426,8 @@
 				D22401901E6B2EA40082129A /* GCodeAnalysisTests.swift */,
 				D22401921E6C0FE70082129A /* FilePrintStatsTests.swift */,
 				D2C38CCC1E7D4FA500D06698 /* LogTests.swift */,
+				D256793E1E8D07EB00D763A3 /* SlicerTests.swift */,
+				D25679401E8D07F700D763A3 /* SlicingProfileTests.swift */,
 			);
 			name = "Model Mapping";
 			sourceTree = "<group>";
@@ -475,8 +501,10 @@
 		D26B50111E734D4000795462 /* Slicing */ = {
 			isa = PBXGroup;
 			children = (
-				D26B50121E734DAA00795462 /* SlicingViewModel.swift */,
+				D2CBD7291E8C435C002EA538 /* SlicingViewModel.swift */,
+				D25679421E8D1DD400D763A3 /* SlicerCellViewModel.swift */,
 				D26B50161E734FEC00795462 /* SlicingViewController.swift */,
+				D25679441E8D1DFD00D763A3 /* SlicerCollectionViewCell.swift */,
 			);
 			path = Slicing;
 			sourceTree = "<group>";
@@ -545,6 +573,15 @@
 			path = Formatters;
 			sourceTree = "<group>";
 		};
+		D2CBD72F1E8C4EC6002EA538 /* Slicing */ = {
+			isa = PBXGroup;
+			children = (
+				D2CBD7301E8C4EF1002EA538 /* SlicingViewModelTests.swift */,
+				D25679481E8E446300D763A3 /* SlicerCellViewModelTests.swift */,
+			);
+			path = Slicing;
+			sourceTree = "<group>";
+		};
 		D2CCF7371DBF46DB00EF9752 = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +647,7 @@
 				D2FEDE6E1E6ED19500184CEC /* Printer List */,
 				D2F765861E77EF4900A5BC11 /* Terminal */,
 				D2C38CC31E7D497F00D06698 /* Logs */,
+				D2CBD72F1E8C4EC6002EA538 /* Slicing */,
 			);
 			name = "View Related";
 			path = "VIew Related";
@@ -938,11 +976,13 @@
 				D2FF97241DF0DFC3005CA7B2 /* PrinterListViewController.swift in Sources */,
 				D2D990B91E6F66C70094DA64 /* CurrentPrintViewModel.swift in Sources */,
 				D2A601301DF3870F006B833E /* PrinterListCollectionViewCell.swift in Sources */,
+				D256793B1E8D059B00D763A3 /* Slicer+JSONAble.swift in Sources */,
 				D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */,
 				D26B501D1E73542400795462 /* SDCardManagementCoordinator.swift in Sources */,
 				D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */,
 				D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */,
 				D2ACD7441E6C43CA00F2603A /* FileCollectionViewCell.swift in Sources */,
+				D2CBD72E1E8C4A40002EA538 /* SlicingProfile.swift in Sources */,
 				D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */,
 				D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */,
 				D20E41A31E88747900CE99BA /* LogDetailViewController.swift in Sources */,
@@ -967,22 +1007,27 @@
 				D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */,
 				D2D990CF1E71E95B0094DA64 /* SettingsViewModel.swift in Sources */,
 				D224016F1E6AD7780082129A /* GCodeAnalysis.swift in Sources */,
+				D2CBD72A1E8C435C002EA538 /* SlicingViewModel.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
 				D22401761E6AF0150082129A /* Realm+ReactiveSwift.swift in Sources */,
 				D2D990C91E71E6420094DA64 /* TerminalViewController.swift in Sources */,
+				D25679431E8D1DD400D763A3 /* SlicerCellViewModel.swift in Sources */,
 				D2D990D71E71F5020094DA64 /* SDCardManagementViewModel.swift in Sources */,
 				D22401731E6AE1320082129A /* FilesViewModel.swift in Sources */,
 				D2D990BD1E6F688B0094DA64 /* PrinterControlViewModel.swift in Sources */,
 				D2F7658C1E78102300A5BC11 /* Command.swift in Sources */,
 				D26B500B1E734A5500795462 /* TerminalCoordinator.swift in Sources */,
+				D25679451E8D1DFD00D763A3 /* SlicerCollectionViewCell.swift in Sources */,
 				D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */,
 				D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */,
 				D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */,
 				D2C38CD41E802C6D00D06698 /* OPNumberFormatter.swift in Sources */,
+				D2CBD72C1E8C4579002EA538 /* Slicer.swift in Sources */,
 				D2D990CB1E71E65D0094DA64 /* SDCardManagementViewController.swift in Sources */,
 				D2D990C31E6F6AA10094DA64 /* FIleDetailViewController.swift in Sources */,
 				D22401711E6AD7D30082129A /* FilePrintStats.swift in Sources */,
 				D2D990DB1E72073D0094DA64 /* SettingsCellViewModel.swift in Sources */,
+				D256793D1E8D073B00D763A3 /* SlicingProfile+JSONAble.swift in Sources */,
 				D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */,
 				D2315E6D1E75E99300C797AB /* UIStackView+CustomInit.swift in Sources */,
 				D26B50211E73668200795462 /* BaseViewController.swift in Sources */,
@@ -996,7 +1041,6 @@
 				D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */,
 				D2F765961E788C3000A5BC11 /* CommandCellViewModel.swift in Sources */,
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
-				D26B50131E734DAA00795462 /* SlicingViewModel.swift in Sources */,
 				D26B500F1E734CB600795462 /* SlicingCoordinator.swift in Sources */,
 				D26B50151E734EFE00795462 /* PrintProfilesViewModel.swift in Sources */,
 				D22401651E6A3B670082129A /* SettingsCoordinator.swift in Sources */,
@@ -1017,18 +1061,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D25679411E8D07F700D763A3 /* SlicingProfileTests.swift in Sources */,
 				D2F765881E77F06900A5BC11 /* TerminalViewModelTests.swift in Sources */,
+				D256793F1E8D07EB00D763A3 /* SlicerTests.swift in Sources */,
 				D2FEDE761E6EE8B500184CEC /* Realm+ReactiveSwiftTests.swift in Sources */,
 				D2FEDE721E6ED36200184CEC /* PrinterListViewModelTests.swift in Sources */,
 				D2C38CC51E7D49A200D06698 /* LogsViewModelTests.swift in Sources */,
 				D2FEDE781E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift in Sources */,
 				D2C38CD11E7FF87D00D06698 /* LogCellViewModelTests.swift in Sources */,
+				D25679491E8E446300D763A3 /* SlicerCellViewModelTests.swift in Sources */,
 				D2ACD74C1E6CCCC200F2603A /* TokenPluginTests.swift in Sources */,
 				D2FEDE701E6ED1C900184CEC /* PrinterListCellViewModelTests.swift in Sources */,
 				D2F765981E788FAF00A5BC11 /* CommandCellViewModelTests.swift in Sources */,
 				D22401911E6B2EA40082129A /* GCodeAnalysisTests.swift in Sources */,
 				D224018F1E6B29150082129A /* FileTests.swift in Sources */,
 				D2FEDE6A1E6EBCB200184CEC /* PrinterLoginViewModelTests.swift in Sources */,
+				D2CBD7311E8C4EF1002EA538 /* SlicingViewModelTests.swift in Sources */,
 				D2C38CCD1E7D4FA500D06698 /* LogTests.swift in Sources */,
 				D22401931E6C0FE70082129A /* FilePrintStatsTests.swift in Sources */,
 			);

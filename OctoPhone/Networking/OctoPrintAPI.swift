@@ -28,6 +28,8 @@ enum OctoPrintAPI {
     case logs
     case downloadLog(String)
     case deleteLog(String)
+    // Slicers
+    case slicers
 }
 
 // MARK: - TargetPart implementation
@@ -69,6 +71,8 @@ extension OctoPrintAPI: TargetPart {
             return ("downloads/logs/\(logName.urlEncoded)", .get, .download(.request(DefaultDownloadDestination)), nil)
         case let .deleteLog(logName):
             return ("api/logs/\(logName.urlEncoded)", .delete, .request, nil)
+        // Slicers
+        case .slicers: return ("api/slicing", .get, .request, nil)
         }
     }
 }

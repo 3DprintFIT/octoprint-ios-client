@@ -37,7 +37,8 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
     }
 
     func slicingCellSelected() {
-        let coordinator = SlicingCoordinator(navigationController: navigationController)
+        let coordinator = SlicingCoordinator(navigationController: navigationController,
+                                             contextManager: contextManager, provider: provider)
 
         childCoordinators.append(coordinator)
         coordinator.start()

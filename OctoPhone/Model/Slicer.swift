@@ -40,5 +40,9 @@ final class Slicer: Object {
     }
 
     // MARK: - Realm API
+
+    override static func primaryKey() -> String? {
+        return "ID"
+    }
 }
 // swiftlint:enable variable_name

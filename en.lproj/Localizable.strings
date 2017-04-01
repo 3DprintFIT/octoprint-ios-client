@@ -97,6 +97,9 @@
 // * Slicing
 // *
 "Slicing" = "Slicing";
+"Could not load list of slicers" = "Could not load list of slicers.";
+"Unknown slicer" = "Unknown slicer";
+"Could not save list of downloaded pritners" = "Could not save list of downloaded printers.";
 
 
 // *
