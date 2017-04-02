@@ -52,9 +52,19 @@ class SlicingProfileViewController: BaseViewController {
 
     // MARK: - Internal logic
 
-    /// Delete button action
+    /// Open decision dialog when user tapped delete button
     func deleteProfileButtonTapped() {
-        viewModel.inputs.deleteProfile()
+        let controller = UIAlertController(title: nil, message: tr(.doYouReallyWantToDeleteSlicingProfile),
+                                           preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: tr(.cancel), style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: tr(.delete), style: .destructive) { [weak self] _ in
+            self?.viewModel.inputs.deleteProfile()
+        }
+
+        controller.addAction(cancelAction)
+        controller.addAction(deleteAction)
+
+        present(controller, animated: true, completion: nil)
     }
 
     /// Binds outputs of View Model to UI and converts

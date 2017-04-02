@@ -2,23 +2,27 @@
 //  PrintProfilesViewModel.swift
 //  OctoPhone
 //
-//  Created by Josef Dolezal on 10/03/2017.
+//  Created by Josef Dolezal on 02/04/2017.
 //  Copyright © 2017 Josef Dolezal. All rights reserved.
 //
 
-import Foundation
+import ReactiveSwift
+import Result
 
-/// Print profiles view model outputs
+// MARK: - Inputs
+
 protocol PrintProfilesViewModelInputs {
 
 }
 
-/// Print profiles view model inputs
+// MARK: - Outputs
+
 protocol PrintProfilesViewModelOutputs {
 
 }
 
-/// Common interface for print profiles view model
+// MARK: - Common public interface
+
 protocol PrintProfilesViewModelType {
     /// Available inputs
     var inputs: PrintProfilesViewModelInputs { get }
@@ -27,10 +31,24 @@ protocol PrintProfilesViewModelType {
     var outputs: PrintProfilesViewModelOutputs { get }
 }
 
-/// Print profiles view controller logic
-final class PrintProfilesViewModel: PrintProfilesViewModelType, PrintProfilesViewModelInputs,
-PrintProfilesViewModelOutputs {
+// MARK: - View Model implementation
+
+final class PrintProfilesViewModel: PrintProfilesViewModelType, PrintProfilesViewModelInputs, PrintProfilesViewModelOutputs {
     var inputs: PrintProfilesViewModelInputs { return self }
 
     var outputs: PrintProfilesViewModelOutputs { return self }
+
+    // MARK: Inputs
+
+    // MARK: Outputs
+
+    // MARK: Private properties
+
+    // MARK: Initializers
+
+    // MARK: Input methods
+
+    // MARK: Output methods
+
+    // MARK: Internal logic
 }

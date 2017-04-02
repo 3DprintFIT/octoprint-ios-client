@@ -104,6 +104,7 @@
 "Downloaded list of slicing profiles could not be saved" = "Downloaded list of slicing profiles could not be saved.";
 "Slicing profile could not be deleted" = "Slicing profile could not be deleted.";
 "Selected profile could not be opened" = "Selected profile could not be opened.";
+"Do you really want to delete slicing profile" = "Do you really want to delete slicing profile from printer? This operation is permanent and can not be undone.";
 
 // *
 // * Print profiles

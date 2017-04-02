@@ -37,6 +37,8 @@ enum L10n {
   case deleteLog
   /// Do you really want to delete log from printer? This action is permanent and cannot be undone.
   case doYouReallyWantToDeleteLogFromPrinter
+  /// Do you really want to delete slicing profile from printer? This operation is permanent and can not be undone.
+  case doYouReallyWantToDeleteSlicingProfile
   /// Downloaded file can not be opened.
   case downloadedFileCanNotBeOpened
   /// Downloaded list of slicing profiles could not be saved.
@@ -155,6 +157,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Delete log")
       case .doYouReallyWantToDeleteLogFromPrinter:
         return L10n.tr(key: "Do you really want to delete log from printer")
+      case .doYouReallyWantToDeleteSlicingProfile:
+        return L10n.tr(key: "Do you really want to delete slicing profile")
       case .downloadedFileCanNotBeOpened:
         return L10n.tr(key: "Downloaded file can not be opened")
       case .downloadedListOfSlicingProfilesCouldNotBeSaved:
