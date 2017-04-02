@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		D2688D7C1E91122D00290421 /* Localization */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D2688D7D1E91122D00290421 /* Build configuration list for PBXAggregateTarget "Localization" */;
+			buildPhases = (
+				D2688D821E91125800290421 /* SwiftGen */,
+			);
+			dependencies = (
+			);
+			name = Localization;
+			productName = Localization;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		357C3E9A1DC7BE4A0018A07E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E981DC7BE4A0018A07E /* Fabric.framework */; };
 		357C3E9B1DC7BE4A0018A07E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C3E991DC7BE4A0018A07E /* Crashlytics.framework */; };
@@ -136,6 +150,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D2688D801E91124100290421 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2CCF7381DBF46DB00EF9752 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2688D7C1E91122D00290421;
+			remoteInfo = Localization;
+		};
 		D2CCF7551DBF46DC00EF9752 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2CCF7381DBF46DB00EF9752 /* Project object */;
@@ -825,11 +846,11 @@
 				D2510B0E1DD4913D004C30EA /* Carthage */,
 				357C3E971DC7BDC40018A07E /* Fabric */,
 				D2A601311DF39777006B833E /* Swiftlint */,
-				D28919771E11745F00E3BBEB /* Swiftgen */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D2688D811E91124100290421 /* PBXTargetDependency */,
 			);
 			name = OctoPhone;
 			productName = OctoPhone;
@@ -865,6 +886,10 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Josef Dolezal";
 				TargetAttributes = {
+					D2688D7C1E91122D00290421 = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+					};
 					D2CCF73F1DBF46DB00EF9752 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = CDMJRT8WJB;
@@ -891,6 +916,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				D2688D7C1E91122D00290421 /* Localization */,
 				D2CCF73F1DBF46DB00EF9752 /* OctoPhone */,
 				D2CCF7531DBF46DC00EF9752 /* OctoPhoneTests */,
 			);
@@ -973,19 +999,19 @@
 			shellPath = /bin/bash;
 			shellScript = "carthage copy-frameworks";
 		};
-		D28919771E11745F00E3BBEB /* Swiftgen */ = {
+		D2688D821E91125800290421 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = Swiftgen;
+			name = SwiftGen;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftgen >/dev/null; then\n    swiftgen strings -t swift3 \"$PROJECT_DIR/en.lproj/Localizable.strings\" -o \"OctoPhone/Generated/Localizable.Generated.swift\"\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftgen >/dev/null; then\nswiftgen strings -t swift3 \"$PROJECT_DIR/en.lproj/Localizable.strings\" -o \"OctoPhone/Generated/Localizable.Generated.swift\"\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		D2A601311DF39777006B833E /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1129,6 +1155,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D2688D811E91124100290421 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2688D7C1E91122D00290421 /* Localization */;
+			targetProxy = D2688D801E91124100290421 /* PBXContainerItemProxy */;
+		};
 		D2CCF7561DBF46DC00EF9752 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2CCF73F1DBF46DB00EF9752 /* OctoPhone */;
@@ -1156,6 +1187,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D2688D7E1E91122D00290421 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D2688D7F1E91122D00290421 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D2CCF7661DBF46DC00EF9752 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1338,6 +1383,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D2688D7D1E91122D00290421 /* Build configuration list for PBXAggregateTarget "Localization" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2688D7E1E91122D00290421 /* Debug */,
+				D2688D7F1E91122D00290421 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D2CCF73B1DBF46DB00EF9752 /* Build configuration list for PBXProject "OctoPhone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

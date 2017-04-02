@@ -43,6 +43,8 @@ enum L10n {
   case downloadedListOfSlicingProfilesCouldNotBeSaved
   /// Downloading log file...
   case downloadingLogFile
+  /// bbb
+  case dsdsdsdsdssdsd
   /// Files
   case files
   /// Files list could not be loaded.
@@ -157,6 +159,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Downloaded list of slicing profiles could not be saved")
       case .downloadingLogFile:
         return L10n.tr(key: "Downloading log file")
+      case .dsdsdsdsdssdsd:
+        return L10n.tr(key: "dsdsdsdsdssdsd")
       case .files:
         return L10n.tr(key: "Files")
       case .filesListCouldNotBeLoaded:
