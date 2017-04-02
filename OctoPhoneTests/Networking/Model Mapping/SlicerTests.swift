@@ -21,7 +21,7 @@ class SlicerTests: QuickSpec {
                 var data: [String: Any]!
 
                 beforeEach {
-                    data = ["key": key, "displayName": displayName, "default": isDefault]
+                    data = ["key": key, "displayName": displayName, "default": isDefault, "profiles": [:]]
                 }
 
                 afterEach {
@@ -43,6 +43,15 @@ class SlicerTests: QuickSpec {
                     expect(expression: { try Slicer.fromJSON(json: data) }).notTo(throwError())
                     if let subject = try? Slicer.fromJSON(json: data) {
                         expect(subject.name).to(beNil())
+                    }
+                }
+
+                it("converts slicing profiles") {
+                    data["profiles"] = ["profile1": ["key": "high_quality", "displayName": "High Quality", "default": false]]
+
+                    expect() { try Slicer.fromJSON(json: data) }.notTo(throwError())
+                    if let subject = try? Slicer.fromJSON(json: data) {
+                        expect(subject.slicingProfiles.count).to(equal(1))
                     }
                 }
             }

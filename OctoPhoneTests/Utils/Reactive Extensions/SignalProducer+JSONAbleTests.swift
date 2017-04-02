@@ -59,7 +59,7 @@ class SignalProducerJSONAbleTests: QuickSpec {
         }
 
         it("converts dictionary to collection") {
-            let dictionary = ["cura": ["default": true, "displayName": "CuraEngine", "key": "cura"]]
+            let dictionary = ["cura": ["default": true, "displayName": "CuraEngine", "key": "cura", "profiles": [:]]]
 
             SignalProducer<Any, MoyaError>(value: dictionary)
                 .mapDictionary(collectionOf: Slicer.self).materialize().map{ $0.value }.skipNil()
