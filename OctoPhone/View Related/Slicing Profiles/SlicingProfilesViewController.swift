@@ -50,10 +50,6 @@ class SlicingProfilesViewController: BaseCollectionViewController {
     private func bindViewModel() {
         if let collectionView = collectionView {
             collectionView.reactive.reloadData <~ viewModel.outputs.profilesChanged
-
-            viewModel.outputs.profilesChanged.startWithValues {
-                print("changed")
-            }
         }
     }
 }

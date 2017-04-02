@@ -84,7 +84,7 @@ SlicingProfilesViewModelOutputs {
     private let contextManager: ContextManagerType
 
     /// Slicer settings profiles
-    private let profilesProperty = MutableProperty<List<SlicingProfile>?>(nil)
+    private let slicerProperty = MutableProperty<Slicer?>(nil)
 
     /// Last error occured
     private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
@@ -99,8 +99,8 @@ SlicingProfilesViewModelOutputs {
         self.provider = provider
         self.contextManager = contextManager
         self.profilesCount = Property(initial: 0,
-                                      then: profilesProperty.producer.skipNil().map({ $0.count }))
-        self.profilesChanged = profilesProperty.producer.ignoreValues()
+                                      then: slicerProperty.producer.skipNil().map({ $0.slicingProfiles.count }))
+        self.profilesChanged = slicerProperty.producer.ignoreValues()
         self.displayError = displayErrorProperty.producer.skipNil()
 
         contextManager.createObservableContext()
@@ -113,7 +113,7 @@ SlicingProfilesViewModelOutputs {
                         return
                     }
 
-                    self?.profilesProperty.value = slicer.slicingProfiles
+                    self?.slicerProperty.value = slicer
                 case .failure: self?.displayErrorProperty.value = (tr(.anErrorOccured),
                                                                    tr(.slicerProfilesCouldNotBeLoaded))
                 }
@@ -125,10 +125,10 @@ SlicingProfilesViewModelOutputs {
     // MARK: Input methods
 
     func selectedProfile(at index: Int) {
-        assert(profilesProperty.value != nil,
+        assert(slicerProperty.value != nil,
                "Slicing profiles must not be nil when use selected profile at specifi index")
 
-        let profile = profilesProperty.value![index]
+        let profile = slicerProperty.value!.slicingProfiles[index]
 
         delegate?.selectedSlicingProfile(profile, forSlicer: slicerID)
     }
@@ -136,10 +136,10 @@ SlicingProfilesViewModelOutputs {
     // MARK: Output methods
 
     func slicingProfileCellViewModel(for index: Int) -> SlicingProfileCellViewModel {
-        assert(profilesProperty.value != nil,
+        assert(slicerProperty.value != nil,
                "Slicing profiles must not be nil when cell VM is required")
 
-        let profile = profilesProperty.value![index]
+        let profile = slicerProperty.value!.slicingProfiles[index]
 
         return SlicingProfileCellViewModel(profileID: profile.ID, contextManager: contextManager)
     }
@@ -153,15 +153,19 @@ SlicingProfilesViewModelOutputs {
             .mapJSON()
             .mapDictionary(collectionOf: SlicingProfile.self)
             .startWithResult { [weak self] result in
-                guard let weakSelf = self else { return }
+                guard
+                    let weakSelf = self,
+                    let slicer = weakSelf.slicerProperty.value,
+                    let realm = slicer.realm else { return }
 
                 switch result {
                 case let .success(profiles):
                     do {
-                        let realm = try weakSelf.contextManager.createContext()
-
                         try realm.write {
+                            // Must be added separately, otherwise might crash because of duplicate PK
                             realm.add(profiles, update: true)
+                            slicer.slicingProfiles.removeAll()
+                            slicer.slicingProfiles.append(objectsIn: profiles)
                         }
                     } catch {
                         weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
