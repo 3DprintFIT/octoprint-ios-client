@@ -14,7 +14,10 @@ import Result
 
 /// Inputs for View Model logic
 protocol SlicingProfilesViewModelInputs {
-
+    /// Call when user selected slicing profile at specific index
+    ///
+    /// - Parameter index: Index of selected row
+    func selectedProfile(at index: Int)
 }
 
 // MARK: - Outputs
@@ -71,6 +74,9 @@ SlicingProfilesViewModelOutputs {
     /// ID of slicer whose profiles are displayed
     private let slicerID: String
 
+    /// Slicing profile controller flow delegate
+    private weak var delegate: SlicingProfilesViewControllerDelegate?
+
     /// Printer request provider
     private let provider: OctoPrintProvider
 
@@ -85,7 +91,10 @@ SlicingProfilesViewModelOutputs {
 
     // MARK: Initializers
 
-    init(slicerID: String, provider: OctoPrintProvider, contextManager: ContextManagerType) {
+    init(delegate: SlicingProfilesViewControllerDelegate, slicerID: String,
+         provider: OctoPrintProvider, contextManager: ContextManagerType) {
+
+        self.delegate = delegate
         self.slicerID = slicerID
         self.provider = provider
         self.contextManager = contextManager
@@ -114,6 +123,15 @@ SlicingProfilesViewModelOutputs {
     }
 
     // MARK: Input methods
+
+    func selectedProfile(at index: Int) {
+        assert(profilesProperty.value != nil,
+               "Slicing profiles must not be nil when use selected profile at specifi index")
+
+        let profile = profilesProperty.value![index]
+
+        delegate?.selectedSlicingProfile(profile)
+    }
 
     // MARK: Output methods
 

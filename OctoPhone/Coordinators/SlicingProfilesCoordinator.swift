@@ -12,10 +12,10 @@ import UIKit
 final class SlicingProfilesCoordinator: ContextCoordinator {
 
     /// Printer requests provider
-    private let provider: OctoPrintProvider
+    fileprivate let provider: OctoPrintProvider
 
     /// ID of slicer whose profiles will be listed
-    private let slicerID: String
+    fileprivate let slicerID: String
 
     init(navigationController: UINavigationController?, contextManager: ContextManagerType,
          provider: OctoPrintProvider, slicerID: String) {
@@ -27,10 +27,23 @@ final class SlicingProfilesCoordinator: ContextCoordinator {
     }
 
     override func start() {
-        let viewModel = SlicingProfilesViewModel(slicerID: slicerID, provider: provider,
+        let viewModel = SlicingProfilesViewModel(delegate: self, slicerID: slicerID, provider: provider,
                                                  contextManager: contextManager)
         let controller = SlicingProfilesViewController(viewModel: viewModel)
 
         navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+// MARK: - SlicingProfilesViewControllerDelegate
+extension SlicingProfilesCoordinator: SlicingProfilesViewControllerDelegate {
+    func selectedSlicingProfile(_ slicingProfile: SlicingProfile) {
+        let coordinator = SlicingProfileCoordinator(navigationController: navigationController,
+                                                    contextManager: contextManager, provider: provider,
+                                                    slicingProfileID: slicingProfile.ID)
+
+        childCoordinators.append(coordinator)
+
+        coordinator.start()
     }
 }

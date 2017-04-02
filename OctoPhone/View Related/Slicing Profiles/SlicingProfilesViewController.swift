@@ -10,6 +10,14 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
+/// Slicing profiles list flow controller delegate
+protocol SlicingProfilesViewControllerDelegate: class {
+    /// Called when user selected specific slicing profile
+    ///
+    /// - Parameter slicingProfile: Slicing profile associated with row selected by user
+    func selectedSlicingProfile(_ slicingProfile: SlicingProfile)
+}
+
 /// List of slicing profiles for given slicer
 class SlicingProfilesViewController: BaseCollectionViewController {
     // MARK: - Properties
@@ -63,6 +71,15 @@ extension SlicingProfilesViewController {
         cell.viewModel.value = viewModel.outputs.slicingProfileCellViewModel(for: indexPath.row)
 
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension SlicingProfilesViewController {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
+
+        viewModel.inputs.selectedProfile(at: indexPath.row)
     }
 }
 
