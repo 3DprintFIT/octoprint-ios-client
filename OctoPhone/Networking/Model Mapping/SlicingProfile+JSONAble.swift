@@ -10,12 +10,11 @@ import Foundation
 
 extension SlicingProfile: JSONAble {
     static func fromJSON(json: [String : Any]) throws -> SlicingProfile {
-        guard
-            let ID = json["key"] as? String,
-            let isDefault = json["default"] as? Bool else
-        {
+        guard let ID = json["key"] as? String else {
             throw JSONAbleError.errorMappingJSONToObject(json: json)
         }
+
+        let isDefault = json["default"] as? Bool ?? false
 
         return SlicingProfile(ID: ID, name: json["displayName"] as? String, isDefault: isDefault)
     }

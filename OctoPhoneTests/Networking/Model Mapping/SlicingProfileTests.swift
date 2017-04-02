@@ -45,6 +45,15 @@ class SlicingProfileTests: QuickSpec {
                         expect(subject.name).to(beNil())
                     }
                 }
+
+                it("does not require default propery") {
+                    data.removeValue(forKey: "default")
+
+                    expect(expression: { try SlicingProfile.fromJSON(json: data) }).toNot(throwError())
+                    if let subject = try? SlicingProfile.fromJSON(json: data) {
+                        expect(subject.isDefault) == false
+                    }
+                }
             }
 
             context("invalid JSON") {
