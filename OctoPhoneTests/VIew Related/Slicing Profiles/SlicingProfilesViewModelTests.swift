@@ -34,7 +34,7 @@ class SlicingProfilesViewModelTests: QuickSpec {
             context("database contains slicer with no profiles") {
                 beforeEach {
                     // Load VM after the data are inserted
-                    subject = SlicingProfilesViewModel(slicerID: slicerID, provider: provider, contextManager: contextManager)
+                    subject = SlicingProfilesViewModel(delegate: self, slicerID: slicerID, provider: provider, contextManager: contextManager)
                 }
 
                 it("provides zero count of profiles") {
@@ -59,7 +59,7 @@ class SlicingProfilesViewModelTests: QuickSpec {
                         slicer.slicingProfiles.append(SlicingProfile(ID: "3", name: "Profile 3", isDefault: true))
                     }
 
-                    subject = SlicingProfilesViewModel(slicerID: slicerID, provider: provider, contextManager: contextManager)
+                    subject = SlicingProfilesViewModel(delegate: self, slicerID: slicerID, provider: provider, contextManager: contextManager)
                 }
 
                 it("notifies about profiles update") {
@@ -101,5 +101,11 @@ class SlicingProfilesViewModelTests: QuickSpec {
                 }
             }
         }
+    }
+}
+
+extension SlicingProfilesViewModelTests: SlicingProfilesViewControllerDelegate {
+    func selectedSlicingProfile(_ slicingProfile: SlicingProfile, forSlicer slicer: String) {
+
     }
 }

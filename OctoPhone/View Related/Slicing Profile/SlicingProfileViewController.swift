@@ -8,9 +8,23 @@
 
 import UIKit
 
+/// Slicing profile detail flow delegate
+protocol SlicingProfileViewControllerDelegate: class {
+    /// Called when slicing profile was successfully deleted
+    func deletedSlicingProfile()
+}
+
 /// Slicing profile detail controller
 class SlicingProfileViewController: BaseViewController {
     // MARK: - Properties
+
+    /// Profile deletion button
+    lazy var deleteButton: UIBarButtonItem = {
+        // Fixes weird behavior with not calling target action on `self`
+        return UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.trash,
+                               target: self,
+                               action: #selector(deleteProfileButtonTapped))
+    }()
 
     /// Controller logic
     fileprivate var viewModel: SlicingProfileViewModelType!
@@ -26,11 +40,22 @@ class SlicingProfileViewController: BaseViewController {
 
     // MARK: - Controller lifecycle
 
+    override func loadView() {
+        super.loadView()
+
+        navigationItem.rightBarButtonItem = deleteButton
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     // MARK: - Internal logic
+
+    /// Delete button action
+    func deleteProfileButtonTapped() {
+        viewModel.inputs.deleteProfile()
+    }
 
     /// Binds outputs of View Model to UI and converts
     /// user interaction to View Model inputs

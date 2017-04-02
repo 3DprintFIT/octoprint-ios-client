@@ -102,7 +102,8 @@
 "Slicer profiles could not be loaded" = "Slicer profiles could not be loaded.";
 "Unknown slicing profile" = "Unknown slicing profile";
 "Downloaded list of slicing profiles could not be saved" = "Downloaded list of slicing profiles could not be saved.";
-
+"Slicing profile could not be deleted" = "Slicing profile could not be deleted.";
+"Selected profile could not be opened" = "Selected profile could not be opened.";
 
 // *
 // * Print profiles

@@ -22,6 +22,7 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - deleteLog: Deletes specified log
 /// - slicers: Downloads list of installed slicers
 /// - slicerProfiles: Downloads list of slicing profiles fro given slicer
+/// - deleteSlicingProfile: Deletes given slicing profile from printer
 enum OctoPrintAPI {
     // Command
     case version
@@ -36,6 +37,7 @@ enum OctoPrintAPI {
     // Slicers
     case slicers
     case slicerProfiles(String)
+    case deleteSlicingProfile(slicerID: String, profileID: String)
 }
 
 // MARK: - TargetPart implementation
@@ -81,6 +83,8 @@ extension OctoPrintAPI: TargetPart {
         case .slicers: return ("api/slicing", .get, .request, nil)
         case let .slicerProfiles(slicer):
             return ("api/slicing/\(slicer.urlEncoded)/profiles", .get, .request, nil)
+        case let .deleteSlicingProfile(slicerID, profileID):
+            return ("api/slicing/\(slicerID.urlEncoded)/profiles/\(profileID)", .delete, .request, nil)
         }
     }
 }

@@ -15,7 +15,7 @@ protocol SlicingProfilesViewControllerDelegate: class {
     /// Called when user selected specific slicing profile
     ///
     /// - Parameter slicingProfile: Slicing profile associated with row selected by user
-    func selectedSlicingProfile(_ slicingProfile: SlicingProfile)
+    func selectedSlicingProfile(_ slicingProfile: SlicingProfile, forSlicer slicer: String)
 }
 
 /// List of slicing profiles for given slicer
@@ -50,6 +50,10 @@ class SlicingProfilesViewController: BaseCollectionViewController {
     private func bindViewModel() {
         if let collectionView = collectionView {
             collectionView.reactive.reloadData <~ viewModel.outputs.profilesChanged
+
+            viewModel.outputs.profilesChanged.startWithValues {
+                print("changed")
+            }
         }
     }
 }

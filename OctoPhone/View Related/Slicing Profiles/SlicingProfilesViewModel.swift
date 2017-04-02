@@ -130,7 +130,7 @@ SlicingProfilesViewModelOutputs {
 
         let profile = profilesProperty.value![index]
 
-        delegate?.selectedSlicingProfile(profile)
+        delegate?.selectedSlicingProfile(profile, forSlicer: slicerID)
     }
 
     // MARK: Output methods

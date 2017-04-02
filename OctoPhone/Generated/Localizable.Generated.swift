@@ -85,6 +85,8 @@ enum L10n {
   case requestedLogFileCouldNotBeDownloaded
   /// SD card management
   case sdCardManagement
+  /// Selected profile could not be opened.
+  case selectedProfileCouldNotBeOpened
   /// Send
   case send
   /// $
@@ -97,6 +99,8 @@ enum L10n {
   case slicerProfilesCouldNotBeLoaded
   /// Slicing
   case slicing
+  /// Slicing profile could not be deleted.
+  case slicingProfileCouldNotBeDeleted
   /// Stored logs could not be loaded.
   case storedLogsCouldNotBeLoaded
   /// Stored printers could not be loaded.
@@ -199,6 +203,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Requested log file could not be downloaded")
       case .sdCardManagement:
         return L10n.tr(key: "SD card management")
+      case .selectedProfileCouldNotBeOpened:
+        return L10n.tr(key: "Selected profile could not be opened")
       case .send:
         return L10n.tr(key: "Send")
       case .sendCommandIndicator:
@@ -211,6 +217,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Slicer profiles could not be loaded")
       case .slicing:
         return L10n.tr(key: "Slicing")
+      case .slicingProfileCouldNotBeDeleted:
+        return L10n.tr(key: "Slicing profile could not be deleted")
       case .storedLogsCouldNotBeLoaded:
         return L10n.tr(key: "Stored logs could not be loaded")
       case .storedPrintersCouldNotBeLoaded:
