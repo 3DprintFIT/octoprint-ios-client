@@ -12,11 +12,16 @@ import Moya
 typealias Parameters = [String: Any]
 typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 
-/// Targets definition
+/// argets declaration
 ///
 /// - version: OctoPrint API version
 /// - sendCommand: Sends arbitrary command to printer
 /// - files: Downloads list of stored files on printer
+/// - logs: Downloads list of list
+/// - downloadLog: Downloads log file to internal sotrage
+/// - deleteLog: Deletes specified log
+/// - slicers: Downloads list of installed slicers
+/// - slicerProfiles: Downloads list of slicing profiles fro given slicer
 enum OctoPrintAPI {
     // Command
     case version
@@ -30,6 +35,7 @@ enum OctoPrintAPI {
     case deleteLog(String)
     // Slicers
     case slicers
+    case slicerProfiles(String)
 }
 
 // MARK: - TargetPart implementation
@@ -73,6 +79,8 @@ extension OctoPrintAPI: TargetPart {
             return ("api/logs/\(logName.urlEncoded)", .delete, .request, nil)
         // Slicers
         case .slicers: return ("api/slicing", .get, .request, nil)
+        case let .slicerProfiles(slicer):
+            return ("api/slicing/\(slicer.urlEncoded)/profiles", .get, .request, nil)
         }
     }
 }

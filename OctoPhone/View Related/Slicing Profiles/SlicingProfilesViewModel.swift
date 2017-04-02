@@ -130,6 +130,29 @@ SlicingProfilesViewModelOutputs {
 
     /// Request slicer profiles from printer
     private func requestSlicerProfiles() {
+        provider.request(.slicerProfiles(slicerID))
+            .filterSuccessfulStatusCodes()
+            .mapJSON()
+            .mapDictionary(collectionOf: SlicingProfile.self)
+            .startWithResult { [weak self] result in
+                guard let weakSelf = self else { return }
 
+                switch result {
+                case let .success(profiles):
+                    do {
+                        let realm = try weakSelf.contextManager.createContext()
+
+                        try realm.write {
+                            realm.add(profiles, update: true)
+                        }
+                    } catch {
+                        weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                               tr(.slicerProfilesCouldNotBeLoaded))
+                    }
+                case .failure:
+                    weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                           tr(.downloadedListOfSlicingProfilesCouldNotBeSaved))
+                }
+            }
     }
 }

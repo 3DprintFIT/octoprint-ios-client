@@ -29,8 +29,6 @@ enum L10n {
   case couldNotLoadListOfSlicers
   /// Could not save downloaded list of logs.
   case couldNotSaveDownloadedListOfLogs
-  /// Could not save list of downloaded printers.
-  case couldNotSaveListOfDownloadedPritners
   /// Database error
   case databaseError
   /// Delete
@@ -41,6 +39,8 @@ enum L10n {
   case doYouReallyWantToDeleteLogFromPrinter
   /// Downloaded file can not be opened.
   case downloadedFileCanNotBeOpened
+  /// Downloaded list of slicing profiles could not be saved.
+  case downloadedListOfSlicingProfilesCouldNotBeSaved
   /// Downloading log file...
   case downloadingLogFile
   /// Files
@@ -143,8 +143,6 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Could not load list of slicers")
       case .couldNotSaveDownloadedListOfLogs:
         return L10n.tr(key: "Could not save downloaded list of logs")
-      case .couldNotSaveListOfDownloadedPritners:
-        return L10n.tr(key: "Could not save list of downloaded pritners")
       case .databaseError:
         return L10n.tr(key: "Database error")
       case .delete:
@@ -155,6 +153,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Do you really want to delete log from printer")
       case .downloadedFileCanNotBeOpened:
         return L10n.tr(key: "Downloaded file can not be opened")
+      case .downloadedListOfSlicingProfilesCouldNotBeSaved:
+        return L10n.tr(key: "Downloaded list of slicing profiles could not be saved")
       case .downloadingLogFile:
         return L10n.tr(key: "Downloading log file")
       case .files:
