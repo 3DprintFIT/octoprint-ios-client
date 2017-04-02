@@ -100,6 +100,8 @@
 "Could not load list of slicers" = "Could not load list of slicers.";
 "Unknown slicer" = "Unknown slicer";
 "Could not save list of downloaded pritners" = "Could not save list of downloaded printers.";
+"Slicer profiles could not be loaded" = "Slicer profiles could not be loaded.";
+"Unknown slicing profile" = "Unknown slicing profile";
 
 
 // *

@@ -10,6 +10,14 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
+/// Protocol for Slicer list flow delegate
+protocol SlicingViewControllerDelegate: class {
+    /// Called when user selected specific Slicer
+    ///
+    /// - Parameter slicer: Slicer selected by user
+    func selectedSlicer(_ slicer: Slicer)
+}
+
 /// Slicing profiles screen controller
 class SlicingViewController: BaseCollectionViewController {
 
@@ -24,6 +32,10 @@ class SlicingViewController: BaseCollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        viewModel.outputs.displayError.startWithValues { error in
+            print("\(error.title): \(error.message)")
+        }
 
         if let collectionView = collectionView {
             collectionView.reactive.reloadData <~ viewModel.outputs.slicersChanged
@@ -53,7 +65,11 @@ extension SlicingViewController {
 
 // MARK: - UICollectionViewDelegate
 extension SlicingViewController {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
 
+        viewModel.inputs.selectedSlicer(at: indexPath.row)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

@@ -93,6 +93,8 @@ enum L10n {
   case settings
   /// %@ bytes
   case sizeInBytes(String)
+  /// Slicer profiles could not be loaded.
+  case slicerProfilesCouldNotBeLoaded
   /// Slicing
   case slicing
   /// Stored logs could not be loaded.
@@ -109,6 +111,8 @@ enum L10n {
   case unknownModificationDate
   /// Unknown slicer
   case unknownSlicer
+  /// Unknown slicing profile
+  case unknownSlicingProfile
 }
 // swiftlint:enable type_body_length
 
@@ -203,6 +207,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Settings")
       case .sizeInBytes(let p1):
         return L10n.tr(key: "Size in bytes", p1)
+      case .slicerProfilesCouldNotBeLoaded:
+        return L10n.tr(key: "Slicer profiles could not be loaded")
       case .slicing:
         return L10n.tr(key: "Slicing")
       case .storedLogsCouldNotBeLoaded:
@@ -219,6 +225,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Unknown modification date")
       case .unknownSlicer:
         return L10n.tr(key: "Unknown slicer")
+      case .unknownSlicingProfile:
+        return L10n.tr(key: "Unknown slicing profile")
     }
   }
 

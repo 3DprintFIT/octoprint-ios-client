@@ -14,7 +14,10 @@ import Result
 
 /// Slicing view model inputs
 protocol SlicingViewModelInputs {
-
+    /// Call when user selected Slicer
+    ///
+    /// - Parameter index: Index of row associated with selected slicer
+    func selectedSlicer(at index: Int)
 }
 
 // MARK: - Outputs
@@ -67,6 +70,9 @@ final class SlicingViewModel: SlicingViewModelType, SlicingViewModelInputs, Slic
 
     // MARK: Private properties
 
+    /// Slicer list flow delegate
+    private weak var delegate: SlicingViewControllerDelegate?
+
     /// Printer requests provider
     private let provider: OctoPrintProvider
 
@@ -81,7 +87,8 @@ final class SlicingViewModel: SlicingViewModelType, SlicingViewModelInputs, Slic
 
     // MARK: Initializers
 
-    init(provider: OctoPrintProvider, contextManager: ContextManagerType) {
+    init(delegate: SlicingViewControllerDelegate, provider: OctoPrintProvider, contextManager: ContextManagerType) {
+        self.delegate = delegate
         self.provider = provider
         self.contextManager = contextManager
         self.slicersCount = Property(initial: 0,
@@ -103,6 +110,14 @@ final class SlicingViewModel: SlicingViewModelType, SlicingViewModelInputs, Slic
     }
 
     // MARK: Input methods
+
+    func selectedSlicer(at index: Int) {
+        assert(slicersProperty.value != nil, "Slicers must not be empty when user selected cell at specific index")
+
+        let slicer = slicersProperty.value![index]
+
+        delegate?.selectedSlicer(slicer)
+    }
 
     // MARK: Output methods
 
@@ -132,10 +147,12 @@ final class SlicingViewModel: SlicingViewModelType, SlicingViewModelInputs, Slic
                             realm.add(slicers, update: true)
                         }
                     } catch {
-
+                        weakSelf.displayErrorProperty.value = ("sds", "sds")
                     }
-                case .failure: weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
-                                                                   tr(.couldNotLoadListOfSlicers))
+                case let .failure(error):
+                    print(error)
+                    weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                           tr(.couldNotLoadListOfSlicers))
                 }
             }
     }

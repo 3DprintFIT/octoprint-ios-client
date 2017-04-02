@@ -72,7 +72,7 @@ extension Reactive where Base: RealmCollection {
 }
 
 // MARK: - Reactive extensions for Object
-extension Reactive where Base: Object {
+extension Reactive where Base: RealmSwift.Object {
     /// Produces new value every time the object was changed
     var values: SignalProducer<Base, RealmError> {
         var notificationToken: NotificationToken?
@@ -112,5 +112,23 @@ extension SignalProducerProtocol where Value == Realm, Error == RealmError {
         -> SignalProducer<Results<Subject>, RealmError> {
 
             return flatMap(.latest) { $0.objects(type).reactive.values }
+    }
+
+    /// Reactive wrapper for Realm single object query
+    ///
+    /// - Parameters:
+    ///   - classType: Type of object to be selected
+    ///   - primaryKey: Primary key value
+    /// - Returns: Signal producer, which sends new value when object is changed, sends complete
+    ///            when it's deleted or nil if it's not presented in database
+    func fetch<Subject: RealmSwift.Object, Key>(_ classType: Subject.Type, forPrimaryKey primaryKey: Key)
+        -> SignalProducer<Subject?, RealmError> {
+
+            return flatMap(.latest) { realm -> SignalProducer<Subject?, RealmError> in
+                let producer = realm.object(ofType: classType,
+                                            forPrimaryKey: primaryKey)?.reactive.values
+
+                return producer?.map({ Optional($0) }) ?? SignalProducer(value: nil)
+            }
     }
 }

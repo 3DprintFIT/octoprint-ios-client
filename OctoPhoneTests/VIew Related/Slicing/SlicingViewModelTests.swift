@@ -21,7 +21,7 @@ class SlicingViewModelTests: QuickSpec {
             var notificationsCount = 0
 
             beforeEach {
-                subject = SlicingViewModel(provider: provider, contextManager: contextManager)
+                subject = SlicingViewModel(delegate: self, provider: provider, contextManager: contextManager)
             }
 
             afterEach {
@@ -89,5 +89,11 @@ class SlicingViewModelTests: QuickSpec {
     /// - Returns: New unmanaged slicer object
     func createSlicer(index: Int) -> Slicer {
         return Slicer(ID: "Slicer \(index)", name: "Slicer \(index)", isDefault: true)
+    }
+}
+
+extension SlicingViewModelTests: SlicingViewControllerDelegate {
+    func selectedSlicer(_ slicer: Slicer) {
+
     }
 }
