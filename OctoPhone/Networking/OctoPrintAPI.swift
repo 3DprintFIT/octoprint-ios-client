@@ -38,6 +38,8 @@ enum OctoPrintAPI {
     case slicers
     case slicerProfiles(String)
     case deleteSlicingProfile(slicerID: String, profileID: String)
+    // Printer profiles
+    case printerProfiles
 }
 
 // MARK: - TargetPart implementation
@@ -85,6 +87,7 @@ extension OctoPrintAPI: TargetPart {
             return ("api/slicing/\(slicer.urlEncoded)/profiles", .get, .request, nil)
         case let .deleteSlicingProfile(slicerID, profileID):
             return ("api/slicing/\(slicerID.urlEncoded)/profiles/\(profileID)", .delete, .request, nil)
+        case .printerProfiles: return ("api/printerprofiles", .get, .request, nil)
         }
     }
 }

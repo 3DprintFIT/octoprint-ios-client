@@ -29,6 +29,8 @@ enum L10n {
   case couldNotLoadListOfSlicers
   /// Could not save downloaded list of logs.
   case couldNotSaveDownloadedListOfLogs
+  /// Could not save printer profiles.
+  case couldNotSavePrinterProfiles
   /// Database error
   case databaseError
   /// Delete
@@ -79,6 +81,10 @@ enum L10n {
   case printerList
   /// Printer name
   case printerName
+  /// Printer profiles could not be loaded.
+  case printerProfilesCouldNotBeLoaded
+  /// Printer profiles list could not be downloaded.
+  case printerProfilesListCouldNotBeDownloaded
   /// Printer URL
   case printerURL
   /// Requested command could not be executed.
@@ -115,6 +121,8 @@ enum L10n {
   case unknownFileSize
   /// Uknown modofication date
   case unknownModificationDate
+  /// Unknown printer profile
+  case unknownPrinterProfile
   /// Unknown slicer
   case unknownSlicer
   /// Unknown slicing profile
@@ -149,6 +157,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Could not load list of slicers")
       case .couldNotSaveDownloadedListOfLogs:
         return L10n.tr(key: "Could not save downloaded list of logs")
+      case .couldNotSavePrinterProfiles:
+        return L10n.tr(key: "Could not save printer profiles")
       case .databaseError:
         return L10n.tr(key: "Database error")
       case .delete:
@@ -199,6 +209,10 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Printer list")
       case .printerName:
         return L10n.tr(key: "Printer Name")
+      case .printerProfilesCouldNotBeLoaded:
+        return L10n.tr(key: "Printer profiles could not be loaded")
+      case .printerProfilesListCouldNotBeDownloaded:
+        return L10n.tr(key: "Printer profiles list could not be downloaded")
       case .printerURL:
         return L10n.tr(key: "Printer URL")
       case .requestedCommandCouldNotBeExecuted:
@@ -235,6 +249,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Unknown file size")
       case .unknownModificationDate:
         return L10n.tr(key: "Unknown modification date")
+      case .unknownPrinterProfile:
+        return L10n.tr(key: "Unknown printer profile")
       case .unknownSlicer:
         return L10n.tr(key: "Unknown slicer")
       case .unknownSlicingProfile:

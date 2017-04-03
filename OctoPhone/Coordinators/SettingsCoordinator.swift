@@ -45,7 +45,8 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
     }
 
     func printProfilesCellSelected() {
-        let coordinator = PrintProfilesCoordinator(navigationController: navigationController)
+        let coordinator = PrintProfilesCoordinator(navigationController: navigationController,
+                                                   contextManager: contextManager, provider: provider)
 
         childCoordinators.append(coordinator)
         coordinator.start()

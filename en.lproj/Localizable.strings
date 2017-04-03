@@ -110,6 +110,10 @@
 // * Print profiles
 // *
 "Print profiles" = "Print profiles";
+"Printer profiles could not be loaded" = "Printer profiles could not be loaded.";
+"Printer profiles list could not be downloaded" = "Printer profiles list could not be downloaded.";
+"Could not save printer profiles" = "Could not save printer profiles.";
+"Unknown printer profile" = "Unknown printer profile";
 
 
 // *
