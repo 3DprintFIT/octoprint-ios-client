@@ -95,15 +95,32 @@ extension SignalProducerProtocol where Value == Any, Error == MoyaError {
     ///
     /// - Parameter classType: Class which is expected to be returned
     /// - Returns: Collection of objects of given type
-    func mapDictionary<T: JSONAble>(collectionOf classType: T.Type) -> SignalProducer<[T], MoyaError> {
+    func mapDictionary<T: JSONAble>(collectionOf classType: T.Type,
+                                    forKeyPath keyPath: String? = nil) -> SignalProducer<[T], MoyaError> {
+
         return producer.flatMap(.latest) { json -> SignalProducer<[T], MoyaError> in
-            guard let dict = json as? [String: [String: Any]] else {
-                return SignalProducer(error: .underlying(JSONAbleError.invalidJSON(json: json)))
+            var finalDict = [String: [String: Any]]()
+
+            if let keyPath = keyPath {
+                guard
+                    let dict = json as? [String: [String: [String: Any]]],
+                    let subDict = dict[keyPath] else
+                {
+                    return SignalProducer(error: .underlying(JSONAbleError.invalidJSON(json: json)))
+                }
+
+                finalDict = subDict
+            } else {
+                guard let dict = json as? [String: [String: Any]] else {
+                    return SignalProducer(error: .underlying(JSONAbleError.invalidJSON(json: json)))
+                }
+
+                finalDict = dict
             }
 
             var objects = [T]()
 
-            for objectDict in dict {
+            for objectDict in finalDict {
                 do {
                     objects.append(try T.fromJSON(json: objectDict.value))
                 } catch {
