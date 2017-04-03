@@ -12,7 +12,7 @@ import UIKit
 final class PrintProfilesCoordinator: ContextCoordinator {
 
     /// Printer requests provider
-    private let provider: OctoPrintProvider
+    fileprivate let provider: OctoPrintProvider
 
     init(navigationController: UINavigationController?, contextManager: ContextManagerType,
          provider: OctoPrintProvider) {
@@ -23,9 +23,22 @@ final class PrintProfilesCoordinator: ContextCoordinator {
     }
 
     override func start() {
-        let viewModel = PrintProfilesViewModel(provider: provider, contextManager: contextManager)
+        let viewModel = PrintProfilesViewModel(delegate: self, provider: provider,
+                                               contextManager: contextManager)
         let controller = PrintProfilesViewController(viewModel: viewModel)
 
         navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+extension PrintProfilesCoordinator: PrintProfilesViewControllerDelegate {
+    func selectedPrinterProfile(_ printerProfile: PrinterProfile) {
+        let coordinator = PrintProfileCoordinator(navigationController: navigationController,
+                                                  contextManager: contextManager, provider: provider,
+                                                  printProfileID: printerProfile.ID)
+
+        childCoordinators.append(coordinator)
+
+        coordinator.start()
     }
 }

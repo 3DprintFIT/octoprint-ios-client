@@ -14,7 +14,10 @@ import Result
 
 /// Print profiles view model outputs
 protocol PrintProfilesViewModelInputs {
-
+    /// Call when user selected printer profile
+    ///
+    /// - Parameter index: Index of selected printer in collection
+    func selectedPrinterProfile(at index: Int)
 }
 
 // MARK: - Outputs
@@ -69,6 +72,9 @@ PrintProfilesViewModelOutputs {
 
     // MARK: Private properties
 
+    /// Delegate
+    private weak var delegate: PrintProfilesViewControllerDelegate?
+
     /// Printer requests provider
     private let provider: OctoPrintProvider
 
@@ -83,7 +89,10 @@ PrintProfilesViewModelOutputs {
 
     // MARK: Initializers
 
-    init(provider: OctoPrintProvider, contextManager: ContextManagerType) {
+    init(delegate: PrintProfilesViewControllerDelegate, provider: OctoPrintProvider,
+         contextManager: ContextManagerType) {
+
+        self.delegate = delegate
         self.provider = provider
         self.contextManager = contextManager
         self.profilesCount = Property(initial: 0,
@@ -106,6 +115,15 @@ PrintProfilesViewModelOutputs {
     }
 
     // MARK: Input methods
+
+    func selectedPrinterProfile(at index: Int) {
+        assert(profilesProperty.value != nil,
+               "Profiles must not be nil when user selected specific profile")
+
+        let profile = profilesProperty.value![index]
+
+        delegate?.selectedPrinterProfile(profile)
+    }
 
     // MARK: Output methods
 

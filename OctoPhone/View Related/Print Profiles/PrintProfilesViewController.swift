@@ -10,6 +10,14 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
+/// Print profile list flow delegate
+protocol PrintProfilesViewControllerDelegate: class {
+    /// Called when user selected printer profile
+    ///
+    /// - Parameter printerProfile: Selected printer profile
+    func selectedPrinterProfile(_ printerProfile: PrinterProfile)
+}
+
 /// Printer profiles list
 class PrintProfilesViewController: BaseCollectionViewController {
     // MARK: - Properties
@@ -64,6 +72,15 @@ extension PrintProfilesViewController {
         cell.viewModel.value = viewModel.outputs.printProfileCellViewModel(for: indexPath.row)
 
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension PrintProfilesViewController {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
+
+        viewModel.inputs.selectedPrinterProfile(at: indexPath.row)
     }
 }
 

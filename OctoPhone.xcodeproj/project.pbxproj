@@ -119,6 +119,9 @@
 		D2C38CCF1E7FEE1400D06698 /* LogCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CCE1E7FEE1400D06698 /* LogCellViewModel.swift */; };
 		D2C38CD11E7FF87D00D06698 /* LogCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CD01E7FF87D00D06698 /* LogCellViewModelTests.swift */; };
 		D2C38CD41E802C6D00D06698 /* OPNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CD31E802C6D00D06698 /* OPNumberFormatter.swift */; };
+		D2C8AF2D1E92E33C00DC7914 /* PrintProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8AF2C1E92E33C00DC7914 /* PrintProfileCoordinator.swift */; };
+		D2C8AF311E92E3C600DC7914 /* PrintProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8AF301E92E3C600DC7914 /* PrintProfileViewModel.swift */; };
+		D2C8AF331E92E3E800DC7914 /* PrintProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8AF321E92E3E800DC7914 /* PrintProfileViewController.swift */; };
 		D2CBD72A1E8C435C002EA538 /* SlicingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBD7291E8C435C002EA538 /* SlicingViewModel.swift */; };
 		D2CBD72C1E8C4579002EA538 /* Slicer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBD72B1E8C4579002EA538 /* Slicer.swift */; };
 		D2CBD72E1E8C4A40002EA538 /* SlicingProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBD72D1E8C4A40002EA538 /* SlicingProfile.swift */; };
@@ -277,6 +280,9 @@
 		D2C38CCE1E7FEE1400D06698 /* LogCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCellViewModel.swift; sourceTree = "<group>"; };
 		D2C38CD01E7FF87D00D06698 /* LogCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCellViewModelTests.swift; sourceTree = "<group>"; };
 		D2C38CD31E802C6D00D06698 /* OPNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPNumberFormatter.swift; sourceTree = "<group>"; };
+		D2C8AF2C1E92E33C00DC7914 /* PrintProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileCoordinator.swift; sourceTree = "<group>"; };
+		D2C8AF301E92E3C600DC7914 /* PrintProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileViewModel.swift; sourceTree = "<group>"; };
+		D2C8AF321E92E3E800DC7914 /* PrintProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileViewController.swift; sourceTree = "<group>"; };
 		D2CBD7291E8C435C002EA538 /* SlicingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingViewModel.swift; sourceTree = "<group>"; };
 		D2CBD72B1E8C4579002EA538 /* Slicer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slicer.swift; sourceTree = "<group>"; };
 		D2CBD72D1E8C4A40002EA538 /* SlicingProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfile.swift; sourceTree = "<group>"; };
@@ -381,6 +387,7 @@
 				D24EDCBC1E8FF8B500A8437B /* Slicing Profiles */,
 				D2688D831E91139A00290421 /* Slicing Profile */,
 				D26B50101E734D2E00795462 /* Print Profiles */,
+				D2C8AF2B1E92E2A800DC7914 /* Print Profile */,
 				D2FEDE7E1E6F4B0600184CEC /* SD Card Management */,
 				D26B501E1E7364BF00795462 /* BaseCollectionViewController.swift */,
 				D26B50201E73668200795462 /* BaseViewController.swift */,
@@ -439,6 +446,7 @@
 				D20E419E1E88626300CE99BA /* LogDetailCoordinator.swift */,
 				D26B500E1E734CB600795462 /* SlicingCoordinator.swift */,
 				D26B501A1E7353C700795462 /* PrintProfilesCoordinator.swift */,
+				D2C8AF2C1E92E33C00DC7914 /* PrintProfileCoordinator.swift */,
 				D26B501C1E73542400795462 /* SDCardManagementCoordinator.swift */,
 				D24EDCBD1E90037C00A8437B /* SlicingProfilesCoordinator.swift */,
 				D2688D841E91154000290421 /* SlicingProfileCoordinator.swift */,
@@ -673,6 +681,15 @@
 				D2C38CD31E802C6D00D06698 /* OPNumberFormatter.swift */,
 			);
 			path = Formatters;
+			sourceTree = "<group>";
+		};
+		D2C8AF2B1E92E2A800DC7914 /* Print Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D2C8AF301E92E3C600DC7914 /* PrintProfileViewModel.swift */,
+				D2C8AF321E92E3E800DC7914 /* PrintProfileViewController.swift */,
+			);
+			path = "Print Profile";
 			sourceTree = "<group>";
 		};
 		D2CBD72F1E8C4EC6002EA538 /* Slicing */ = {
@@ -1100,12 +1117,14 @@
 				D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */,
 				D20E41A31E88747900CE99BA /* LogDetailViewController.swift in Sources */,
 				D2D990C51E6F6ABD0094DA64 /* LogsViewController.swift in Sources */,
+				D2C8AF311E92E3C600DC7914 /* PrintProfileViewModel.swift in Sources */,
 				D26B50171E734FEC00795462 /* SlicingViewController.swift in Sources */,
 				D2ACD7481E6C451100F2603A /* FileCellViewModel.swift in Sources */,
 				D2D990CD1E71E7E90094DA64 /* FileDetailViewModel.swift in Sources */,
 				D20E41A11E88633F00CE99BA /* LogDetailViewModel.swift in Sources */,
 				D2D990BB1E6F67FA0094DA64 /* CurrentPrintViewController.swift in Sources */,
 				D2F7659A1E7896CC00A5BC11 /* CommandCollectionViewCell.swift in Sources */,
+				D2C8AF2D1E92E33C00DC7914 /* PrintProfileCoordinator.swift in Sources */,
 				D20E419F1E88626300CE99BA /* LogDetailCoordinator.swift in Sources */,
 				D26B501F1E7364BF00795462 /* BaseCollectionViewController.swift in Sources */,
 				D2688D751E904DA900290421 /* SlicingProfileCellViewModel.swift in Sources */,
@@ -1158,6 +1177,7 @@
 				D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */,
 				D2688D851E91154000290421 /* SlicingProfileCoordinator.swift in Sources */,
 				D23F0CDD1E919FB600A70BC9 /* PrinterProfile.swift in Sources */,
+				D2C8AF331E92E3E800DC7914 /* PrintProfileViewController.swift in Sources */,
 				D2F765961E788C3000A5BC11 /* CommandCellViewModel.swift in Sources */,
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
 				D2688D871E9117B000290421 /* SlicingProfileViewModel.swift in Sources */,
