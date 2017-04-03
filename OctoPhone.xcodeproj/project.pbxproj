@@ -59,6 +59,9 @@
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
 		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
 		D23B90481E5B7F930005560B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90451E5B7F930005560B /* Result.framework */; };
+		D23F0CDD1E919FB600A70BC9 /* PrinterProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23F0CDC1E919FB600A70BC9 /* PrinterProfile.swift */; };
+		D23F0CE11E91A1BF00A70BC9 /* PrinterProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23F0CE01E91A1BF00A70BC9 /* PrinterProfileTests.swift */; };
+		D23F0CE31E92428E00A70BC9 /* PrinterProfile+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23F0CE21E92428E00A70BC9 /* PrinterProfile+JSONAble.swift */; };
 		D24EDCBE1E90037C00A8437B /* SlicingProfilesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EDCBD1E90037C00A8437B /* SlicingProfilesCoordinator.swift */; };
 		D24EDCC01E90087900A8437B /* SlicingProfilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EDCBF1E90087900A8437B /* SlicingProfilesViewModel.swift */; };
 		D24EDCC21E90089300A8437B /* SlicingProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EDCC11E90089300A8437B /* SlicingProfilesViewController.swift */; };
@@ -209,6 +212,9 @@
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D23B90451E5B7F930005560B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		D23F0CDC1E919FB600A70BC9 /* PrinterProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterProfile.swift; sourceTree = "<group>"; };
+		D23F0CE01E91A1BF00A70BC9 /* PrinterProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterProfileTests.swift; sourceTree = "<group>"; };
+		D23F0CE21E92428E00A70BC9 /* PrinterProfile+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PrinterProfile+JSONAble.swift"; sourceTree = "<group>"; };
 		D24EDCBD1E90037C00A8437B /* SlicingProfilesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesCoordinator.swift; sourceTree = "<group>"; };
 		D24EDCBF1E90087900A8437B /* SlicingProfilesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesViewModel.swift; sourceTree = "<group>"; };
 		D24EDCC11E90089300A8437B /* SlicingProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesViewController.swift; sourceTree = "<group>"; };
@@ -404,6 +410,7 @@
 				D2C38CC81E7D4A5800D06698 /* Log.swift */,
 				D2CBD72B1E8C4579002EA538 /* Slicer.swift */,
 				D2CBD72D1E8C4A40002EA538 /* SlicingProfile.swift */,
+				D23F0CDC1E919FB600A70BC9 /* PrinterProfile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -450,6 +457,7 @@
 				D2C38CCA1E7D4D5B00D06698 /* Log+JSONAble.swift */,
 				D256793A1E8D059B00D763A3 /* Slicer+JSONAble.swift */,
 				D256793C1E8D073B00D763A3 /* SlicingProfile+JSONAble.swift */,
+				D23F0CE21E92428E00A70BC9 /* PrinterProfile+JSONAble.swift */,
 			);
 			path = "Model Mapping";
 			sourceTree = "<group>";
@@ -473,6 +481,7 @@
 				D2C38CCC1E7D4FA500D06698 /* LogTests.swift */,
 				D256793E1E8D07EB00D763A3 /* SlicerTests.swift */,
 				D25679401E8D07F700D763A3 /* SlicingProfileTests.swift */,
+				D23F0CE01E91A1BF00A70BC9 /* PrinterProfileTests.swift */,
 			);
 			name = "Model Mapping";
 			sourceTree = "<group>";
@@ -1126,6 +1135,7 @@
 				D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */,
 				D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */,
 				D2688D851E91154000290421 /* SlicingProfileCoordinator.swift in Sources */,
+				D23F0CDD1E919FB600A70BC9 /* PrinterProfile.swift in Sources */,
 				D2F765961E788C3000A5BC11 /* CommandCellViewModel.swift in Sources */,
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
 				D2688D871E9117B000290421 /* SlicingProfileViewModel.swift in Sources */,
@@ -1135,6 +1145,7 @@
 				D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */,
 				D28E44A51E8A7A81009D4976 /* String+URLEncoded.swift in Sources */,
 				D2EF39291E66F06800A17057 /* PrinterListCoordinator.swift in Sources */,
+				D23F0CE31E92428E00A70BC9 /* PrinterProfile+JSONAble.swift in Sources */,
 				D2063D001E5F8352004C2908 /* PrinterLoginViewModel.swift in Sources */,
 				D22401811E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift in Sources */,
 				D2D990D51E71F3D40094DA64 /* TerminalViewModel.swift in Sources */,
@@ -1164,6 +1175,7 @@
 				D22401911E6B2EA40082129A /* GCodeAnalysisTests.swift in Sources */,
 				D2688D7B1E90541100290421 /* SlicingProfileCellTests.swift in Sources */,
 				D224018F1E6B29150082129A /* FileTests.swift in Sources */,
+				D23F0CE11E91A1BF00A70BC9 /* PrinterProfileTests.swift in Sources */,
 				D2FEDE6A1E6EBCB200184CEC /* PrinterLoginViewModelTests.swift in Sources */,
 				D2306BC31E9016EE00CA007D /* SlicingProfilesViewModelTests.swift in Sources */,
 				D2CBD7311E8C4EF1002EA538 /* SlicingViewModelTests.swift in Sources */,
