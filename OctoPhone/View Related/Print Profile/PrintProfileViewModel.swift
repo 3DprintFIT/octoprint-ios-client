@@ -20,7 +20,20 @@ protocol PrintProfileViewModelInputs {
 
 /// Print profile logic output
 protocol PrintProfileViewModelOutputs {
+    /// Creates VIew Mo
+    ///
+    /// - Returns: <#return value description#>
+    func printNameCellViewModel() -> PrintProfileTextInputCellViewModel
 
+    /// <#Description#>
+    ///
+    /// - Returns: <#return value description#>
+    func printIdentifierCellViewModel() -> PrintProfileTextInputCellViewModel
+
+    /// <#Description#>
+    ///
+    /// - Returns: <#return value description#>
+    func printModelCellViewModel() -> PrintProfileTextInputCellViewModel
 }
 
 // MARK: - Common public interface
@@ -69,6 +82,18 @@ PrintProfileViewModelOutputs {
     // MARK: Input methods
 
     // MARK: Output methods
+
+    func printNameCellViewModel() -> PrintProfileTextInputCellViewModel {
+        return PrintProfileTextInputCellViewModel(description: tr(.printProfileName))
+    }
+
+    func printIdentifierCellViewModel() -> PrintProfileTextInputCellViewModel {
+        return PrintProfileTextInputCellViewModel(description: tr(.printProfileIdentifier))
+    }
+
+    func printModelCellViewModel() -> PrintProfileTextInputCellViewModel {
+        return PrintProfileTextInputCellViewModel(description: tr(.printProfileModel))
+    }
 
     // MARK: Internal logic
 }

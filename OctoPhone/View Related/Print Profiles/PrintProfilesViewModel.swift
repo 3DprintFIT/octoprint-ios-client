@@ -18,6 +18,9 @@ protocol PrintProfilesViewModelInputs {
     ///
     /// - Parameter index: Index of selected printer in collection
     func selectedPrinterProfile(at index: Int)
+
+    /// Call when user tapped add profile button
+    func addButtonTapped()
 }
 
 // MARK: - Outputs
@@ -133,6 +136,10 @@ PrintProfilesViewModelOutputs {
         let profile = profilesProperty.value![index]
 
         return PrintProfileCellViewModel(printProfileID: profile.ID, contextManager: contextManager)
+    }
+
+    func addButtonTapped() {
+        delegate?.addButtonTappped()
     }
 
     // MARK: Internal logic

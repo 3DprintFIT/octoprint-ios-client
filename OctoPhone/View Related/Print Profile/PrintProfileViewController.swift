@@ -11,7 +11,7 @@ import ReactiveSwift
 import ReactiveCocoa
 
 /// Print profile detail controller
-class PrintProfileViewController: BaseViewController {
+class PrintProfileViewController: BaseCollectionViewController {
     // MARK: - Properties
 
     /// Controller logic
@@ -20,7 +20,7 @@ class PrintProfileViewController: BaseViewController {
     // MARK: - Initializers
 
     convenience init(viewModel: PrintProfileViewModelType) {
-        self.init()
+        self.init(collectionViewLayout: UICollectionViewFlowLayout())
 
         self.viewModel = viewModel
         bindViewModel()
@@ -30,6 +30,10 @@ class PrintProfileViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        collectionView?.register(
+            PrintProfileTextInputCollectionViewCell.self,
+            forCellWithReuseIdentifier: PrintProfileTextInputCollectionViewCell.identifier)
     }
 
     // MARK: - Internal logic
@@ -38,5 +42,26 @@ class PrintProfileViewController: BaseViewController {
     /// user interaction to View Model inputs
     private func bindViewModel() {
 
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension PrintProfileViewController {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 6
+    }
+
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
+
+        switch section {
+        case 0: return 2
+        case 1: return 0//2
+        case 2: return 0//2
+        case 3: return 0//3
+        case 4: return 0//4
+        case 5: return 0//2
+        default: fatalError("Unxpected section number")
+        }
     }
 }

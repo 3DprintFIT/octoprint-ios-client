@@ -41,4 +41,8 @@ extension PrintProfilesCoordinator: PrintProfilesViewControllerDelegate {
 
         coordinator.start()
     }
+
+    func addButtonTappped() {
+        
+    }
 }

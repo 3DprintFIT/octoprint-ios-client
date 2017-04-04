@@ -9,6 +9,12 @@ import Foundation
 enum L10n {
   /// Ooops, an error occured
   case anErrorOccured
+  /// Axis
+  case axis
+  /// Black
+  case black
+  /// Blue
+  case blue
   /// Can not create requested command.
   case canNotCreateRequestedCommand
   /// Can not load stored commands.
@@ -17,6 +23,10 @@ enum L10n {
   case canNotOpenSelectedLog
   /// Cancel
   case cancel
+  /// Center
+  case centerOrigin
+  /// Circular
+  case circularFormFactor
   /// Command
   case command
   /// Yay, command execution failed.
@@ -33,6 +43,8 @@ enum L10n {
   case couldNotSavePrinterProfiles
   /// Database error
   case databaseError
+  /// Default
+  case `default`
   /// Delete
   case delete
   /// Delete log
@@ -47,12 +59,22 @@ enum L10n {
   case downloadedListOfSlicingProfilesCouldNotBeSaved
   /// Downloading log file...
   case downloadingLogFile
+  /// E
+  case eAxis
   /// Files
   case files
   /// Files list could not be loaded.
   case filesListCouldNotBeLoaded
+  /// Form factor
+  case formFactor
+  /// Green
+  case green
+  /// Heated bed
+  case heatedBed
   /// The credentials you entered are incorrect.
   case incorrectCredentials
+  /// Inverted control
+  case invertedControl
   /// Log could not be removed.
   case logCouldNotBeRemoved
   /// Log detail
@@ -67,8 +89,30 @@ enum L10n {
   case logs
   /// Logs could not be downloaded from printer.
   case logsCouldNotBeDownloadedFromPrinter
+  /// Lower left
+  case lowerLeftOrigin
+  /// mm/min
+  case milimetersPerMinute
+  /// mm
+  case milimetersSign
+  /// Nozzle diameter
+  case nozzleDiameter
+  /// Number of extruders
+  case numberOfExtruders
   /// Ok
   case ok
+  /// Orange
+  case orange
+  /// Origin
+  case origin
+  /// Color
+  case printProfileColor
+  /// Identifier
+  case printProfileIdentifier
+  /// Model
+  case printProfileModel
+  /// Name
+  case printProfileName
   /// Print profiles
   case printProfiles
   /// Printer
@@ -87,6 +131,10 @@ enum L10n {
   case printerProfilesListCouldNotBeDownloaded
   /// Printer URL
   case printerURL
+  /// Rectangular
+  case rectangularFormFactor
+  /// Red
+  case red
   /// Requested command could not be executed.
   case requestedCommandCouldNotBeExecuted
   /// Requested log file could not be downloaded.
@@ -127,6 +175,16 @@ enum L10n {
   case unknownSlicer
   /// Unknown slicing profile
   case unknownSlicingProfile
+  /// Volume
+  case volume
+  /// X
+  case xAxis
+  /// Y
+  case yAxis
+  /// Yellow
+  case yellow
+  /// Z
+  case zAxis
 }
 // swiftlint:enable type_body_length
 
@@ -137,6 +195,12 @@ extension L10n: CustomStringConvertible {
     switch self {
       case .anErrorOccured:
         return L10n.tr(key: "An error occured")
+      case .axis:
+        return L10n.tr(key: "Axis")
+      case .black:
+        return L10n.tr(key: "Black")
+      case .blue:
+        return L10n.tr(key: "Blue")
       case .canNotCreateRequestedCommand:
         return L10n.tr(key: "Can not create requested command")
       case .canNotLoadStoredCommands:
@@ -145,6 +209,10 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Can not open selected log")
       case .cancel:
         return L10n.tr(key: "Cancel")
+      case .centerOrigin:
+        return L10n.tr(key: "Center origin")
+      case .circularFormFactor:
+        return L10n.tr(key: "Circular form factor")
       case .command:
         return L10n.tr(key: "Command")
       case .commandExecutingFailed:
@@ -161,6 +229,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Could not save printer profiles")
       case .databaseError:
         return L10n.tr(key: "Database error")
+      case .`default`:
+        return L10n.tr(key: "Default")
       case .delete:
         return L10n.tr(key: "Delete")
       case .deleteLog:
@@ -175,12 +245,22 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Downloaded list of slicing profiles could not be saved")
       case .downloadingLogFile:
         return L10n.tr(key: "Downloading log file")
+      case .eAxis:
+        return L10n.tr(key: "E axis")
       case .files:
         return L10n.tr(key: "Files")
       case .filesListCouldNotBeLoaded:
         return L10n.tr(key: "Files list could not be loaded")
+      case .formFactor:
+        return L10n.tr(key: "Form factor")
+      case .green:
+        return L10n.tr(key: "Green")
+      case .heatedBed:
+        return L10n.tr(key: "Heated bed")
       case .incorrectCredentials:
         return L10n.tr(key: "Incorrect Credentials")
+      case .invertedControl:
+        return L10n.tr(key: "Inverted control")
       case .logCouldNotBeRemoved:
         return L10n.tr(key: "Log could not be removed")
       case .logDetail:
@@ -195,8 +275,30 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Logs")
       case .logsCouldNotBeDownloadedFromPrinter:
         return L10n.tr(key: "Logs could not be downloaded from printer")
+      case .lowerLeftOrigin:
+        return L10n.tr(key: "Lower left origin")
+      case .milimetersPerMinute:
+        return L10n.tr(key: "Milimeters per minute")
+      case .milimetersSign:
+        return L10n.tr(key: "Milimeters sign")
+      case .nozzleDiameter:
+        return L10n.tr(key: "Nozzle diameter")
+      case .numberOfExtruders:
+        return L10n.tr(key: "Number of extruders")
       case .ok:
         return L10n.tr(key: "Ok")
+      case .orange:
+        return L10n.tr(key: "Orange")
+      case .origin:
+        return L10n.tr(key: "Origin")
+      case .printProfileColor:
+        return L10n.tr(key: "Print profile color")
+      case .printProfileIdentifier:
+        return L10n.tr(key: "Print profile Identifier")
+      case .printProfileModel:
+        return L10n.tr(key: "Print profile model")
+      case .printProfileName:
+        return L10n.tr(key: "Print profile name")
       case .printProfiles:
         return L10n.tr(key: "Print profiles")
       case .printer:
@@ -215,6 +317,10 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Printer profiles list could not be downloaded")
       case .printerURL:
         return L10n.tr(key: "Printer URL")
+      case .rectangularFormFactor:
+        return L10n.tr(key: "Rectangular form factor")
+      case .red:
+        return L10n.tr(key: "Red")
       case .requestedCommandCouldNotBeExecuted:
         return L10n.tr(key: "Requested command could not be executed")
       case .requestedLogFileCouldNotBeDownloaded:
@@ -255,6 +361,16 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Unknown slicer")
       case .unknownSlicingProfile:
         return L10n.tr(key: "Unknown slicing profile")
+      case .volume:
+        return L10n.tr(key: "Volume")
+      case .xAxis:
+        return L10n.tr(key: "X axis")
+      case .yAxis:
+        return L10n.tr(key: "Y axis")
+      case .yellow:
+        return L10n.tr(key: "Yellow")
+      case .zAxis:
+        return L10n.tr(key: "Z axis")
     }
   }
 

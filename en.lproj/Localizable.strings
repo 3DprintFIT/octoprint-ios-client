@@ -7,6 +7,14 @@
 "Database error" = "Database error";
 "Cancel" = "Cancel";
 "Delete" = "Delete";
+"Default" = "Default";
+"Red" = "Red";
+"Orange" = "Orange";
+"Yellow" = "Yellow";
+"Green" = "Green";
+"Blue" = "Blue";
+"Black" = "Black";
+
 
 
 // *
@@ -114,6 +122,33 @@
 "Printer profiles list could not be downloaded" = "Printer profiles list could not be downloaded.";
 "Could not save printer profiles" = "Could not save printer profiles.";
 "Unknown printer profile" = "Unknown printer profile";
+
+
+// *
+// * New print profile
+// *
+"Print profile name" = "Name";
+"Print profile Identifier" = "Identifier";
+"Print profile model" = "Model";
+"Print profile color" = "Color";
+"Form factor" = "Form factor";
+"Rectangular form factor" = "Rectangular";
+"Circular form factor" = "Circular";
+"Origin" = "Origin";
+"Lower left origin" = "Lower left";
+"Center origin" = "Center";
+"Volume" = "Volume";
+"X axis" = "X";
+"Y axis" = "Y";
+"Z axis" = "Z";
+"Milimeters sign" = "mm";
+"Heated bed" = "Heated bed";
+"Axis" = "Axis";
+"E axis" = "E";
+"Inverted control" = "Inverted control";
+"Milimeters per minute" = "mm/min";
+"Nozzle diameter" = "Nozzle diameter";
+"Number of extruders" = "Number of extruders";
 
 
 // *

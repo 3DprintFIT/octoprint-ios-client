@@ -16,6 +16,9 @@ protocol PrintProfilesViewControllerDelegate: class {
     ///
     /// - Parameter printerProfile: Selected printer profile
     func selectedPrinterProfile(_ printerProfile: PrinterProfile)
+
+    /// Called when user tapped add printer button
+    func addButtonTappped()
 }
 
 /// Printer profiles list
@@ -24,6 +27,12 @@ class PrintProfilesViewController: BaseCollectionViewController {
 
     /// Controller logic
     fileprivate var viewModel: PrintProfilesViewModelType!
+
+    lazy private var addButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+
+        return button
+    }()
 
     // MARK: - Initializers
 
@@ -39,11 +48,18 @@ class PrintProfilesViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = addButton
+
         collectionView?.register(PrintProfileCollectionViewCell.self,
                                  forCellWithReuseIdentifier: PrintProfileCollectionViewCell.identifier)
     }
 
     // MARK: - Internal logic
+
+    /// Add button UI action
+    func addButtonTapped() {
+        viewModel.inputs.addButtonTapped()
+    }
 
     /// Binds outputs of View Model to UI and converts
     /// user interaction to View Model inputs

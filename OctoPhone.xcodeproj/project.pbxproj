@@ -122,6 +122,9 @@
 		D2C8AF2D1E92E33C00DC7914 /* PrintProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8AF2C1E92E33C00DC7914 /* PrintProfileCoordinator.swift */; };
 		D2C8AF311E92E3C600DC7914 /* PrintProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8AF301E92E3C600DC7914 /* PrintProfileViewModel.swift */; };
 		D2C8AF331E92E3E800DC7914 /* PrintProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8AF321E92E3E800DC7914 /* PrintProfileViewController.swift */; };
+		D2C8AF361E939B9300DC7914 /* PrintProfileTextInputCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8AF351E939B9300DC7914 /* PrintProfileTextInputCollectionViewCell.swift */; };
+		D2C8AF381E939BAC00DC7914 /* PrintProfileTextInputCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8AF371E939BAC00DC7914 /* PrintProfileTextInputCellViewModel.swift */; };
+		D2C8AF3B1E9435EE00DC7914 /* FormTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8AF3A1E9435EE00DC7914 /* FormTextInputView.swift */; };
 		D2CBD72A1E8C435C002EA538 /* SlicingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBD7291E8C435C002EA538 /* SlicingViewModel.swift */; };
 		D2CBD72C1E8C4579002EA538 /* Slicer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBD72B1E8C4579002EA538 /* Slicer.swift */; };
 		D2CBD72E1E8C4A40002EA538 /* SlicingProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CBD72D1E8C4A40002EA538 /* SlicingProfile.swift */; };
@@ -283,6 +286,9 @@
 		D2C8AF2C1E92E33C00DC7914 /* PrintProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileCoordinator.swift; sourceTree = "<group>"; };
 		D2C8AF301E92E3C600DC7914 /* PrintProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileViewModel.swift; sourceTree = "<group>"; };
 		D2C8AF321E92E3E800DC7914 /* PrintProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileViewController.swift; sourceTree = "<group>"; };
+		D2C8AF351E939B9300DC7914 /* PrintProfileTextInputCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileTextInputCollectionViewCell.swift; sourceTree = "<group>"; };
+		D2C8AF371E939BAC00DC7914 /* PrintProfileTextInputCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileTextInputCellViewModel.swift; sourceTree = "<group>"; };
+		D2C8AF3A1E9435EE00DC7914 /* FormTextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextInputView.swift; sourceTree = "<group>"; };
 		D2CBD7291E8C435C002EA538 /* SlicingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingViewModel.swift; sourceTree = "<group>"; };
 		D2CBD72B1E8C4579002EA538 /* Slicer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slicer.swift; sourceTree = "<group>"; };
 		D2CBD72D1E8C4A40002EA538 /* SlicingProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfile.swift; sourceTree = "<group>"; };
@@ -388,6 +394,7 @@
 				D2688D831E91139A00290421 /* Slicing Profile */,
 				D26B50101E734D2E00795462 /* Print Profiles */,
 				D2C8AF2B1E92E2A800DC7914 /* Print Profile */,
+				D2C8AF341E9398AD00DC7914 /* Add Printer Profile */,
 				D2FEDE7E1E6F4B0600184CEC /* SD Card Management */,
 				D26B501E1E7364BF00795462 /* BaseCollectionViewController.swift */,
 				D26B50201E73668200795462 /* BaseViewController.swift */,
@@ -686,10 +693,28 @@
 		D2C8AF2B1E92E2A800DC7914 /* Print Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D2C8AF391E939BB500DC7914 /* Text input */,
 				D2C8AF301E92E3C600DC7914 /* PrintProfileViewModel.swift */,
 				D2C8AF321E92E3E800DC7914 /* PrintProfileViewController.swift */,
+				D2C8AF3A1E9435EE00DC7914 /* FormTextInputView.swift */,
 			);
 			path = "Print Profile";
+			sourceTree = "<group>";
+		};
+		D2C8AF341E9398AD00DC7914 /* Add Printer Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Add Printer Profile";
+			sourceTree = "<group>";
+		};
+		D2C8AF391E939BB500DC7914 /* Text input */ = {
+			isa = PBXGroup;
+			children = (
+				D2C8AF351E939B9300DC7914 /* PrintProfileTextInputCollectionViewCell.swift */,
+				D2C8AF371E939BAC00DC7914 /* PrintProfileTextInputCellViewModel.swift */,
+			);
+			name = "Text input";
 			sourceTree = "<group>";
 		};
 		D2CBD72F1E8C4EC6002EA538 /* Slicing */ = {
@@ -1115,6 +1140,7 @@
 				D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */,
 				D23F0CDB1E919AD600A70BC9 /* PrintProfilesViewModel.swift in Sources */,
 				D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */,
+				D2C8AF3B1E9435EE00DC7914 /* FormTextInputView.swift in Sources */,
 				D20E41A31E88747900CE99BA /* LogDetailViewController.swift in Sources */,
 				D2D990C51E6F6ABD0094DA64 /* LogsViewController.swift in Sources */,
 				D2C8AF311E92E3C600DC7914 /* PrintProfileViewModel.swift in Sources */,
@@ -1144,6 +1170,7 @@
 				D2CBD72A1E8C435C002EA538 /* SlicingViewModel.swift in Sources */,
 				D2CCF7441DBF46DB00EF9752 /* AppDelegate.swift in Sources */,
 				D22401761E6AF0150082129A /* Realm+ReactiveSwift.swift in Sources */,
+				D2C8AF361E939B9300DC7914 /* PrintProfileTextInputCollectionViewCell.swift in Sources */,
 				D2D990C91E71E6420094DA64 /* TerminalViewController.swift in Sources */,
 				D25679431E8D1DD400D763A3 /* SlicerCellViewModel.swift in Sources */,
 				D23F0CE51E92488200A70BC9 /* PrintProfilesViewController.swift in Sources */,
@@ -1174,6 +1201,7 @@
 				D2C38CCB1E7D4D5B00D06698 /* Log+JSONAble.swift in Sources */,
 				D2688D891E9117E400290421 /* SlicingProfileViewController.swift in Sources */,
 				D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */,
+				D2C8AF381E939BAC00DC7914 /* PrintProfileTextInputCellViewModel.swift in Sources */,
 				D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */,
 				D2688D851E91154000290421 /* SlicingProfileCoordinator.swift in Sources */,
 				D23F0CDD1E919FB600A70BC9 /* PrinterProfile.swift in Sources */,
