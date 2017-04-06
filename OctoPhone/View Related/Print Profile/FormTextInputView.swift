@@ -8,7 +8,9 @@
 
 import UIKit
 import SnapKit
+import ReactiveSwift
 
+/// Form text input with description and optional suffix label
 class FormTextInputView: UIView {
 
     struct Layout {
@@ -29,10 +31,10 @@ class FormTextInputView: UIView {
                         + textField.frame.height + Layout.padding)
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    // MARK: - Initializers
 
-        backgroundColor = .white
+    init() {
+        super.init(frame: .zero)
 
         let descriptionLabel = UILabel()
         let textField = UITextField()
@@ -42,9 +44,23 @@ class FormTextInputView: UIView {
         addSubview(textField)
         addSubview(suffixLabel)
 
-        descriptionLabel.text = "Name"
+        self.descriptionLabel = descriptionLabel
+        self.textField = textField
+        self.suffixLabel = suffixLabel
+
+        createLayout()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Internal logic
+
+    private func createLayout() {
         descriptionLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
-        suffixLabel.text = "mm"
+        suffixLabel.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .horizontal)
+
         descriptionLabel.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview().inset(
                 UIEdgeInsets(top: Layout.padding, left: Layout.sideMargin, bottom: 0,
@@ -53,8 +69,8 @@ class FormTextInputView: UIView {
 
         textField.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(Layout.padding)
-            make.leading.equalToSuperview().offset(Layout.padding)
-            make.trailing.equalTo(suffixLabel.snp.leading).inset(Layout.padding)
+            make.leading.equalTo(descriptionLabel)
+            make.trailing.equalTo(suffixLabel.snp.leading).offset(-Layout.padding)
             make.height.greaterThanOrEqualTo(Layout.minTextFieldSize)
             make.bottom.equalToSuperview().inset(Layout.padding)
         }
@@ -63,12 +79,5 @@ class FormTextInputView: UIView {
             make.lastBaseline.equalTo(textField)
             make.trailing.equalToSuperview().inset(Layout.sideMargin)
         }
-
-        self.descriptionLabel = descriptionLabel
-        self.textField = textField
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

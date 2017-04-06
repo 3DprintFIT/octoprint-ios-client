@@ -11,29 +11,67 @@ import ReactiveSwift
 import ReactiveCocoa
 
 /// Print profile detail controller
-class PrintProfileViewController: BaseCollectionViewController {
+class PrintProfileViewController: BaseViewController {
     // MARK: - Properties
 
     /// Controller logic
     fileprivate var viewModel: PrintProfileViewModelType!
 
+    /// Input for profile name
+    private weak var nameField: FormTextInputView!
+
+    /// Input for profile identifier
+    private weak var identifierField: FormTextInputView!
+
+    /// Input for printer model
+    private weak var modelField: FormTextInputView!
+
     // MARK: - Initializers
 
     convenience init(viewModel: PrintProfileViewModelType) {
-        self.init(collectionViewLayout: UICollectionViewFlowLayout())
+        self.init()
 
         self.viewModel = viewModel
-        bindViewModel()
     }
 
     // MARK: - Controller lifecycle
 
+    override func loadView() {
+        super.loadView()
+
+        let nameField = FormTextInputView()
+        let identifierField = FormTextInputView()
+        let modelField = FormTextInputView()
+
+        let formInputs = [nameField, identifierField, modelField]
+
+        let scrollView = UIScrollView()
+        let stackView = UIStackView(arrangedSubviews: formInputs, axis: .vertical)
+
+        view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
+
+        scrollView.contentOffset.y = navigationController?.navigationBar.frame.height ?? 0.0
+        scrollView.alwaysBounceVertical = true
+        scrollView.isScrollEnabled = true
+
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        stackView.snp.makeConstraints { make in
+            make.edges.width.equalToSuperview()
+        }
+
+        self.nameField = nameField
+        self.identifierField = identifierField
+        self.modelField = modelField
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView?.register(
-            PrintProfileTextInputCollectionViewCell.self,
-            forCellWithReuseIdentifier: PrintProfileTextInputCollectionViewCell.identifier)
+        bindViewModel()
     }
 
     // MARK: - Internal logic
@@ -41,27 +79,11 @@ class PrintProfileViewController: BaseCollectionViewController {
     /// Binds outputs of View Model to UI and converts
     /// user interaction to View Model inputs
     private func bindViewModel() {
-
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-extension PrintProfileViewController {
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 6
-    }
-
-    override func collectionView(_ collectionView: UICollectionView,
-                                 numberOfItemsInSection section: Int) -> Int {
-
-        switch section {
-        case 0: return 2
-        case 1: return 0//2
-        case 2: return 0//2
-        case 3: return 0//3
-        case 4: return 0//4
-        case 5: return 0//2
-        default: fatalError("Unxpected section number")
-        }
+        nameField.descriptionLabel.reactive.text <~ viewModel.outputs.profileNameDescription
+        nameField.textField.reactive.text <~ viewModel.outputs.profileNameValue
+        identifierField.descriptionLabel.reactive.text <~ viewModel.outputs.profileIdentifierDescription
+        identifierField.textField.reactive.text <~ viewModel.outputs.profileIdentifierValue
+        modelField.descriptionLabel.reactive.text <~ viewModel.outputs.profileModelDescription
+        modelField.textField.reactive.text <~ viewModel.outputs.profileModelValue
     }
 }
