@@ -13,42 +13,61 @@ import Quick
 class PrinterProfileTests: QuickSpec {
     override func spec() {
         describe("Printer profile") {
-            context("valid JSON") {
-                var data: [String: Any]!
+            describe("converts from JSON") {
+                context("valid JSON") {
+                    var data: [String: Any]!
 
-                beforeEach {
-                    data = ["id": "_default", "model": "RepRap Printer", "name": "Default"]
+                    beforeEach {
+                        data = ["id": "_default", "model": "RepRap Printer", "name": "Default"]
+                    }
+
+                    afterEach {
+                        data = nil
+                    }
+
+                    it("converts") {
+                        expect() { try PrinterProfile.fromJSON(json: data) }.toNot(throwError())
+                        if let subject = try? PrinterProfile.fromJSON(json: data) {
+                            expect(subject.ID) == "_default"
+                            expect(subject.name) == "Default"
+                            expect(subject.model) == "RepRap Printer"
+                        }
+                    }
                 }
 
-                afterEach {
-                    data = nil
-                }
+                context("invalid JSON") {
+                    var data: [String: Any]!
 
-                it("converts") {
-                    expect() { try PrinterProfile.fromJSON(json: data) }.toNot(throwError())
-                    if let subject = try? PrinterProfile.fromJSON(json: data) {
-                        expect(subject.ID) == "_default"
-                        expect(subject.name) == "Default"
-                        expect(subject.model) == "RepRap Printer"
+                    beforeEach {
+                        data = [:]
+                    }
+
+                    afterEach {
+                        data = nil
+                    }
+                    
+                    it("throws an error") {
+                        expect() { try PrinterProfile.fromJSON(json: data) }.to(throwError())
                     }
                 }
             }
 
-            context("invalid JSON") {
-                var data: [String: Any]!
+            describe("converts to JSON") {
+                let profile = PrinterProfile(ID: "Identifier", model: "Model", name: "Name")
 
-                beforeEach {
-                    data = [:]
+                it("creates valid JSON") {
+                    let json = profile.asJSON()
+
+                    expect((json["id"] as! String)) == "Identifier"
+                    expect((json["name"] as! String)) == "Name"
+                    expect((json["model"] as! String)) == "Model"
                 }
 
-                afterEach {
-                    data = nil
-                }
-
-                it("throws an error") {
-                    expect() { try PrinterProfile.fromJSON(json: data) }.to(throwError())
+                it("converts all required properties to json") {
+                    expect(profile.asJSON().count) == 3
                 }
             }
         }
+
     }
 }

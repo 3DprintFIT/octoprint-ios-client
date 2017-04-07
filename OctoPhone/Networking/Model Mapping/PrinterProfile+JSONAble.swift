@@ -20,4 +20,11 @@ extension PrinterProfile: JSONAble {
 
         return PrinterProfile(ID: ID, model: model, name: name)
     }
+
+    /// Converts PrinterProfile object to JSON
+    ///
+    /// - Returns: JSON dictionaty representing Profile object
+    func asJSON() -> [String: Any] {
+        return ["id": ID, "name": name, "model": model]
+    }
 }
