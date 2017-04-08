@@ -18,6 +18,9 @@ protocol PrintProfileViewControllerDelegate: class {
 
     /// Called when user tapped close button
     func closeButtonTapped()
+
+    /// Called when user tapped on delete button
+    func deleteButtonTapped()
 }
 
 /// Print profile detail controller
@@ -29,7 +32,7 @@ class PrintProfileViewController: BaseViewController {
 
     /// Button for done action
     private lazy var doneButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: self.viewModel.outputs.doneButtonType.value,
+        let button = UIBarButtonItem(barButtonSystemItem: .done,
                                      target: self, action: #selector(doneButtonTapped))
 
         return button
@@ -37,8 +40,16 @@ class PrintProfileViewController: BaseViewController {
 
     /// Button for close action
     private lazy var closeButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel,
-                                     target: self, action: #selector(closeButtonTapped))
+        let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: self,
+                                     action: #selector(closeButtonTapped))
+
+        return button
+    }()
+
+    /// Button for delete profile action
+    private lazy var deleteButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .trash, target: self,
+                                     action: #selector(deleteButtonTapped))
 
         return button
     }()
@@ -130,7 +141,7 @@ class PrintProfileViewController: BaseViewController {
         doneButton.reactive.isEnabled <~ viewModel.outputs.doneButtonIsEnabled
 
         if viewModel.outputs.closeButtonIsHidden.value {
-            navigationItem.leftBarButtonItem = nil
+            navigationItem.leftBarButtonItem = deleteButton
         }
 
         viewModel.outputs.displayError.startWithValues { [weak self] error in
@@ -146,5 +157,15 @@ class PrintProfileViewController: BaseViewController {
     /// Close button action callback
     func closeButtonTapped() {
         viewModel.inputs.closeButtonTapped()
+    }
+
+    /// Delete button action callback
+    func deleteButtonTapped() {
+        let controller = DeletionDialogFactory
+            .createDialog(title: nil, message: tr(.doYouReallyWantToDeletePrintProfile)) { [weak self] in
+                self?.viewModel.inputs.deleteButtonTapped()
+            }
+
+        present(controller, animated: true, completion: nil)
     }
 }

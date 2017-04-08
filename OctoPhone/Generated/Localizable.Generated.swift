@@ -35,6 +35,8 @@ enum L10n {
   case connectionError
   /// Can not connect to the printer.
   case couldNotConnectToPrinter
+  /// Could not delete print profile from printer.
+  case couldNotDeletePrintProfileFromPrinter
   /// Could not load list of slicers.
   case couldNotLoadListOfSlicers
   /// Could not save downloaded list of logs.
@@ -53,6 +55,8 @@ enum L10n {
   case deleteLog
   /// Do you really want to delete log from printer? This action is permanent and cannot be undone.
   case doYouReallyWantToDeleteLogFromPrinter
+  /// Do you really want to delete print profile? This action is permanent and cannot be undone
+  case doYouReallyWantToDeletePrintProfile
   /// Do you really want to delete slicing profile from printer? This operation is permanent and can not be undone.
   case doYouReallyWantToDeleteSlicingProfile
   /// Downloaded file can not be opened.
@@ -109,12 +113,16 @@ enum L10n {
   case origin
   /// Color
   case printProfileColor
+  /// Print profile could not be deleted localy.
+  case printProfileCouldNotBeDeletedFromLocaly
   /// Identifier
   case printProfileIdentifier
   /// Model
   case printProfileModel
   /// Name
   case printProfileName
+  /// Print profile update was not successfull.
+  case printProfileUpdateWasNotSuccessfull
   /// Print profiles
   case printProfiles
   /// Printer
@@ -225,6 +233,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Connection Error")
       case .couldNotConnectToPrinter:
         return L10n.tr(key: "Could not connect to printer")
+      case .couldNotDeletePrintProfileFromPrinter:
+        return L10n.tr(key: "Could not delete print profile from printer")
       case .couldNotLoadListOfSlicers:
         return L10n.tr(key: "Could not load list of slicers")
       case .couldNotSaveDownloadedListOfLogs:
@@ -243,6 +253,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Delete log")
       case .doYouReallyWantToDeleteLogFromPrinter:
         return L10n.tr(key: "Do you really want to delete log from printer")
+      case .doYouReallyWantToDeletePrintProfile:
+        return L10n.tr(key: "Do you really want to delete print profile")
       case .doYouReallyWantToDeleteSlicingProfile:
         return L10n.tr(key: "Do you really want to delete slicing profile")
       case .downloadedFileCanNotBeOpened:
@@ -299,12 +311,16 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Origin")
       case .printProfileColor:
         return L10n.tr(key: "Print profile color")
+      case .printProfileCouldNotBeDeletedFromLocaly:
+        return L10n.tr(key: "Print profile could not be deleted from localy")
       case .printProfileIdentifier:
         return L10n.tr(key: "Print profile Identifier")
       case .printProfileModel:
         return L10n.tr(key: "Print profile model")
       case .printProfileName:
         return L10n.tr(key: "Print profile name")
+      case .printProfileUpdateWasNotSuccessfull:
+        return L10n.tr(key: "Print profile update was not successfull")
       case .printProfiles:
         return L10n.tr(key: "Print profiles")
       case .printer:

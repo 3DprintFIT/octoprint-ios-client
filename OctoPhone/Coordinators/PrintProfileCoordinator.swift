@@ -66,4 +66,9 @@ extension PrintProfileCoordinator: PrintProfileViewControllerDelegate {
         navigationController?.dismiss(animated: true, completion: nil)
         completed()
     }
+
+    func deleteButtonTapped() {
+        navigationController?.dismiss(animated: true, completion: nil)
+        completed()
+    }
 }

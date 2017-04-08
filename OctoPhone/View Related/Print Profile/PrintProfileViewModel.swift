@@ -9,7 +9,6 @@
 import Moya
 import ReactiveSwift
 import Result
-import enum UIKit.UIBarButtonSystemItem
 
 // MARK: - Inputs
 
@@ -35,6 +34,9 @@ protocol PrintProfileViewModelInputs {
 
     /// Call when user tapped on close button
     func closeButtonTapped()
+
+    /// Call when user tapped on delete button
+    func deleteButtonTapped()
 }
 
 // MARK: - Outputs
@@ -64,9 +66,6 @@ protocol PrintProfileViewModelOutputs {
 
     /// Indicates whether the close button is hidden
     var closeButtonIsHidden: Property<Bool> { get }
-
-    /// System type of done button
-    var doneButtonType: Property<UIBarButtonSystemItem> { get }
 
     /// Indicates whether the done button is enabled for interaction
     var doneButtonIsEnabled: Property<Bool> { get }
@@ -119,8 +118,6 @@ PrintProfileViewModelOutputs {
 
     let closeButtonIsHidden = Property<Bool>(value: true)
 
-    let doneButtonType = Property<UIBarButtonSystemItem>(value: .done)
-
     let doneButtonIsEnabled = Property<Bool>(value: true)
 
     let displayError: SignalProducer<(title: String, message: String), NoError>
@@ -150,9 +147,6 @@ PrintProfileViewModelOutputs {
 
     /// User defined printer model name
     private let profileModelProperty = MutableProperty<String?>(nil)
-
-    /// Takes care of signal dispose
-    private let compositeDisposable = CompositeDisposable()
 
     /// Last error which occured
     private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
@@ -218,6 +212,34 @@ PrintProfileViewModelOutputs {
         delegate?.closeButtonTapped()
     }
 
+    func deleteButtonTapped() {
+        provider.request(.deletePrintProfile(profileID: printProfileID))
+            .filterSuccessfulStatusCodes()
+            .observe(on: UIScheduler())
+            .startWithResult { [weak self] result in
+                guard let weakSelf = self else { return }
+
+                switch result {
+                case .success:
+                    do {
+                        if let profile = weakSelf.printProfileProperty.value, let realm = profile.realm {
+                            try realm.write {
+                                realm.delete(profile)
+                            }
+                        }
+                    } catch {
+                        weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                               tr(.printProfileCouldNotBeDeletedFromLocaly))
+                    }
+
+                    weakSelf.delegate?.deleteButtonTapped()
+                case .failure:
+                    weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                           tr(.couldNotDeletePrintProfileFromPrinter))
+                }
+            }
+    }
+
     // MARK: Output methods
 
     // MARK: Internal logic
@@ -246,12 +268,12 @@ PrintProfileViewModelOutputs {
             .skipNil()
             // Skip nil and initial state
             .skip(first: 1)
-            .logEvents()
             .flatMap(.latest) { (profile: PrinterProfile) in
                 return self.provider.request(.updatePrinterProfile(profileID: self.printProfileID,
                                                                    data: ["profile": profile.asJSON()]))
-            }.startWithFailed { error in
-                print(error)
+            }.startWithFailed { [weak self] _ in
+                self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                    tr(.printProfileUpdateWasNotSuccessfull))
             }
     }
 }

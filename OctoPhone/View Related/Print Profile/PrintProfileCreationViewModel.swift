@@ -8,7 +8,6 @@
 
 import ReactiveSwift
 import Result
-import enum UIKit.UIBarButtonSystemItem
 
 // MARK: - View Model implementation
 
@@ -41,8 +40,6 @@ PrintProfileViewModelOutputs {
     let profileModelValue = Property<String?>(value: nil)
 
     let closeButtonIsHidden = Property<Bool>(value: false)
-
-    let doneButtonType = Property<UIBarButtonSystemItem>(value: .done)
 
     let doneButtonIsEnabled: Property<Bool>
 
@@ -122,6 +119,10 @@ PrintProfileViewModelOutputs {
         delegate?.closeButtonTapped()
     }
 
+    func deleteButtonTapped() {
+        fatalError("Profile deletion is not support when creating new profile.")
+    }
+
     // MARK: Output methods
 
     // MARK: Internal logic
@@ -151,7 +152,7 @@ PrintProfileViewModelOutputs {
                     realm.add(profile, update: true)
                 }
 
-                weakSelf.delegate?.doneButtonTapped()
+                weakSelf.delegate!.doneButtonTapped()
             } catch {
                 weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
                                                        tr(.createdProfileCouldNotBeSavedLocaly))

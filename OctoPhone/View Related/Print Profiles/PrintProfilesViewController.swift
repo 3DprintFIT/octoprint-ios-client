@@ -28,6 +28,7 @@ class PrintProfilesViewController: BaseCollectionViewController {
     /// Controller logic
     fileprivate var viewModel: PrintProfilesViewModelType!
 
+    /// Add profile button
     lazy private var addButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
 

@@ -26,6 +26,7 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - printProfiles - Downloads list of installed print profiles
 /// - createPrinterProfile - Creates new printer profile on printer
 /// - updatePrinterProfile - Updates existing printer profile
+/// - deletePrintProfile - Deletes given profile from printer
 enum OctoPrintAPI {
     // Command
     case version
@@ -45,6 +46,7 @@ enum OctoPrintAPI {
     case printerProfiles
     case createPrinterProfile(data: Parameters)
     case updatePrinterProfile(profileID: String, data: Parameters)
+    case deletePrintProfile(profileID: String)
 }
 
 // MARK: - TargetPart implementation
@@ -97,6 +99,8 @@ extension OctoPrintAPI: TargetPart {
             return ("api/printerprofiles", .post, .request, data)
         case let .updatePrinterProfile(profileID, data):
             return ("api/printerprofiles/\(profileID.urlEncoded)", .patch, .request, data)
+        case let .deletePrintProfile(profileID):
+            return ("api/printerprofiles/\(profileID.urlEncoded)", .delete, .request, nil)
         }
     }
 }

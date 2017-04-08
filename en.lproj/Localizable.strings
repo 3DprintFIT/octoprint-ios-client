@@ -123,8 +123,10 @@
 "Printer profiles list could not be downloaded" = "Printer profiles list could not be downloaded.";
 "Could not save printer profiles" = "Could not save printer profiles.";
 "Unknown printer profile" = "Unknown printer profile";
-"Profile could not be created" = "Profile could not be created.";
-"Created profile could not be saved localy" = "Created profile could not be saved localy, but is created on printer.";
+"Do you really want to delete print profile" = "Do you really want to delete print profile? This action is permanent and cannot be undone";
+"Print profile could not be deleted from localy" = "Print profile could not be deleted localy.";
+"Could not delete print profile from printer" = "Could not delete print profile from printer.";
+"Print profile update was not successfull" = "Print profile update was not successfull.";
 
 
 // *
@@ -152,6 +154,8 @@
 "Milimeters per minute" = "mm/min";
 "Nozzle diameter" = "Nozzle diameter";
 "Number of extruders" = "Number of extruders";
+"Profile could not be created" = "Profile could not be created.";
+"Created profile could not be saved localy" = "Created profile could not be saved localy, but is created on printer.";
 
 
 // *
