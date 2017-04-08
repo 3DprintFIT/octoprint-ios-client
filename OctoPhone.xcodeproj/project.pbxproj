@@ -31,6 +31,7 @@
 		D20E41A11E88633F00CE99BA /* LogDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E41A01E88633F00CE99BA /* LogDetailViewModel.swift */; };
 		D20E41A31E88747900CE99BA /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E41A21E88747900CE99BA /* LogDetailViewController.swift */; };
 		D2132B571E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B561E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift */; };
+		D2132B5D1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B5C1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift */; };
 		D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D21B9DE81DEA1B8A005C34CD /* Localizable.strings */; };
 		D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C10471E66D3A500D88546 /* AppCoordinator.swift */; };
 		D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */; };
@@ -192,6 +193,7 @@
 		D20E41A01E88633F00CE99BA /* LogDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewModel.swift; sourceTree = "<group>"; };
 		D20E41A21E88747900CE99BA /* LogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
 		D2132B561E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Disposable+CompositeDisposable.swift"; sourceTree = "<group>"; };
+		D2132B5C1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorPresentable.swift"; sourceTree = "<group>"; };
 		D21B9DE71DEA1B8A005C34CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D21C10471E66D3A500D88546 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewModel.swift; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 			isa = PBXGroup;
 			children = (
 				D2315E6C1E75E99300C797AB /* UIStackView+CustomInit.swift */,
+				D2132B5C1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1175,6 +1178,7 @@
 				D2CBD72C1E8C4579002EA538 /* Slicer.swift in Sources */,
 				D2D990CB1E71E65D0094DA64 /* SDCardManagementViewController.swift in Sources */,
 				D2D990C31E6F6AA10094DA64 /* FIleDetailViewController.swift in Sources */,
+				D2132B5D1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift in Sources */,
 				D22401711E6AD7D30082129A /* FilePrintStats.swift in Sources */,
 				D2132B571E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift in Sources */,
 				D2D990DB1E72073D0094DA64 /* SettingsCellViewModel.swift in Sources */,

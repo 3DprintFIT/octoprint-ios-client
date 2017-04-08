@@ -9,7 +9,7 @@
 import UIKit
 
 /// Common logic and configuration for all collection view controllers
-class BaseCollectionViewController: UICollectionViewController {
+class BaseCollectionViewController: UICollectionViewController, ErrorPresentable {
 
     override func viewDidLoad() {
         super.viewDidLoad()

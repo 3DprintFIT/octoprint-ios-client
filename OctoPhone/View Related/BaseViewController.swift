@@ -9,7 +9,7 @@
 import UIKit
 
 /// Preconfigure controller with common logic and settings
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, ErrorPresentable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
