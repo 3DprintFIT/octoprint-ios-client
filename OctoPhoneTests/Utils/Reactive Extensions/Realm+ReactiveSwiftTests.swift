@@ -11,6 +11,7 @@ import Quick
 import ReactiveSwift
 import ReactiveCocoa
 import RealmSwift
+import Result
 @testable import OctoPhone
 
 class RealmReactiveSwiftTests: QuickSpec {
@@ -180,6 +181,29 @@ class RealmReactiveSwiftTests: QuickSpec {
                 try! realm.write { realm.delete(stat) }
 
                 expect(completed).toEventually(equal(true))
+            }
+        }
+
+        context("composite disposable") {
+            var compositeDisposable: CompositeDisposable!
+
+            beforeEach {
+                compositeDisposable = CompositeDisposable()
+            }
+
+            afterEach {
+                compositeDisposable = nil
+            }
+
+            it("dispose disposable added to comosite disposable") {
+                let (signal, _) = Signal<(), NoError>.pipe()
+                let disposable = signal.observeValues {}
+
+                disposable?.addTo(compositeDisposable: compositeDisposable)
+
+                expect(disposable?.isDisposed) == false
+                compositeDisposable.dispose()
+                expect(disposable?.isDisposed) == true
             }
         }
     }
