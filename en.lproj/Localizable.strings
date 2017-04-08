@@ -114,6 +114,7 @@
 "Selected profile could not be opened" = "Selected profile could not be opened.";
 "Do you really want to delete slicing profile" = "Do you really want to delete slicing profile from printer? This operation is permanent and can not be undone.";
 
+
 // *
 // * Print profiles
 // *
@@ -122,6 +123,8 @@
 "Printer profiles list could not be downloaded" = "Printer profiles list could not be downloaded.";
 "Could not save printer profiles" = "Could not save printer profiles.";
 "Unknown printer profile" = "Unknown printer profile";
+"Profile could not be created" = "Profile could not be created.";
+"Created profile could not be saved localy" = "Created profile could not be saved localy, but is created on printer.";
 
 
 // *

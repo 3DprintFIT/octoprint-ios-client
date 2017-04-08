@@ -9,6 +9,16 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
+import Result
+
+/// Print profile detail flow controller
+protocol PrintProfileViewControllerDelegate: class {
+    /// Called when user tapped done button
+    func doneButtonTapped()
+
+    /// Called when user tapped close button
+    func closeButtonTapped()
+}
 
 /// Print profile detail controller
 class PrintProfileViewController: BaseViewController {
@@ -16,6 +26,22 @@ class PrintProfileViewController: BaseViewController {
 
     /// Controller logic
     fileprivate var viewModel: PrintProfileViewModelType!
+
+    /// Button for done action
+    private lazy var doneButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: self.viewModel.outputs.doneButtonType.value,
+                                     target: self, action: #selector(doneButtonTapped))
+
+        return button
+    }()
+
+    /// Button for close action
+    private lazy var closeButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel,
+                                     target: self, action: #selector(closeButtonTapped))
+
+        return button
+    }()
 
     /// Input for profile name
     private weak var nameField: FormTextInputView!
@@ -66,6 +92,9 @@ class PrintProfileViewController: BaseViewController {
         self.nameField = nameField
         self.identifierField = identifierField
         self.modelField = modelField
+
+        navigationItem.leftBarButtonItem = closeButton
+        navigationItem.rightBarButtonItem = doneButton
     }
 
     override func viewDidLoad() {
@@ -97,5 +126,25 @@ class PrintProfileViewController: BaseViewController {
         modelField.textField.reactive.text <~ viewModel.outputs.profileModelValue
 
         identifierField.textField.reactive.isEnabled <~ viewModel.outputs.profileIdentifierIsEditable
+
+        doneButton.reactive.isEnabled <~ viewModel.outputs.doneButtonIsEnabled
+
+        if viewModel.outputs.closeButtonIsHidden.value {
+            navigationItem.leftBarButtonItem = nil
+        }
+
+        viewModel.outputs.displayError.startWithValues { [weak self] error in
+            self?.presentError(title: error.title, message: error.message)
+        }
+    }
+
+    /// Done button action callback
+    func doneButtonTapped() {
+        viewModel.inputs.doneButtonTapped()
+    }
+
+    /// Close button action callback
+    func closeButtonTapped() {
+        viewModel.inputs.closeButtonTapped()
     }
 }

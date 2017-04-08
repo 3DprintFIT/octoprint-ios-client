@@ -9,6 +9,7 @@
 import Moya
 import ReactiveSwift
 import Result
+import enum UIKit.UIBarButtonSystemItem
 
 // MARK: - Inputs
 
@@ -28,6 +29,12 @@ protocol PrintProfileViewModelInputs {
     ///
     /// - Parameter newValue: New printer model
     func profileModelChanged(_ newValue: String?)
+
+    /// Call when user tapped on done button
+    func doneButtonTapped()
+
+    /// Call when user tapped on close button
+    func closeButtonTapped()
 }
 
 // MARK: - Outputs
@@ -54,6 +61,18 @@ protocol PrintProfileViewModelOutputs {
 
     /// Profile model default value
     var profileModelValue: Property<String?> { get }
+
+    /// Indicates whether the close button is hidden
+    var closeButtonIsHidden: Property<Bool> { get }
+
+    /// System type of done button
+    var doneButtonType: Property<UIBarButtonSystemItem> { get }
+
+    /// Indicates whether the done button is enabled for interaction
+    var doneButtonIsEnabled: Property<Bool> { get }
+
+    /// Stream of errors which should be presented to user
+    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
 }
 
 // MARK: - Common public interface
@@ -98,7 +117,18 @@ PrintProfileViewModelOutputs {
 
     let profileModelValue: Property<String?>
 
+    let closeButtonIsHidden = Property<Bool>(value: true)
+
+    let doneButtonType = Property<UIBarButtonSystemItem>(value: .done)
+
+    let doneButtonIsEnabled = Property<Bool>(value: true)
+
+    let displayError: SignalProducer<(title: String, message: String), NoError>
+
     // MARK: Private properties
+
+    /// Controller flow delegate
+    private weak var delegate: PrintProfileViewControllerDelegate?
 
     /// identifier of print profile
     private let printProfileID: String
@@ -124,12 +154,19 @@ PrintProfileViewModelOutputs {
     /// Takes care of signal dispose
     private let compositeDisposable = CompositeDisposable()
 
+    /// Last error which occured
+    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+
     // MARK: Initializers
 
-    init(printProfileID: String, provider: OctoPrintProvider, contextManager: ContextManagerType) {
+    init(delegate: PrintProfileViewControllerDelegate, printProfileID: String,
+         provider: OctoPrintProvider, contextManager: ContextManagerType) {
+
+        self.delegate = delegate
         self.printProfileID = printProfileID
         self.provider = provider
         self.contextManager = contextManager
+        self.displayError = displayErrorProperty.producer.skipNil()
 
         let profileProducer = printProfileProperty.producer.skipNil().take(first: 1)
 
@@ -171,6 +208,14 @@ PrintProfileViewModelOutputs {
 
     func profileModelChanged(_ newValue: String?) {
         profileModelProperty.value = newValue
+    }
+
+    func doneButtonTapped() {
+        delegate?.doneButtonTapped()
+    }
+
+    func closeButtonTapped() {
+        delegate?.closeButtonTapped()
     }
 
     // MARK: Output methods

@@ -41,6 +41,8 @@ enum L10n {
   case couldNotSaveDownloadedListOfLogs
   /// Could not save printer profiles.
   case couldNotSavePrinterProfiles
+  /// Created profile could not be saved localy, but is created on printer.
+  case createdProfileCouldNotBeSavedLocaly
   /// Database error
   case databaseError
   /// Default
@@ -131,6 +133,8 @@ enum L10n {
   case printerProfilesListCouldNotBeDownloaded
   /// Printer URL
   case printerURL
+  /// Profile could not be created.
+  case profileCouldNotBeCreated
   /// Rectangular
   case rectangularFormFactor
   /// Red
@@ -227,6 +231,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Could not save downloaded list of logs")
       case .couldNotSavePrinterProfiles:
         return L10n.tr(key: "Could not save printer profiles")
+      case .createdProfileCouldNotBeSavedLocaly:
+        return L10n.tr(key: "Created profile could not be saved localy")
       case .databaseError:
         return L10n.tr(key: "Database error")
       case .`default`:
@@ -317,6 +323,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Printer profiles list could not be downloaded")
       case .printerURL:
         return L10n.tr(key: "Printer URL")
+      case .profileCouldNotBeCreated:
+        return L10n.tr(key: "Profile could not be created")
       case .rectangularFormFactor:
         return L10n.tr(key: "Rectangular form factor")
       case .red:

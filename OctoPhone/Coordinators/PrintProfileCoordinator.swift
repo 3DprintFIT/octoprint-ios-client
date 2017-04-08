@@ -9,15 +9,27 @@
 import UIKit
 
 /// Print profile detail flow coordinator
+///
+/// Handles both profiles editing and creation. Thesese cases
+/// are distinguished by initializer. See initializer docs for
+/// concrete case.
 final class PrintProfileCoordinator: ContextCoordinator {
 
     /// Printer requests provider
     private let provider: OctoPrintProvider
 
-    private let printProfileID: String
+    /// Identifier of edited printer profile
+    private let printProfileID: String?
 
+    /// Creates flow for profile editing o
+    ///
+    /// - Parameters:
+    ///   - navigationController: Controller, where detail will be pushed
+    ///   - contextManager: Database connection manager
+    ///   - provider: Printer requests provider
+    ///   - printProfileID: Edited profile ID, if left out, new profile will be created
     init(navigationController: UINavigationController?, contextManager: ContextManagerType,
-         provider: OctoPrintProvider, printProfileID: String) {
+         provider: OctoPrintProvider, printProfileID: String? = nil) {
 
         self.provider = provider
         self.printProfileID = printProfileID
@@ -26,10 +38,32 @@ final class PrintProfileCoordinator: ContextCoordinator {
     }
 
     override func start() {
-        let viewModel = PrintProfileViewModel(printProfileID: printProfileID, provider: provider,
-                                              contextManager: contextManager)
-        let controller = PrintProfileViewController(viewModel: viewModel)
+        let viewModel: PrintProfileViewModelType
 
-        navigationController?.pushViewController(controller, animated: true)
+        if let printProfileID = printProfileID {
+            viewModel = PrintProfileViewModel(delegate: self, printProfileID: printProfileID,
+                                              provider: provider, contextManager: contextManager)
+        } else {
+            viewModel = PrintProfileCreationViewModel(delegate: self, provider: provider,
+                                                      contextManager: contextManager)
+        }
+
+        let controller = UINavigationController(
+            rootViewController: PrintProfileViewController(viewModel: viewModel))
+
+        navigationController?.present(controller, animated: true, completion: nil)
+    }
+}
+
+// MARK: - PrintProfileViewControllerDelegate
+extension PrintProfileCoordinator: PrintProfileViewControllerDelegate {
+    func doneButtonTapped() {
+        navigationController?.dismiss(animated: true, completion: nil)
+        completed()
+    }
+
+    func closeButtonTapped() {
+        navigationController?.dismiss(animated: true, completion: nil)
+        completed()
     }
 }

@@ -31,6 +31,7 @@
 		D20E41A11E88633F00CE99BA /* LogDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E41A01E88633F00CE99BA /* LogDetailViewModel.swift */; };
 		D20E41A31E88747900CE99BA /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E41A21E88747900CE99BA /* LogDetailViewController.swift */; };
 		D2132B571E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B561E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift */; };
+		D2132B5B1E98EECF00FA3ACD /* PrintProfileCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B5A1E98EECF00FA3ACD /* PrintProfileCreationViewModel.swift */; };
 		D2132B5D1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B5C1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift */; };
 		D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D21B9DE81DEA1B8A005C34CD /* Localizable.strings */; };
 		D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C10471E66D3A500D88546 /* AppCoordinator.swift */; };
@@ -193,6 +194,7 @@
 		D20E41A01E88633F00CE99BA /* LogDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewModel.swift; sourceTree = "<group>"; };
 		D20E41A21E88747900CE99BA /* LogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
 		D2132B561E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Disposable+CompositeDisposable.swift"; sourceTree = "<group>"; };
+		D2132B5A1E98EECF00FA3ACD /* PrintProfileCreationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileCreationViewModel.swift; sourceTree = "<group>"; };
 		D2132B5C1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorPresentable.swift"; sourceTree = "<group>"; };
 		D21B9DE71DEA1B8A005C34CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D21C10471E66D3A500D88546 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -696,6 +698,7 @@
 			isa = PBXGroup;
 			children = (
 				D2C8AF301E92E3C600DC7914 /* PrintProfileViewModel.swift */,
+				D2132B5A1E98EECF00FA3ACD /* PrintProfileCreationViewModel.swift */,
 				D2C8AF321E92E3E800DC7914 /* PrintProfileViewController.swift */,
 				D2C8AF3A1E9435EE00DC7914 /* FormTextInputView.swift */,
 			);
@@ -1145,6 +1148,7 @@
 				D2C8AF2D1E92E33C00DC7914 /* PrintProfileCoordinator.swift in Sources */,
 				D20E419F1E88626300CE99BA /* LogDetailCoordinator.swift in Sources */,
 				D26B501F1E7364BF00795462 /* BaseCollectionViewController.swift in Sources */,
+				D2132B5B1E98EECF00FA3ACD /* PrintProfileCreationViewModel.swift in Sources */,
 				D2688D751E904DA900290421 /* SlicingProfileCellViewModel.swift in Sources */,
 				D26B501B1E7353C700795462 /* PrintProfilesCoordinator.swift in Sources */,
 				D22401831E6B12C10082129A /* FilePrinterStats+JSONAble.swift in Sources */,

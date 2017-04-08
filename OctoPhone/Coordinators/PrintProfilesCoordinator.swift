@@ -37,12 +37,23 @@ extension PrintProfilesCoordinator: PrintProfilesViewControllerDelegate {
                                                   contextManager: contextManager, provider: provider,
                                                   printProfileID: printerProfile.ID)
 
-        childCoordinators.append(coordinator)
+        coordinator.completed = { [weak self] in
+            _ = self?.childCoordinators.popLast()
+        }
 
+        childCoordinators.append(coordinator)
         coordinator.start()
     }
 
     func addButtonTappped() {
+        let coordinator = PrintProfileCoordinator(navigationController: navigationController,
+                                                  contextManager: contextManager, provider: provider)
 
+        coordinator.completed = { [weak self] in
+            _ = self?.childCoordinators.popLast()
+        }
+
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 }
