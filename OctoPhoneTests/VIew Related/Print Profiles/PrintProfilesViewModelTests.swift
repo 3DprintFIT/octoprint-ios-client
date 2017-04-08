@@ -21,7 +21,7 @@ class PrintProfilesViewModelTests: QuickSpec {
             var changesCount = 0
 
             beforeEach {
-                subject = PrintProfilesViewModel(provider: provider, contextManager: contextManager)
+                subject = PrintProfilesViewModel(delegate: self, provider: provider, contextManager: contextManager)
             }
 
             afterEach {
@@ -96,5 +96,15 @@ class PrintProfilesViewModelTests: QuickSpec {
                 }
             }
         }
+    }
+}
+
+extension PrintProfilesViewModelTests: PrintProfilesViewControllerDelegate {
+    func selectedPrinterProfile(_ printerProfile: PrinterProfile) {
+
+    }
+
+    func addButtonTappped() {
+
     }
 }

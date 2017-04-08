@@ -79,11 +79,23 @@ class PrintProfileViewController: BaseViewController {
     /// Binds outputs of View Model to UI and converts
     /// user interaction to View Model inputs
     private func bindViewModel() {
+        nameField.textField.reactive.continuousTextValues.signal.observeValues { [weak self] text in
+            self?.viewModel.inputs.profileNameChanged(text)
+        }
+        identifierField.textField.reactive.continuousTextValues.signal.observeValues { [weak self] text in
+            self?.viewModel.inputs.profileIdentifierChanged(text)
+        }
+        modelField.textField.reactive.continuousTextValues.signal.observeValues { [weak self] text in
+            self?.viewModel.inputs.profileModelChanged(text)
+        }
+
         nameField.descriptionLabel.reactive.text <~ viewModel.outputs.profileNameDescription
         nameField.textField.reactive.text <~ viewModel.outputs.profileNameValue
         identifierField.descriptionLabel.reactive.text <~ viewModel.outputs.profileIdentifierDescription
         identifierField.textField.reactive.text <~ viewModel.outputs.profileIdentifierValue
         modelField.descriptionLabel.reactive.text <~ viewModel.outputs.profileModelDescription
         modelField.textField.reactive.text <~ viewModel.outputs.profileModelValue
+
+        identifierField.textField.reactive.isEnabled <~ viewModel.outputs.profileIdentifierIsEditable
     }
 }
