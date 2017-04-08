@@ -33,6 +33,7 @@
 		D2132B571E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B561E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift */; };
 		D2132B5B1E98EECF00FA3ACD /* PrintProfileCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B5A1E98EECF00FA3ACD /* PrintProfileCreationViewModel.swift */; };
 		D2132B5D1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B5C1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift */; };
+		D2132B601E99846A00FA3ACD /* DeletionDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B5F1E99846A00FA3ACD /* DeletionDialogFactory.swift */; };
 		D21B9DE61DEA1B8A005C34CD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D21B9DE81DEA1B8A005C34CD /* Localizable.strings */; };
 		D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C10471E66D3A500D88546 /* AppCoordinator.swift */; };
 		D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */; };
@@ -196,6 +197,7 @@
 		D2132B561E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Disposable+CompositeDisposable.swift"; sourceTree = "<group>"; };
 		D2132B5A1E98EECF00FA3ACD /* PrintProfileCreationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileCreationViewModel.swift; sourceTree = "<group>"; };
 		D2132B5C1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorPresentable.swift"; sourceTree = "<group>"; };
+		D2132B5F1E99846A00FA3ACD /* DeletionDialogFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletionDialogFactory.swift; sourceTree = "<group>"; };
 		D21B9DE71DEA1B8A005C34CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D21C10471E66D3A500D88546 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewModel.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 		D203DE751DDFCB59000DEAA0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D2132B5E1E99843E00FA3ACD /* Common UI Elements */,
 				D2C38CD21E8029A300D06698 /* Formatters */,
 				D2315E6B1E75E96600C797AB /* Extensions */,
 				D22401741E6AEF900082129A /* Reactive Extensions */,
@@ -437,6 +440,14 @@
 				D23F0CDC1E919FB600A70BC9 /* PrinterProfile.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D2132B5E1E99843E00FA3ACD /* Common UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				D2132B5F1E99846A00FA3ACD /* DeletionDialogFactory.swift */,
+			);
+			path = "Common UI Elements";
 			sourceTree = "<group>";
 		};
 		D21C10441E66D17200D88546 /* Coordinators */ = {
@@ -1125,6 +1136,7 @@
 				D2D990B91E6F66C70094DA64 /* CurrentPrintViewModel.swift in Sources */,
 				D2A601301DF3870F006B833E /* PrinterListCollectionViewCell.swift in Sources */,
 				D256793B1E8D059B00D763A3 /* Slicer+JSONAble.swift in Sources */,
+				D2132B601E99846A00FA3ACD /* DeletionDialogFactory.swift in Sources */,
 				D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */,
 				D26B501D1E73542400795462 /* SDCardManagementCoordinator.swift in Sources */,
 				D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */,
