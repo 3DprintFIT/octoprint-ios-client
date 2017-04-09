@@ -36,7 +36,7 @@ class FileSpec: QuickSpec {
             let refs = ["download": download, "resource": resource]
             let analysis: [String : Any] = ["estimatedPrintTime": estimatedPrintTime, "filament": ["tool0": ["length": filamentLength, "volume": filamentVolume]]]
             let print: [String : Any] = ["failure": failures, "success": successes, "last": ["date": lastDate, "success": lastSuccess]]
-            let data: [String: Any] = ["name": name, "type": type, "size": size, "date": date, "origin": origin, "resource": resource, "refs": refs, "gcodeAnalysis": analysis, "print": print]
+            let data: [String: Any] = ["name": name, "type": type, "size": size, "date": date, "origin": origin, "resource": resource, "refs": refs, "gcodeAnalysis": analysis, "prints": print]
 
             expect{ try File.fromJSON(json: data) }.toNot(throwError())
             if let file = try? File.fromJSON(json: data) {

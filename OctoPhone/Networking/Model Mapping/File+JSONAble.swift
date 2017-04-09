@@ -32,7 +32,7 @@ extension File: JSONAble {
             file.gcodeAnalysis = try GCodeAnalysis.fromJSON(json: analysisJSON)
         }
 
-        if let statsJSON = json["print"] as? [String: Any] {
+        if let statsJSON = json["prints"] as? [String: Any] {
             file.printStats = try FilePrintStats.fromJSON(json: statsJSON)
         }
 
