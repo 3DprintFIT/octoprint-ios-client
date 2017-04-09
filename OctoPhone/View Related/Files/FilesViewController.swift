@@ -69,7 +69,7 @@ extension FilesViewController {
             for: indexPath
         ) as! FileCollectionViewCell
 
-        cell.viewModel = viewModel.outputs.fileCellViewModel(for: indexPath.row)
+        cell.viewModel.value = viewModel.outputs.fileCellViewModel(for: indexPath.row)
 
         return cell
     }

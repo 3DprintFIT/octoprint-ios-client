@@ -60,6 +60,8 @@
 		D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E671E75AB8500C797AB /* TerminalInputView.swift */; };
 		D2315E6D1E75E99300C797AB /* UIStackView+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E6C1E75E99300C797AB /* UIStackView+CustomInit.swift */; };
 		D2315E6F1E75F53A00C797AB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2315E6E1E75F53A00C797AB /* SnapKit.framework */; };
+		D2353DF71E9A2BD1000C3B5F /* FileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353DF61E9A2BD1000C3B5F /* FileCellViewModel.swift */; };
+		D2353DF91E9A2C25000C3B5F /* FileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353DF81E9A2C25000C3B5F /* FileCollectionViewCell.swift */; };
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
 		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
 		D23B90481E5B7F930005560B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90451E5B7F930005560B /* Result.framework */; };
@@ -111,8 +113,6 @@
 		D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5361E09E65F0089C027 /* FilesViewController.swift */; };
 		D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5381E09E6740089C027 /* SettingsViewController.swift */; };
 		D2A601301DF3870F006B833E /* PrinterListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A6012F1DF3870F006B833E /* PrinterListCollectionViewCell.swift */; };
-		D2ACD7441E6C43CA00F2603A /* FileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACD7431E6C43CA00F2603A /* FileCollectionViewCell.swift */; };
-		D2ACD7481E6C451100F2603A /* FileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACD7471E6C451100F2603A /* FileCellViewModel.swift */; };
 		D2ACD74C1E6CCCC200F2603A /* TokenPluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACD74B1E6CCCC200F2603A /* TokenPluginTests.swift */; };
 		D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */; };
 		D2C38CC51E7D49A200D06698 /* LogsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C38CC41E7D49A200D06698 /* LogsViewModelTests.swift */; };
@@ -225,6 +225,8 @@
 		D2315E6A1E75BE8400C797AB /* UIPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UIPlayground.playground; sourceTree = "<group>"; };
 		D2315E6C1E75E99300C797AB /* UIStackView+CustomInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+CustomInit.swift"; sourceTree = "<group>"; };
 		D2315E6E1E75F53A00C797AB /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		D2353DF61E9A2BD1000C3B5F /* FileCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCellViewModel.swift; sourceTree = "<group>"; };
+		D2353DF81E9A2C25000C3B5F /* FileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D23B90451E5B7F930005560B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -277,8 +279,6 @@
 		D28EC5381E09E6740089C027 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D2A6012F1DF3870F006B833E /* PrinterListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2A713811DE7069F00BDC0C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D2ACD7431E6C43CA00F2603A /* FileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCollectionViewCell.swift; sourceTree = "<group>"; };
-		D2ACD7471E6C451100F2603A /* FileCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCellViewModel.swift; sourceTree = "<group>"; };
 		D2ACD74B1E6CCCC200F2603A /* TokenPluginTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenPluginTests.swift; path = OctoPhoneTests/Networking/TokenPluginTests.swift; sourceTree = SOURCE_ROOT; };
 		D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewController.swift; sourceTree = "<group>"; };
 		D2C38CC41E7D49A200D06698 /* LogsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsViewModelTests.swift; sourceTree = "<group>"; };
@@ -661,9 +661,9 @@
 			isa = PBXGroup;
 			children = (
 				D22401721E6AE1320082129A /* FilesViewModel.swift */,
-				D2ACD7471E6C451100F2603A /* FileCellViewModel.swift */,
-				D2ACD7431E6C43CA00F2603A /* FileCollectionViewCell.swift */,
+				D2353DF61E9A2BD1000C3B5F /* FileCellViewModel.swift */,
 				D28EC5361E09E65F0089C027 /* FilesViewController.swift */,
+				D2353DF81E9A2C25000C3B5F /* FileCollectionViewCell.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -1142,7 +1142,6 @@
 				D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */,
 				D24EDCC21E90089300A8437B /* SlicingProfilesViewController.swift in Sources */,
 				D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */,
-				D2ACD7441E6C43CA00F2603A /* FileCollectionViewCell.swift in Sources */,
 				D2CBD72E1E8C4A40002EA538 /* SlicingProfile.swift in Sources */,
 				D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */,
 				D23F0CDB1E919AD600A70BC9 /* PrintProfilesViewModel.swift in Sources */,
@@ -1152,7 +1151,6 @@
 				D2D990C51E6F6ABD0094DA64 /* LogsViewController.swift in Sources */,
 				D2C8AF311E92E3C600DC7914 /* PrintProfileViewModel.swift in Sources */,
 				D26B50171E734FEC00795462 /* SlicingViewController.swift in Sources */,
-				D2ACD7481E6C451100F2603A /* FileCellViewModel.swift in Sources */,
 				D2D990CD1E71E7E90094DA64 /* FileDetailViewModel.swift in Sources */,
 				D20E41A11E88633F00CE99BA /* LogDetailViewModel.swift in Sources */,
 				D2D990BB1E6F67FA0094DA64 /* CurrentPrintViewController.swift in Sources */,
@@ -1162,6 +1160,7 @@
 				D26B501F1E7364BF00795462 /* BaseCollectionViewController.swift in Sources */,
 				D2132B5B1E98EECF00FA3ACD /* PrintProfileCreationViewModel.swift in Sources */,
 				D2688D751E904DA900290421 /* SlicingProfileCellViewModel.swift in Sources */,
+				D2353DF71E9A2BD1000C3B5F /* FileCellViewModel.swift in Sources */,
 				D26B501B1E7353C700795462 /* PrintProfilesCoordinator.swift in Sources */,
 				D22401831E6B12C10082129A /* FilePrinterStats+JSONAble.swift in Sources */,
 				D2C38CC91E7D4A5800D06698 /* Log.swift in Sources */,
@@ -1215,6 +1214,7 @@
 				D23F0CDD1E919FB600A70BC9 /* PrinterProfile.swift in Sources */,
 				D2C8AF331E92E3E800DC7914 /* PrintProfileViewController.swift in Sources */,
 				D2F765961E788C3000A5BC11 /* CommandCellViewModel.swift in Sources */,
+				D2353DF91E9A2C25000C3B5F /* FileCollectionViewCell.swift in Sources */,
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
 				D2688D871E9117B000290421 /* SlicingProfileViewModel.swift in Sources */,
 				D26B500F1E734CB600795462 /* SlicingCoordinator.swift in Sources */,
