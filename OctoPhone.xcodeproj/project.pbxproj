@@ -65,6 +65,7 @@
 		D2353DFB1E9A3412000C3B5F /* FileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353DFA1E9A3412000C3B5F /* FileDetailCoordinator.swift */; };
 		D2353DFD1E9A3878000C3B5F /* FileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353DFC1E9A3878000C3B5F /* FileDetailViewModel.swift */; };
 		D2353DFF1E9A38B9000C3B5F /* FileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353DFE1E9A38B9000C3B5F /* FileDetailViewController.swift */; };
+		D2353E041E9AC753000C3B5F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353E031E9AC753000C3B5F /* Colors.swift */; };
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
 		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
 		D23B90481E5B7F930005560B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90451E5B7F930005560B /* Result.framework */; };
@@ -231,6 +232,7 @@
 		D2353DFA1E9A3412000C3B5F /* FileDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailCoordinator.swift; sourceTree = "<group>"; };
 		D2353DFC1E9A3878000C3B5F /* FileDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailViewModel.swift; sourceTree = "<group>"; };
 		D2353DFE1E9A38B9000C3B5F /* FileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailViewController.swift; sourceTree = "<group>"; };
+		D2353E031E9AC753000C3B5F /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D23B90451E5B7F930005560B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 		D203DE751DDFCB59000DEAA0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D2353E021E9AC72D000C3B5F /* Constants */,
 				D2132B5E1E99843E00FA3ACD /* Common UI Elements */,
 				D2C38CD21E8029A300D06698 /* Formatters */,
 				D2315E6B1E75E96600C797AB /* Extensions */,
@@ -559,6 +562,14 @@
 				D2132B5C1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D2353E021E9AC72D000C3B5F /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D2353E031E9AC753000C3B5F /* Colors.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		D23F0CE61E9296E100A70BC9 /* Print Profiles */ = {
@@ -1146,6 +1157,7 @@
 				D24EDCC21E90089300A8437B /* SlicingProfilesViewController.swift in Sources */,
 				D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */,
 				D2CBD72E1E8C4A40002EA538 /* SlicingProfile.swift in Sources */,
+				D2353E041E9AC753000C3B5F /* Colors.swift in Sources */,
 				D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */,
 				D23F0CDB1E919AD600A70BC9 /* PrintProfilesViewModel.swift in Sources */,
 				D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */,

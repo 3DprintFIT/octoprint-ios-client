@@ -14,7 +14,7 @@ class BaseCollectionViewController: UICollectionViewController, ErrorPresentable
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = Colors.Views.defaultControllerBackground
         collectionView?.bounces = true
         collectionView?.alwaysBounceVertical = true
     }

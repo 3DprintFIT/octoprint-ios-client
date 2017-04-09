@@ -14,6 +14,6 @@ class BaseViewController: UIViewController, ErrorPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.Views.defaultControllerBackground
     }
 }
