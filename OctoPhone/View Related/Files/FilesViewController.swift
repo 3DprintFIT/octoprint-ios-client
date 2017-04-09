@@ -10,6 +10,14 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
+/// File list flow delegate
+protocol FilesViewControllerDelegate: class {
+    /// Called when user selected file to expand detail
+    ///
+    /// - Parameter file: File to be expanded
+    func selectedFile(_ file: File)
+}
+
 /// Lists stored files on printer
 class FilesViewController: BaseCollectionViewController {
 
@@ -25,21 +33,7 @@ class FilesViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let collectionView = collectionView {
-            collectionView.reactive.reloadData <~ viewModel.outputs.filesListChanged
-        }
-
-        viewModel.outputs.displayError
-            .observe(on: UIScheduler())
-            .observeValues { title, message in
-                let action = UIAlertAction(title: tr(.ok), style: .default, handler: nil)
-                let controller = UIAlertController(title: title, message: message,
-                                                   preferredStyle: .alert)
-
-                controller.addAction(action)
-
-                self.present(controller, animated: true, completion: nil)
-            }
+        bindViewModel()
 
         collectionView?.register(FileCollectionViewCell.self,
                                  forCellWithReuseIdentifier: FileCollectionViewCell.identifier)
@@ -50,10 +44,24 @@ class FilesViewController: BaseCollectionViewController {
 
         viewModel.inputs.viewWilAppear()
     }
+
+    // MARK: Internal logic
+
+    /// Binds View Model to the UI elements
+    private func bindViewModel() {
+        if let collectionView = collectionView {
+            collectionView.reactive.reloadData <~ viewModel.outputs.filesListChanged
+        }
+
+        viewModel.outputs.displayError
+            .observe(on: UIScheduler())
+            .observeValues { [weak self] title, message in
+                self?.presentError(title: title, message: message)
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
-
 extension FilesViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
@@ -76,12 +84,20 @@ extension FilesViewController {
 }
 
 // MARK: - UICollectionViewDataSource
-
 extension FilesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: collectionView.frame.width, height: 50)
+        return CGSize(width: collectionView.frame.width, height: 44)
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension FilesViewController {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
+
+        viewModel.inputs.selectedFile(at: indexPath.row)
     }
 }

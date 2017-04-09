@@ -15,6 +15,9 @@ import Result
 protocol FilesViewModelInputs {
     /// Call when view will appear
     func viewWilAppear()
+
+    /// Call when user selected file at specific index
+    func selectedFile(at index: Int)
 }
 
 /// Outputs for files view controller
@@ -69,13 +72,19 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
     /// Holds collection of files
     private let filesProperty = MutableProperty<Results<File>?>(nil)
 
+    /// File list flow delegate
+    private weak var delegate: FilesViewControllerDelegate?
+
     /// Printer connection provider
     private let provider: OctoPrintProvider
 
     /// Database connections manager
     private let contextManager: ContextManagerType
 
-    init(provider: OctoPrintProvider, contextManager: ContextManagerType) {
+    init(delegate: FilesViewControllerDelegate, provider: OctoPrintProvider,
+         contextManager: ContextManagerType) {
+
+        self.delegate = delegate
         self.provider = provider
         self.contextManager = contextManager
         self.displayError = displayErrorProperty.signal.skipNil()
@@ -126,13 +135,24 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
     }
 
     // MARK: Inputs
+
     func viewWilAppear() {
         viewWilAppearProperty.value = ()
     }
 
-    // MARK: Output functions 
+    func selectedFile(at index: Int) {
+        assert(filesProperty.value != nil,
+               "Files must not be nil when user selected file at specific index.")
+
+        let file = filesProperty.value![index]
+
+        delegate?.selectedFile(file)
+    }
+
+    // MARK: Output functions
+
     func fileCellViewModel(for index: Int) -> FileCellViewModelType {
-        assert(filesProperty.value != nil, "Files must not be empty while creating view model")
+        assert(filesProperty.value != nil, "Files must not be empty while creating view model.")
 
         return FileCellViewModel(file: filesProperty.value![index])
     }
