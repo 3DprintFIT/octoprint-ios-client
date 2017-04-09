@@ -65,7 +65,9 @@
 		D2353DFB1E9A3412000C3B5F /* FileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353DFA1E9A3412000C3B5F /* FileDetailCoordinator.swift */; };
 		D2353DFD1E9A3878000C3B5F /* FileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353DFC1E9A3878000C3B5F /* FileDetailViewModel.swift */; };
 		D2353DFF1E9A38B9000C3B5F /* FileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353DFE1E9A38B9000C3B5F /* FileDetailViewController.swift */; };
+		D2353E011E9ABF25000C3B5F /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353E001E9ABF25000C3B5F /* ListItemView.swift */; };
 		D2353E041E9AC753000C3B5F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353E031E9AC753000C3B5F /* Colors.swift */; };
+		D2353E061E9ACA60000C3B5F /* ListHeadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353E051E9ACA60000C3B5F /* ListHeadingView.swift */; };
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
 		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
 		D23B90481E5B7F930005560B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90451E5B7F930005560B /* Result.framework */; };
@@ -232,7 +234,9 @@
 		D2353DFA1E9A3412000C3B5F /* FileDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailCoordinator.swift; sourceTree = "<group>"; };
 		D2353DFC1E9A3878000C3B5F /* FileDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailViewModel.swift; sourceTree = "<group>"; };
 		D2353DFE1E9A38B9000C3B5F /* FileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailViewController.swift; sourceTree = "<group>"; };
+		D2353E001E9ABF25000C3B5F /* ListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		D2353E031E9AC753000C3B5F /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		D2353E051E9ACA60000C3B5F /* ListHeadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListHeadingView.swift; sourceTree = "<group>"; };
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D23B90451E5B7F930005560B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -885,6 +889,8 @@
 			children = (
 				D2353DFC1E9A3878000C3B5F /* FileDetailViewModel.swift */,
 				D2353DFE1E9A38B9000C3B5F /* FileDetailViewController.swift */,
+				D2353E001E9ABF25000C3B5F /* ListItemView.swift */,
+				D2353E051E9ACA60000C3B5F /* ListHeadingView.swift */,
 			);
 			path = "File Detail";
 			sourceTree = "<group>";
@@ -1158,6 +1164,7 @@
 				D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */,
 				D2CBD72E1E8C4A40002EA538 /* SlicingProfile.swift in Sources */,
 				D2353E041E9AC753000C3B5F /* Colors.swift in Sources */,
+				D2353E011E9ABF25000C3B5F /* ListItemView.swift in Sources */,
 				D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */,
 				D23F0CDB1E919AD600A70BC9 /* PrintProfilesViewModel.swift in Sources */,
 				D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */,
@@ -1184,6 +1191,7 @@
 				D2D990D91E7207130094DA64 /* SettingsCollectionViewCell.swift in Sources */,
 				D26B500D1E734C6000795462 /* LogsCoordinator.swift in Sources */,
 				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
+				D2353E061E9ACA60000C3B5F /* ListHeadingView.swift in Sources */,
 				D27C97101E63BA1800641A1A /* DynamicProvider.swift in Sources */,
 				D23F0CEC1E92ADCA00A70BC9 /* PrintProfileCollectionViewCell.swift in Sources */,
 				D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */,
