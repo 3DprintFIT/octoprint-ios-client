@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveSwift
 
 /// OctoPrint standard formatter
 final class OPNumberFormatter {
@@ -70,5 +71,45 @@ final class OPNumberFormatter {
     /// - Returns: Formatted volume string
     func volume(_ amount: Double, unit: UnitArea = .squareMillimeters) -> String {
         return measurementFormatter.string(from: Measurement(value: amount, unit: unit))
+    }
+}
+
+// MARK: - Formatting reactive extension for Int values
+extension SignalProducer where Value == Int {
+    /// Operator for plain number format. Maps given values of `self`
+    /// to string representation of number.
+    ///
+    /// - Returns: Producer with formatted value of `self`
+    func formatNumber() -> SignalProducer<String, Error> {
+        return map { OPNumberFormatter.shared.plainNumber($0) }
+    }
+}
+
+// MARK: - Formatting reactive extension for Int values
+extension SignalProducer where Value == Double {
+    /// Operator for plain number format. Maps given values of `self`
+    /// to string representation of number.
+    ///
+    /// - Returns: Producer with formatted value of `self`
+    func formatNumber() -> SignalProducer<String, Error> {
+        return map { OPNumberFormatter.shared.plainNumber($0) }
+    }
+
+    /// Operator for length number formatting. Maps given value of `self`
+    /// to formatted length string representation.
+    ///
+    /// - Parameter units: Units type of `self`
+    /// - Returns: Produler with formatted value of `self`
+    func formatLength(units: UnitLength = .millimeters) -> SignalProducer<String, Error> {
+        return map { OPNumberFormatter.shared.length($0, fromUnit: units) }
+    }
+
+    /// Operator for area number formatting. Maps given value of `self`
+    /// to formatted area string representation.
+    ///
+    /// - Parameter units: Units type of `self`
+    /// - Returns: Produler with formatted value of `self`
+    func formatVolume(units: UnitArea = .squareMillimeters) -> SignalProducer<String, Error> {
+        return map { OPNumberFormatter.shared.volume($0, unit: units) }
     }
 }
