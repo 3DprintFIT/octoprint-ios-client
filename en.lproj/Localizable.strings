@@ -14,6 +14,7 @@
 "Green" = "Green";
 "Blue" = "Blue";
 "Black" = "Black";
+"Unknown" = "Unknown";
 
 
 
@@ -53,6 +54,25 @@
 // *
 "Files" = "Files";
 "Files list could not be loaded" = "Files list could not be loaded.";
+
+
+// *
+// * Files
+// *
+"File attributes" = "Attributes";
+"File name" = "File name";
+"Unknown file name" = "Unknown file name";
+"File size" = "Size";
+"File type" = "Type";
+"Stl model" = "STL model";
+"Gcode file" = "GCode file";
+"File last modification" = "Last modification";
+"File analysis" = "GCode analysis";
+"File filament length" = "Filament length";
+"File filament volume" = "Filament volume";
+"File stats" = "Print statistics";
+"File success prints" = "Success prints";
+"File failure prints" = "Failure prints";
 
 
 // *

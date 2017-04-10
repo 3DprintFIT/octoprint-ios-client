@@ -67,12 +67,36 @@ enum L10n {
   case downloadingLogFile
   /// E
   case eAxis
+  /// GCode analysis
+  case fileAnalysis
+  /// Attributes
+  case fileAttributes
+  /// Failure prints
+  case fileFailurePrints
+  /// Filament length
+  case fileFilamentLength
+  /// Filament volume
+  case fileFilamentVolume
+  /// Last modification
+  case fileLastModification
+  /// File name
+  case fileName
+  /// Size
+  case fileSize
+  /// Print statistics
+  case fileStats
+  /// Success prints
+  case fileSuccessPrints
+  /// Type
+  case fileType
   /// Files
   case files
   /// Files list could not be loaded.
   case filesListCouldNotBeLoaded
   /// Form factor
   case formFactor
+  /// GCode file
+  case gcodeFile
   /// Green
   case green
   /// Heated bed
@@ -169,14 +193,20 @@ enum L10n {
   case slicing
   /// Slicing profile could not be deleted.
   case slicingProfileCouldNotBeDeleted
+  /// STL model
+  case stlModel
   /// Stored logs could not be loaded.
   case storedLogsCouldNotBeLoaded
   /// Stored printers could not be loaded.
   case storedPrintersCouldNotBeLoaded
   /// Terminal
   case terminal
+  /// Unknown
+  case unknown
   /// Uknown file
   case unknownFile
+  /// Unknown file name
+  case unknownFileName
   /// Unknwon file size
   case unknownFileSize
   /// Uknown modofication date
@@ -265,12 +295,36 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Downloading log file")
       case .eAxis:
         return L10n.tr(key: "E axis")
+      case .fileAnalysis:
+        return L10n.tr(key: "File analysis")
+      case .fileAttributes:
+        return L10n.tr(key: "File attributes")
+      case .fileFailurePrints:
+        return L10n.tr(key: "File failure prints")
+      case .fileFilamentLength:
+        return L10n.tr(key: "File filament length")
+      case .fileFilamentVolume:
+        return L10n.tr(key: "File filament volume")
+      case .fileLastModification:
+        return L10n.tr(key: "File last modification")
+      case .fileName:
+        return L10n.tr(key: "File name")
+      case .fileSize:
+        return L10n.tr(key: "File size")
+      case .fileStats:
+        return L10n.tr(key: "File stats")
+      case .fileSuccessPrints:
+        return L10n.tr(key: "File success prints")
+      case .fileType:
+        return L10n.tr(key: "File type")
       case .files:
         return L10n.tr(key: "Files")
       case .filesListCouldNotBeLoaded:
         return L10n.tr(key: "Files list could not be loaded")
       case .formFactor:
         return L10n.tr(key: "Form factor")
+      case .gcodeFile:
+        return L10n.tr(key: "Gcode file")
       case .green:
         return L10n.tr(key: "Green")
       case .heatedBed:
@@ -367,14 +421,20 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Slicing")
       case .slicingProfileCouldNotBeDeleted:
         return L10n.tr(key: "Slicing profile could not be deleted")
+      case .stlModel:
+        return L10n.tr(key: "Stl model")
       case .storedLogsCouldNotBeLoaded:
         return L10n.tr(key: "Stored logs could not be loaded")
       case .storedPrintersCouldNotBeLoaded:
         return L10n.tr(key: "Stored printers could not be loaded")
       case .terminal:
         return L10n.tr(key: "Terminal")
+      case .unknown:
+        return L10n.tr(key: "Unknown")
       case .unknownFile:
         return L10n.tr(key: "Unknown file")
+      case .unknownFileName:
+        return L10n.tr(key: "Unknown file name")
       case .unknownFileSize:
         return L10n.tr(key: "Unknown file size")
       case .unknownModificationDate:

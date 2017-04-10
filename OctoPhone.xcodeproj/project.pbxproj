@@ -68,6 +68,7 @@
 		D2353E011E9ABF25000C3B5F /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353E001E9ABF25000C3B5F /* ListItemView.swift */; };
 		D2353E041E9AC753000C3B5F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353E031E9AC753000C3B5F /* Colors.swift */; };
 		D2353E061E9ACA60000C3B5F /* ListHeadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353E051E9ACA60000C3B5F /* ListHeadingView.swift */; };
+		D2353E081E9ACF3B000C3B5F /* FileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2353E071E9ACF3B000C3B5F /* FileDetailView.swift */; };
 		D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90431E5B7F930005560B /* ReactiveCocoa.framework */; };
 		D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90441E5B7F930005560B /* ReactiveSwift.framework */; };
 		D23B90481E5B7F930005560B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B90451E5B7F930005560B /* Result.framework */; };
@@ -239,6 +240,7 @@
 		D2353E001E9ABF25000C3B5F /* ListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		D2353E031E9AC753000C3B5F /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D2353E051E9ACA60000C3B5F /* ListHeadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListHeadingView.swift; sourceTree = "<group>"; };
+		D2353E071E9ACF3B000C3B5F /* FileDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailView.swift; sourceTree = "<group>"; };
 		D23B90431E5B7F930005560B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D23B90441E5B7F930005560B /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D23B90451E5B7F930005560B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -897,6 +899,7 @@
 				D2353DFE1E9A38B9000C3B5F /* FileDetailViewController.swift */,
 				D2353E001E9ABF25000C3B5F /* ListItemView.swift */,
 				D2353E051E9ACA60000C3B5F /* ListHeadingView.swift */,
+				D2353E071E9ACF3B000C3B5F /* FileDetailView.swift */,
 			);
 			path = "File Detail";
 			sourceTree = "<group>";
@@ -1216,6 +1219,7 @@
 				D2F7658C1E78102300A5BC11 /* Command.swift in Sources */,
 				D26B500B1E734A5500795462 /* TerminalCoordinator.swift in Sources */,
 				D25679451E8D1DFD00D763A3 /* SlicerCollectionViewCell.swift in Sources */,
+				D2353E081E9ACF3B000C3B5F /* FileDetailView.swift in Sources */,
 				D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */,
 				D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */,
 				D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */,
