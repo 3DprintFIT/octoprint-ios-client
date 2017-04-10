@@ -182,12 +182,12 @@ final class FileDetailViewModel: FileDetailViewModelType, FileDetailViewModelInp
         self.screenTitle = Property(value: fileID)
         self.fileName = Property(initial: tr(.unknownFile), then: fileProducer.map({ $0.name }))
         self.size = Property(initial: tr(.unknown),
-                             then: fileProducer.map({ OPFileSizeFormatter.sizeFromBytes($0.size) }))
+                             then: fileProducer.map({ $0.size }).formatFileSize())
         self.type = Property(initial: tr(.unknown), then: fileProducer.map { file in
             return file.type == . model ? tr(.stlModel) : tr(.gcodeFile)
         })
         self.lastModification = Property(initial: tr(.unknown),
-                                         then: fileProducer.map { OPDateFormatter.dateFromTimeStamp($0.date) })
+                                         then: fileProducer.map({ $0.date }).formatDate())
         self.filamentLength = Property(initial: tr(.unknown),
                                        then: analysisProducer.map({ $0.filamentLength }).formatLength())
         self.filamentVolume = Property.init(initial: tr(.unknown),

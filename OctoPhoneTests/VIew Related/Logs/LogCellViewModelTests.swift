@@ -42,7 +42,7 @@ class LogCellViewModelTests: QuickSpec {
             subject.outputs.size.startWithValues { size = $0 }
 
             expect(name).toEventually(equal("Log"))
-            expect(size).toEventually(equal("1 234 bytes"))
+            expect(size).toEventually(equal("1 KB"))
         }
 
         it("updates outputs when log data are changed") {
@@ -59,7 +59,7 @@ class LogCellViewModelTests: QuickSpec {
             subject.outputs.size.startWithValues { size = $0 }
 
             expect(name).toEventually(equal("Updated Log"))
-            expect(size).toEventually(equal("4 567 bytes"))
+            expect(size).toEventually(equal("4 KB"))
         }
     }
 }

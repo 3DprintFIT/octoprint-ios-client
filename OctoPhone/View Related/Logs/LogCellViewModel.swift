@@ -75,7 +75,7 @@ final class LogCellViewModel: LogCellViewModelType, LogCellViewModelInputs, LogC
         self.name = nameProperty.producer.skipNil()
         self.size = sizeProperty.producer
             .skipNil()
-            .map { tr(.sizeInBytes(OPNumberFormatter.shared.plainNumber($0))) }
+            .formatFileSize()
 
         self.logToken = log.addNotificationBlock { [weak self] change in
             guard let weakSelf = self else { return }
