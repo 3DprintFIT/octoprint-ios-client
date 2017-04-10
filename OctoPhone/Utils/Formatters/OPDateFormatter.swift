@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveSwift
 
 /// Provides standardized date formats
 struct OPDateFormatter {
@@ -23,5 +24,16 @@ struct OPDateFormatter {
         dateFormatter.locale = Locale.current
 
         return dateFormatter.string(from: date)
+    }
+}
+
+// MARK: - Formatter reactive extension timestamps.
+extension SignalProducer where Value == Int {
+    /// Operator for timestamp (number) formatting. Maps given values of `self`
+    /// to string represantation of date created from given timestamp.
+    ///
+    /// - Returns: Producer with formatted value of `self`
+    func formatDate() -> SignalProducer<String, Error> {
+        return map { OPDateFormatter.dateFromTimeStamp($0) }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveSwift
 
 /// Standard formatted for file sizes
 struct OPFileSizeFormatter {
@@ -16,5 +17,15 @@ struct OPFileSizeFormatter {
     /// - Returns: Formatted size string
     static func sizeFromBytes(_ bytes: Int) -> String {
         return ByteCountFormatter.string(fromByteCount: Int64(bytes), countStyle: .binary)
+    }
+}
+
+extension SignalProducer where Value == Int {
+    /// Operator for file size number format. Maps given values of `self`
+    /// to string representation file size. Also appends correct unit sign.
+    ///
+    /// - Returns: Producer with formatted value of `self`
+    func formatFileSize() -> SignalProducer<String, Error> {
+        return map { OPFileSizeFormatter.sizeFromBytes($0) }
     }
 }
