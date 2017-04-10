@@ -13,7 +13,8 @@ import Result
 
 /// File detail inputs
 protocol FileDetailViewModelInputs {
-
+    /// Call when user tapped delete button
+    func deleteButtonTapped()
 }
 
 // MARK: - Outputs
@@ -85,6 +86,9 @@ protocol FileDetailViewModelOutputs {
 
     /// Indicates whether the stats section should be visible
     var statsSectionIsEnabled: Property<Bool> { get }
+
+    /// Stream of errors which should be presented to the user
+    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
 }
 
 // MARK: - Common public interface
@@ -138,7 +142,7 @@ final class FileDetailViewModel: FileDetailViewModelType, FileDetailViewModelInp
 
     let filamentVolumeLabel = Property<String>(value: tr(.fileFilamentVolume))
 
-    var filamentVolume: Property<String>
+    let filamentVolume: Property<String>
 
     let statsHeading = Property(value: tr(.fileStats).uppercased())
 
@@ -154,7 +158,12 @@ final class FileDetailViewModel: FileDetailViewModelType, FileDetailViewModelInp
 
     let statsSectionIsEnabled: Property<Bool>
 
+    let displayError: SignalProducer<(title: String, message: String), NoError>
+
     // MARK: Private properties
+
+    /// File detail controller flow delegate
+    private weak var delegate: FileDetailViewControllerDelegate?
 
     /// Identifier of file which detail is presented
     private let fileID: String
@@ -168,9 +177,15 @@ final class FileDetailViewModel: FileDetailViewModelType, FileDetailViewModelInp
     /// Actual printer file
     private let fileProperty = MutableProperty<File?>(nil)
 
+    /// Last error occured
+    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+
     // MARK: Initializers
 
-    init(fileID: String, provider: OctoPrintProvider, contextManager: ContextManagerType) {
+    init(delegate: FileDetailViewControllerDelegate, fileID: String, provider: OctoPrintProvider,
+         contextManager: ContextManagerType) {
+
+        self.delegate = delegate
         self.fileID = fileID
         self.provider = provider
         self.contextManager = contextManager
@@ -201,6 +216,8 @@ final class FileDetailViewModel: FileDetailViewModelType, FileDetailViewModelInp
         self.statsSectionIsEnabled = Property(initial: false,
                                               then: fileProducer.map { $0.printStats != nil })
 
+        self.displayError = displayErrorProperty.producer.skipNil()
+
         contextManager.createObservableContext()
             .fetch(File.self, forPrimaryKey: fileID)
             .startWithResult { [weak self] result in
@@ -212,6 +229,53 @@ final class FileDetailViewModel: FileDetailViewModelType, FileDetailViewModelInp
     }
 
     // MARK: Input methods
+
+    func deleteButtonTapped() {
+        guard let file = fileProperty.value else { return }
+
+        provider.request(.deleteFile(file.origin, file.name))
+            .filterSuccessfulStatusCodes()
+            .observe(on: UIScheduler())
+            .startWithResult { [weak self] result in
+                guard let weakSelf = self else { return }
+
+                switch result {
+                case .success:
+                    guard
+                        let file = weakSelf.fileProperty.value,
+                        let realm = file.realm
+                    else { return }
+
+                    do {
+                        try realm.write {
+                            realm.delete(file)
+                        }
+                    } catch {
+                        weakSelf.displayErrorProperty.value =
+                            (tr(.anErrorOccured), tr(.fileCouldNotBeDeletedBecauseAnErrorOccured))
+                    }
+
+                    weakSelf.delegate?.deleteFileButtonTapped()
+
+                case let .failure(error):
+                    var message: String?
+
+                    if case let .statusCode(response) = error {
+                        switch response.statusCode {
+                        case 404: message = tr(.fileCouldNotBeDeletedBecauseWasNotFound)
+                        case 409: message = tr(.fileCouldNotBeDeletedBecauseIsPrinted)
+                        default: break
+                        }
+                    }
+
+                    if message == nil {
+                        message = tr(.fileCouldNotBeDeletedBecauseAnErrorOccured)
+                    }
+
+                    weakSelf.displayErrorProperty.value = (tr(.anErrorOccured), message!)
+                }
+            }
+    }
 
     // MARK: Output methods
 

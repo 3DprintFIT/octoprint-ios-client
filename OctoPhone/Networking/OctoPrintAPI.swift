@@ -17,6 +17,7 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - version: OctoPrint API version
 /// - sendCommand: Sends arbitrary command to printer
 /// - files: Downloads list of stored files on printer
+/// - deleteFile: Deletes file with given file name from specific location
 /// - logs: Downloads list of list
 /// - downloadLog: Downloads log file to internal sotrage
 /// - deleteLog: Deletes specified log
@@ -34,6 +35,7 @@ enum OctoPrintAPI {
     case sendCommand(String)
     // Files
     case files
+    case deleteFile(FileOrigin, String)
     // Logs
     case logs
     case downloadLog(String)
@@ -82,6 +84,8 @@ extension OctoPrintAPI: TargetPart {
         case let .sendCommand(command): return ("api/printer/command", .get, .request, ["command": command])
         // Files
         case .files: return ("api/files", .get, .request, nil)
+        case let .deleteFile(target, filename):
+            return ("api/files/\(target.rawValue.urlEncoded)/\(filename.urlEncoded)", .delete, .request, nil)
         // Logs
         case .logs: return ("api/logs", .get, .request, nil)
         case let .downloadLog(logName):

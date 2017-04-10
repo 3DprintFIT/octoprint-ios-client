@@ -53,6 +53,8 @@ enum L10n {
   case delete
   /// Delete log
   case deleteLog
+  /// Do you really want to delete this file from printer? This action is permanent and cannot be undone.
+  case doYouReallyWantToDeleteFileFromPrinter
   /// Do you really want to delete log from printer? This action is permanent and cannot be undone.
   case doYouReallyWantToDeleteLogFromPrinter
   /// Do you really want to delete print profile? This action is permanent and cannot be undone
@@ -71,6 +73,12 @@ enum L10n {
   case fileAnalysis
   /// Attributes
   case fileAttributes
+  /// File could not be deleted, because is currently printed
+  case fileCouldNotBeDeletedBecauseIsPrinted
+  /// File could not be delete because it was not found on the printer.
+  case fileCouldNotBeDeletedBecauseWasNotFound
+  /// File could not be deleted, becuase an error occured
+  case fileCouldNotBeDeletedBecauseAnErrorOccured
   /// Failure prints
   case fileFailurePrints
   /// Filament length
@@ -281,6 +289,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Delete")
       case .deleteLog:
         return L10n.tr(key: "Delete log")
+      case .doYouReallyWantToDeleteFileFromPrinter:
+        return L10n.tr(key: "Do you really want to delete file from printer")
       case .doYouReallyWantToDeleteLogFromPrinter:
         return L10n.tr(key: "Do you really want to delete log from printer")
       case .doYouReallyWantToDeletePrintProfile:
@@ -299,6 +309,12 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "File analysis")
       case .fileAttributes:
         return L10n.tr(key: "File attributes")
+      case .fileCouldNotBeDeletedBecauseIsPrinted:
+        return L10n.tr(key: "File could not be deleted because is printed")
+      case .fileCouldNotBeDeletedBecauseWasNotFound:
+        return L10n.tr(key: "File could not be deleted because was not found")
+      case .fileCouldNotBeDeletedBecauseAnErrorOccured:
+        return L10n.tr(key: "File could not be deleted, because an error occured")
       case .fileFailurePrints:
         return L10n.tr(key: "File failure prints")
       case .fileFilamentLength:

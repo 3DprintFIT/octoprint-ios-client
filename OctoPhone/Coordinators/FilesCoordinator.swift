@@ -27,6 +27,10 @@ extension FilesCoordinator: FilesViewControllerDelegate {
 
         childCoordinators.append(coordinator)
 
+        coordinator.completed = { [weak self] in
+            _ = self?.childCoordinators.popLast()
+        }
+
         coordinator.start()
     }
 }

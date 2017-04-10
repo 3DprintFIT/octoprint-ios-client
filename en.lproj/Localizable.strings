@@ -57,7 +57,7 @@
 
 
 // *
-// * Files
+// * File detail
 // *
 "File attributes" = "Attributes";
 "File name" = "File name";
@@ -73,6 +73,10 @@
 "File stats" = "Print statistics";
 "File success prints" = "Success prints";
 "File failure prints" = "Failure prints";
+"Do you really want to delete file from printer" = "Do you really want to delete this file from printer? This action is permanent and cannot be undone.";
+"File could not be deleted because was not found" = "File could not be delete because it was not found on the printer.";
+"File could not be deleted because is printed" = "File could not be deleted, because is currently printed";
+"File could not be deleted, because an error occured" = "File could not be deleted, becuase an error occured";
 
 
 // *

@@ -33,10 +33,18 @@ class FileDetailCoordinator: ContextCoordinator {
     }
 
     override func start() {
-        let viewModel = FileDetailViewModel(fileID: fileID, provider: provider,
+        let viewModel = FileDetailViewModel(delegate: self, fileID: fileID, provider: provider,
                                             contextManager: contextManager)
         let controller = FileDetailViewController(viewModel: viewModel)
 
         navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+// MARK: - FileDetailViewControllerDelegate
+extension FileDetailCoordinator: FileDetailViewControllerDelegate {
+    func deleteFileButtonTapped() {
+        navigationController?.popViewController(animated: true)
+        completed()
     }
 }

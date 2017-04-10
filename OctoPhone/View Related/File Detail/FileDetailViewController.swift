@@ -10,6 +10,12 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
+/// File detail flow controller
+protocol FileDetailViewControllerDelegate: class {
+    /// Called when user tapped on delete button and is decided to delete the file
+    func deleteFileButtonTapped()
+}
+
 /// File detail controller, allows to manipulate with one specific file.
 ///
 /// File may be selected for print or deleted from printer.
@@ -19,8 +25,16 @@ class FileDetailViewController: BaseViewController {
     /// Controller logic
     fileprivate var viewModel: FileDetailViewModelType!
 
-    /// Preconfigure file detail view
+    /// Preconfigured file detail view
     private weak var fileDetailView: FileDetailView!
+
+    /// Delete file button
+    private lazy var deleteButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.trash, target: self,
+                                     action: #selector(deleteButtonTapped))
+
+        return button
+    }()
 
     // MARK: - Initializers
 
@@ -34,6 +48,8 @@ class FileDetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.rightBarButtonItem = deleteButton
 
         let scrollView = UIScrollView()
         let fileDetailView = FileDetailView(
@@ -91,5 +107,14 @@ class FileDetailViewController: BaseViewController {
 
         fileDetailView.failuresItem.descriptionLabel.reactive.text <~ viewModel.outputs.printFailuresLabel
         fileDetailView.failuresItem.detailLabel.reactive.text <~ viewModel.outputs.printFailures
+    }
+
+    func deleteButtonTapped() {
+        let controller = DeletionDialogFactory.createDialog(
+            title: nil, message: tr(.doYouReallyWantToDeleteFileFromPrinter)) { [weak self] in
+                self?.viewModel.inputs.deleteButtonTapped()
+            }
+
+        present(controller, animated: true, completion: nil)
     }
 }
