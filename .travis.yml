@@ -1,9 +1,5 @@
-language: ruby
-
-matrix:
-  include:
-    - os: osx
-      osx_image: xcode8.3
+os: osx
+osx_image: xcode8.3
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
