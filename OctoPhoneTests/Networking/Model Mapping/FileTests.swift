@@ -47,8 +47,8 @@ class FileSpec: QuickSpec {
                 expect(file.origin.rawValue) == origin
                 expect(file.resource) == resource
                 expect(file.download) == download
-                expect(file.gcodeAnalysis) != nil
-                expect(file.printStats) != nil
+                expect(file.gcodeAnalysis).toNot(beNil())
+                expect(file.printStats).toNot(beNil())
                 expect(file.gcodeAnalysis!.estimatedPrintTime) == estimatedPrintTime
                 expect(file.gcodeAnalysis!.filamentVolume) == filamentVolume
                 expect(file.gcodeAnalysis!.filamentLength) == filamentLength

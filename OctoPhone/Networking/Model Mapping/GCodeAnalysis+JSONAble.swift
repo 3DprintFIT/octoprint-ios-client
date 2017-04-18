@@ -11,14 +11,14 @@ import Foundation
 extension GCodeAnalysis: JSONAble {
     static func fromJSON(json: [String : Any]) throws -> GCodeAnalysis {
         guard
-            let estimatedTime = json["estimatedPrintTime"] as? Int,
-            let filamentJSON = json["filament"] as? [String: Any],
-            let toolJSON = filamentJSON["tool0"] as? [String: Any],
-            let length = toolJSON["length"] as? Double,
-            let volume = toolJSON["volume"] as? Double else
+            let filamentJSON = json["filament"] as? [String: [String: Double]],
+            let length = filamentJSON.first?.1["length"],
+            let volume = filamentJSON.first?.1["volume"] else
         {
             throw JSONAbleError.errorMappingJSONToObject(json: json)
         }
+
+        let estimatedTime = json["estimatedPrintTime"] as? Int ?? 0
 
         return GCodeAnalysis(estimatedPrintTime: estimatedTime, filamentLength: length,
                              filamentVolume: volume)
