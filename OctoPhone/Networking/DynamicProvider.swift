@@ -93,4 +93,14 @@ final class DynamicProvider<Target: TargetPart>: ReactiveSwiftMoyaProvider<Dynam
 
         return request(dynamicTarget)
     }
+
+    /// Creates actual request from TargetPart, the request can be observed for progress
+    ///
+    /// - Parameter target: Request Target without base URL
+    /// - Returns: Response producer which can be observed for progress
+    func requestWithProgress(_ target: Target) -> SignalProducer<ProgressResponse, MoyaError> {
+        let dynamicTarget = DynamicTarget(baseURL: baseURL, target: target)
+
+        return requestWithProgress(token: dynamicTarget)
+    }
 }
