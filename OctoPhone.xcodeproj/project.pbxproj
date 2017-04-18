@@ -144,6 +144,7 @@
 		D2CCF74B1DBF46DB00EF9752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74A1DBF46DB00EF9752 /* Assets.xcassets */; };
 		D2CCF74E1DBF46DB00EF9752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCF74C1DBF46DB00EF9752 /* LaunchScreen.storyboard */; };
 		D2D331401E67177100C9C005 /* PrinterLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D3313F1E67177100C9C005 /* PrinterLoginCoordinator.swift */; };
+		D2D919FD1EA615D1009401C0 /* UTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D919FC1EA615D1009401C0 /* UTI.swift */; };
 		D2D990B91E6F66C70094DA64 /* CurrentPrintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990B81E6F66C70094DA64 /* CurrentPrintViewModel.swift */; };
 		D2D990BB1E6F67FA0094DA64 /* CurrentPrintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990BA1E6F67FA0094DA64 /* CurrentPrintViewController.swift */; };
 		D2D990BD1E6F688B0094DA64 /* PrinterControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990BC1E6F688B0094DA64 /* PrinterControlViewModel.swift */; };
@@ -295,6 +296,7 @@
 		D2A713811DE7069F00BDC0C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D2ABD3E11E9B8985003EDDAA /* OPFileSizeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPFileSizeFormatter.swift; sourceTree = "<group>"; };
 		D2ABD3E31E9B8E30003EDDAA /* OPDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPDateFormatter.swift; sourceTree = "<group>"; };
+		D2ABD3E51E9C1E1E003EDDAA /* OctoPhone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OctoPhone.entitlements; sourceTree = "<group>"; };
 		D2ACD74B1E6CCCC200F2603A /* TokenPluginTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenPluginTests.swift; path = OctoPhoneTests/Networking/TokenPluginTests.swift; sourceTree = SOURCE_ROOT; };
 		D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewController.swift; sourceTree = "<group>"; };
 		D2C38CC41E7D49A200D06698 /* LogsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsViewModelTests.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 		D2CCF7541DBF46DC00EF9752 /* OctoPhoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OctoPhoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCF75A1DBF46DC00EF9752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2D3313F1E67177100C9C005 /* PrinterLoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginCoordinator.swift; sourceTree = "<group>"; };
+		D2D919FC1EA615D1009401C0 /* UTI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTI.swift; sourceTree = "<group>"; };
 		D2D990B81E6F66C70094DA64 /* CurrentPrintViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentPrintViewModel.swift; sourceTree = "<group>"; };
 		D2D990BA1E6F67FA0094DA64 /* CurrentPrintViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentPrintViewController.swift; sourceTree = "<group>"; };
 		D2D990BC1E6F688B0094DA64 /* PrinterControlViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterControlViewModel.swift; sourceTree = "<group>"; };
@@ -361,9 +364,9 @@
 				D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */,
 				D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */,
 				D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */,
-				D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */,
-				D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */,
 				D23B90481E5B7F930005560B /* Result.framework in Frameworks */,
+				D23B90471E5B7F930005560B /* ReactiveSwift.framework in Frameworks */,
+				D23B90461E5B7F930005560B /* ReactiveCocoa.framework in Frameworks */,
 				D27C970C1E63986900641A1A /* ReactiveMoya.framework in Frameworks */,
 				D27C970E1E63A00B00641A1A /* Moya.framework in Frameworks */,
 				D2315E6F1E75F53A00C797AB /* SnapKit.framework in Frameworks */,
@@ -578,6 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				D2353E031E9AC753000C3B5F /* Colors.swift */,
+				D2D919FC1EA615D1009401C0 /* UTI.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -784,6 +788,7 @@
 		D2CCF7421DBF46DB00EF9752 /* OctoPhone */ = {
 			isa = PBXGroup;
 			children = (
+				D2ABD3E51E9C1E1E003EDDAA /* OctoPhone.entitlements */,
 				D2315E691E75BE5C00C797AB /* UI Playground */,
 				D28919781E1177FC00E3BBEB /* Generated */,
 				D203DE751DDFCB59000DEAA0 /* Utils */,
@@ -1017,6 +1022,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = CDMJRT8WJB;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					D2CCF7531DBF46DC00EF9752 = {
 						CreatedOnToolsVersion = 8.0;
@@ -1222,6 +1232,7 @@
 				D2353E081E9ACF3B000C3B5F /* FileDetailView.swift in Sources */,
 				D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */,
 				D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */,
+				D2D919FD1EA615D1009401C0 /* UTI.swift in Sources */,
 				D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */,
 				D2C38CD41E802C6D00D06698 /* OPNumberFormatter.swift in Sources */,
 				D2CBD72C1E8C4579002EA538 /* Slicer.swift in Sources */,
@@ -1448,6 +1459,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OctoPhone/OctoPhone.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CDMJRT8WJB;
@@ -1471,6 +1483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OctoPhone/OctoPhone.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CDMJRT8WJB;
