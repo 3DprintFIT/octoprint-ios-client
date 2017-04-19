@@ -30,4 +30,9 @@ struct Colors {
         /// Common view separator view background
         static let cellSeparator = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1.0)
     }
+
+    struct Pallete {
+        /// Standard red color for danger actions
+        static let dangerRed = UIColor(red: 237/255, green: 76/255, blue: 60/255, alpha: 1.0)
+    }
 }

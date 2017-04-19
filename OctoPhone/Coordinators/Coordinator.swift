@@ -85,10 +85,4 @@ class TabCoordinator: ContextCoordinator {
 
         super.init(navigationController: navigationController, contextManager: contextManager)
     }
-
-    func addTab(controller: UIViewController) {
-        let currentControllers = tabbarController?.viewControllers ?? []
-
-        tabbarController?.viewControllers = currentControllers + [controller]
-    }
 }

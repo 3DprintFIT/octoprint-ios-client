@@ -81,6 +81,8 @@
 		D23F0CEA1E92ADB200A70BC9 /* PrintProfileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23F0CE91E92ADB200A70BC9 /* PrintProfileCellViewModel.swift */; };
 		D23F0CEC1E92ADCA00A70BC9 /* PrintProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23F0CEB1E92ADCA00A70BC9 /* PrintProfileCollectionViewCell.swift */; };
 		D23F0CEE1E92C1EE00A70BC9 /* PrintProfileCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23F0CED1E92C1EE00A70BC9 /* PrintProfileCellViewModelTests.swift */; };
+		D248115C1EA69EFC00BA0A8B /* ClosePrinterCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248115B1EA69EFC00BA0A8B /* ClosePrinterCellViewModel.swift */; };
+		D248115E1EA69F1200BA0A8B /* ClosePrinterCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248115D1EA69F1200BA0A8B /* ClosePrinterCellCollectionViewCell.swift */; };
 		D24EDCBE1E90037C00A8437B /* SlicingProfilesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EDCBD1E90037C00A8437B /* SlicingProfilesCoordinator.swift */; };
 		D24EDCC01E90087900A8437B /* SlicingProfilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EDCBF1E90087900A8437B /* SlicingProfilesViewModel.swift */; };
 		D24EDCC21E90089300A8437B /* SlicingProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EDCC11E90089300A8437B /* SlicingProfilesViewController.swift */; };
@@ -254,6 +256,8 @@
 		D23F0CE91E92ADB200A70BC9 /* PrintProfileCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileCellViewModel.swift; sourceTree = "<group>"; };
 		D23F0CEB1E92ADCA00A70BC9 /* PrintProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23F0CED1E92C1EE00A70BC9 /* PrintProfileCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileCellViewModelTests.swift; sourceTree = "<group>"; };
+		D248115B1EA69EFC00BA0A8B /* ClosePrinterCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosePrinterCellViewModel.swift; sourceTree = "<group>"; };
+		D248115D1EA69F1200BA0A8B /* ClosePrinterCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosePrinterCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		D24EDCBD1E90037C00A8437B /* SlicingProfilesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesCoordinator.swift; sourceTree = "<group>"; };
 		D24EDCBF1E90087900A8437B /* SlicingProfilesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesViewModel.swift; sourceTree = "<group>"; };
 		D24EDCC11E90089300A8437B /* SlicingProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesViewController.swift; sourceTree = "<group>"; };
@@ -703,6 +707,8 @@
 				D2D990DA1E72073D0094DA64 /* SettingsCellViewModel.swift */,
 				D28EC5381E09E6740089C027 /* SettingsViewController.swift */,
 				D2D990D81E7207130094DA64 /* SettingsCollectionViewCell.swift */,
+				D248115B1EA69EFC00BA0A8B /* ClosePrinterCellViewModel.swift */,
+				D248115D1EA69F1200BA0A8B /* ClosePrinterCellCollectionViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1180,9 +1186,11 @@
 				D26B501D1E73542400795462 /* SDCardManagementCoordinator.swift in Sources */,
 				D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */,
 				D24EDCC21E90089300A8437B /* SlicingProfilesViewController.swift in Sources */,
+				D248115E1EA69F1200BA0A8B /* ClosePrinterCellCollectionViewCell.swift in Sources */,
 				D28EC5351E09E6490089C027 /* DetailViewController.swift in Sources */,
 				D2CBD72E1E8C4A40002EA538 /* SlicingProfile.swift in Sources */,
 				D2353E041E9AC753000C3B5F /* Colors.swift in Sources */,
+				D248115C1EA69EFC00BA0A8B /* ClosePrinterCellViewModel.swift in Sources */,
 				D2353E011E9ABF25000C3B5F /* ListItemView.swift in Sources */,
 				D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */,
 				D2ABD3E21E9B8985003EDDAA /* OPFileSizeFormatter.swift in Sources */,

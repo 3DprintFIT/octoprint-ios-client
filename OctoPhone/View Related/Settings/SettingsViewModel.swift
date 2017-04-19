@@ -24,6 +24,9 @@ protocol SettingsViewModelInputs {
 
     /// Call when sd car management cell is selected
     func sdCardManagementCellSelected()
+
+    /// Call when user tapped button to close printer detail
+    func closePrinterTapped()
 }
 
 /// Outputs for view controller
@@ -52,6 +55,11 @@ protocol SettingsViewModelOutputs {
     ///
     /// - Returns: Settings cell view model
     func sdCardManagementCellViewModel() -> SettingsCellViewModelType
+
+    /// Configured close button View Model
+    ///
+    /// - Returns: New object handling close button
+    func closePrinterCellViewModel() -> ClosePrinterCellViewModelType
 }
 
 /// Common interface for settings view model
@@ -102,6 +110,10 @@ SettingsViewModelOutputs {
         delegate?.sdCardManagementCellSelected()
     }
 
+    func closePrinterTapped() {
+        delegate?.closePrinterTapped()
+    }
+
     // MARK: Outputs
     func terminalCellViewModel() -> SettingsCellViewModelType {
         return SettingsCellViewModel(name: tr(.terminal))
@@ -121,5 +133,9 @@ SettingsViewModelOutputs {
 
     func sdCardManagementCellViewModel() -> SettingsCellViewModelType {
         return SettingsCellViewModel(name: tr(.sdCardManagement))
+    }
+
+    func closePrinterCellViewModel() -> ClosePrinterCellViewModelType {
+        return ClosePrinterCellViewModel()
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// Stored files list coordinator
 final class FilesCoordinator: TabCoordinator {
@@ -15,7 +16,7 @@ final class FilesCoordinator: TabCoordinator {
         let controller = FilesViewController(viewModel: viewModel)
 
         controller.title = tr(.files)
-        addTab(controller: controller)
+        navigationController?.pushViewController(controller, animated: false)
     }
 }
 

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Josef Dolezal. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Printer settings flow controller
 final class SettingsCoordinator: TabCoordinator {
@@ -15,7 +15,7 @@ final class SettingsCoordinator: TabCoordinator {
         let controller = SettingsViewController(viewModel: viewModel)
 
         controller.title = tr(.settings)
-        addTab(controller: controller)
+        navigationController?.pushViewController(controller, animated: false)
     }
 }
 
@@ -57,5 +57,11 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
 
         childCoordinators.append(coordinator)
         coordinator.start()
+    }
+
+    func closePrinterTapped() {
+        navigationController?.dismiss(animated: true, completion: { [weak self] in
+            self?.completed()
+        })
     }
 }

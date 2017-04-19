@@ -22,19 +22,24 @@ final class OverviewCoordinator: ContextCoordinator {
 
     override func start() {
         let tabbarController = UITabBarController()
-        tabbarController.viewControllers = []
+        let detailNavigationController = UINavigationController()
+        let filesNavigationController = UINavigationController()
+        let settingsNavigationController = UINavigationController()
+
+        tabbarController.viewControllers = [detailNavigationController,
+                                            filesNavigationController, settingsNavigationController]
         tabbarController.view.backgroundColor = .white
 
         let detailCoordinator = DetailCoordinator(tabbarController: tabbarController,
-                                                  navigationController: navigationController,
+                                                  navigationController: detailNavigationController,
                                                   contextManager: contextManager,
                                                   provider: provider)
         let filesCoodinator = FilesCoordinator(tabbarController: tabbarController,
-                                               navigationController: navigationController,
+                                               navigationController: filesNavigationController,
                                                contextManager: contextManager,
                                                provider: provider)
         let settingsCoordinator = SettingsCoordinator(tabbarController: tabbarController,
-                                                      navigationController: navigationController,
+                                                      navigationController: settingsNavigationController,
                                                       contextManager: contextManager,
                                                       provider: provider)
 
@@ -42,10 +47,17 @@ final class OverviewCoordinator: ContextCoordinator {
         childCoordinators.append(filesCoodinator)
         childCoordinators.append(settingsCoordinator)
 
+        settingsCoordinator.completed = { [weak self] in
+            self?.childCoordinators.removeAll()
+            self?.navigationController?.dismiss(animated: true, completion: {
+                self?.completed()
+            })
+        }
+
         detailCoordinator.start()
         filesCoodinator.start()
         settingsCoordinator.start()
 
-        navigationController?.pushViewController(tabbarController, animated: true)
+        navigationController?.present(tabbarController, animated: true, completion: nil)
     }
 }

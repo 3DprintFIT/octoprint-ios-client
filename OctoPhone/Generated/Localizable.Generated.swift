@@ -27,6 +27,8 @@ enum L10n {
   case centerOrigin
   /// Circular
   case circularFormFactor
+  /// Close printer
+  case closePrinter
   /// Command
   case command
   /// Yay, command execution failed.
@@ -263,6 +265,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Center origin")
       case .circularFormFactor:
         return L10n.tr(key: "Circular form factor")
+      case .closePrinter:
+        return L10n.tr(key: "Close printer")
       case .command:
         return L10n.tr(key: "Command")
       case .commandExecutingFailed:

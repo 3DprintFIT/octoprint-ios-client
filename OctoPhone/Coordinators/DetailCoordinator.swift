@@ -6,7 +6,7 @@
 //  Copyright © 2017 Josef Dolezal. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Printer detail flow controller
 final class DetailCoordinator: TabCoordinator {
@@ -14,6 +14,6 @@ final class DetailCoordinator: TabCoordinator {
         let controller = DetailViewController()
 
         controller.title = tr(.printerDetail)
-        addTab(controller: controller)
+        navigationController?.pushViewController(controller, animated: false)
     }
 }

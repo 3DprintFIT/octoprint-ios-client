@@ -24,6 +24,9 @@ protocol SettingsViewControllerDelegate: class {
 
     /// Celled when sd card management cell was selected
     func sdCardManagementCellSelected()
+
+    /// Called when user decided to close printer detail
+    func closePrinterTapped()
 }
 
 /// Printer settings and configurations
@@ -43,33 +46,56 @@ class SettingsViewController: BaseCollectionViewController {
 
         collectionView?.register(SettingsCollectionViewCell.self,
                                  forCellWithReuseIdentifier: SettingsCollectionViewCell.identifier)
+        collectionView?.register(ClosePrinterCellCollectionViewCell.self,
+                                 forCellWithReuseIdentifier: ClosePrinterCellCollectionViewCell.identifier)
     }
 }
 
 // MARK: - UICollectionViewDataSource
 extension SettingsViewController {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
 
-        return 5
+        return 6
     }
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
-            SettingsCollectionViewCell.identifier, for: indexPath) as! SettingsCollectionViewCell
+        var commonCell: UICollectionViewCell
 
-        switch indexPath.row {
-        case 0: cell.viewModel.value = viewModel.outputs.terminalCellViewModel()
-        case 1: cell.viewModel.value = viewModel.outputs.logsCellViewModel()
-        case 2: cell.viewModel.value = viewModel.outputs.slicingCellViewModel()
-        case 3: cell.viewModel.value = viewModel.outputs.printProfilesCellViewModel()
-        case 4: cell.viewModel.value = viewModel.outputs.sdCardManagementCellViewModel()
-        default: break
+        if indexPath.row < 5 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
+                SettingsCollectionViewCell.identifier, for: indexPath) as! SettingsCollectionViewCell
+
+            switch indexPath.row {
+            case 0: cell.viewModel.value = viewModel.outputs.terminalCellViewModel()
+            case 1: cell.viewModel.value = viewModel.outputs.logsCellViewModel()
+            case 2: cell.viewModel.value = viewModel.outputs.slicingCellViewModel()
+            case 3: cell.viewModel.value = viewModel.outputs.printProfilesCellViewModel()
+            case 4: cell.viewModel.value = viewModel.outputs.sdCardManagementCellViewModel()
+            default: break
+            }
+
+            commonCell = cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
+                ClosePrinterCellCollectionViewCell.identifier, for: indexPath
+                ) as! ClosePrinterCellCollectionViewCell
+
+            cell.viewModel.value = viewModel.outputs.closePrinterCellViewModel()
+            cell.viewModel.value?.outputs.closePrinterTapped.startWithValues({ [weak self] in
+                self?.viewModel.inputs.closePrinterTapped()
+            })
+
+            commonCell = cell
         }
 
-        return cell
+        return commonCell
     }
 
     override func collectionView(_ collectionView: UICollectionView,
