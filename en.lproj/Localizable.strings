@@ -54,6 +54,7 @@
 // *
 "Files" = "Files";
 "Files list could not be loaded" = "Files list could not be loaded.";
+"Selected file could not be uploaded" = "Selected file could not be uploaded.";
 
 
 // *

@@ -187,6 +187,8 @@ enum L10n {
   case requestedLogFileCouldNotBeDownloaded
   /// SD card management
   case sdCardManagement
+  /// Selected file could not be uploaded.
+  case selectedFileCouldNotBeUploaded
   /// Selected profile could not be opened.
   case selectedProfileCouldNotBeOpened
   /// Send
@@ -425,6 +427,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Requested log file could not be downloaded")
       case .sdCardManagement:
         return L10n.tr(key: "SD card management")
+      case .selectedFileCouldNotBeUploaded:
+        return L10n.tr(key: "Selected file could not be uploaded")
       case .selectedProfileCouldNotBeOpened:
         return L10n.tr(key: "Selected profile could not be opened")
       case .send:

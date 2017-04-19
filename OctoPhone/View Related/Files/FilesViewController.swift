@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 import ReactiveSwift
 import ReactiveCocoa
 
@@ -21,6 +22,16 @@ protocol FilesViewControllerDelegate: class {
 /// Lists stored files on printer
 class FilesViewController: BaseCollectionViewController {
 
+    /// Upload progress indicator view
+    fileprivate let progressBar = UIProgressView(progressViewStyle: .bar)
+
+    private lazy var pickDocumentButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self,
+                                     action: #selector(showDocumentPicker))
+
+        return button
+    }()
+
     /// Controller view model
     fileprivate var viewModel: FilesViewModelType!
 
@@ -30,8 +41,21 @@ class FilesViewController: BaseCollectionViewController {
         self.viewModel = viewModel
     }
 
+    override func loadView() {
+        super.loadView()
+
+        view.addSubview(progressBar)
+
+        progressBar.snp.makeConstraints { make in
+            make.top.equalTo(topLayoutGuide.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.rightBarButtonItem = pickDocumentButton
 
         bindViewModel()
 
@@ -47,11 +71,20 @@ class FilesViewController: BaseCollectionViewController {
 
     // MARK: Internal logic
 
+    func showDocumentPicker() {
+        let controller = UIDocumentMenuViewController(documentTypes: [UTI.gcode, UTI.stl],
+                                                      in: UIDocumentPickerMode.import)
+        controller.delegate = self
+        present(controller, animated: true, completion: nil)
+    }
+
     /// Binds View Model to the UI elements
     private func bindViewModel() {
         if let collectionView = collectionView {
             collectionView.reactive.reloadData <~ viewModel.outputs.filesListChanged
         }
+
+        progressBar.reactive.progress <~ viewModel.outputs.uploadProgress
 
         viewModel.outputs.displayError
             .observe(on: UIScheduler())
@@ -99,5 +132,19 @@ extension FilesViewController {
                                  didSelectItemAt indexPath: IndexPath) {
 
         viewModel.inputs.selectedFile(at: indexPath.row)
+    }
+}
+
+extension FilesViewController: UIDocumentMenuDelegate {
+    func documentMenu(_ documentMenu: UIDocumentMenuViewController,
+                      didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
+        documentPicker.delegate = self
+        present(documentPicker, animated: true, completion: nil)
+    }
+}
+
+extension FilesViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        viewModel.inputs.uploadFile(from: url)
     }
 }

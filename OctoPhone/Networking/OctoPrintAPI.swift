@@ -17,6 +17,7 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - version: OctoPrint API version
 /// - sendCommand: Sends arbitrary command to printer
 /// - files: Downloads list of stored files on printer
+/// - uploadFile: Uploads file to specific location, with given name from given URL
 /// - deleteFile: Deletes file with given file name from specific location
 /// - logs: Downloads list of list
 /// - downloadLog: Downloads log file to internal sotrage
@@ -35,6 +36,7 @@ enum OctoPrintAPI {
     case sendCommand(String)
     // Files
     case files
+    case uploadFile(FileOrigin, String, URL)
     case deleteFile(FileOrigin, String)
     // Logs
     case logs
@@ -79,30 +81,53 @@ extension OctoPrintAPI: TargetPart {
     var requestData: (path: String, method: Moya.Method, task: Task, parameters: Parameters?) {
         switch self {
         // Common
+
         case .version: return ("api/version", .get, .request, nil)
+
         // Printer
+
         case let .sendCommand(command): return ("api/printer/command", .get, .request, ["command": command])
+
         // Files
+
         case .files: return ("api/files", .get, .request, nil)
+
+        case let .uploadFile(destination, fileName, fileURL):
+            return ("api/files/\(destination.rawValue.urlEncoded)", .post, .upload(
+                UploadType.multipart([MultipartFormData(provider: .file(fileURL), name: "file",
+                                                        fileName: fileName, mimeType: nil)])), nil)
+
         case let .deleteFile(target, filename):
             return ("api/files/\(target.rawValue.urlEncoded)/\(filename.urlEncoded)", .delete, .request, nil)
+
         // Logs
+
         case .logs: return ("api/logs", .get, .request, nil)
+
         case let .downloadLog(logName):
             return ("downloads/logs/\(logName.urlEncoded)", .get, .download(.request(DefaultDownloadDestination)), nil)
+
         case let .deleteLog(logName):
             return ("api/logs/\(logName.urlEncoded)", .delete, .request, nil)
+
         // Slicers
+
         case .slicers: return ("api/slicing", .get, .request, nil)
+
         case let .slicerProfiles(slicer):
             return ("api/slicing/\(slicer.urlEncoded)/profiles", .get, .request, nil)
+
         case let .deleteSlicingProfile(slicerID, profileID):
             return ("api/slicing/\(slicerID.urlEncoded)/profiles/\(profileID)", .delete, .request, nil)
+
         case .printerProfiles: return ("api/printerprofiles", .get, .request, nil)
+
         case let .createPrinterProfile(data):
             return ("api/printerprofiles", .post, .request, data)
+
         case let .updatePrinterProfile(profileID, data):
             return ("api/printerprofiles/\(profileID.urlEncoded)", .patch, .request, data)
+
         case let .deletePrintProfile(profileID):
             return ("api/printerprofiles/\(profileID.urlEncoded)", .delete, .request, nil)
         }
