@@ -55,6 +55,9 @@
 "Files" = "Files";
 "Files list could not be loaded" = "Files list could not be loaded.";
 "Selected file could not be uploaded" = "Selected file could not be uploaded.";
+"All files" = "All";
+"Files on printer" = "Printer";
+"Files on card" = "SD Card";
 
 
 // *

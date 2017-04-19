@@ -25,11 +25,20 @@ class FilesViewController: BaseCollectionViewController {
     /// Upload progress indicator view
     fileprivate let progressBar = UIProgressView(progressViewStyle: .bar)
 
+    /// Button to allow user to pick document to upload
     private lazy var pickDocumentButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self,
                                      action: #selector(showDocumentPicker))
 
         return button
+    }()
+
+    /// Segment control for
+    private let locationSegmentControl: UISegmentedControl = {
+        let control = UISegmentedControl(items: [tr(.allFiles), tr(.filesOnPrinter),
+                                                 tr(.filesOnCard)])
+
+        return control
     }()
 
     /// Controller view model
@@ -44,11 +53,29 @@ class FilesViewController: BaseCollectionViewController {
     override func loadView() {
         super.loadView()
 
-        view.addSubview(progressBar)
+        let toolbar = UIToolbar()
 
-        progressBar.snp.makeConstraints { make in
+        view.addSubview(toolbar)
+        view.addSubview(progressBar)
+        toolbar.addSubview(locationSegmentControl)
+
+        toolbar.snp.makeConstraints { make in
             make.top.equalTo(topLayoutGuide.snp.bottom)
             make.leading.trailing.equalToSuperview()
+        }
+
+        progressBar.snp.makeConstraints { make in
+            make.top.equalTo(toolbar.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+        }
+
+        locationSegmentControl.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+
+        collectionView?.snp.makeConstraints { make in
+            make.top.equalTo(progressBar.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 
@@ -56,6 +83,8 @@ class FilesViewController: BaseCollectionViewController {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = pickDocumentButton
+        automaticallyAdjustsScrollViewInsets = false
+        collectionView?.contentOffset = CGPoint(x: 0, y: 0)
 
         bindViewModel()
 
@@ -85,12 +114,19 @@ class FilesViewController: BaseCollectionViewController {
         }
 
         progressBar.reactive.progress <~ viewModel.outputs.uploadProgress
+        locationSegmentControl.reactive.selectedSegmentIndex <~ viewModel.outputs.selectedLocationIndex
 
         viewModel.outputs.displayError
             .observe(on: UIScheduler())
             .observeValues { [weak self] title, message in
                 self?.presentError(title: title, message: message)
         }
+
+        locationSegmentControl.reactive.selectedSegmentIndexes
+            .skipRepeats()
+            .observeValues { [weak self] index in
+                self?.viewModel.inputs.selectedFilesLocation(at: index)
+            }
     }
 }
 
@@ -135,6 +171,7 @@ extension FilesViewController {
     }
 }
 
+// MARK: - UIDocumentMenuDelegate
 extension FilesViewController: UIDocumentMenuDelegate {
     func documentMenu(_ documentMenu: UIDocumentMenuViewController,
                       didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
@@ -143,8 +180,15 @@ extension FilesViewController: UIDocumentMenuDelegate {
     }
 }
 
+// MARK: - UIDocumentPickerDelegate
 extension FilesViewController: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         viewModel.inputs.uploadFile(from: url)
+    }
+}
+
+extension FilesViewController: UIToolbarDelegate {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }

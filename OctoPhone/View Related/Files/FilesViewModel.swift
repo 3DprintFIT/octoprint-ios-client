@@ -20,6 +20,11 @@ protocol FilesViewModelInputs {
     /// Call when user selected file at specific index
     func selectedFile(at index: Int)
 
+    /// Call when user selected new files location
+    ///
+    /// - Parameter index: New index of selected files location
+    func selectedFilesLocation(at index: Int)
+
     /// Call when user selected file to upload to printer
     ///
     /// - Parameter url: URL of file located at phone which will be uploaded to printer
@@ -40,6 +45,9 @@ protocol FilesViewModelOutputs {
     /// Actual progress of file uploading, while the file is uploaded,
     /// 0 is send to reset value
     var uploadProgress: SignalProducer<Float, NoError> { get }
+
+    /// Indicates which files filter is
+    var selectedLocationIndex: ReactiveSwift.Property<Int> { get }
 
     /// View model for collection view cell
     ///
@@ -63,13 +71,28 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
 
     var outputs: FilesViewModelOutputs { return self }
 
+    /// Namespace for file colection filters
+    struct Filters {
+        typealias Filter = (File) -> Bool
+        /// Does not filter out anything from original collection
+        static let all: Filter = { _ in true }
+
+        /// Filters only those files, which are stored directly on printer
+        static let local: Filter = { $0.origin == .local }
+
+        /// Filters only files located at sdcard
+        static let sdcard: Filter = { $0.origin == .sdcard }
+    }
+
     // MARK: Outputs
 
     let filesListChanged: SignalProducer<(), NoError>
 
-    var filesCount: Int { return filesProperty.value?.count ?? 0 }
+    var filesCount: Int { return filesProperty.value?.filter(selectedFilter.value).count ?? 0 }
 
     let uploadProgress: SignalProducer<Float, NoError>
+
+    let selectedLocationIndex: ReactiveSwift.Property<Int>
 
     let displayError: Signal<(title: String, message: String), NoError>
 
@@ -84,8 +107,17 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
     /// Holds collection of files
     private let filesProperty = MutableProperty<Results<File>?>(nil)
 
+    /// Broadcasts files collection changes
+    private let filesChangedProperty = MutableProperty<()>(())
+
     /// Holds the value of current progress of upload task
     private let uploadProgressProperty = MutableProperty<Float>(0)
+
+    /// Current value of selected location index
+    private let selectedLocationIndexProperty = MutableProperty<Int>(0)
+
+    /// Currently applied filter on files collection
+    private let selectedFilter: ReactiveSwift.Property<Filters.Filter>
 
     /// File list flow delegate
     private weak var delegate: FilesViewControllerDelegate?
@@ -99,20 +131,41 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
     init(delegate: FilesViewControllerDelegate, provider: OctoPrintProvider,
          contextManager: ContextManagerType) {
 
+        let filtersProducer = selectedLocationIndexProperty.producer.map({ index -> Filters.Filter in
+            switch index {
+            case 0: return Filters.all
+            case 1: return Filters.local
+            case 2: return Filters.sdcard
+            default: fatalError("Whoah, filter index '\(index)' is out of bounds.")
+            }
+        })
+
         self.delegate = delegate
         self.provider = provider
         self.contextManager = contextManager
         self.displayError = displayErrorProperty.signal.skipNil()
-        self.filesListChanged = filesProperty.producer.skipNil().ignoreValues()
+        self.filesListChanged = filesChangedProperty.producer
         self.uploadProgress = uploadProgressProperty.producer
+        self.selectedLocationIndex = Property(capturing: selectedLocationIndexProperty)
+        self.selectedFilter = Property(initial: Filters.all, then: filtersProducer)
 
-        contextManager.createObservableContext().fetch(collectionOf: File.self).startWithResult { [weak self] files in
-            switch files {
-            case let .success(files): self?.filesProperty.value = files
-            case .failure: self?.displayErrorProperty.value = (tr(.anErrorOccured),
-                                                               tr(.filesListCouldNotBeLoaded))
+        // Fetch the realm collection of stored files
+        contextManager.createObservableContext().fetch(collectionOf: File.self)
+            .startWithResult { [weak self] files in
+                switch files {
+                case let .success(files): self?.filesProperty.value = files
+                case .failure: self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                                   tr(.filesListCouldNotBeLoaded))
+                }
             }
-        }
+
+        // Observe for files changes or selected index change and require
+        // tableview if one of observed emitted
+        SignalProducer.merge([filesProperty.producer.skipNil().ignoreValues(),
+                              selectedLocationIndexProperty.producer.ignoreValues()])
+            .startWithValues { [weak self] in
+                self?.filesChangedProperty.value = ()
+            }
 
         // Only call download request once, even when
         // the view is loaded more times
@@ -138,6 +191,10 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
         let file = filesProperty.value![index]
 
         delegate?.selectedFile(file)
+    }
+
+    func selectedFilesLocation(at index: Int) {
+        selectedLocationIndexProperty.value = index
     }
 
     // MARK: Output functions

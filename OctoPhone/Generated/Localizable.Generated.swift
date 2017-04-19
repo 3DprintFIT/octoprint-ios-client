@@ -7,6 +7,8 @@ import Foundation
 
 // swiftlint:disable type_body_length
 enum L10n {
+  /// All
+  case allFiles
   /// Ooops, an error occured
   case anErrorOccured
   /// Axis
@@ -103,6 +105,10 @@ enum L10n {
   case files
   /// Files list could not be loaded.
   case filesListCouldNotBeLoaded
+  /// SD Card
+  case filesOnCard
+  /// Printer
+  case filesOnPrinter
   /// Form factor
   case formFactor
   /// GCode file
@@ -247,6 +253,8 @@ extension L10n: CustomStringConvertible {
 
   var string: String {
     switch self {
+      case .allFiles:
+        return L10n.tr(key: "All files")
       case .anErrorOccured:
         return L10n.tr(key: "An error occured")
       case .axis:
@@ -343,6 +351,10 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Files")
       case .filesListCouldNotBeLoaded:
         return L10n.tr(key: "Files list could not be loaded")
+      case .filesOnCard:
+        return L10n.tr(key: "Files on card")
+      case .filesOnPrinter:
+        return L10n.tr(key: "Files on printer")
       case .formFactor:
         return L10n.tr(key: "Form factor")
       case .gcodeFile:
