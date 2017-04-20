@@ -28,9 +28,17 @@ class FileDetailViewController: BaseViewController {
     /// Preconfigured file detail view
     private weak var fileDetailView: FileDetailView!
 
+    /// Button to mark file for print
+    private lazy var printButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .action, target: self,
+                                     action: #selector(printButtonTapped))
+
+        return button
+    }()
+
     /// Delete file button
     private lazy var deleteButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.trash, target: self,
+        let button = UIBarButtonItem(barButtonSystemItem: .trash, target: self,
                                      action: #selector(deleteButtonTapped))
 
         return button
@@ -49,7 +57,7 @@ class FileDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = deleteButton
+        navigationItem.rightBarButtonItems = [deleteButton, printButton]
 
         let scrollView = UIScrollView()
         let fileDetailView = FileDetailView(
@@ -78,7 +86,13 @@ class FileDetailViewController: BaseViewController {
     /// Binds outputs of View Model to UI and converts
     /// user interaction to View Model inputs
     private func bindViewModel() {
+        viewModel.outputs.displayError.startWithValues { [weak self] error in
+            self?.presentError(title: error.title, message: error.message)
+        }
+
         navigationItem.title = viewModel.outputs.screenTitle.value
+
+        printButton.reactive.isEnabled <~ viewModel.outputs.printIsEnabled
 
         fileDetailView.attributesHeading.headingLabel.reactive.text <~ viewModel.outputs.attributesHeading
         fileDetailView.fileNameItem.descriptionLabel.reactive.text <~ viewModel.outputs.fileNameLabel
@@ -109,6 +123,7 @@ class FileDetailViewController: BaseViewController {
         fileDetailView.failuresItem.detailLabel.reactive.text <~ viewModel.outputs.printFailures
     }
 
+    /// UI callback for delete button tap event
     func deleteButtonTapped() {
         let controller = DeletionDialogFactory.createDialog(
             title: nil, message: tr(.doYouReallyWantToDeleteFileFromPrinter)) { [weak self] in
@@ -116,5 +131,10 @@ class FileDetailViewController: BaseViewController {
             }
 
         present(controller, animated: true, completion: nil)
+    }
+
+    /// UI callback for print button tap event
+    func printButtonTapped() {
+        viewModel.inputs.printButtonTapped()
     }
 }

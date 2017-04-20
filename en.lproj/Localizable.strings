@@ -81,6 +81,9 @@
 "File could not be deleted because was not found" = "File could not be delete because it was not found on the printer.";
 "File could not be deleted because is printed" = "File could not be deleted, because is currently printed";
 "File could not be deleted, because an error occured" = "File could not be deleted, becuase an error occured";
+"File could not be printed" = "File could not be printed";
+"Printer is not operational" = "Requested file could not be printed because printer is not currently operational.";
+"An error occured while trying to print file" = "An error occured when requested file was queued for print.";
 
 
 // *

@@ -268,7 +268,7 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
                     weakSelf.displayErrorProperty.value = (tr(.connectionError),
                                                            tr(.filesListCouldNotBeLoaded))
                 }
-        }
+            }
     }
 
     private func locationFromIndex(_ index: Int) -> FileOrigin? {

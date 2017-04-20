@@ -19,6 +19,7 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - files: Downloads list of stored files on printer
 /// - uploadFile: Uploads file to specific location, with given name from given URL
 /// - deleteFile: Deletes file with given file name from specific location
+/// - printFile: Selects file at given location with gitven name for print
 /// - logs: Downloads list of list
 /// - downloadLog: Downloads log file to internal sotrage
 /// - deleteLog: Deletes specified log
@@ -39,6 +40,7 @@ enum OctoPrintAPI {
     case filesAtLocation(FileOrigin)
     case uploadFile(FileOrigin, String, URL)
     case deleteFile(FileOrigin, String)
+    case printFile(FileOrigin, String)
     // Logs
     case logs
     case downloadLog(String)
@@ -102,6 +104,10 @@ extension OctoPrintAPI: TargetPart {
 
         case let .deleteFile(target, filename):
             return ("api/files/\(target.rawValue.urlEncoded)/\(filename.urlEncoded)", .delete, .request, nil)
+
+        case let .printFile(location, filename):
+            return ("api/files/\(location.rawValue.urlEncoded)/\(filename.urlEncoded)", .post,
+                    .request, ["command": "select", "print": true])
 
         // Logs
 

@@ -11,6 +11,8 @@ enum L10n {
   case allFiles
   /// Ooops, an error occured
   case anErrorOccured
+  /// An error occured when requested file was queued for print.
+  case anErrorOccuredWhileTryingToPrintFile
   /// Axis
   case axis
   /// Black
@@ -83,6 +85,8 @@ enum L10n {
   case fileCouldNotBeDeletedBecauseWasNotFound
   /// File could not be deleted, becuase an error occured
   case fileCouldNotBeDeletedBecauseAnErrorOccured
+  /// File could not be printed
+  case fileCouldNotBePrinted
   /// Failure prints
   case fileFailurePrints
   /// Filament length
@@ -171,6 +175,8 @@ enum L10n {
   case printerAccessToken
   /// Printer detail
   case printerDetail
+  /// Requested file could not be printed because printer is not currently operational.
+  case printerIsNotOperational
   /// Printer list
   case printerList
   /// Printer name
@@ -257,6 +263,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "All files")
       case .anErrorOccured:
         return L10n.tr(key: "An error occured")
+      case .anErrorOccuredWhileTryingToPrintFile:
+        return L10n.tr(key: "An error occured while trying to print file")
       case .axis:
         return L10n.tr(key: "Axis")
       case .black:
@@ -329,6 +337,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "File could not be deleted because was not found")
       case .fileCouldNotBeDeletedBecauseAnErrorOccured:
         return L10n.tr(key: "File could not be deleted, because an error occured")
+      case .fileCouldNotBePrinted:
+        return L10n.tr(key: "File could not be printed")
       case .fileFailurePrints:
         return L10n.tr(key: "File failure prints")
       case .fileFilamentLength:
@@ -417,6 +427,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Printer Access Token")
       case .printerDetail:
         return L10n.tr(key: "Printer detail")
+      case .printerIsNotOperational:
+        return L10n.tr(key: "Printer is not operational")
       case .printerList:
         return L10n.tr(key: "Printer list")
       case .printerName:

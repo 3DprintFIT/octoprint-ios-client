@@ -8,6 +8,7 @@
 
 import ReactiveSwift
 import Result
+import Moya
 
 // MARK: - Inputs
 
@@ -15,6 +16,9 @@ import Result
 protocol FileDetailViewModelInputs {
     /// Call when user tapped delete button
     func deleteButtonTapped()
+
+    /// Call when user tapped print button to select file for printing
+    func printButtonTapped()
 }
 
 // MARK: - Outputs
@@ -87,6 +91,9 @@ protocol FileDetailViewModelOutputs {
     /// Indicates whether the stats section should be visible
     var statsSectionIsEnabled: Property<Bool> { get }
 
+    /// Indicates whether the print button is enabled
+    var printIsEnabled: Property<Bool> { get }
+
     /// Stream of errors which should be presented to the user
     var displayError: SignalProducer<(title: String, message: String), NoError> { get }
 }
@@ -158,6 +165,8 @@ final class FileDetailViewModel: FileDetailViewModelType, FileDetailViewModelInp
 
     let statsSectionIsEnabled: Property<Bool>
 
+    let printIsEnabled: Property<Bool>
+
     let displayError: SignalProducer<(title: String, message: String), NoError>
 
     // MARK: Private properties
@@ -215,6 +224,8 @@ final class FileDetailViewModel: FileDetailViewModelType, FileDetailViewModelInp
                                                  then: fileProducer.map { $0.gcodeAnalysis != nil })
         self.statsSectionIsEnabled = Property(initial: false,
                                               then: fileProducer.map { $0.printStats != nil })
+        self.printIsEnabled = Property(initial: false,
+                                       then: fileProducer.map({ $0.type == .machineCode }))
 
         self.displayError = displayErrorProperty.producer.skipNil()
 
@@ -273,6 +284,30 @@ final class FileDetailViewModel: FileDetailViewModelType, FileDetailViewModelInp
                     }
 
                     weakSelf.displayErrorProperty.value = (tr(.anErrorOccured), message!)
+                }
+            }
+    }
+
+    func printButtonTapped() {
+        guard let file = fileProperty.value else { return }
+
+        provider.request(.printFile(file.origin, file.name))
+            .observe(on: UIScheduler())
+            .filterSuccessfulStatusCodes()
+            .startWithResult { [weak self] result in
+                switch result {
+                case .success:
+                    self?.delegate?.deleteFileButtonTapped()
+                case let .failure(error):
+                    var message: String
+
+                    if case let .statusCode(response) = error, response.statusCode == 409 {
+                        message = tr(.printerIsNotOperational)
+                    } else {
+                        message = tr(.anErrorOccuredWhileTryingToPrintFile)
+                    }
+
+                    self?.displayErrorProperty.value = (tr(.anErrorOccured), message)
                 }
             }
     }

@@ -120,7 +120,7 @@ class FilesViewController: BaseCollectionViewController {
             .observe(on: UIScheduler())
             .observeValues { [weak self] title, message in
                 self?.presentError(title: title, message: message)
-        }
+            }
 
         locationSegmentControl.reactive.selectedSegmentIndexes
             .skipRepeats()
