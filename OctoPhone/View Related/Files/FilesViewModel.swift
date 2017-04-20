@@ -178,6 +178,11 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
                 self?.downloadFileList()
             }
 
+        // Just for thesis purpose, downloads files from selected location
+        selectedLocationIndexProperty.producer.startWithValues { [weak self] index in
+            let location = self?.locationFromIndex(index)
+            self?.downloadFileList(location: location)
+        }
     }
 
     // MARK: Inputs
@@ -227,10 +232,16 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
             })
     }
 
-    // Private logic
+    // MARK: Private logic
 
-    private func downloadFileList() {
-        provider.request(.files)
+    /// Downloads list of files from specific location. If no location is provided
+    /// files from all locations are downloaded
+    ///
+    /// - Parameter location: Remote location of files, nil for all locations combine
+    private func downloadFileList(location: FileOrigin? = nil) {
+        let request: OctoPrintAPI = location == nil ? .files : .filesAtLocation(location!)
+
+        provider.request(request)
             .filterSuccessfulStatusCodes()
             .mapJSON()
             .mapTo(collectionOf: File.self, forKeyPath: "files")
@@ -257,6 +268,15 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
                     weakSelf.displayErrorProperty.value = (tr(.connectionError),
                                                            tr(.filesListCouldNotBeLoaded))
                 }
+        }
+    }
+
+    private func locationFromIndex(_ index: Int) -> FileOrigin? {
+        switch index {
+        case 0: return nil
+        case 1: return .local
+        case 2: return .sdcard
+        default: fatalError("Location index '\(index)' is out of locations bounds.")
         }
     }
 }

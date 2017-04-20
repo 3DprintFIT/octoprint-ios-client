@@ -36,6 +36,7 @@ enum OctoPrintAPI {
     case sendCommand(String)
     // Files
     case files
+    case filesAtLocation(FileOrigin)
     case uploadFile(FileOrigin, String, URL)
     case deleteFile(FileOrigin, String)
     // Logs
@@ -91,6 +92,8 @@ extension OctoPrintAPI: TargetPart {
         // Files
 
         case .files: return ("api/files", .get, .request, nil)
+
+        case let .filesAtLocation(location): return ("api/files/\(location.rawValue.urlEncoded)", .get, .request, nil)
 
         case let .uploadFile(destination, fileName, fileURL):
             return ("api/files/\(destination.rawValue.urlEncoded)", .post, .upload(
