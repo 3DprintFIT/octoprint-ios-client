@@ -71,24 +71,25 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
 
     var outputs: FilesViewModelOutputs { return self }
 
-    /// Namespace for file colection filters
+    /// Namespace for file colection filters,
+    /// use Filter typealias for NSPredicate predicates
     struct Filters {
-        typealias Filter = (File) -> Bool
+        typealias Filter = NSPredicate
         /// Does not filter out anything from original collection
-        static let all: Filter = { _ in true }
+        static let all: Filter = NSPredicate(value: true)
 
         /// Filters only those files, which are stored directly on printer
-        static let local: Filter = { $0.origin == .local }
+        static let local: Filter = NSPredicate(format: "_origin = %@", FileOrigin.local.rawValue)
 
         /// Filters only files located at sdcard
-        static let sdcard: Filter = { $0.origin == .sdcard }
+        static let sdcard: Filter = NSPredicate(format: "_origin = %@", FileOrigin.sdcard.rawValue)
     }
 
     // MARK: Outputs
 
     let filesListChanged: SignalProducer<(), NoError>
 
-    var filesCount: Int { return filesProperty.value?.filter(selectedFilter.value).count ?? 0 }
+    var filesCount: Int { return filteredFilesProperty.value?.count ?? 0 }
 
     let uploadProgress: SignalProducer<Float, NoError>
 
@@ -104,11 +105,12 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
     /// Property for displayimg errors
     private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
 
-    /// Holds collection of files
+    /// Holds collection of **all** files, for internal use only,
+    /// should not be used as output datasource,
     private let filesProperty = MutableProperty<Results<File>?>(nil)
 
-    /// Broadcasts files collection changes
-    private let filesChangedProperty = MutableProperty<()>(())
+    /// Holds collection of files which are filtered with currently selected filter
+    private let filteredFilesProperty = MutableProperty<Results<File>?>(nil)
 
     /// Holds the value of current progress of upload task
     private let uploadProgressProperty = MutableProperty<Float>(0)
@@ -117,7 +119,7 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
     private let selectedLocationIndexProperty = MutableProperty<Int>(0)
 
     /// Currently applied filter on files collection
-    private let selectedFilter: ReactiveSwift.Property<Filters.Filter>
+    private let selectedFilterProperty: ReactiveSwift.Property<Filters.Filter>
 
     /// File list flow delegate
     private weak var delegate: FilesViewControllerDelegate?
@@ -144,10 +146,10 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
         self.provider = provider
         self.contextManager = contextManager
         self.displayError = displayErrorProperty.signal.skipNil()
-        self.filesListChanged = filesChangedProperty.producer
+        self.filesListChanged = filteredFilesProperty.producer.ignoreValues()
         self.uploadProgress = uploadProgressProperty.producer
         self.selectedLocationIndex = Property(capturing: selectedLocationIndexProperty)
-        self.selectedFilter = Property(initial: Filters.all, then: filtersProducer)
+        self.selectedFilterProperty = Property(initial: Filters.all, then: filtersProducer)
 
         // Fetch the realm collection of stored files
         contextManager.createObservableContext().fetch(collectionOf: File.self)
@@ -159,13 +161,13 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
                 }
             }
 
-        // Observe for files changes or selected index change and require
-        // tableview if one of observed emitted
-        SignalProducer.merge([filesProperty.producer.skipNil().ignoreValues(),
-                              selectedLocationIndexProperty.producer.ignoreValues()])
-            .startWithValues { [weak self] in
-                self?.filesChangedProperty.value = ()
-            }
+        SignalProducer.combineLatest(
+            filesProperty.producer,
+            selectedFilterProperty.producer
+        )
+        .startWithValues { [weak self] files, filter in
+            self?.filteredFilesProperty.value = files?.filter(filter)
+        }
 
         // Only call download request once, even when
         // the view is loaded more times
@@ -185,10 +187,10 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
     }
 
     func selectedFile(at index: Int) {
-        assert(filesProperty.value != nil,
+        assert(filteredFilesProperty.value != nil,
                "Files must not be nil when user selected file at specific index.")
 
-        let file = filesProperty.value![index]
+        let file = filteredFilesProperty.value![index]
 
         delegate?.selectedFile(file)
     }
@@ -200,9 +202,9 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
     // MARK: Output functions
 
     func fileCellViewModel(for index: Int) -> FileCellViewModelType {
-        assert(filesProperty.value != nil, "Files must not be empty while creating view model.")
+        assert(filteredFilesProperty.value != nil, "Files must not be empty while creating view model.")
 
-        return FileCellViewModel(file: filesProperty.value![index])
+        return FileCellViewModel(file: filteredFilesProperty.value![index])
     }
 
     func uploadFile(from url: URL) {
