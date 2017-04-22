@@ -54,7 +54,7 @@ enum L10n {
   /// Database error
   case databaseError
   /// Default
-  case `default`
+  case defaultColor
   /// Delete
   case delete
   /// Delete log
@@ -305,8 +305,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Created profile could not be saved localy")
       case .databaseError:
         return L10n.tr(key: "Database error")
-      case .`default`:
-        return L10n.tr(key: "Default")
+      case .defaultColor:
+        return L10n.tr(key: "Default color")
       case .delete:
         return L10n.tr(key: "Delete")
       case .deleteLog:
@@ -461,8 +461,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Send Command Indicator")
       case .settings:
         return L10n.tr(key: "Settings")
-      case .sizeInBytes(let p1):
-        return L10n.tr(key: "Size in bytes", p1)
+      case .sizeInBytes(let p0):
+        return L10n.tr(key: "Size in bytes", p0)
       case .slicerProfilesCouldNotBeLoaded:
         return L10n.tr(key: "Slicer profiles could not be loaded")
       case .slicing:
@@ -507,7 +507,7 @@ extension L10n: CustomStringConvertible {
   }
 
   private static func tr(key: String, _ args: CVarArg...) -> String {
-    let format = NSLocalizedString(key, bundle: Bundle(for: BundleToken.self), comment: "")
+    let format = NSLocalizedString(key, comment: "")
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
@@ -515,5 +515,3 @@ extension L10n: CustomStringConvertible {
 func tr(_ key: L10n) -> String {
   return key.string
 }
-
-private final class BundleToken {}
