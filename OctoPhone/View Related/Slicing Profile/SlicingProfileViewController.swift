@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 /// Slicing profile detail flow delegate
 protocol SlicingProfileViewControllerDelegate: class {
@@ -26,6 +27,9 @@ class SlicingProfileViewController: BaseViewController {
                                action: #selector(deleteProfileButtonTapped))
     }()
 
+    /// Profile detail items view
+    private let profileView = SlicingProfileView()
+
     /// Controller logic
     fileprivate var viewModel: SlicingProfileViewModelType!
 
@@ -43,11 +47,18 @@ class SlicingProfileViewController: BaseViewController {
     override func loadView() {
         super.loadView()
 
-        navigationItem.rightBarButtonItem = deleteButton
+        view.addSubview(profileView)
+        edgesForExtendedLayout = []
+
+        profileView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(15)
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.rightBarButtonItem = deleteButton
     }
 
     // MARK: - Internal logic
@@ -70,6 +81,14 @@ class SlicingProfileViewController: BaseViewController {
     /// Binds outputs of View Model to UI and converts
     /// user interaction to View Model inputs
     private func bindViewModel() {
+        let outputs = viewModel.outputs
 
+        viewModel.outputs.title.producer.startWithValues { [weak self] title in self?.title = title }
+
+        profileView.nameLabel.reactive.text <~ outputs.nameText
+        profileView.descriptionLabel.reactive.text <~ outputs.descriptionText
+
+        profileView.nameTextLabel.reactive.text <~ outputs.profileName
+        profileView.descriptionTextLabel.reactive.text <~ outputs.descriptionText
     }
 }

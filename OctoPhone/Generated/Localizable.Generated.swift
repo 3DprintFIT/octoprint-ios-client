@@ -211,6 +211,8 @@ enum L10n {
   case settings
   /// %@ bytes
   case sizeInBytes(String)
+  /// Slicer profile
+  case slicerProfile
   /// Slicer profiles
   case slicerProfiles
   /// Slicer profiles could not be loaded.
@@ -219,6 +221,12 @@ enum L10n {
   case slicing
   /// Slicing profile could not be deleted.
   case slicingProfileCouldNotBeDeleted
+  /// Description
+  case slicingProfileDescription
+  /// Profile name
+  case slicingProfileName
+  /// File reference
+  case slicingProfileReference
   /// STL model
   case stlModel
   /// Stored logs could not be loaded.
@@ -465,6 +473,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Settings")
       case .sizeInBytes(let p0):
         return L10n.tr(key: "Size in bytes", p0)
+      case .slicerProfile:
+        return L10n.tr(key: "Slicer profile")
       case .slicerProfiles:
         return L10n.tr(key: "Slicer profiles")
       case .slicerProfilesCouldNotBeLoaded:
@@ -473,6 +483,12 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Slicing")
       case .slicingProfileCouldNotBeDeleted:
         return L10n.tr(key: "Slicing profile could not be deleted")
+      case .slicingProfileDescription:
+        return L10n.tr(key: "Slicing profile description")
+      case .slicingProfileName:
+        return L10n.tr(key: "Slicing profile name")
+      case .slicingProfileReference:
+        return L10n.tr(key: "Slicing profile reference")
       case .stlModel:
         return L10n.tr(key: "Stl model")
       case .storedLogsCouldNotBeLoaded:

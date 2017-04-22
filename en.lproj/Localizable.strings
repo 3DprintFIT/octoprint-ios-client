@@ -148,9 +148,18 @@
 
 
 // *
-// * Slicing
+// * Slicing profiles
 // *
 "Slicer profiles" = "Slicer profiles";
+
+
+// *
+// * Slicing profile detail
+// *
+"Slicer profile" = "Slicer profile";
+"Slicing profile name" = "Profile name";
+"Slicing profile description" = "Description";
+"Slicing profile reference" = "File reference";
 
 
 // *

@@ -21,6 +21,21 @@ protocol SlicingProfileViewModelInputs {
 
 /// Slicing profile detail outputs for Controller
 protocol SlicingProfileViewModelOutputs {
+    /// Screen title
+    var title: Property<String> { get }
+
+    /// Text for name label
+    var nameText: Property<String> { get }
+
+    /// Actual profile name
+    var profileName: Property<String> { get }
+
+    /// Text for description label
+    var descriptionText: Property<String> { get }
+
+    /// Actual profile description
+    var profileDescription: Property<String> { get }
+
     /// Stream of errors which should be presented to the user
     var displayError: SignalProducer<(title: String, message: String), NoError> { get }
 }
@@ -49,7 +64,17 @@ SlicingProfileViewModelOutputs {
 
     // MARK: Outputs
 
-     let displayError: SignalProducer<(title: String, message: String), NoError>
+    let title: Property<String>
+
+    let nameText = Property<String>(value: tr(.slicingProfileReference))
+
+    let profileName: Property<String>
+
+    let descriptionText = Property<String>(value: tr(.slicingProfileDescription))
+
+    let profileDescription: Property<String>
+
+    let displayError: SignalProducer<(title: String, message: String), NoError>
 
     // MARK: Private properties
 
@@ -85,17 +110,15 @@ SlicingProfileViewModelOutputs {
         self.provider = provider
         self.contextManager = contextManager
         self.displayError = displayErrorProperty.producer.skipNil()
+        self.title = Property(initial: tr(.slicerProfile),
+                              then: profileProperty.producer.map({ $0?.name }).skipNil())
 
-        contextManager.createObservableContext()
-            .fetch(SlicingProfile.self, forPrimaryKey: slicingProfileID)
-            .startWithResult { [weak self] result in
-                switch result {
-                case let .success(profile): self?.profileProperty.value = profile
-                case .failure:
-                    self?.displayErrorProperty.value = (tr(.anErrorOccured),
-                                                        tr(.selectedProfileCouldNotBeOpened))
-                }
-            }
+        let profileProducer = profileProperty.producer.skipNil()
+
+        self.profileName = Property(initial: tr(.unknown), then: profileProducer.map({ $0.name }).skipNil())
+        self.profileDescription = Property(initial: tr(.unknown), then: profileProducer.map { $0.description })
+
+        loadSlicingProfile()
     }
 
     // MARK: Input methods
@@ -133,6 +156,19 @@ SlicingProfileViewModelOutputs {
                 case .failure:
                     weakSelf.displayErrorProperty.value = (tr(.anErrorOccured),
                                                            tr(.slicingProfileCouldNotBeDeleted))
+                }
+        }
+    }
+
+    private func loadSlicingProfile() {
+        contextManager.createObservableContext()
+            .fetch(SlicingProfile.self, forPrimaryKey: slicingProfileID)
+            .startWithResult { [weak self] result in
+                switch result {
+                case let .success(profile): self?.profileProperty.value = profile
+                case .failure:
+                    self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                        tr(.selectedProfileCouldNotBeOpened))
                 }
         }
     }
