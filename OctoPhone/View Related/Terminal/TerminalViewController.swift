@@ -29,9 +29,12 @@ class TerminalViewController: BaseCollectionViewController {
         view.addSubview(terminalInputView)
 
         terminalInputView.snp.makeConstraints { [weak self] make in
+            guard let weakSelf = self else { return }
+
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(42)
-            self?.terminalViewBottomConstraint = make.bottom.equalToSuperview().constraint
+            self?.terminalViewBottomConstraint =
+                make.bottom.equalTo(weakSelf.bottomLayoutGuide.snp.top).constraint
         }
     }
 
