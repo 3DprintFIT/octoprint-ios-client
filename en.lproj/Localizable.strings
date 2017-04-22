@@ -148,6 +148,12 @@
 
 
 // *
+// * Slicing
+// *
+"Slicer profiles" = "Slicer profiles";
+
+
+// *
 // * Print profiles
 // *
 "Print profiles" = "Print profiles";

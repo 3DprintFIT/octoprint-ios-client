@@ -33,8 +33,10 @@ class SlicingViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.outputs.displayError.startWithValues { error in
-            print("\(error.title): \(error.message)")
+        title = viewModel.outputs.title.value
+
+        viewModel.outputs.displayError.startWithValues { [weak self] error in
+            self?.presentError(title: error.title, message: error.message)
         }
 
         if let collectionView = collectionView {

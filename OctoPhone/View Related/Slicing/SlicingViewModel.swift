@@ -24,6 +24,9 @@ protocol SlicingViewModelInputs {
 
 /// Slicing view model outputs for view controller
 protocol SlicingViewModelOutputs {
+    /// Screen title
+    var title: ReactiveSwift.Property<String> { get }
+
     /// Total count of slicers installed on printer
     var slicersCount: ReactiveSwift.Property<Int> { get }
 
@@ -61,6 +64,8 @@ final class SlicingViewModel: SlicingViewModelType, SlicingViewModelInputs, Slic
     // MARK: Inputs
 
     // MARK: Outputs
+
+    let title = ReactiveSwift.Property<String>(value: tr(.slicing))
 
     let slicersCount: ReactiveSwift.Property<Int>
 

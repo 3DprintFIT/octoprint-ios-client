@@ -211,6 +211,8 @@ enum L10n {
   case settings
   /// %@ bytes
   case sizeInBytes(String)
+  /// Slicer profiles
+  case slicerProfiles
   /// Slicer profiles could not be loaded.
   case slicerProfilesCouldNotBeLoaded
   /// Slicing
@@ -463,6 +465,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Settings")
       case .sizeInBytes(let p0):
         return L10n.tr(key: "Size in bytes", p0)
+      case .slicerProfiles:
+        return L10n.tr(key: "Slicer profiles")
       case .slicerProfilesCouldNotBeLoaded:
         return L10n.tr(key: "Slicer profiles could not be loaded")
       case .slicing:

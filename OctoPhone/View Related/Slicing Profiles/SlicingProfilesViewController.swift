@@ -39,6 +39,8 @@ class SlicingProfilesViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = viewModel.outputs.title.value
+
         collectionView?.register(SlicingProfileCollectionViewCell.self,
                                  forCellWithReuseIdentifier: SlicingProfileCollectionViewCell.identifier)
     }

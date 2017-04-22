@@ -24,6 +24,9 @@ protocol SlicingProfilesViewModelInputs {
 
 /// Outputs from View Model logic
 protocol SlicingProfilesViewModelOutputs {
+    /// Screen title
+    var title: ReactiveSwift.Property<String> { get }
+
     /// Total count of stored slicing profiles
     var profilesCount: ReactiveSwift.Property<Int> { get }
 
@@ -62,6 +65,8 @@ SlicingProfilesViewModelOutputs {
     // MARK: Inputs
 
     // MARK: Outputs
+
+    let title = ReactiveSwift.Property<String>(value: tr(.slicerProfiles))
 
     let profilesCount: ReactiveSwift.Property<Int>
 
