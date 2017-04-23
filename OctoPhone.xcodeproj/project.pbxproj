@@ -42,6 +42,8 @@
 		D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F3F8C1E649EC300351761 /* PrinterListCellViewModel.swift */; };
 		D22102B61EABA2D4005517EB /* SlicingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102B51EABA2D4005517EB /* SlicingProfileView.swift */; };
 		D22102B91EABEC5A005517EB /* SlicingProfileCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102B81EABEC5A005517EB /* SlicingProfileCreationViewModel.swift */; };
+		D22102BB1EAD0980005517EB /* SDCardManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102BA1EAD0980005517EB /* SDCardManagementViewController.swift */; };
+		D22102BD1EAD09CA005517EB /* SDCardManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102BC1EAD09CA005517EB /* SDCardManagementViewModel.swift */; };
 		D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401601E6A39480082129A /* DetailCoordinator.swift */; };
 		D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401621E6A3B3F0082129A /* FilesCoordinator.swift */; };
 		D22401651E6A3B670082129A /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401641E6A3B670082129A /* SettingsCoordinator.swift */; };
@@ -158,10 +160,8 @@
 		D2D990C11E6F6A800094DA64 /* PrinterControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990C01E6F6A800094DA64 /* PrinterControlViewController.swift */; };
 		D2D990C51E6F6ABD0094DA64 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990C41E6F6ABD0094DA64 /* LogsViewController.swift */; };
 		D2D990C91E71E6420094DA64 /* TerminalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990C81E71E6420094DA64 /* TerminalViewController.swift */; };
-		D2D990CB1E71E65D0094DA64 /* SDCardManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990CA1E71E65D0094DA64 /* SDCardManagementViewController.swift */; };
 		D2D990CF1E71E95B0094DA64 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990CE1E71E95B0094DA64 /* SettingsViewModel.swift */; };
 		D2D990D51E71F3D40094DA64 /* TerminalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990D41E71F3D40094DA64 /* TerminalViewModel.swift */; };
-		D2D990D71E71F5020094DA64 /* SDCardManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990D61E71F5020094DA64 /* SDCardManagementViewModel.swift */; };
 		D2D990D91E7207130094DA64 /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990D81E7207130094DA64 /* SettingsCollectionViewCell.swift */; };
 		D2D990DB1E72073D0094DA64 /* SettingsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D990DA1E72073D0094DA64 /* SettingsCellViewModel.swift */; };
 		D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD507E1E6A34DB0090D21A /* OverviewCoordinator.swift */; };
@@ -221,6 +221,8 @@
 		D21F3F8C1E649EC300351761 /* PrinterListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCellViewModel.swift; sourceTree = "<group>"; };
 		D22102B51EABA2D4005517EB /* SlicingProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfileView.swift; sourceTree = "<group>"; };
 		D22102B81EABEC5A005517EB /* SlicingProfileCreationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfileCreationViewModel.swift; sourceTree = "<group>"; };
+		D22102BA1EAD0980005517EB /* SDCardManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementViewController.swift; sourceTree = "<group>"; };
+		D22102BC1EAD09CA005517EB /* SDCardManagementViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementViewModel.swift; sourceTree = "<group>"; };
 		D22401601E6A39480082129A /* DetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		D22401621E6A3B3F0082129A /* FilesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesCoordinator.swift; sourceTree = "<group>"; };
 		D22401641E6A3B670082129A /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
@@ -344,10 +346,8 @@
 		D2D990C01E6F6A800094DA64 /* PrinterControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterControlViewController.swift; sourceTree = "<group>"; };
 		D2D990C41E6F6ABD0094DA64 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
 		D2D990C81E71E6420094DA64 /* TerminalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalViewController.swift; sourceTree = "<group>"; };
-		D2D990CA1E71E65D0094DA64 /* SDCardManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementViewController.swift; sourceTree = "<group>"; };
 		D2D990CE1E71E95B0094DA64 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D2D990D41E71F3D40094DA64 /* TerminalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TerminalViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		D2D990D61E71F5020094DA64 /* SDCardManagementViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementViewModel.swift; sourceTree = "<group>"; };
 		D2D990D81E7207130094DA64 /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2D990DA1E72073D0094DA64 /* SettingsCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCellViewModel.swift; sourceTree = "<group>"; };
 		D2DD507E1E6A34DB0090D21A /* OverviewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCoordinator.swift; sourceTree = "<group>"; };
@@ -961,8 +961,8 @@
 		D2FEDE7E1E6F4B0600184CEC /* SD Card Management */ = {
 			isa = PBXGroup;
 			children = (
-				D2D990D61E71F5020094DA64 /* SDCardManagementViewModel.swift */,
-				D2D990CA1E71E65D0094DA64 /* SDCardManagementViewController.swift */,
+				D22102BA1EAD0980005517EB /* SDCardManagementViewController.swift */,
+				D22102BC1EAD09CA005517EB /* SDCardManagementViewModel.swift */,
 			);
 			path = "SD Card Management";
 			sourceTree = "<group>";
@@ -1223,6 +1223,7 @@
 				D2C8AF3B1E9435EE00DC7914 /* FormTextInputView.swift in Sources */,
 				D20E41A31E88747900CE99BA /* LogDetailViewController.swift in Sources */,
 				D2D990C51E6F6ABD0094DA64 /* LogsViewController.swift in Sources */,
+				D22102BB1EAD0980005517EB /* SDCardManagementViewController.swift in Sources */,
 				D2C8AF311E92E3C600DC7914 /* PrintProfileViewModel.swift in Sources */,
 				D26B50171E734FEC00795462 /* SlicingViewController.swift in Sources */,
 				D22102B91EABEC5A005517EB /* SlicingProfileCreationViewModel.swift in Sources */,
@@ -1257,7 +1258,6 @@
 				D2D990C91E71E6420094DA64 /* TerminalViewController.swift in Sources */,
 				D25679431E8D1DD400D763A3 /* SlicerCellViewModel.swift in Sources */,
 				D23F0CE51E92488200A70BC9 /* PrintProfilesViewController.swift in Sources */,
-				D2D990D71E71F5020094DA64 /* SDCardManagementViewModel.swift in Sources */,
 				D22401731E6AE1320082129A /* FilesViewModel.swift in Sources */,
 				D2D990BD1E6F688B0094DA64 /* PrinterControlViewModel.swift in Sources */,
 				D2F7658C1E78102300A5BC11 /* Command.swift in Sources */,
@@ -1270,7 +1270,7 @@
 				D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */,
 				D2C38CD41E802C6D00D06698 /* OPNumberFormatter.swift in Sources */,
 				D2CBD72C1E8C4579002EA538 /* Slicer.swift in Sources */,
-				D2D990CB1E71E65D0094DA64 /* SDCardManagementViewController.swift in Sources */,
+				D22102BD1EAD09CA005517EB /* SDCardManagementViewModel.swift in Sources */,
 				D2132B5D1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift in Sources */,
 				D22401711E6AD7D30082129A /* FilePrintStats.swift in Sources */,
 				D2132B571E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift in Sources */,
