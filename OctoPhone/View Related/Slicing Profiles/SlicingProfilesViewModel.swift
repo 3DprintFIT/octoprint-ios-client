@@ -18,6 +18,12 @@ protocol SlicingProfilesViewModelInputs {
     ///
     /// - Parameter index: Index of selected row
     func selectedProfile(at index: Int)
+
+    /// Call when user tapped on add button to create new slicing profile
+    func addButtonTapped()
+
+    /// Call when current view appeared to refresh list data
+    func viewDidAppear()
 }
 
 // MARK: - Outputs
@@ -94,6 +100,9 @@ SlicingProfilesViewModelOutputs {
     /// Last error occured
     private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
 
+    /// Broadcasts new value whenever view appeared
+    private let viewDidAppearProperty = MutableProperty<()>(())
+
     // MARK: Initializers
 
     init(delegate: SlicingProfilesViewControllerDelegate, slicerID: String,
@@ -124,7 +133,9 @@ SlicingProfilesViewModelOutputs {
                 }
             }
 
-        requestSlicerProfiles()
+        viewDidAppearProperty.producer.skip(first: 1).startWithValues { [weak self] in
+            self?.requestSlicerProfiles()
+        }
     }
 
     // MARK: Input methods
@@ -136,6 +147,14 @@ SlicingProfilesViewModelOutputs {
         let profile = slicerProperty.value!.slicingProfiles[index]
 
         delegate?.selectedSlicingProfile(profile, forSlicer: slicerID)
+    }
+
+    func addButtonTapped() {
+        delegate?.addButtonTapped()
+    }
+
+    func viewDidAppear() {
+        requestSlicerProfiles()
     }
 
     // MARK: Output methods

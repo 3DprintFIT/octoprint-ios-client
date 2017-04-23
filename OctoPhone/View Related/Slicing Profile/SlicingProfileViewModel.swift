@@ -15,6 +15,22 @@ import Result
 protocol SlicingProfileViewModelInputs {
     /// Call when user requested profile deletion
     func deleteProfile()
+
+    /// Call when user tapped on done button
+    func doneButtonTapped()
+
+    /// Call when user tapped cancel button
+    func cancelButtonTapped()
+
+    /// Call when user changed the name of slicing profile
+    ///
+    /// - Parameter newValue: New name
+    func nameChanged(_ newValue: String?)
+
+    /// Call when user changed the description of slicing profile
+    ///
+    /// - Parameter newValue: New description
+    func descriptionChanged(_ newValue: String?)
 }
 
 // MARK: - Outputs
@@ -23,6 +39,12 @@ protocol SlicingProfileViewModelInputs {
 protocol SlicingProfileViewModelOutputs {
     /// Screen title
     var title: Property<String> { get }
+
+    /// Indicates whether the delete button should be visible to the user
+    var deleteButtonIsVisible: Property<Bool> { get }
+
+    /// Indicates whether the content is editable or not
+    var contentIsEditable: Property<Bool> { get }
 
     /// Text for name label
     var nameText: Property<String> { get }
@@ -65,6 +87,10 @@ SlicingProfileViewModelOutputs {
     // MARK: Outputs
 
     let title: Property<String>
+
+    let deleteButtonIsVisible = Property<Bool>(value: true)
+
+    let contentIsEditable = Property<Bool>(value: false)
 
     let nameText = Property<String>(value: tr(.slicingProfileReference))
 
@@ -125,6 +151,22 @@ SlicingProfileViewModelOutputs {
 
     func deleteProfile() {
         deleteSlicingProfile()
+    }
+
+    func doneButtonTapped() {
+        delegate?.doneButtonTapped()
+    }
+
+    func cancelButtonTapped() {
+        delegate?.doneButtonTapped()
+    }
+
+    func nameChanged(_ newValue: String?) {
+        // Profile update not implemented
+    }
+
+    func descriptionChanged(_ newValue: String?) {
+        // Profile update not implemented
     }
 
     // MARK: Output methods

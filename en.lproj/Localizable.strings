@@ -160,6 +160,9 @@
 "Slicing profile name" = "Profile name";
 "Slicing profile description" = "Description";
 "Slicing profile reference" = "File reference";
+"Add new slicing profile" = "Add new slicing profile";
+"Slicing profile fields are required" = "Profile name and description are required fields.";
+"Slicing profile could not be created" = "Slicing profile could not be created.";
 
 
 // *
@@ -170,7 +173,7 @@
 "Printer profiles list could not be downloaded" = "Printer profiles list could not be downloaded.";
 "Could not save printer profiles" = "Could not save printer profiles.";
 "Unknown printer profile" = "Unknown printer profile";
-"Do you really want to delete print profile" = "Do you really want to delete print profile? This action is permanent and cannot be undone";
+"Do you really want to delete print profile" = "Do you really want to delete print profile? This action is permanent and cannot be undone.";
 "Print profile could not be deleted from localy" = "Print profile could not be deleted localy.";
 "Could not delete print profile from printer" = "Could not delete print profile from printer.";
 "Print profile update was not successfull" = "Print profile update was not successfull.";

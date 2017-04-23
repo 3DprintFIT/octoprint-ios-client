@@ -24,7 +24,7 @@ class SlicingProfileView: UIView {
     }()
 
     /// Actual profile name
-    let nameTextLabel = UILabel()
+    let nameTextField = UITextField()
 
     /// Label for profile description text
     let descriptionLabel: UILabel = {
@@ -36,7 +36,7 @@ class SlicingProfileView: UIView {
     }()
 
     /// Actual description text
-    let descriptionTextLabel = UILabel()
+    let descriptionTextField = UITextField()
 
     /// Label for reference text
     let referenceLabel: UILabel = {
@@ -62,8 +62,8 @@ class SlicingProfileView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        let stackView = UIStackView(arrangedSubviews: [nameLabel, nameTextLabel, descriptionLabel,
-                                                       descriptionTextLabel, referenceLabel],
+        let stackView = UIStackView(arrangedSubviews: [nameLabel, nameTextField, descriptionLabel,
+                                                       descriptionTextField, referenceLabel],
                                     axis: .vertical)
 
         addSubview(stackView)

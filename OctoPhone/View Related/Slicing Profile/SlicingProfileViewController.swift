@@ -13,6 +13,9 @@ import ReactiveSwift
 protocol SlicingProfileViewControllerDelegate: class {
     /// Called when slicing profile was successfully deleted
     func deletedSlicingProfile()
+
+    /// Called when user tapped on done button
+    func doneButtonTapped()
 }
 
 /// Slicing profile detail controller
@@ -27,6 +30,18 @@ class SlicingProfileViewController: BaseViewController {
                                action: #selector(deleteProfileButtonTapped))
     }()
 
+    /// Done button
+    lazy var doneButton: UIBarButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: .done, target: self,
+                               action: #selector(doneButtonTapped))
+    }()
+
+    /// Button for creating cancellation
+    lazy var cancelButton: UIBarButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: .cancel, target: self,
+                               action: #selector(cancelButtonTapped))
+    }()
+
     /// Profile detail items view
     private let profileView = SlicingProfileView()
 
@@ -39,7 +54,6 @@ class SlicingProfileViewController: BaseViewController {
         self.init()
 
         self.viewModel = viewModel
-        bindViewModel()
     }
 
     // MARK: - Controller lifecycle
@@ -58,10 +72,25 @@ class SlicingProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = deleteButton
+        navigationItem.leftBarButtonItem = deleteButton
+        navigationItem.rightBarButtonItem = doneButton
+
+        bindViewModel()
     }
 
     // MARK: - Internal logic
+
+    /// UI callback for done button
+    func doneButtonTapped() {
+        view.endEditing(true)
+        viewModel.inputs.doneButtonTapped()
+    }
+
+    /// UI callback for cancel button
+    func cancelButtonTapped() {
+        view.endEditing(true)
+        viewModel.inputs.cancelButtonTapped()
+    }
 
     /// Open decision dialog when user tapped delete button
     func deleteProfileButtonTapped() {
@@ -85,10 +114,30 @@ class SlicingProfileViewController: BaseViewController {
 
         viewModel.outputs.title.producer.startWithValues { [weak self] title in self?.title = title }
 
+        if !viewModel.outputs.deleteButtonIsVisible.value {
+            navigationItem.leftBarButtonItem = cancelButton
+        }
+
         profileView.nameLabel.reactive.text <~ outputs.nameText
         profileView.descriptionLabel.reactive.text <~ outputs.descriptionText
 
-        profileView.nameTextLabel.reactive.text <~ outputs.profileName
-        profileView.descriptionTextLabel.reactive.text <~ outputs.descriptionText
+        profileView.nameTextField.reactive.isEnabled <~ outputs.contentIsEditable
+        profileView.descriptionTextField.reactive.isEnabled <~ outputs.contentIsEditable
+        profileView.nameTextField.reactive.text <~ outputs.profileName
+        profileView.descriptionTextField.reactive.text <~ outputs.profileDescription
+
+        profileView.nameTextField.reactive.continuousTextValues
+            .observeValues { [weak self] name in
+                self?.viewModel.inputs.nameChanged(name)
+            }
+
+        profileView.descriptionTextField.reactive.continuousTextValues
+            .observeValues { [weak self] description in
+                self?.viewModel.inputs.descriptionChanged(description)
+            }
+
+        outputs.displayError.startWithValues { [weak self] error in
+            self?.presentError(title: error.title, message: error.message)
+        }
     }
 }

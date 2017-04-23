@@ -14,35 +14,49 @@ final class SlicingProfileCoordinator: ContextCoordinator {
     /// Printer requests provider
     private let provider: OctoPrintProvider
 
-    /// ID of slicing profile
-    private let slicingProfileID: String
-
     /// Slicer associated to requested profile
     private let slicerID: String
 
+    /// ID of slicing profile
+    private let slicingProfileID: String?
+
     init(navigationController: UINavigationController?, contextManager: ContextManagerType,
-         provider: OctoPrintProvider, slicingProfileID: String, slicerID: String) {
+         provider: OctoPrintProvider, slicerID: String, slicingProfileID: String?) {
 
         self.provider = provider
-        self.slicingProfileID = slicingProfileID
         self.slicerID = slicerID
+        self.slicingProfileID = slicingProfileID
 
         super.init(navigationController: navigationController, contextManager: contextManager)
     }
 
     override func start() {
-        let viewModel = SlicingProfileViewModel(delegate: self, slicingProfileID: slicingProfileID,
+        var viewModel: SlicingProfileViewModelType
+
+        if let slicingProfileID = slicingProfileID {
+            viewModel = SlicingProfileViewModel(delegate: self, slicingProfileID: slicingProfileID,
                                                 slicerID: slicerID, provider: provider,
                                                 contextManager: contextManager)
-        let controller = SlicingProfileViewController(viewModel: viewModel)
+        } else {
+            viewModel = SlicingProfileCreationViewModel(delegate: self, provider: provider,
+                                                        slicerID: slicerID)
+        }
 
-        navigationController?.pushViewController(controller, animated: true)
+        let controller = SlicingProfileViewController(viewModel: viewModel)
+        let navigation = UINavigationController(rootViewController: controller)
+
+        navigationController?.present(navigation, animated: true, completion: nil)
     }
 }
 
 extension SlicingProfileCoordinator: SlicingProfileViewControllerDelegate {
     func deletedSlicingProfile() {
-        navigationController?.popViewController(animated: true)
+        navigationController?.dismiss(animated: true, completion: nil)
+        completed()
+    }
+
+    func doneButtonTapped() {
+        navigationController?.dismiss(animated: true, completion: nil)
         completed()
     }
 }

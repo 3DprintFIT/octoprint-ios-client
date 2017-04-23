@@ -41,6 +41,7 @@
 		D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */; };
 		D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21F3F8C1E649EC300351761 /* PrinterListCellViewModel.swift */; };
 		D22102B61EABA2D4005517EB /* SlicingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102B51EABA2D4005517EB /* SlicingProfileView.swift */; };
+		D22102B91EABEC5A005517EB /* SlicingProfileCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102B81EABEC5A005517EB /* SlicingProfileCreationViewModel.swift */; };
 		D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401601E6A39480082129A /* DetailCoordinator.swift */; };
 		D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401621E6A3B3F0082129A /* FilesCoordinator.swift */; };
 		D22401651E6A3B670082129A /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401641E6A3B670082129A /* SettingsCoordinator.swift */; };
@@ -219,6 +220,7 @@
 		D21F3F8A1E6493CA00351761 /* PrinterListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListViewModel.swift; sourceTree = "<group>"; };
 		D21F3F8C1E649EC300351761 /* PrinterListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCellViewModel.swift; sourceTree = "<group>"; };
 		D22102B51EABA2D4005517EB /* SlicingProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfileView.swift; sourceTree = "<group>"; };
+		D22102B81EABEC5A005517EB /* SlicingProfileCreationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfileCreationViewModel.swift; sourceTree = "<group>"; };
 		D22401601E6A39480082129A /* DetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		D22401621E6A3B3F0082129A /* FilesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesCoordinator.swift; sourceTree = "<group>"; };
 		D22401641E6A3B670082129A /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				D26B50101E734D2E00795462 /* Print Profiles */,
 				D2C8AF2B1E92E2A800DC7914 /* Print Profile */,
 				D2C8AF341E9398AD00DC7914 /* Add Printer Profile */,
+				D22102B71EABEBC3005517EB /* Add Slicing Profile */,
 				D2FEDE7E1E6F4B0600184CEC /* SD Card Management */,
 				D26B501E1E7364BF00795462 /* BaseCollectionViewController.swift */,
 				D26B50201E73668200795462 /* BaseViewController.swift */,
@@ -504,6 +507,14 @@
 				D2688D841E91154000290421 /* SlicingProfileCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		D22102B71EABEBC3005517EB /* Add Slicing Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D22102B81EABEC5A005517EB /* SlicingProfileCreationViewModel.swift */,
+			);
+			path = "Add Slicing Profile";
 			sourceTree = "<group>";
 		};
 		D22401741E6AEF900082129A /* Reactive Extensions */ = {
@@ -1214,6 +1225,7 @@
 				D2D990C51E6F6ABD0094DA64 /* LogsViewController.swift in Sources */,
 				D2C8AF311E92E3C600DC7914 /* PrintProfileViewModel.swift in Sources */,
 				D26B50171E734FEC00795462 /* SlicingViewController.swift in Sources */,
+				D22102B91EABEC5A005517EB /* SlicingProfileCreationViewModel.swift in Sources */,
 				D20E41A11E88633F00CE99BA /* LogDetailViewModel.swift in Sources */,
 				D2D990BB1E6F67FA0094DA64 /* CurrentPrintViewController.swift in Sources */,
 				D2F7659A1E7896CC00A5BC11 /* CommandCollectionViewCell.swift in Sources */,

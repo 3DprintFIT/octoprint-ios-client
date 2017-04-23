@@ -7,6 +7,8 @@ import Foundation
 
 // swiftlint:disable type_body_length
 enum L10n {
+  /// Add new slicing profile
+  case addNewSlicingProfile
   /// All
   case allFiles
   /// Ooops, an error occured
@@ -63,7 +65,7 @@ enum L10n {
   case doYouReallyWantToDeleteFileFromPrinter
   /// Do you really want to delete log from printer? This action is permanent and cannot be undone.
   case doYouReallyWantToDeleteLogFromPrinter
-  /// Do you really want to delete print profile? This action is permanent and cannot be undone
+  /// Do you really want to delete print profile? This action is permanent and cannot be undone.
   case doYouReallyWantToDeletePrintProfile
   /// Do you really want to delete slicing profile from printer? This operation is permanent and can not be undone.
   case doYouReallyWantToDeleteSlicingProfile
@@ -219,10 +221,14 @@ enum L10n {
   case slicerProfilesCouldNotBeLoaded
   /// Slicing
   case slicing
+  /// Slicing profile could not be created.
+  case slicingProfileCouldNotBeCreated
   /// Slicing profile could not be deleted.
   case slicingProfileCouldNotBeDeleted
   /// Description
   case slicingProfileDescription
+  /// Profile name and description are required fields.
+  case slicingProfileFieldsAreRequired
   /// Profile name
   case slicingProfileName
   /// File reference
@@ -269,6 +275,8 @@ extension L10n: CustomStringConvertible {
 
   var string: String {
     switch self {
+      case .addNewSlicingProfile:
+        return L10n.tr(key: "Add new slicing profile")
       case .allFiles:
         return L10n.tr(key: "All files")
       case .anErrorOccured:
@@ -481,10 +489,14 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Slicer profiles could not be loaded")
       case .slicing:
         return L10n.tr(key: "Slicing")
+      case .slicingProfileCouldNotBeCreated:
+        return L10n.tr(key: "Slicing profile could not be created")
       case .slicingProfileCouldNotBeDeleted:
         return L10n.tr(key: "Slicing profile could not be deleted")
       case .slicingProfileDescription:
         return L10n.tr(key: "Slicing profile description")
+      case .slicingProfileFieldsAreRequired:
+        return L10n.tr(key: "Slicing profile fields are required")
       case .slicingProfileName:
         return L10n.tr(key: "Slicing profile name")
       case .slicingProfileReference:

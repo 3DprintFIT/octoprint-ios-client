@@ -38,10 +38,18 @@ final class SlicingProfilesCoordinator: ContextCoordinator {
 // MARK: - SlicingProfilesViewControllerDelegate
 extension SlicingProfilesCoordinator: SlicingProfilesViewControllerDelegate {
     func selectedSlicingProfile(_ slicingProfile: SlicingProfile, forSlicer slicer: String) {
+        startSlicingProfileCoordinator(slicingProfileID: slicingProfile.ID)
+    }
+
+    func addButtonTapped() {
+        startSlicingProfileCoordinator(slicingProfileID: nil)
+    }
+
+    private func startSlicingProfileCoordinator(slicingProfileID: String?) {
         let coordinator = SlicingProfileCoordinator(navigationController: navigationController,
                                                     contextManager: contextManager, provider: provider,
-                                                    slicingProfileID: slicingProfile.ID,
-                                                    slicerID: slicer)
+                                                    slicerID: slicerID,
+                                                    slicingProfileID: slicingProfileID)
 
         childCoordinators.append(coordinator)
         coordinator.completed = { [weak self] in
