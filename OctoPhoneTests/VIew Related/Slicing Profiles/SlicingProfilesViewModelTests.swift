@@ -54,9 +54,9 @@ class SlicingProfilesViewModelTests: QuickSpec {
 
                     try! realm.write {
                         realm.add(slicer)
-                        slicer.slicingProfiles.append(SlicingProfile(ID: "1", name: "Profile 1", isDefault: true))
-                        slicer.slicingProfiles.append(SlicingProfile(ID: "2", name: "Profile 2", isDefault: true))
-                        slicer.slicingProfiles.append(SlicingProfile(ID: "3", name: "Profile 3", isDefault: true))
+                        slicer.slicingProfiles.append(SlicingProfile(ID: "1", name: "Profile 1", description: nil, isDefault: true))
+                        slicer.slicingProfiles.append(SlicingProfile(ID: "2", name: "Profile 2", description: nil, isDefault: true))
+                        slicer.slicingProfiles.append(SlicingProfile(ID: "3", name: "Profile 3", description: nil, isDefault: true))
                     }
 
                     subject = SlicingProfilesViewModel(delegate: self, slicerID: slicerID, provider: provider, contextManager: contextManager)
@@ -70,7 +70,7 @@ class SlicingProfilesViewModelTests: QuickSpec {
                     expect(emittedChanges).toEventually(equal(1))
                     expect(emittedChanges).toEventuallyNot(equal(2))
 
-                    try! realm.write { slicer.slicingProfiles.append(SlicingProfile.init(ID: "7", name: nil, isDefault: true)) }
+                    try! realm.write { slicer.slicingProfiles.append(SlicingProfile.init(ID: "7", name: nil, description: nil, isDefault: true)) }
                     expect(emittedChanges).toEventually(equal(2))
 
                     disposable.dispose()
@@ -84,13 +84,13 @@ class SlicingProfilesViewModelTests: QuickSpec {
                     let realm = try! contextManager.createContext()
                     let slicer = realm.object(ofType: Slicer.self, forPrimaryKey: slicerID)!
 
-                    try! realm.write { slicer.slicingProfiles.append(SlicingProfile(ID: "4", name: "Profile 4", isDefault: true)) }
+                    try! realm.write { slicer.slicingProfiles.append(SlicingProfile(ID: "4", name: "Profile 4", description: nil, isDefault: true)) }
                     expect(subject.outputs.profilesCount.value).toEventually(equal(4))
 
-                    try! realm.write { slicer.slicingProfiles.append(SlicingProfile(ID: "5", name: "Profile 5", isDefault: true)) }
+                    try! realm.write { slicer.slicingProfiles.append(SlicingProfile(ID: "5", name: "Profile 5", description: nil, isDefault: true)) }
                     expect(subject.outputs.profilesCount.value).toEventually(equal(5))
 
-                    try! realm.write { slicer.slicingProfiles.append(SlicingProfile(ID: "6", name: "Profile 6", isDefault: true)) }
+                    try! realm.write { slicer.slicingProfiles.append(SlicingProfile(ID: "6", name: "Profile 6", description: nil, isDefault: true)) }
                     expect(subject.outputs.profilesCount.value).toEventually(equal(6))
                 }
 
@@ -106,6 +106,10 @@ class SlicingProfilesViewModelTests: QuickSpec {
 
 extension SlicingProfilesViewModelTests: SlicingProfilesViewControllerDelegate {
     func selectedSlicingProfile(_ slicingProfile: SlicingProfile, forSlicer slicer: String) {
+
+    }
+
+    func addButtonTapped() {
 
     }
 }

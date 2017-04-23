@@ -122,16 +122,16 @@ class SlicingProfileViewController: BaseViewController {
         profileView.descriptionLabel.reactive.text <~ outputs.descriptionText
 
         profileView.nameTextField.reactive.isEnabled <~ outputs.contentIsEditable
-        profileView.descriptionTextField.reactive.isEnabled <~ outputs.contentIsEditable
+        profileView.descriptionTextView.isEditable = outputs.contentIsEditable.value
         profileView.nameTextField.reactive.text <~ outputs.profileName
-        profileView.descriptionTextField.reactive.text <~ outputs.profileDescription
+        profileView.descriptionTextView.reactive.text <~ outputs.profileDescription
 
         profileView.nameTextField.reactive.continuousTextValues
             .observeValues { [weak self] name in
                 self?.viewModel.inputs.nameChanged(name)
             }
 
-        profileView.descriptionTextField.reactive.continuousTextValues
+        profileView.descriptionTextView.reactive.continuousTextValues
             .observeValues { [weak self] description in
                 self?.viewModel.inputs.descriptionChanged(description)
             }

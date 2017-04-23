@@ -40,7 +40,7 @@ class SlicingProfileCellTests: QuickSpec {
                 var profile: SlicingProfile!
 
                 beforeEach {
-                    profile = SlicingProfile(ID: profileID, name: nil, isDefault: true)
+                    profile = SlicingProfile(ID: profileID, name: nil, description: nil, isDefault: true)
                     let realm = try! contextManger.createContext()
 
                     try! realm.write{ realm.add(profile) }

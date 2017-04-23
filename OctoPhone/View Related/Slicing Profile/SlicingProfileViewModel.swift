@@ -142,7 +142,8 @@ SlicingProfileViewModelOutputs {
         let profileProducer = profileProperty.producer.skipNil()
 
         self.profileName = Property(initial: tr(.unknown), then: profileProducer.map({ $0.name }).skipNil())
-        self.profileDescription = Property(initial: tr(.unknown), then: profileProducer.map { $0.description })
+        self.profileDescription = Property(initial: tr(.unknown),
+                                           then: profileProducer.map ({ $0.profileDescription }).skipNil())
 
         loadSlicingProfile()
     }

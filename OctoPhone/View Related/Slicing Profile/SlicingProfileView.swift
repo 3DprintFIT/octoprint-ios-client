@@ -36,15 +36,16 @@ class SlicingProfileView: UIView {
     }()
 
     /// Actual description text
-    let descriptionTextField = UITextField()
+    let descriptionTextView: UITextView = {
+        let textView = UITextView()
 
-    /// Label for reference text
-    let referenceLabel: UILabel = {
-        let label = UILabel()
+        textView.isScrollEnabled = false
+        textView.textContainerInset = .zero
+        textView.textContainer.lineFragmentPadding = 0
+        textView.backgroundColor = nil
+        textView.font = UIFont.preferredFont(forTextStyle: .body)
 
-        label.font = UIFont.preferredFont(forTextStyle: .caption1)
-
-        return label
+        return textView
     }()
 
     init() {
@@ -63,7 +64,7 @@ class SlicingProfileView: UIView {
         super.layoutSubviews()
 
         let stackView = UIStackView(arrangedSubviews: [nameLabel, nameTextField, descriptionLabel,
-                                                       descriptionTextField, referenceLabel],
+                                                       descriptionTextView],
                                     axis: .vertical)
 
         addSubview(stackView)
@@ -72,6 +73,7 @@ class SlicingProfileView: UIView {
         stackView.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
             make.width.equalToSuperview()
+            make.bottom.greaterThanOrEqualTo(descriptionTextView.snp.bottom)
         }
     }
 

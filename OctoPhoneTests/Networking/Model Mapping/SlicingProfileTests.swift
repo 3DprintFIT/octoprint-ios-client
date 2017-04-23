@@ -15,13 +15,14 @@ class SlicingProfileTests: QuickSpec {
         describe("convert") {
             let key = "medium_quality"
             let displayName = "Medium Quality"
+            let description = "This is a medium quiality profile"
             let isDefault = true
 
             context("JSON is valid") {
                 var data: [String: Any]!
 
                 beforeEach {
-                    data = ["key": key, "displayName": displayName, "default": isDefault]
+                    data = ["key": key, "description": description, "displayName": displayName, "default": isDefault]
                 }
 
                 afterEach {
@@ -33,6 +34,7 @@ class SlicingProfileTests: QuickSpec {
                     if let subject = try? SlicingProfile.fromJSON(json: data) {
                         expect(subject.ID) == key
                         expect(subject.name) == displayName
+                        expect(subject.profileDescription) == description
                         expect(subject.isDefault) == isDefault
                     }
                 }

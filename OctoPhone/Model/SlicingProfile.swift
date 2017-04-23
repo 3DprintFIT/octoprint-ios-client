@@ -21,6 +21,9 @@ final class SlicingProfile: Object {
     /// Profile name
     dynamic var name: String?
 
+    /// User description of profile
+    dynamic var profileDescription: String?
+
     /// Indicates whether the slicing profile is set as default
     dynamic var isDefault = false
 
@@ -28,11 +31,12 @@ final class SlicingProfile: Object {
 
     // MARK: - Public API
 
-    convenience init(ID: String, name: String?, isDefault: Bool) {
+    convenience init(ID: String, name: String?, description: String?, isDefault: Bool) {
         self.init()
 
         self.ID = ID
         self.name = name
+        self.profileDescription = description
         self.isDefault = isDefault
     }
 

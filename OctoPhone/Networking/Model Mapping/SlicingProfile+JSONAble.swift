@@ -16,6 +16,7 @@ extension SlicingProfile: JSONAble {
 
         let isDefault = json["default"] as? Bool ?? false
 
-        return SlicingProfile(ID: ID, name: json["displayName"] as? String, isDefault: isDefault)
+        return SlicingProfile(ID: ID, name: json["displayName"] as? String,
+                              description: json["description"] as? String, isDefault: isDefault)
     }
 }
