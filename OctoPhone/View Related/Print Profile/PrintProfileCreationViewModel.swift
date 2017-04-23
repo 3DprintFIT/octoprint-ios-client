@@ -43,7 +43,7 @@ PrintProfileViewModelOutputs {
 
     let doneButtonIsEnabled: Property<Bool>
 
-    let displayError: SignalProducer<(title: String, message: String), NoError>
+    let displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properties
 
@@ -72,7 +72,7 @@ PrintProfileViewModelOutputs {
     private let formValuesProducer: SignalProducer<(String, String, String), NoError>
 
     /// Last occured error
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     // MARK: Initializers
 

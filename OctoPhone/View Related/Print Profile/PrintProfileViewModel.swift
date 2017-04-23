@@ -71,7 +71,7 @@ protocol PrintProfileViewModelOutputs {
     var doneButtonIsEnabled: Property<Bool> { get }
 
     /// Stream of errors which should be presented to user
-    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
 }
 
 // MARK: - Common public interface
@@ -120,7 +120,7 @@ PrintProfileViewModelOutputs {
 
     let doneButtonIsEnabled = Property<Bool>(value: true)
 
-    let displayError: SignalProducer<(title: String, message: String), NoError>
+    let displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properties
 
@@ -149,7 +149,7 @@ PrintProfileViewModelOutputs {
     private let profileModelProperty = MutableProperty<String?>(nil)
 
     /// Last error which occured
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     // MARK: Initializers
 

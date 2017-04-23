@@ -47,7 +47,7 @@ protocol PrinterLoginViewModelOutputs {
     var isFormValid: Signal<Bool, NoError> { get }
 
     /// Errors which should be displayed
-    var displayError: Signal<(title: String, message: String), NoError> { get }
+    var displayError: Signal<DisplayableError, NoError> { get }
 }
 
 protocol PrinterLoginViewModelType {
@@ -69,7 +69,7 @@ PrinterLoginViewModelOutputs {
 
     let isFormValid: Signal<Bool, NoError>
 
-    let displayError: Signal<(title: String, message: String), NoError>
+    let displayError: Signal<DisplayableError, NoError>
 
     // MARK: Properties
 
@@ -95,7 +95,7 @@ PrinterLoginViewModelOutputs {
     private let providerProperty = MutableProperty<OctoPrintProvider?>(nil)
 
     /// Error description property
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     /// Database connection manager
     private let contextManager: ContextManagerType

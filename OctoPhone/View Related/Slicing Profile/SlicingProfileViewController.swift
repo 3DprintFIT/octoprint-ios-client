@@ -136,8 +136,6 @@ class SlicingProfileViewController: BaseViewController {
                 self?.viewModel.inputs.descriptionChanged(description)
             }
 
-        outputs.displayError.startWithValues { [weak self] error in
-            self?.presentError(title: error.title, message: error.message)
-        }
+        reactive.displayableError <~ outputs.displayError
     }
 }

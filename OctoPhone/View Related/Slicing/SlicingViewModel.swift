@@ -34,7 +34,7 @@ protocol SlicingViewModelOutputs {
     var slicersChanged: SignalProducer<(), NoError> { get }
 
     /// Produces errors which should be propagated to the user
-    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
 
     /// View Model for slicing cell at row index
     ///
@@ -71,7 +71,7 @@ final class SlicingViewModel: SlicingViewModelType, SlicingViewModelInputs, Slic
 
     let slicersChanged: SignalProducer<(), NoError>
 
-    let displayError: SignalProducer<(title: String, message: String), NoError>
+    let displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properties
 
@@ -88,7 +88,7 @@ final class SlicingViewModel: SlicingViewModelType, SlicingViewModelInputs, Slic
     private let slicersProperty = MutableProperty<Results<Slicer>?>(nil)
 
     /// Holds last occured error
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     // MARK: Initializers
 

@@ -36,7 +36,7 @@ SlicingProfileViewModelOutputs {
 
     let profileDescription = Property<String>(value: "")
 
-    let displayError: SignalProducer<(title: String, message: String), NoError>
+    let displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properties
 
@@ -56,7 +56,7 @@ SlicingProfileViewModelOutputs {
     private let descriptionProperty = MutableProperty<String?>(nil)
 
     /// Holds last occured error
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     // MARK: Initializers
 

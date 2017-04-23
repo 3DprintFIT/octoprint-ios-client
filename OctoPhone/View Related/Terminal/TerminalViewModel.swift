@@ -28,7 +28,7 @@ protocol TerminalViewModelOutputs {
     var isCommandValid: SignalProducer<Bool, NoError> { get }
 
     /// Stream of occured errors
-    var displayError: Signal<(title: String, message: String), NoError> { get }
+    var displayError: Signal<DisplayableError, NoError> { get }
 
     /// Total count of created commands
     var commandsCount: Int { get }
@@ -60,7 +60,7 @@ TerminalViewModelOutputs {
 
     let isCommandValid: SignalProducer<Bool, NoError>
 
-    let displayError: Signal<(title: String, message: String), NoError>
+    let displayError: Signal<DisplayableError, NoError>
 
     var commandsCount: Int { return commandsProperty.value?.count ?? 0 }
 
@@ -78,7 +78,7 @@ TerminalViewModelOutputs {
     private var commandsProperty = MutableProperty<Results<Command>?>(nil)
 
     /// Creates output error signal
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     /// Printer requests provider
     private let provider: OctoPrintProvider

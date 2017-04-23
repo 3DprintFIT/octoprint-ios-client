@@ -38,7 +38,7 @@ protocol LogDetailViewModelOutputs {
     var deleteLogButtonEnabled: SignalProducer<Bool, NoError> { get }
 
     /// Stream of log detail errors
-    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
 }
 
 // MARK: - Common public interface
@@ -76,7 +76,7 @@ LogDetailViewModelOutputs {
 
     // MARK: Outputs
 
-    let displayError: SignalProducer<(title: String, message: String), NoError>
+    let displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properties
 
@@ -96,7 +96,7 @@ LogDetailViewModelOutputs {
     private let deleteLogProperty = MutableProperty<()>(())
 
     /// Last occured error which should be presented to user
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     /// Keeps state of file downloading
     private let isDeletingLogProperty = MutableProperty(false)

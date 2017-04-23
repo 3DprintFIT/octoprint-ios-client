@@ -40,7 +40,7 @@ protocol SlicingProfilesViewModelOutputs {
     var profilesChanged: SignalProducer<(), NoError> { get }
 
     /// Stream of occured errors which should be presented to the user
-    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
 
     /// View model for slicing profile cell at given index
     ///
@@ -78,7 +78,7 @@ SlicingProfilesViewModelOutputs {
 
     let profilesChanged: SignalProducer<(), NoError>
 
-    let displayError: SignalProducer<(title: String, message: String), NoError>
+    let displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properties
 
@@ -98,7 +98,7 @@ SlicingProfilesViewModelOutputs {
     private let slicerProperty = MutableProperty<Slicer?>(nil)
 
     /// Last error occured
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     /// Broadcasts new value whenever view appeared
     private let viewDidAppearProperty = MutableProperty<()>(())

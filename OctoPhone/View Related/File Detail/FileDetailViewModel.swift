@@ -95,7 +95,7 @@ protocol FileDetailViewModelOutputs {
     var printIsEnabled: Property<Bool> { get }
 
     /// Stream of errors which should be presented to the user
-    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
 }
 
 // MARK: - Common public interface
@@ -167,7 +167,7 @@ final class FileDetailViewModel: FileDetailViewModelType, FileDetailViewModelInp
 
     let printIsEnabled: Property<Bool>
 
-    let displayError: SignalProducer<(title: String, message: String), NoError>
+    let displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properties
 
@@ -187,7 +187,7 @@ final class FileDetailViewModel: FileDetailViewModelType, FileDetailViewModelInp
     private let fileProperty = MutableProperty<File?>(nil)
 
     /// Last error occured
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     // MARK: Initializers
 

@@ -59,7 +59,7 @@ protocol SlicingProfileViewModelOutputs {
     var profileDescription: Property<String> { get }
 
     /// Stream of errors which should be presented to the user
-    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
 }
 
 // MARK: - Common public interface
@@ -100,7 +100,7 @@ SlicingProfileViewModelOutputs {
 
     let profileDescription: Property<String>
 
-    let displayError: SignalProducer<(title: String, message: String), NoError>
+    let displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properties
 
@@ -123,7 +123,7 @@ SlicingProfileViewModelOutputs {
     private let profileProperty = MutableProperty<SlicingProfile?>(nil)
 
     /// Holds lates occured error
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     // MARK: Initializers
 

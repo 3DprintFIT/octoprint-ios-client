@@ -31,7 +31,7 @@ protocol LogsViewModelOutputs {
     var logsListChanged: SignalProducer<(), NoError> { get }
 
     /// Produces errors which should be propagated to the user
-    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
 
     /// Creates view model for given row
     ///
@@ -67,7 +67,7 @@ final class LogsViewModel: LogsViewModelType, LogsViewModelInputs, LogsViewModel
 
     let logsListChanged: SignalProducer<(), NoError>
 
-    let displayError: SignalProducer<(title: String, message: String), NoError>
+    let displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properties
 
@@ -84,7 +84,7 @@ final class LogsViewModel: LogsViewModelType, LogsViewModelInputs, LogsViewModel
     private let logsProperty = MutableProperty<Results<Log>?>(nil)
 
     /// Holds last occured error, redirects errors to output
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     // MARK: Initializers
 

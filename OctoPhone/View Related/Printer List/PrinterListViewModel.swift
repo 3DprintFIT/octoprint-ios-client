@@ -32,7 +32,7 @@ protocol PrinterListViewModelOutputs {
     var storedPrintersChanged: SignalProducer<(), NoError> { get }
 
     /// Stream of errors which should be presented to the user
-    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
 
     /// Creates new view model for local printer cell
     ///
@@ -64,7 +64,7 @@ PrinterListViewModelOutputs {
 
     let storedPrintersChanged: SignalProducer<(), NoError>
 
-    let displayError: SignalProducer<(title: String, message: String), NoError>
+    let displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properies
 
@@ -72,7 +72,7 @@ PrinterListViewModelOutputs {
     private let storedPrintersProperty = MutableProperty<Results<Printer>?>(nil)
 
     /// Holds last occured error
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     /// Database context manager
     private let contextManager: ContextManagerType

@@ -34,7 +34,7 @@ protocol PrintProfilesViewModelOutputs {
     var profilesChanged: SignalProducer<(), NoError> { get }
 
     /// Stream of errors which should be presented to user
-    var displayError: SignalProducer<(title: String, message: String), NoError> { get }
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
 
     /// Provides View Model for print profile cell at specific index
     ///
@@ -71,7 +71,7 @@ PrintProfilesViewModelOutputs {
 
     var profilesChanged: SignalProducer<(), NoError>
 
-    var displayError: SignalProducer<(title: String, message: String), NoError>
+    var displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properties
 
@@ -88,7 +88,7 @@ PrintProfilesViewModelOutputs {
     private let profilesProperty = MutableProperty<Results<PrinterProfile>?>(nil)
 
     /// Last error occured
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     // MARK: Initializers
 

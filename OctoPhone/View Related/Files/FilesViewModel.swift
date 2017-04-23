@@ -40,7 +40,7 @@ protocol FilesViewModelOutputs {
     var filesCount: Int { get }
 
     /// Emits error which should be displayed
-    var displayError: Signal<(title: String, message: String), NoError> { get }
+    var displayError: Signal<DisplayableError, NoError> { get }
 
     /// Actual progress of file uploading, while the file is uploaded,
     /// 0 is send to reset value
@@ -95,7 +95,7 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
 
     let selectedLocationIndex: ReactiveSwift.Property<Int>
 
-    let displayError: Signal<(title: String, message: String), NoError>
+    let displayError: Signal<DisplayableError, NoError>
 
     // MARK: Properties
 
@@ -103,7 +103,7 @@ final class FilesViewModel: FilesViewModelType, FilesViewModelInputs, FilesViewM
     private let viewWilAppearProperty = MutableProperty(())
 
     /// Property for displayimg errors
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     /// Holds collection of **all** files, for internal use only,
     /// should not be used as output datasource,

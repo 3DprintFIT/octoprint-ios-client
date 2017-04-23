@@ -26,7 +26,7 @@ protocol CommandCellViewModelOutputs {
     var commandValue: SignalProducer<String, NoError> { get }
 
     /// Stream of errors occured o
-    var displayError: Signal<(title: String, message: String), NoError> { get }
+    var displayError: Signal<DisplayableError, NoError> { get }
 }
 
 // MARK: - Common public interface
@@ -58,7 +58,7 @@ CommandCellViewModelOutputs {
     // MARK: Outputs
     let commandValue: SignalProducer<String, NoError>
 
-    let displayError: Signal<(title: String, message: String), NoError>
+    let displayError: Signal<DisplayableError, NoError>
 
     // MARK: Private properties
     private let commandValueProperty = MutableProperty<String?>(nil)
@@ -75,7 +75,7 @@ CommandCellViewModelOutputs {
     /// Allows to cancel command request when view model is deallocated
     private var requestDisposable: Disposable?
 
-    private let displayErrorProperty = MutableProperty<(title: String, message: String)?>(nil)
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     // MARK: Initializers
 

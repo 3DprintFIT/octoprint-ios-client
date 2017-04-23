@@ -39,9 +39,7 @@ class LogsViewController: BaseCollectionViewController {
             collectionView.reactive.reloadData <~ viewModel.outputs.logsListChanged
         }
 
-        viewModel.outputs.displayError.startWithValues { error in
-            print("Caught error: \(error.title): \(error.message)")
-        }
+        reactive.displayableError <~ viewModel.outputs.displayError
     }
 }
 
