@@ -44,6 +44,9 @@
 		D22102B91EABEC5A005517EB /* SlicingProfileCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102B81EABEC5A005517EB /* SlicingProfileCreationViewModel.swift */; };
 		D22102BB1EAD0980005517EB /* SDCardManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102BA1EAD0980005517EB /* SDCardManagementViewController.swift */; };
 		D22102BD1EAD09CA005517EB /* SDCardManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102BC1EAD09CA005517EB /* SDCardManagementViewModel.swift */; };
+		D22102C11EAD0F56005517EB /* SDCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102C01EAD0F56005517EB /* SDCard.swift */; };
+		D22102C51EAD14D6005517EB /* SDCard+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102C41EAD14D6005517EB /* SDCard+JSONAble.swift */; };
+		D22102C71EAD15A0005517EB /* SDCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22102C61EAD15A0005517EB /* SDCardTests.swift */; };
 		D22401611E6A39480082129A /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401601E6A39480082129A /* DetailCoordinator.swift */; };
 		D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401621E6A3B3F0082129A /* FilesCoordinator.swift */; };
 		D22401651E6A3B670082129A /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22401641E6A3B670082129A /* SettingsCoordinator.swift */; };
@@ -223,6 +226,9 @@
 		D22102B81EABEC5A005517EB /* SlicingProfileCreationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfileCreationViewModel.swift; sourceTree = "<group>"; };
 		D22102BA1EAD0980005517EB /* SDCardManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementViewController.swift; sourceTree = "<group>"; };
 		D22102BC1EAD09CA005517EB /* SDCardManagementViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardManagementViewModel.swift; sourceTree = "<group>"; };
+		D22102C01EAD0F56005517EB /* SDCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCard.swift; sourceTree = "<group>"; };
+		D22102C41EAD14D6005517EB /* SDCard+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SDCard+JSONAble.swift"; sourceTree = "<group>"; };
+		D22102C61EAD15A0005517EB /* SDCardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardTests.swift; sourceTree = "<group>"; };
 		D22401601E6A39480082129A /* DetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		D22401621E6A3B3F0082129A /* FilesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesCoordinator.swift; sourceTree = "<group>"; };
 		D22401641E6A3B670082129A /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
@@ -472,6 +478,7 @@
 				D2CBD72D1E8C4A40002EA538 /* SlicingProfile.swift */,
 				D23F0CDC1E919FB600A70BC9 /* PrinterProfile.swift */,
 				D2ADC6E91EAB6218009EE0BF /* Job.swift */,
+				D22102C01EAD0F56005517EB /* SDCard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -539,6 +546,7 @@
 				D256793C1E8D073B00D763A3 /* SlicingProfile+JSONAble.swift */,
 				D23F0CE21E92428E00A70BC9 /* PrinterProfile+JSONAble.swift */,
 				D215BB4E1EAB718B0011D5DD /* Job+JSONAble.swift */,
+				D22102C41EAD14D6005517EB /* SDCard+JSONAble.swift */,
 			);
 			path = "Model Mapping";
 			sourceTree = "<group>";
@@ -564,6 +572,7 @@
 				D25679401E8D07F700D763A3 /* SlicingProfileTests.swift */,
 				D23F0CE01E91A1BF00A70BC9 /* PrinterProfileTests.swift */,
 				D215BB521EAB79140011D5DD /* JobTests.swift */,
+				D22102C61EAD15A0005517EB /* SDCardTests.swift */,
 			);
 			name = "Model Mapping";
 			sourceTree = "<group>";
@@ -1248,6 +1257,7 @@
 				D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */,
 				D2353E061E9ACA60000C3B5F /* ListHeadingView.swift in Sources */,
 				D27C97101E63BA1800641A1A /* DynamicProvider.swift in Sources */,
+				D22102C11EAD0F56005517EB /* SDCard.swift in Sources */,
 				D23F0CEC1E92ADCA00A70BC9 /* PrintProfileCollectionViewCell.swift in Sources */,
 				D21F3F8D1E649EC300351761 /* PrinterListCellViewModel.swift in Sources */,
 				D2D990CF1E71E95B0094DA64 /* SettingsViewModel.swift in Sources */,
@@ -1263,6 +1273,7 @@
 				D2F7658C1E78102300A5BC11 /* Command.swift in Sources */,
 				D26B500B1E734A5500795462 /* TerminalCoordinator.swift in Sources */,
 				D25679451E8D1DFD00D763A3 /* SlicerCollectionViewCell.swift in Sources */,
+				D22102C51EAD14D6005517EB /* SDCard+JSONAble.swift in Sources */,
 				D2353E081E9ACF3B000C3B5F /* FileDetailView.swift in Sources */,
 				D22401631E6A3B3F0082129A /* FilesCoordinator.swift in Sources */,
 				D224017F1E6B0E110082129A /* File+JSONAble.swift in Sources */,
@@ -1327,6 +1338,7 @@
 				D2FEDE721E6ED36200184CEC /* PrinterListViewModelTests.swift in Sources */,
 				D2C38CC51E7D49A200D06698 /* LogsViewModelTests.swift in Sources */,
 				D2FEDE781E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift in Sources */,
+				D22102C71EAD15A0005517EB /* SDCardTests.swift in Sources */,
 				D2C38CD11E7FF87D00D06698 /* LogCellViewModelTests.swift in Sources */,
 				D25679491E8E446300D763A3 /* SlicerCellViewModelTests.swift in Sources */,
 				D2ACD74C1E6CCCC200F2603A /* TokenPluginTests.swift in Sources */,
