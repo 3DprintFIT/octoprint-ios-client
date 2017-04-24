@@ -24,3 +24,14 @@ final class SDCard {
         self.ready = ready
     }
 }
+
+/// Possible SD card commands accepted by printer
+///
+/// - initialize: SD card initialization
+/// - release: SD card release
+/// - refresh: Refresh SD card content
+enum SDCardCommand: String {
+    case initialize = "init"
+    case release
+    case refresh
+}

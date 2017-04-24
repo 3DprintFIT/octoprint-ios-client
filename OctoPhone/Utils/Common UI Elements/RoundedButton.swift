@@ -45,7 +45,7 @@ class RoundedButton: UIButton {
             make.height.equalTo(self.snp.width)
         }
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

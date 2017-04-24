@@ -31,6 +31,8 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - createPrinterProfile - Creates new printer profile on printer
 /// - updatePrinterProfile - Updates existing printer profile
 /// - deletePrintProfile - Deletes given profile from printer
+/// - sdCardStates - Checks if connected SD card is ready
+/// - sdCardCommand - 
 enum OctoPrintAPI {
     // Command
     case version
@@ -56,6 +58,9 @@ enum OctoPrintAPI {
     case createPrinterProfile(data: Parameters)
     case updatePrinterProfile(profileID: String, data: Parameters)
     case deletePrintProfile(profileID: String)
+    // SD Card Management
+    case sdCardState
+    case sdCardCommand(SDCardCommand)
 }
 
 // MARK: - TargetPart implementation
@@ -147,6 +152,14 @@ extension OctoPrintAPI: TargetPart {
 
         case let .deletePrintProfile(profileID):
             return ("api/printerprofiles/\(profileID.urlEncoded)", .delete, .request, nil)
+
+        // SD Card management
+
+        case .sdCardState:
+            return ("api/printer/sd", .get, .request, nil)
+
+        case let .sdCardCommand(command):
+            return ("api/printer/sd", .post, .request, ["command": command.rawValue])
         }
     }
 }

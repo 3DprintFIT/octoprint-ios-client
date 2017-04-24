@@ -125,6 +125,8 @@ enum L10n {
   case heatedBed
   /// The credentials you entered are incorrect.
   case incorrectCredentials
+  /// Init
+  case initSDCard
   /// Inverted control
   case invertedControl
   /// Log could not be removed.
@@ -195,12 +197,24 @@ enum L10n {
   case rectangularFormFactor
   /// Red
   case red
+  /// Refresh
+  case refreshSDCard
+  /// Release
+  case releaseSDCard
   /// Requested command could not be executed.
   case requestedCommandCouldNotBeExecuted
   /// Requested log file could not be downloaded.
   case requestedLogFileCouldNotBeDownloaded
+  /// There was an issue while performing requested SD card command.
+  case sdCardCommandFailed
   /// SD card management
   case sdCardManagement
+  /// Not connected
+  case sdCardNotConnected
+  /// Ready
+  case sdCardReady
+  /// SD card state is not available.
+  case sdCardStateIsNotAvailable
   /// Selected file could not be uploaded.
   case selectedFileCouldNotBeUploaded
   /// Selected profile could not be opened.
@@ -393,6 +407,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Heated bed")
       case .incorrectCredentials:
         return L10n.tr(key: "Incorrect Credentials")
+      case .initSDCard:
+        return L10n.tr(key: "Init SD card")
       case .invertedControl:
         return L10n.tr(key: "Inverted control")
       case .logCouldNotBeRemoved:
@@ -463,12 +479,24 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Rectangular form factor")
       case .red:
         return L10n.tr(key: "Red")
+      case .refreshSDCard:
+        return L10n.tr(key: "Refresh SD card")
+      case .releaseSDCard:
+        return L10n.tr(key: "Release SD card")
       case .requestedCommandCouldNotBeExecuted:
         return L10n.tr(key: "Requested command could not be executed")
       case .requestedLogFileCouldNotBeDownloaded:
         return L10n.tr(key: "Requested log file could not be downloaded")
+      case .sdCardCommandFailed:
+        return L10n.tr(key: "SD card command failed")
       case .sdCardManagement:
         return L10n.tr(key: "SD card management")
+      case .sdCardNotConnected:
+        return L10n.tr(key: "SD card not connected")
+      case .sdCardReady:
+        return L10n.tr(key: "SD card ready")
+      case .sdCardStateIsNotAvailable:
+        return L10n.tr(key: "SD card state is not available")
       case .selectedFileCouldNotBeUploaded:
         return L10n.tr(key: "Selected file could not be uploaded")
       case .selectedProfileCouldNotBeOpened:

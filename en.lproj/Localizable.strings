@@ -212,3 +212,10 @@
 // * SD card management
 // *
 "SD card management" = "SD card management";
+"SD card state is not available" = "SD card state is not available.";
+"SD card ready" = "Ready";
+"SD card not connected" = "Not connected";
+"Refresh SD card" = "Refresh";
+"Init SD card" = "Init";
+"Release SD card" = "Release";
+"SD card command failed" = "There was an issue while performing requested SD card command.";

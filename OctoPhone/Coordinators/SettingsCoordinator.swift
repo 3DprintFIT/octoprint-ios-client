@@ -53,7 +53,8 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
     }
 
     func sdCardManagementCellSelected() {
-        let coordinator = SDCardManagementCoordinator(navigationController: navigationController)
+        let coordinator = SDCardManagementCoordinator(navigationController: navigationController,
+                                                      provider: provider)
 
         childCoordinators.append(coordinator)
         coordinator.start()
