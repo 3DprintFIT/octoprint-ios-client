@@ -10,9 +10,8 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    scan(
-      scheme: "OctoPhone"
-    )
+    scan(scheme: "OctoPhone")
+    xcov(scheme: "OctoPhone")
   end
 
   desc "Submit a new Beta Build to Crashlytics"
@@ -23,9 +22,8 @@ platform :ios do
       platform: "iOS"
     )
     swiftlint
-    scan(
-      scheme: "OctoPhone"
-    )
+    scan(scheme: "OctoPhone")
+    xcov(scheme: "OctoPhone")
     create_keychain(
       name: ENV["MATCH_KEYCHAIN_NAME"],
       password: ENV["MATCH_PASSWORD"],
@@ -42,7 +40,6 @@ platform :ios do
     )
     increment_version_number
     gym(scheme: "OctoPhone")
-    xcov
     crashlytics
   end
 
@@ -64,11 +61,7 @@ platform :ios do
       timeout: 3600,
       add_to_search_list: true
     )
-    # match(type: "appstore")
-    # snapshot
     gym(scheme: "OctoPhone")
-    # deliver(force: true)
-    # frameit
   end
 
   desc ""
