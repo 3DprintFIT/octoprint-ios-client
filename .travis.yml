@@ -1,6 +1,9 @@
 os: osx
 osx_image: xcode8.3
 
+before_install:
+  - sudo gem install xcov
+
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
 
