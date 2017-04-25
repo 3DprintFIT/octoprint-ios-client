@@ -11,7 +11,7 @@
 You can run octoprint in docker for testing purposes (on virtual printer). Simply run docker container:
 
 ```bash
-$ docker run -p"32768:5000" josefdolezal/octophone-local
+$ docker run -p"32768:5000" josefdolezal/virtuprint-docker
 
 ```
 
