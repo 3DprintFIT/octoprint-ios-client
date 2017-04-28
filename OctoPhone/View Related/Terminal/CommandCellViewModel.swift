@@ -23,7 +23,10 @@ protocol CommandCellViewModelInputs {
 /// Command cell logic outputs
 protocol CommandCellViewModelOutputs {
     /// Actual command value entered by user
-    var commandValue: SignalProducer<String, NoError> { get }
+    var commandValue: ReactiveSwift.Property<String> { get }
+
+    /// Indicates whether the command failed
+    var failed: ReactiveSwift.Property<Bool> { get }
 
     /// Stream of errors occured o
     var displayError: Signal<DisplayableError, NoError> { get }
@@ -56,12 +59,18 @@ CommandCellViewModelOutputs {
     // MARK: Inputs
 
     // MARK: Outputs
-    let commandValue: SignalProducer<String, NoError>
+    let commandValue: ReactiveSwift.Property<String>
+
+    let failed: ReactiveSwift.Property<Bool>
 
     let displayError: Signal<DisplayableError, NoError>
 
     // MARK: Private properties
+    /// Actual command
     private let commandValueProperty = MutableProperty<String?>(nil)
+
+    /// Holds information about command success
+    private let commandFailedProperty: MutableProperty<Bool>
 
     /// Command send to the printer
     private let command: Command
@@ -75,6 +84,7 @@ CommandCellViewModelOutputs {
     /// Allows to cancel command request when view model is deallocated
     private var requestDisposable: Disposable?
 
+    /// Holds the last error occured
     private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     // MARK: Initializers
@@ -83,7 +93,9 @@ CommandCellViewModelOutputs {
         self.provider = provider
         self.contextManager = contextManager
         self.command = command
-        self.commandValue = commandValueProperty.producer.skipNil()
+        self.commandValue = Property(initial: tr(.unknown), then: SignalProducer(value: command.value))
+        self.commandFailedProperty = MutableProperty(command.status == .failed)
+        self.failed = Property(capturing: commandFailedProperty)
         self.displayError = displayErrorProperty.signal.skipNil()
 
         commandValueProperty.value = command.value
@@ -104,9 +116,11 @@ CommandCellViewModelOutputs {
                 let status: CommandStatus
 
                 switch result {
-                case .success: status = .success
+                case .success:
+                    status = .success
+                    weakSelf.commandFailedProperty.value = false
                 case .failure:
-                    weakSelf.displayErrorProperty.value = ("", "")
+                    weakSelf.commandFailedProperty.value = true
                     status = .failed
                 }
 

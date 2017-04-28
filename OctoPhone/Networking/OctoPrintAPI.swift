@@ -96,7 +96,7 @@ extension OctoPrintAPI: TargetPart {
 
         // Printer
 
-        case let .sendCommand(command): return ("api/printer/command", .get, .request, ["command": command])
+        case let .sendCommand(command): return ("api/printer/command", .post, .request, ["command": command])
 
         // Files
 

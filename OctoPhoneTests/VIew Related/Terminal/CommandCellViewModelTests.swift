@@ -37,7 +37,7 @@ class CommandCellViewModelTests: QuickSpec {
         }
 
         it("outputs command value when it's created") { 
-            subject.outputs.commandValue.startWithValues({ outputText = $0 })
+            subject.outputs.commandValue.producer.startWithValues({ outputText = $0 })
             expect(outputText) == testedCommand.value
         }
     }

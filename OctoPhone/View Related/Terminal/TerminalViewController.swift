@@ -97,7 +97,7 @@ extension TerminalViewController {
                 withReuseIdentifier: CommandCollectionViewCell.identifier, for: indexPath
             ) as! CommandCollectionViewCell
 
-        cell.viewModel = viewModel.outputs.commandCellViewModel(for: indexPath.row)
+        cell.viewModel.value = viewModel.outputs.commandCellViewModel(for: indexPath.row)
 
         return cell
     }

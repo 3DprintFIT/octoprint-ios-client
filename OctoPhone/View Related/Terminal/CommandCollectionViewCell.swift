@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import ReactiveSwift
 import ReactiveCocoa
+import Result
 
 /// Command cell in terminal
 class CommandCollectionViewCell: UICollectionViewCell {
@@ -20,29 +21,31 @@ class CommandCollectionViewCell: UICollectionViewCell {
     private let commandLabel = UILabel()
 
     /// Cell logic
-    var viewModel: CommandCellViewModelType? {
-        didSet {
-            guard let viewModel = viewModel else { return }
-
-            commandLabel.reactive.text <~ viewModel.outputs.commandValue
-        }
-    }
+    var viewModel = MutableProperty<CommandCellViewModelType?>(nil)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        addSubview(commandLabel)
+        contentView.addSubview(commandLabel)
 
         commandLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15))
         }
 
-        commandLabel.backgroundColor = .green
-
-        backgroundColor = .red
+        bindViewModel()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    /// Binds logic to view
+    private func bindViewModel() {
+        let vm = viewModel.producer.skipNil()
+
+        commandLabel.reactive.text <~ vm.flatMap(.latest) { $0.outputs.commandValue }
+        contentView.reactive.backgroundColor <~ vm
+            .flatMap(.latest) { $0.outputs.failed }
+            .map { $0 ? Colors.Pallete.dangerRed : .clear }
     }
 }
