@@ -136,6 +136,17 @@
 		D2ABD3E21E9B8985003EDDAA /* OPFileSizeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ABD3E11E9B8985003EDDAA /* OPFileSizeFormatter.swift */; };
 		D2ABD3E41E9B8E30003EDDAA /* OPDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ABD3E31E9B8E30003EDDAA /* OPDateFormatter.swift */; };
 		D2AC35FB1EB3DCA7009373AE /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC35FA1EB3DCA7009373AE /* ControlsView.swift */; };
+		D2AC364B1EB4AD78009373AE /* Icons.h in Headers */ = {isa = PBXBuildFile; fileRef = D2AC36491EB4AD78009373AE /* Icons.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D2AC364E1EB4AD78009373AE /* Icons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC36471EB4AD77009373AE /* Icons.framework */; };
+		D2AC364F1EB4AD78009373AE /* Icons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC36471EB4AD77009373AE /* Icons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D2AC36861EB68059009373AE /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = D2AC367E1EB68059009373AE /* data.json */; };
+		D2AC36871EB68059009373AE /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2AC367F1EB68059009373AE /* FontAwesome.otf */; };
+		D2AC36881EB68059009373AE /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = D2AC36801EB68059009373AE /* index.html */; };
+		D2AC36891EB68059009373AE /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = D2AC36811EB68059009373AE /* script.js */; };
+		D2AC368A1EB68059009373AE /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = D2AC36821EB68059009373AE /* style.css */; };
+		D2AC368B1EB68059009373AE /* FontAwesomeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC36831EB68059009373AE /* FontAwesomeIcon.swift */; };
+		D2AC368C1EB68059009373AE /* IconDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC36841EB68059009373AE /* IconDrawable.swift */; };
+		D2AC368D1EB68059009373AE /* IconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC36851EB68059009373AE /* IconImageView.swift */; };
 		D2ACD74C1E6CCCC200F2603A /* TokenPluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACD74B1E6CCCC200F2603A /* TokenPluginTests.swift */; };
 		D2ADC6EA1EAB6218009EE0BF /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADC6E91EAB6218009EE0BF /* Job.swift */; };
 		D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */; };
@@ -196,6 +207,13 @@
 			remoteGlobalIDString = D2688D7C1E91122D00290421;
 			remoteInfo = Localization;
 		};
+		D2AC364C1EB4AD78009373AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2CCF7381DBF46DB00EF9752 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AC36461EB4AD77009373AE;
+			remoteInfo = Icons;
+		};
 		D2CCF7551DBF46DC00EF9752 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2CCF7381DBF46DB00EF9752 /* Project object */;
@@ -204,6 +222,20 @@
 			remoteInfo = OctoPhone;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D2AC36531EB4AD78009373AE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D2AC364F1EB4AD78009373AE /* Icons.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		357C3E981DC7BE4A0018A07E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -324,6 +356,17 @@
 		D2ABD3E31E9B8E30003EDDAA /* OPDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPDateFormatter.swift; sourceTree = "<group>"; };
 		D2ABD3E51E9C1E1E003EDDAA /* OctoPhone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OctoPhone.entitlements; sourceTree = "<group>"; };
 		D2AC35FA1EB3DCA7009373AE /* ControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
+		D2AC36471EB4AD77009373AE /* Icons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Icons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AC36491EB4AD78009373AE /* Icons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Icons.h; sourceTree = "<group>"; };
+		D2AC364A1EB4AD78009373AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2AC367E1EB68059009373AE /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		D2AC367F1EB68059009373AE /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		D2AC36801EB68059009373AE /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		D2AC36811EB68059009373AE /* script.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		D2AC36821EB68059009373AE /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		D2AC36831EB68059009373AE /* FontAwesomeIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeIcon.swift; sourceTree = "<group>"; };
+		D2AC36841EB68059009373AE /* IconDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconDrawable.swift; sourceTree = "<group>"; };
+		D2AC36851EB68059009373AE /* IconImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconImageView.swift; sourceTree = "<group>"; };
 		D2ACD74B1E6CCCC200F2603A /* TokenPluginTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenPluginTests.swift; path = OctoPhoneTests/Networking/TokenPluginTests.swift; sourceTree = SOURCE_ROOT; };
 		D2ADC6E91EAB6218009EE0BF /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		D2B6F0041DE2151F00F9CE0A /* PrinterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterLoginViewController.swift; sourceTree = "<group>"; };
@@ -381,6 +424,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D2AC36431EB4AD77009373AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2CCF73D1DBF46DB00EF9752 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,6 +438,7 @@
 				357C3E9B1DC7BE4A0018A07E /* Crashlytics.framework in Frameworks */,
 				357C3E9A1DC7BE4A0018A07E /* Fabric.framework in Frameworks */,
 				D2510B0C1DD4911A004C30EA /* Alamofire.framework in Frameworks */,
+				D2AC364E1EB4AD78009373AE /* Icons.framework in Frameworks */,
 				D2510B0D1DD4911A004C30EA /* Realm.framework in Frameworks */,
 				D2510B101DD491A4004C30EA /* RealmSwift.framework in Frameworks */,
 				D23B90481E5B7F930005560B /* Result.framework in Frameworks */,
@@ -761,6 +812,39 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
+		D2AC36481EB4AD78009373AE /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				D2AC367C1EB68059009373AE /* FontAwesome */,
+				D2AC36841EB68059009373AE /* IconDrawable.swift */,
+				D2AC36851EB68059009373AE /* IconImageView.swift */,
+				D2AC36491EB4AD78009373AE /* Icons.h */,
+				D2AC364A1EB4AD78009373AE /* Info.plist */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		D2AC367C1EB68059009373AE /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				D2AC367D1EB68059009373AE /* Catalog */,
+				D2AC36831EB68059009373AE /* FontAwesomeIcon.swift */,
+			);
+			path = FontAwesome;
+			sourceTree = "<group>";
+		};
+		D2AC367D1EB68059009373AE /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				D2AC367E1EB68059009373AE /* data.json */,
+				D2AC367F1EB68059009373AE /* FontAwesome.otf */,
+				D2AC36801EB68059009373AE /* index.html */,
+				D2AC36811EB68059009373AE /* script.js */,
+				D2AC36821EB68059009373AE /* style.css */,
+			);
+			path = Catalog;
+			sourceTree = "<group>";
+		};
 		D2B6F0031DE214B500F9CE0A /* Printer Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,6 +909,7 @@
 				D21B9DE81DEA1B8A005C34CD /* Localizable.strings */,
 				D2CCF7421DBF46DB00EF9752 /* OctoPhone */,
 				D2CCF7571DBF46DC00EF9752 /* OctoPhoneTests */,
+				D2AC36481EB4AD78009373AE /* Icons */,
 				D2CCF7411DBF46DB00EF9752 /* Products */,
 				D2510B091DD4911A004C30EA /* Frameworks */,
 			);
@@ -835,6 +920,7 @@
 			children = (
 				D2CCF7401DBF46DB00EF9752 /* OctoPhone.app */,
 				D2CCF7541DBF46DC00EF9752 /* OctoPhoneTests.xctest */,
+				D2AC36471EB4AD77009373AE /* Icons.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1018,7 +1104,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		D2AC36441EB4AD77009373AE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2AC364B1EB4AD78009373AE /* Icons.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		D2AC36461EB4AD77009373AE /* Icons */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2AC36501EB4AD78009373AE /* Build configuration list for PBXNativeTarget "Icons" */;
+			buildPhases = (
+				D2AC36421EB4AD77009373AE /* Sources */,
+				D2AC36431EB4AD77009373AE /* Frameworks */,
+				D2AC36441EB4AD77009373AE /* Headers */,
+				D2AC36451EB4AD77009373AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Icons;
+			productName = Icons;
+			productReference = D2AC36471EB4AD77009373AE /* Icons.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		D2CCF73F1DBF46DB00EF9752 /* OctoPhone */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2CCF7681DBF46DC00EF9752 /* Build configuration list for PBXNativeTarget "OctoPhone" */;
@@ -1029,11 +1144,13 @@
 				D2510B0E1DD4913D004C30EA /* Carthage */,
 				357C3E971DC7BDC40018A07E /* Fabric */,
 				D2A601311DF39777006B833E /* Swiftlint */,
+				D2AC36531EB4AD78009373AE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D2688D811E91124100290421 /* PBXTargetDependency */,
+				D2AC364D1EB4AD78009373AE /* PBXTargetDependency */,
 			);
 			name = OctoPhone;
 			productName = OctoPhone;
@@ -1073,6 +1190,12 @@
 						CreatedOnToolsVersion = 8.3;
 						ProvisioningStyle = Automatic;
 					};
+					D2AC36461EB4AD77009373AE = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = CDMJRT8WJB;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
 					D2CCF73F1DBF46DB00EF9752 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = CDMJRT8WJB;
@@ -1106,12 +1229,25 @@
 			targets = (
 				D2688D7C1E91122D00290421 /* Localization */,
 				D2CCF73F1DBF46DB00EF9752 /* OctoPhone */,
+				D2AC36461EB4AD77009373AE /* Icons */,
 				D2CCF7531DBF46DC00EF9752 /* OctoPhoneTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D2AC36451EB4AD77009373AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2AC36881EB68059009373AE /* index.html in Resources */,
+				D2AC36891EB68059009373AE /* script.js in Resources */,
+				D2AC368A1EB68059009373AE /* style.css in Resources */,
+				D2AC36871EB68059009373AE /* FontAwesome.otf in Resources */,
+				D2AC36861EB68059009373AE /* data.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2CCF73E1DBF46DB00EF9752 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1218,6 +1354,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D2AC36421EB4AD77009373AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2AC368C1EB68059009373AE /* IconDrawable.swift in Sources */,
+				D2AC368B1EB68059009373AE /* FontAwesomeIcon.swift in Sources */,
+				D2AC368D1EB68059009373AE /* IconImageView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2CCF73C1DBF46DB00EF9752 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1387,6 +1533,11 @@
 			target = D2688D7C1E91122D00290421 /* Localization */;
 			targetProxy = D2688D801E91124100290421 /* PBXContainerItemProxy */;
 		};
+		D2AC364D1EB4AD78009373AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AC36461EB4AD77009373AE /* Icons */;
+			targetProxy = D2AC364C1EB4AD78009373AE /* PBXContainerItemProxy */;
+		};
 		D2CCF7561DBF46DC00EF9752 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2CCF73F1DBF46DB00EF9752 /* OctoPhone */;
@@ -1425,6 +1576,58 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D2AC36511EB4AD78009373AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CDMJRT8WJB;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Icons/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iconic.Icons;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D2AC36521EB4AD78009373AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CDMJRT8WJB;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Icons/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iconic.Icons;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -1526,6 +1729,7 @@
 		D2CCF7691DBF46DC00EF9752 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OctoPhone/OctoPhone.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1550,6 +1754,7 @@
 		D2CCF76A1DBF46DC00EF9752 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OctoPhone/OctoPhone.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1620,6 +1825,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D2AC36501EB4AD78009373AE /* Build configuration list for PBXNativeTarget "Icons" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2AC36511EB4AD78009373AE /* Debug */,
+				D2AC36521EB4AD78009373AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		D2CCF73B1DBF46DB00EF9752 /* Build configuration list for PBXProject "OctoPhone" */ = {
 			isa = XCConfigurationList;
