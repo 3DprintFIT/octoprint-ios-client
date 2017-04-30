@@ -11,9 +11,22 @@ import UIKit
 /// Printer detail flow controller
 final class DetailCoordinator: TabCoordinator {
     override func start() {
-        let controller = DetailViewController()
+        let viewModel = DetailViewModel(delegate: self, provider: provider)
+        let controller = DetailViewController(viewModel: viewModel)
 
         controller.title = tr(.printerDetail)
         navigationController?.pushViewController(controller, animated: false)
+    }
+}
+
+// MARK: - DetailViewControllerDelegate
+extension DetailCoordinator: DetailViewControllerDelegate {
+    func controlsButtonTapped() {
+        let coordinator = ControlsCoordinator(navigationController: navigationController,
+                                              contextManager: contextManager, provider: provider)
+
+        childCoordinators.append(coordinator)
+
+        coordinator.start()
     }
 }

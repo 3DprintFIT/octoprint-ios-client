@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import ReactiveSwift
+import Icons
 
 /// Printer head controls
 class ControlsView: UIView {
@@ -19,25 +20,25 @@ class ControlsView: UIView {
     // MARK: Public API
 
     /// Moves head in negative direction on X axis
-    let moveLeftButton = ControlsView.moveButton()
+    let moveLeftButton = ControlsView.moveButton(icon: .angleLeftIcon)
 
     /// Moves head in positive direction on X axis
-    let moveRightButton = ControlsView.moveButton()
+    let moveRightButton = ControlsView.moveButton(icon: .angleRightIcon)
 
     /// Moves head in positive direction on Y axis
-    let moveForwardButton = ControlsView.moveButton()
+    let moveForwardButton = ControlsView.moveButton(icon: .angleUpIcon)
 
     /// Moves head in negative direction on Y axis
-    let moveBackButton = ControlsView.moveButton()
+    let moveBackButton = ControlsView.moveButton(icon: .angleDownIcon)
 
     /// Move the print head home on X and Y axis
     let moveHomeXYButton = ControlsView.homeButton()
 
     /// Moves head in positive direction on Z axis
-    let moveUpButton = ControlsView.moveButton()
+    let moveUpButton = ControlsView.moveButton(icon: .angleUpIcon)
 
     /// Moves head in negative direction on Z axis
-    let moveDownButton = ControlsView.moveButton()
+    let moveDownButton = ControlsView.moveButton(icon: .angleDownIcon)
 
     /// Moves the print head home on Z axis
     let moveHomeZButton = ControlsView.homeButton()
@@ -131,8 +132,11 @@ class ControlsView: UIView {
 
     // MARK: Internal logic
 
-    private static func moveButton() -> UIButton {
+    private static func moveButton(icon: FontAwesomeIcon) -> UIButton {
         let button = UIButton(type: .custom)
+
+        button.setIconImage(withIcon: icon, size: CGSize(width: 18, height: 18),
+                            color: Colors.Pallete.greyHue4, forState: .normal)
 
         button.snp.makeConstraints { make in
             make.width.height.equalTo(60)
@@ -142,7 +146,7 @@ class ControlsView: UIView {
     }
 
     private static func homeButton() -> UIButton {
-        let button = moveButton()
+        let button = moveButton(icon: .homeIcon)
 
         button.layer.cornerRadius = 30
         button.layer.masksToBounds = true

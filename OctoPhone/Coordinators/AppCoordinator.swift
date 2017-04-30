@@ -10,6 +10,7 @@ import Foundation
 import Fabric
 import Crashlytics
 import UIKit
+import Icons
 
 /// Main app flow coordinator
 final class AppCoordinator: Coordinator {
@@ -25,6 +26,8 @@ final class AppCoordinator: Coordinator {
 
     override func start() {
         setupTrackers()
+
+        FontAwesomeIcon.register()
 
         let coordinator = PrinterListCoordinator(
             navigationController: navigationController,
