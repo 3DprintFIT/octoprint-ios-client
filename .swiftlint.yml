@@ -1,6 +1,8 @@
 disabled_rules:
   - force_cast
   - large_tuple
+included:
+  - OctoPhone
 excluded:
   - Carthage
   - Pods
