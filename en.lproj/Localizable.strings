@@ -222,7 +222,8 @@
 
 
 // *
-// * SD card management
+// * Printer and tool controls
 // *
 "Printer controls" = "Controls";
 "Print head command could not be issued" = "Printer command could not be issued.";
+"Extrude filament" = "Extrude";

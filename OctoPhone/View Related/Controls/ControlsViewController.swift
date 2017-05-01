@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
+import Icons
 
 /// Screen with printer head controls
 class ControlsViewController: BaseViewController {
@@ -17,7 +18,16 @@ class ControlsViewController: BaseViewController {
     /// Controller logic
     fileprivate var viewModel: ControlsViewModelType!
 
+    /// View with all needed controls
     private weak var controlsView: ControlsView?
+
+    /// Extrude filament button
+    private lazy var extrudeButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: tr(.extrudeFilament), style: .plain,
+                                     target: self, action: #selector(extrudeButtonTapped))
+
+        return button
+    }()
 
     // MARK: - Initializers
 
@@ -40,6 +50,7 @@ class ControlsViewController: BaseViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
+        navigationItem.rightBarButtonItem = extrudeButton
 
         bindViewModel()
     }
@@ -86,5 +97,10 @@ class ControlsViewController: BaseViewController {
         }
 
         reactive.displayableError <~ viewModel.outputs.displayError
+    }
+
+    /// UI callback for extrude button
+    func extrudeButtonTapped() {
+        viewModel.inputs.extrudeFilament()
     }
 }

@@ -36,6 +36,9 @@ protocol ControlsViewModelInputs {
 
     /// Call to move printer head home on Z axis
     func moveHeadHomeZ()
+
+    /// Call to extrude fixed amount of filament from print tool
+    func extrudeFilament()
 }
 
 // MARK: - Outputs
@@ -123,6 +126,10 @@ final class ControlsViewModel: ControlsViewModelType, ControlsViewModelInputs, C
 
     func moveHeadHomeZ() {
         homePrintHead(axes: [.z])
+    }
+
+    func extrudeFilament() {
+        printHeadRequest(.extrudeFilament)
     }
 
     // MARK: Output methods

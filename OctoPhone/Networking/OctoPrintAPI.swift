@@ -33,7 +33,9 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - deletePrintProfile - Deletes given profile from printer
 /// - sdCardState - Checks if connected SD card is ready
 /// - sdCardCommand - Issues SD card command
-/// - jogPrintHead -
+/// - jogPrintHead - Jogs print head in given direction on given axis
+/// - homePrintHead - Moves print head to home position on given axes
+/// - extrudeFilamen - Extrudes fixed amount of filament
 enum OctoPrintAPI {
     // Command
     case version
@@ -62,9 +64,11 @@ enum OctoPrintAPI {
     // SD Card Management
     case sdCardState
     case sdCardCommand(SDCardCommand)
-    // Controls
+    // Print head controls
     case jogPrintHead(JogAxis, JogDirection)
     case homePrintHead(Set<JogAxis>)
+    // Print tool controls
+    case extrudeFilament
 }
 
 // MARK: - TargetPart implementation
@@ -165,13 +169,17 @@ extension OctoPrintAPI: TargetPart {
         case let .sdCardCommand(command):
             return ("api/printer/sd", .post, .request, ["command": command.rawValue])
 
-        // Controls
+        // Print head controls
 
         case let .jogPrintHead(axis, direction):
             return ("api/printer/printhead", .post, .request, ["command": "jog", axis.rawValue: direction.rawValue ])
 
         case let .homePrintHead(axes):
             return ("api/printer/printhead", .post, .request, ["command": "home", "axes": axes.map { $0.rawValue }])
+
+        // Print tool controls
+        case .extrudeFilament:
+            return ("api/printer/tool", .post, .request, ["command": "extrude", "amount": 5])
         }
     }
 }

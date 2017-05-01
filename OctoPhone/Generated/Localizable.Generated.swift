@@ -77,6 +77,8 @@ enum L10n {
   case downloadingLogFile
   /// E
   case eAxis
+  /// Extrude
+  case extrudeFilament
   /// GCode analysis
   case fileAnalysis
   /// Attributes
@@ -363,6 +365,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Downloading log file")
       case .eAxis:
         return L10n.tr(key: "E axis")
+      case .extrudeFilament:
+        return L10n.tr(key: "Extrude filament")
       case .fileAnalysis:
         return L10n.tr(key: "File analysis")
       case .fileAttributes:
