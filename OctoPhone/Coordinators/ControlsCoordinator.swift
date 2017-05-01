@@ -23,7 +23,7 @@ final class ControlsCoordinator: ContextCoordinator {
     }
 
     override func start() {
-        let viewModel = ControlsViewModel()
+        let viewModel = ControlsViewModel(provider: provider)
 
         let controller = ControlsViewController(viewModel: viewModel)
 //        let navigation = UINavigationController(rootViewController: controller)

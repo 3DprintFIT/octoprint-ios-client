@@ -31,8 +31,9 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - createPrinterProfile - Creates new printer profile on printer
 /// - updatePrinterProfile - Updates existing printer profile
 /// - deletePrintProfile - Deletes given profile from printer
-/// - sdCardStates - Checks if connected SD card is ready
-/// - sdCardCommand - 
+/// - sdCardState - Checks if connected SD card is ready
+/// - sdCardCommand - Issues SD card command
+/// - jogPrintHead -
 enum OctoPrintAPI {
     // Command
     case version
@@ -61,6 +62,9 @@ enum OctoPrintAPI {
     // SD Card Management
     case sdCardState
     case sdCardCommand(SDCardCommand)
+    // Controls
+    case jogPrintHead(JogAxis, JogDirection)
+    case homePrintHead(Set<JogAxis>)
 }
 
 // MARK: - TargetPart implementation
@@ -160,6 +164,14 @@ extension OctoPrintAPI: TargetPart {
 
         case let .sdCardCommand(command):
             return ("api/printer/sd", .post, .request, ["command": command.rawValue])
+
+        // Controls
+
+        case let .jogPrintHead(axis, direction):
+            return ("api/printer/printhead", .post, .request, ["command": "jog", axis.rawValue: direction.rawValue ])
+
+        case let .homePrintHead(axes):
+            return ("api/printer/printhead", .post, .request, ["command": "home", "axes": axes.map { $0.rawValue }])
         }
     }
 }
@@ -188,3 +200,31 @@ fileprivate func stubbedResponse(_ fileName: String) -> Data {
     return try! Data(contentsOf: URL(fileURLWithPath: path!))
 }
 //swiftlint:enable force_try
+
+/// Axis for print head jog command
+///
+/// - x: X axis
+/// - y: Y axis
+/// - z: Z axis
+enum JogAxis: String, Hashable {
+    case x
+    case y
+    case z
+
+    var hashValue: Int {
+        return self.rawValue.hashValue
+    }
+
+    static func == (lhs: JogAxis, rhs: JogAxis) -> Bool {
+        return lhs.rawValue == rhs.rawValue
+    }
+}
+
+/// Direction of print head move
+///
+/// - increase: Moves print head in positive direction
+/// - decrease: Moves print head in neagtive direction
+enum JogDirection: Int {
+    case increase = 10
+    case decrease = -10
+}

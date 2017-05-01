@@ -219,3 +219,10 @@
 "Init SD card" = "Init";
 "Release SD card" = "Release";
 "SD card command failed" = "There was an issue while performing requested SD card command.";
+
+
+// *
+// * SD card management
+// *
+"Printer controls" = "Controls";
+"Print head command could not be issued" = "Printer command could not be issued.";

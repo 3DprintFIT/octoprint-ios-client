@@ -159,6 +159,8 @@ enum L10n {
   case orange
   /// Origin
   case origin
+  /// Printer command could not be issued.
+  case printHeadCommandCouldNotBeIssued
   /// Color
   case printProfileColor
   /// Print profile could not be deleted localy.
@@ -177,6 +179,8 @@ enum L10n {
   case printer
   /// Access token
   case printerAccessToken
+  /// Controls
+  case printerControls
   /// Printer detail
   case printerDetail
   /// Requested file could not be printed because printer is not currently operational.
@@ -441,6 +445,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Orange")
       case .origin:
         return L10n.tr(key: "Origin")
+      case .printHeadCommandCouldNotBeIssued:
+        return L10n.tr(key: "Print head command could not be issued")
       case .printProfileColor:
         return L10n.tr(key: "Print profile color")
       case .printProfileCouldNotBeDeletedFromLocaly:
@@ -459,6 +465,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Printer")
       case .printerAccessToken:
         return L10n.tr(key: "Printer Access Token")
+      case .printerControls:
+        return L10n.tr(key: "Printer controls")
       case .printerDetail:
         return L10n.tr(key: "Printer detail")
       case .printerIsNotOperational:
