@@ -209,6 +209,7 @@ fileprivate func stubbedResponse(_ fileName: String) -> Data {
 }
 //swiftlint:enable force_try
 
+// swiftlint:disable identifier_name
 /// Axis for print head jog command
 ///
 /// - x: X axis
@@ -227,6 +228,7 @@ enum JogAxis: String, Hashable {
         return lhs.rawValue == rhs.rawValue
     }
 }
+// swiftlint:enable identifier_name
 
 /// Direction of print head move
 ///
