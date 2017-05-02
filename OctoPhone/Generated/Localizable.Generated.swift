@@ -45,6 +45,8 @@ enum L10n {
   case command
   /// Yay, command execution failed.
   case commandExecutingFailed
+  /// Connect.
+  case connectPrinter
   /// Connection Error
   case connectionError
   /// Can not connect to the printer.
@@ -197,6 +199,8 @@ enum L10n {
   case printerControls
   /// Printer detail
   case printerDetail
+  /// Printer is currently not in operational state. If you want to connect printer, click the button below.
+  case printerIsCurrentlyNotInOperationalState
   /// Requested file could not be printed because printer is not currently operational.
   case printerIsNotOperational
   /// Printer list
@@ -345,6 +349,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Command")
       case .commandExecutingFailed:
         return L10n.tr(key: "Command executing failed")
+      case .connectPrinter:
+        return L10n.tr(key: "Connect printer")
       case .connectionError:
         return L10n.tr(key: "Connection Error")
       case .couldNotConnectToPrinter:
@@ -497,6 +503,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Printer controls")
       case .printerDetail:
         return L10n.tr(key: "Printer detail")
+      case .printerIsCurrentlyNotInOperationalState:
+        return L10n.tr(key: "Printer is currently not in operational state")
       case .printerIsNotOperational:
         return L10n.tr(key: "Printer is not operational")
       case .printerList:

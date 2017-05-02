@@ -141,7 +141,9 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
         self.bedTemperatureOffset = Property(initial: tr(.unknown),
                                              then: bedProducer.map({ $0.offsetTemperature }).formatTemperature())
 
-        self.dataChanged = SignalProducer.combineLatest(stateProducer, jobProducer, bedProducer).ignoreValues()
+        let dataChanged = SignalProducer.combineLatest(stateProducer, jobProducer, bedProducer).ignoreValues()
+
+        self.dataChanged = SignalProducer.merge([dataChanged, contentIsAvailable.producer.ignoreValues()])
 
         requestData()
     }
@@ -176,10 +178,10 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
             .startWithResult { result in
                 if case let .success(bed) = result {
                     self.bedProperty.value = bed
+                    self.contentIsAvailableProperty.value = true
                 }
 
-                if case let .failure(error) = result {
-                    print(error)
+                if case .failure = result {
                     self.contentIsAvailableProperty.value = false
                 }
             }

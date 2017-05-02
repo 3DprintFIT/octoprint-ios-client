@@ -32,6 +32,15 @@ class DetailViewController: BaseCollectionViewController {
         return button
     }()
 
+    /// Connect printer button
+    private lazy var connectButton: UIButton = {
+        let button = UIButton(type: .system)
+
+        button.setTitle(tr(.connectPrinter), for: .normal)
+
+        return button
+    }()
+
     // MARK: - Initializers
 
     convenience init(viewModel: DetailViewModelType) {
@@ -50,6 +59,16 @@ class DetailViewController: BaseCollectionViewController {
         collectionView?.registerTypedCell(cellClass: JobPreviewCell.self)
         collectionView?.registerTypedCell(cellClass: JobInfoCell.self)
 
+        emptyView.addSubview(connectButton)
+        emptyView.imageView.image = FontAwesomeIcon.exclamationIcon.image(ofSize: CGSize(width: 50, height: 50),
+                                                                          color: Colors.Pallete.greyHue3)
+        emptyView.textLabel.text = tr(.printerIsCurrentlyNotInOperationalState)
+
+        connectButton.snp.makeConstraints { make in
+            make.top.equalTo(emptyView.textLabel.snp.bottom).offset(15)
+            make.centerX.equalTo(emptyView.textLabel)
+        }
+
         bindViewModel()
     }
 
@@ -66,6 +85,8 @@ class DetailViewController: BaseCollectionViewController {
         if let collectionView = collectionView {
             collectionView.reactive.reloadData <~ viewModel.outputs.dataChanged
         }
+
+        emptyView.reactive.isHidden <~ viewModel.outputs.contentIsAvailable
     }
 
     fileprivate func dequeueInfoCell(for indexPath: IndexPath, collectionView: UICollectionView,
@@ -83,7 +104,7 @@ class DetailViewController: BaseCollectionViewController {
 // MARK: - UICollectionViewDataSource
 extension DetailViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return viewModel.outputs.contentIsAvailable.value ? 3 : 0
     }
 
     override func collectionView(_ collectionView: UICollectionView,
