@@ -84,6 +84,7 @@
 		D22444251EB8B2C90026CE68 /* PrinterState+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444241EB8B2C90026CE68 /* PrinterState+JSONAble.swift */; };
 		D22444291EB8B3C70026CE68 /* PrinterStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444281EB8B3C70026CE68 /* PrinterStateTests.swift */; };
 		D224442B1EB8DC7E0026CE68 /* OPTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224442A1EB8DC7E0026CE68 /* OPTimeFormatter.swift */; };
+		D224442D1EB9012D0026CE68 /* DetailUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224442C1EB9012D0026CE68 /* DetailUnavailableView.swift */; };
 		D2306BC31E9016EE00CA007D /* SlicingProfilesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2306BC21E9016EE00CA007D /* SlicingProfilesViewModelTests.swift */; };
 		D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E671E75AB8500C797AB /* TerminalInputView.swift */; };
 		D2315E6D1E75E99300C797AB /* UIStackView+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E6C1E75E99300C797AB /* UIStackView+CustomInit.swift */; };
@@ -317,6 +318,7 @@
 		D22444241EB8B2C90026CE68 /* PrinterState+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PrinterState+JSONAble.swift"; sourceTree = "<group>"; };
 		D22444281EB8B3C70026CE68 /* PrinterStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterStateTests.swift; sourceTree = "<group>"; };
 		D224442A1EB8DC7E0026CE68 /* OPTimeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPTimeFormatter.swift; sourceTree = "<group>"; };
+		D224442C1EB9012D0026CE68 /* DetailUnavailableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailUnavailableView.swift; sourceTree = "<group>"; };
 		D2306BC21E9016EE00CA007D /* SlicingProfilesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesViewModelTests.swift; sourceTree = "<group>"; };
 		D2315E671E75AB8500C797AB /* TerminalInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalInputView.swift; sourceTree = "<group>"; };
 		D2315E6A1E75BE8400C797AB /* UIPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UIPlayground.playground; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 				D224440F1EB7C5040026CE68 /* JobStateCell.swift */,
 				D22444111EB7C9430026CE68 /* JobPreviewCell.swift */,
 				D22444151EB8761A0026CE68 /* JobInfoCell.swift */,
+				D224442C1EB9012D0026CE68 /* DetailUnavailableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1517,6 +1520,7 @@
 				D21C10481E66D3A500D88546 /* AppCoordinator.swift in Sources */,
 				D2315E6D1E75E99300C797AB /* UIStackView+CustomInit.swift in Sources */,
 				D26B50211E73668200795462 /* BaseViewController.swift in Sources */,
+				D224442D1EB9012D0026CE68 /* DetailUnavailableView.swift in Sources */,
 				D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */,
 				D22444091EB686820026CE68 /* ControlsCoordinator.swift in Sources */,
 				D27C97121E63BAE000641A1A /* OctoPrintAPI.swift in Sources */,
