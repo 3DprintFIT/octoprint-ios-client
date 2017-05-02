@@ -47,6 +47,8 @@ enum L10n {
   case commandExecutingFailed
   /// Connect.
   case connectPrinter
+  /// Connect printer
+  case connectPrinterTitle
   /// Connection Error
   case connectionError
   /// Can not connect to the printer.
@@ -351,6 +353,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Command executing failed")
       case .connectPrinter:
         return L10n.tr(key: "Connect printer")
+      case .connectPrinterTitle:
+        return L10n.tr(key: "Connect printer title")
       case .connectionError:
         return L10n.tr(key: "Connection Error")
       case .couldNotConnectToPrinter:

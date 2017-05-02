@@ -235,3 +235,9 @@
 "Printer controls" = "Controls";
 "Print head command could not be issued" = "Printer command could not be issued.";
 "Extrude filament" = "Extrude";
+
+
+// *
+// * Printer and tool controls
+// *
+"Connect printer title" = "Connect printer";

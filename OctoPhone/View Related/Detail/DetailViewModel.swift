@@ -18,6 +18,9 @@ import Icons
 protocol DetailViewModelInputs {
     /// Call when user tap on controls button
     func controlsButtonTapped()
+
+    /// Call when user tap on connect printer button
+    func connectButtonTapped()
 }
 
 // MARK: - Outputs
@@ -154,6 +157,10 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
 
     func controlsButtonTapped() {
         delegate?.controlsButtonTapped()
+    }
+
+    func connectButtonTapped() {
+        delegate?.connectButtonTapped()
     }
 
     // MARK: Internal logic

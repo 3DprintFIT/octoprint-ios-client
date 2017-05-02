@@ -85,6 +85,9 @@
 		D22444291EB8B3C70026CE68 /* PrinterStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444281EB8B3C70026CE68 /* PrinterStateTests.swift */; };
 		D224442B1EB8DC7E0026CE68 /* OPTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224442A1EB8DC7E0026CE68 /* OPTimeFormatter.swift */; };
 		D224442D1EB9012D0026CE68 /* DetailUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224442C1EB9012D0026CE68 /* DetailUnavailableView.swift */; };
+		D22444301EB922180026CE68 /* ConnectPrinterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224442F1EB922180026CE68 /* ConnectPrinterCoordinator.swift */; };
+		D22444321EB922B30026CE68 /* ConnectPrinterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444311EB922B30026CE68 /* ConnectPrinterViewController.swift */; };
+		D22444341EB922C10026CE68 /* ConnectPrinterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444331EB922C10026CE68 /* ConnectPrinterViewModel.swift */; };
 		D2306BC31E9016EE00CA007D /* SlicingProfilesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2306BC21E9016EE00CA007D /* SlicingProfilesViewModelTests.swift */; };
 		D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E671E75AB8500C797AB /* TerminalInputView.swift */; };
 		D2315E6D1E75E99300C797AB /* UIStackView+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E6C1E75E99300C797AB /* UIStackView+CustomInit.swift */; };
@@ -319,6 +322,9 @@
 		D22444281EB8B3C70026CE68 /* PrinterStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterStateTests.swift; sourceTree = "<group>"; };
 		D224442A1EB8DC7E0026CE68 /* OPTimeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPTimeFormatter.swift; sourceTree = "<group>"; };
 		D224442C1EB9012D0026CE68 /* DetailUnavailableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailUnavailableView.swift; sourceTree = "<group>"; };
+		D224442F1EB922180026CE68 /* ConnectPrinterCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectPrinterCoordinator.swift; sourceTree = "<group>"; };
+		D22444311EB922B30026CE68 /* ConnectPrinterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectPrinterViewController.swift; sourceTree = "<group>"; };
+		D22444331EB922C10026CE68 /* ConnectPrinterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectPrinterViewModel.swift; sourceTree = "<group>"; };
 		D2306BC21E9016EE00CA007D /* SlicingProfilesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesViewModelTests.swift; sourceTree = "<group>"; };
 		D2315E671E75AB8500C797AB /* TerminalInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalInputView.swift; sourceTree = "<group>"; };
 		D2315E6A1E75BE8400C797AB /* UIPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UIPlayground.playground; sourceTree = "<group>"; };
@@ -530,6 +536,7 @@
 				D22102B71EABEBC3005517EB /* Add Slicing Profile */,
 				D2FEDE7E1E6F4B0600184CEC /* SD Card Management */,
 				D2AC35F91EB3DC5F009373AE /* Controls */,
+				D224442E1EB921C60026CE68 /* Connect Printer */,
 				D26B501E1E7364BF00795462 /* BaseCollectionViewController.swift */,
 				D26B50201E73668200795462 /* BaseViewController.swift */,
 			);
@@ -609,6 +616,7 @@
 				D24EDCBD1E90037C00A8437B /* SlicingProfilesCoordinator.swift */,
 				D2688D841E91154000290421 /* SlicingProfileCoordinator.swift */,
 				D22444081EB686820026CE68 /* ControlsCoordinator.swift */,
+				D224442F1EB922180026CE68 /* ConnectPrinterCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -687,6 +695,15 @@
 				D224442C1EB9012D0026CE68 /* DetailUnavailableView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D224442E1EB921C60026CE68 /* Connect Printer */ = {
+			isa = PBXGroup;
+			children = (
+				D22444331EB922C10026CE68 /* ConnectPrinterViewModel.swift */,
+				D22444311EB922B30026CE68 /* ConnectPrinterViewController.swift */,
+			);
+			path = "Connect Printer";
 			sourceTree = "<group>";
 		};
 		D2306BC11E90159500CA007D /* Slicing Profiles */ = {
@@ -1536,6 +1553,7 @@
 				D2688D851E91154000290421 /* SlicingProfileCoordinator.swift in Sources */,
 				D23F0CDD1E919FB600A70BC9 /* PrinterProfile.swift in Sources */,
 				D2C8AF331E92E3E800DC7914 /* PrintProfileViewController.swift in Sources */,
+				D22444321EB922B30026CE68 /* ConnectPrinterViewController.swift in Sources */,
 				D2F765961E788C3000A5BC11 /* CommandCellViewModel.swift in Sources */,
 				D2353DF91E9A2C25000C3B5F /* FileCollectionViewCell.swift in Sources */,
 				D22102B61EABA2D4005517EB /* SlicingProfileView.swift in Sources */,
@@ -1559,6 +1577,8 @@
 				D2D331401E67177100C9C005 /* PrinterLoginCoordinator.swift in Sources */,
 				D2AC35FB1EB3DCA7009373AE /* ControlsView.swift in Sources */,
 				D2353DFF1E9A38B9000C3B5F /* FileDetailViewController.swift in Sources */,
+				D22444301EB922180026CE68 /* ConnectPrinterCoordinator.swift in Sources */,
+				D22444341EB922C10026CE68 /* ConnectPrinterViewModel.swift in Sources */,
 				D224440B1EB693530026CE68 /* DetailViewModel.swift in Sources */,
 				D23F0CEA1E92ADB200A70BC9 /* PrintProfileCellViewModel.swift in Sources */,
 				D28DE5421E8477AD0056A9F7 /* CommonOperators.swift in Sources */,

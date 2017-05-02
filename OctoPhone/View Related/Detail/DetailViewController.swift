@@ -13,8 +13,11 @@ import Icons
 
 /// Printer detail flow interface
 protocol DetailViewControllerDelegate: class {
-    /// Called when usertappd on controls button
+    /// Called when user tapped on controls button
     func controlsButtonTapped()
+
+    /// Called when user tapped on connect printer button
+    func connectButtonTapped()
 }
 
 /// Shows basic informations about printer
@@ -87,6 +90,10 @@ class DetailViewController: BaseCollectionViewController {
         }
 
         emptyView.reactive.isHidden <~ viewModel.outputs.contentIsAvailable
+
+        connectButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+            self?.viewModel.inputs.connectButtonTapped()
+        }
     }
 
     fileprivate func dequeueInfoCell(for indexPath: IndexPath, collectionView: UICollectionView,

@@ -29,4 +29,17 @@ extension DetailCoordinator: DetailViewControllerDelegate {
 
         coordinator.start()
     }
+
+    func connectButtonTapped() {
+        let coordinator = ConnectPrinterCoordinator(navigationController: navigationController,
+                                                    contextManager: contextManager, provider: provider)
+
+        childCoordinators.append(coordinator)
+
+        coordinator.completed = { [weak self] in
+            _ = self?.childCoordinators.popLast()
+        }
+
+        coordinator.start()
+    }
 }
