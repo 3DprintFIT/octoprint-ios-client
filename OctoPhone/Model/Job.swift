@@ -16,19 +16,19 @@ final class Job: Object {
 
     /// File which is currently beeing printed,
     /// or file which was printed recently
-    dynamic var fileName = ""
+    dynamic var fileName: String?
 
     /// Actual size of currently printed file
-    dynamic var fileSize = 0
+    let fileSize = RealmOptional<Int>()
 
     /// Indicates printing progress
-    dynamic var completion = 0.0
+    let completion = RealmOptional<Double>()
 
     /// Time for how long is the job running
-    dynamic var printTime = 0
+    let printTime = RealmOptional<Int>()
 
     /// Estimated time of job completion
-    dynamic var printTimeLeft = 0
+    let printTimeLeft = RealmOptional<Int>()
 
     /// Actual state of printer
     dynamic var state = ""
@@ -37,16 +37,16 @@ final class Job: Object {
 
     // MARK: - Public API
 
-    convenience init(fileName: String, fileSize: Int, completion: Double, printTime: Int,
-                     printTimeLeft: Int, state: String) {
+    convenience init(fileName: String?, fileSize: Int?, completion: Double?, printTime: Int?,
+                     printTimeLeft: Int?, state: String) {
 
         self.init()
 
         self.fileName = fileName
-        self.fileSize = fileSize
-        self.completion = completion
-        self.printTime = printTime
-        self.printTimeLeft = printTimeLeft
+        self.fileSize.value = fileSize
+        self.completion.value = completion
+        self.printTime.value = printTime
+        self.printTimeLeft.value = printTimeLeft
         self.state = state
     }
 

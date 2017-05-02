@@ -14,15 +14,16 @@ extension Job: JSONAble {
             let job = json["job"] as? [String: Any],
             let progress = json["progress"] as? [String: Any],
             let state = json["state"] as? String,
-            let file = job["file"] as? [String: Any],
-            let fileName = file["name"] as? String,
-            let fileSize = file["size"] as? Int,
-            let completion = progress["completion"] as? Double,
-            let printTime = progress["printTime"] as? Int,
-            let printTimeLeft = progress["printTimeLeft"] as? Int
+            let file = job["file"] as? [String: Any]
         else {
             throw JSONAbleError.errorMappingJSONToObject(json: json)
         }
+
+        let fileName = file["name"] as? String
+        let fileSize = file["size"] as? Int
+        let completion = progress["completion"] as? Double
+        let printTime = progress["printTime"] as? Int
+        let printTimeLeft = progress["printTimeLeft"] as? Int
 
         return Job(fileName: fileName, fileSize: fileSize, completion: completion,
                    printTime: printTime, printTimeLeft: printTimeLeft, state: state)

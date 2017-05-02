@@ -33,10 +33,10 @@ class JobTests: QuickSpec {
                         expect() { try Job.fromJSON(json: data) }.notTo(throwError())
                         if let job = try? Job.fromJSON(json: data) {
                             expect(job.fileName) == "whistle_v2.gcode"
-                            expect(job.fileSize) == 1468987
-                            expect(job.completion) == 0.22334532
-                            expect(job.printTime) == 276
-                            expect(job.printTimeLeft) == 912
+                            expect(job.fileSize.value) == 1468987
+                            expect(job.completion.value) == 0.22334532
+                            expect(job.printTime.value) == 276
+                            expect(job.printTimeLeft.value) == 912
                             expect(job.state) == "Operational"
                         }
                     }
