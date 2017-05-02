@@ -73,6 +73,7 @@
 		D224440B1EB693530026CE68 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224440A1EB693530026CE68 /* DetailViewModel.swift */; };
 		D224440D1EB6936B0026CE68 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224440C1EB6936B0026CE68 /* DetailViewController.swift */; };
 		D22444141EB7C9B20026CE68 /* UICollectionView+TypedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444131EB7C9B20026CE68 /* UICollectionView+TypedCell.swift */; };
+		D224441E1EB893660026CE68 /* OPTemperatureFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224441D1EB893660026CE68 /* OPTemperatureFormatter.swift */; };
 		D2306BC31E9016EE00CA007D /* SlicingProfilesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2306BC21E9016EE00CA007D /* SlicingProfilesViewModelTests.swift */; };
 		D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E671E75AB8500C797AB /* TerminalInputView.swift */; };
 		D2315E6D1E75E99300C797AB /* UIStackView+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E6C1E75E99300C797AB /* UIStackView+CustomInit.swift */; };
@@ -295,6 +296,7 @@
 		D224440A1EB693530026CE68 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		D224440C1EB6936B0026CE68 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D22444131EB7C9B20026CE68 /* UICollectionView+TypedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+TypedCell.swift"; sourceTree = "<group>"; };
+		D224441D1EB893660026CE68 /* OPTemperatureFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPTemperatureFormatter.swift; sourceTree = "<group>"; };
 		D2306BC21E9016EE00CA007D /* SlicingProfilesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesViewModelTests.swift; sourceTree = "<group>"; };
 		D2315E671E75AB8500C797AB /* TerminalInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalInputView.swift; sourceTree = "<group>"; };
 		D2315E6A1E75BE8400C797AB /* UIPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UIPlayground.playground; sourceTree = "<group>"; };
@@ -884,6 +886,7 @@
 				D2C38CD31E802C6D00D06698 /* OPNumberFormatter.swift */,
 				D2ABD3E11E9B8985003EDDAA /* OPFileSizeFormatter.swift */,
 				D2ABD3E31E9B8E30003EDDAA /* OPDateFormatter.swift */,
+				D224441D1EB893660026CE68 /* OPTemperatureFormatter.swift */,
 			);
 			path = Formatters;
 			sourceTree = "<group>";
@@ -1426,6 +1429,7 @@
 				D2353DF71E9A2BD1000C3B5F /* FileCellViewModel.swift in Sources */,
 				D2ADC6EA1EAB6218009EE0BF /* Job.swift in Sources */,
 				D26B501B1E7353C700795462 /* PrintProfilesCoordinator.swift in Sources */,
+				D224441E1EB893660026CE68 /* OPTemperatureFormatter.swift in Sources */,
 				D22401831E6B12C10082129A /* FilePrinterStats+JSONAble.swift in Sources */,
 				D2C38CC91E7D4A5800D06698 /* Log.swift in Sources */,
 				D24EDCBE1E90037C00A8437B /* SlicingProfilesCoordinator.swift in Sources */,
