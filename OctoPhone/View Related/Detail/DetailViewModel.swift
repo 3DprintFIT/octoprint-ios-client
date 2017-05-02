@@ -27,28 +27,40 @@ protocol DetailViewModelInputs {
 
 /// Printer detail logic outputs
 protocol DetailViewModelOutputs {
+    /// Screen title
     var title: Property<String> { get }
 
+    /// Indicates whether the content is currently available
     var contentIsAvailable: Property<Bool> { get }
 
+    /// Text representation of printer state
     var printerState: Property<String> { get }
 
+    /// Preview image of job or placeholder if it's not available
     var jobPreview: Property<UIImage> { get }
 
+    /// Title of current job
     var jobTitle: Property<String> { get }
 
+    /// Name of currently printed file
     var fileName: Property<String> { get }
 
+    /// Indicates for how long is file beeing printed
     var printTime: Property<String> { get }
 
+    /// Estimated timed of print end
     var estimatedPrintTime: Property<String> { get }
 
+    /// Current temperature of printer bed
     var bedTemperature: Property<String> { get }
 
+    /// Target temperature of printer bed
     var bedTemperaturTarget: Property<String> { get }
 
+    /// Printer bed offset temperature
     var bedTemperatureOffset: Property<String> { get }
 
+    /// Streams which indicates when data should be reloaded
     var dataChanged: SignalProducer<(), NoError> { get }
 }
 
