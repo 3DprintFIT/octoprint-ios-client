@@ -73,7 +73,13 @@
 		D224440B1EB693530026CE68 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224440A1EB693530026CE68 /* DetailViewModel.swift */; };
 		D224440D1EB6936B0026CE68 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224440C1EB6936B0026CE68 /* DetailViewController.swift */; };
 		D22444141EB7C9B20026CE68 /* UICollectionView+TypedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444131EB7C9B20026CE68 /* UICollectionView+TypedCell.swift */; };
+		D22444181EB8902F0026CE68 /* Bed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444171EB8902F0026CE68 /* Bed.swift */; };
+		D224441A1EB8915B0026CE68 /* BedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444191EB8915B0026CE68 /* BedTests.swift */; };
+		D224441C1EB891B90026CE68 /* PrinterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224441B1EB891B90026CE68 /* PrinterState.swift */; };
 		D224441E1EB893660026CE68 /* OPTemperatureFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224441D1EB893660026CE68 /* OPTemperatureFormatter.swift */; };
+		D22444201EB89E240026CE68 /* Bed+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224441F1EB89E240026CE68 /* Bed+JSONAble.swift */; };
+		D22444251EB8B2C90026CE68 /* PrinterState+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444241EB8B2C90026CE68 /* PrinterState+JSONAble.swift */; };
+		D22444291EB8B3C70026CE68 /* PrinterStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444281EB8B3C70026CE68 /* PrinterStateTests.swift */; };
 		D2306BC31E9016EE00CA007D /* SlicingProfilesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2306BC21E9016EE00CA007D /* SlicingProfilesViewModelTests.swift */; };
 		D2315E681E75AB8500C797AB /* TerminalInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E671E75AB8500C797AB /* TerminalInputView.swift */; };
 		D2315E6D1E75E99300C797AB /* UIStackView+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2315E6C1E75E99300C797AB /* UIStackView+CustomInit.swift */; };
@@ -296,7 +302,13 @@
 		D224440A1EB693530026CE68 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		D224440C1EB6936B0026CE68 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D22444131EB7C9B20026CE68 /* UICollectionView+TypedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+TypedCell.swift"; sourceTree = "<group>"; };
+		D22444171EB8902F0026CE68 /* Bed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bed.swift; sourceTree = "<group>"; };
+		D22444191EB8915B0026CE68 /* BedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedTests.swift; sourceTree = "<group>"; };
+		D224441B1EB891B90026CE68 /* PrinterState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterState.swift; sourceTree = "<group>"; };
 		D224441D1EB893660026CE68 /* OPTemperatureFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPTemperatureFormatter.swift; sourceTree = "<group>"; };
+		D224441F1EB89E240026CE68 /* Bed+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bed+JSONAble.swift"; sourceTree = "<group>"; };
+		D22444241EB8B2C90026CE68 /* PrinterState+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PrinterState+JSONAble.swift"; sourceTree = "<group>"; };
+		D22444281EB8B3C70026CE68 /* PrinterStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterStateTests.swift; sourceTree = "<group>"; };
 		D2306BC21E9016EE00CA007D /* SlicingProfilesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesViewModelTests.swift; sourceTree = "<group>"; };
 		D2315E671E75AB8500C797AB /* TerminalInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalInputView.swift; sourceTree = "<group>"; };
 		D2315E6A1E75BE8400C797AB /* UIPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UIPlayground.playground; sourceTree = "<group>"; };
@@ -549,6 +561,8 @@
 				D23F0CDC1E919FB600A70BC9 /* PrinterProfile.swift */,
 				D2ADC6E91EAB6218009EE0BF /* Job.swift */,
 				D22102C01EAD0F56005517EB /* SDCard.swift */,
+				D22444171EB8902F0026CE68 /* Bed.swift */,
+				D224441B1EB891B90026CE68 /* PrinterState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -620,6 +634,8 @@
 				D23F0CE21E92428E00A70BC9 /* PrinterProfile+JSONAble.swift */,
 				D215BB4E1EAB718B0011D5DD /* Job+JSONAble.swift */,
 				D22102C41EAD14D6005517EB /* SDCard+JSONAble.swift */,
+				D224441F1EB89E240026CE68 /* Bed+JSONAble.swift */,
+				D22444241EB8B2C90026CE68 /* PrinterState+JSONAble.swift */,
 			);
 			path = "Model Mapping";
 			sourceTree = "<group>";
@@ -646,6 +662,8 @@
 				D23F0CE01E91A1BF00A70BC9 /* PrinterProfileTests.swift */,
 				D215BB521EAB79140011D5DD /* JobTests.swift */,
 				D22102C61EAD15A0005517EB /* SDCardTests.swift */,
+				D22444191EB8915B0026CE68 /* BedTests.swift */,
+				D22444281EB8B3C70026CE68 /* PrinterStateTests.swift */,
 			);
 			name = "Model Mapping";
 			sourceTree = "<group>";
@@ -1393,6 +1411,7 @@
 				D24EDCC01E90087900A8437B /* SlicingProfilesViewModel.swift in Sources */,
 				D2D990B91E6F66C70094DA64 /* CurrentPrintViewModel.swift in Sources */,
 				D22444071EB6857E0026CE68 /* ControlsViewController.swift in Sources */,
+				D22444251EB8B2C90026CE68 /* PrinterState+JSONAble.swift in Sources */,
 				D2A601301DF3870F006B833E /* PrinterListCollectionViewCell.swift in Sources */,
 				D256793B1E8D059B00D763A3 /* Slicer+JSONAble.swift in Sources */,
 				D2132B601E99846A00FA3ACD /* DeletionDialogFactory.swift in Sources */,
@@ -1419,6 +1438,7 @@
 				D26B50171E734FEC00795462 /* SlicingViewController.swift in Sources */,
 				D22102B91EABEC5A005517EB /* SlicingProfileCreationViewModel.swift in Sources */,
 				D20E41A11E88633F00CE99BA /* LogDetailViewModel.swift in Sources */,
+				D224441C1EB891B90026CE68 /* PrinterState.swift in Sources */,
 				D2D990BB1E6F67FA0094DA64 /* CurrentPrintViewController.swift in Sources */,
 				D2F7659A1E7896CC00A5BC11 /* CommandCollectionViewCell.swift in Sources */,
 				D2C8AF2D1E92E33C00DC7914 /* PrintProfileCoordinator.swift in Sources */,
@@ -1479,11 +1499,13 @@
 				D2DD507F1E6A34DB0090D21A /* OverviewCoordinator.swift in Sources */,
 				D22444091EB686820026CE68 /* ControlsCoordinator.swift in Sources */,
 				D27C97121E63BAE000641A1A /* OctoPrintAPI.swift in Sources */,
+				D22444181EB8902F0026CE68 /* Bed.swift in Sources */,
 				D2C38CC71E7D49EB00D06698 /* LogsViewModel.swift in Sources */,
 				D2D990C11E6F6A800094DA64 /* PrinterControlViewController.swift in Sources */,
 				D22401781E6AFDF70082129A /* JSONAble.swift in Sources */,
 				D2C38CCB1E7D4D5B00D06698 /* Log+JSONAble.swift in Sources */,
 				D2688D891E9117E400290421 /* SlicingProfileViewController.swift in Sources */,
+				D22444201EB89E240026CE68 /* Bed+JSONAble.swift in Sources */,
 				D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */,
 				D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */,
 				D2688D851E91154000290421 /* SlicingProfileCoordinator.swift in Sources */,
@@ -1530,6 +1552,7 @@
 				D2FEDE781E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift in Sources */,
 				D22102C71EAD15A0005517EB /* SDCardTests.swift in Sources */,
 				D2C38CD11E7FF87D00D06698 /* LogCellViewModelTests.swift in Sources */,
+				D224441A1EB8915B0026CE68 /* BedTests.swift in Sources */,
 				D25679491E8E446300D763A3 /* SlicerCellViewModelTests.swift in Sources */,
 				D2ACD74C1E6CCCC200F2603A /* TokenPluginTests.swift in Sources */,
 				D2FEDE701E6ED1C900184CEC /* PrinterListCellViewModelTests.swift in Sources */,
@@ -1546,6 +1569,7 @@
 				D2CBD7311E8C4EF1002EA538 /* SlicingViewModelTests.swift in Sources */,
 				D2C38CCD1E7D4FA500D06698 /* LogTests.swift in Sources */,
 				D22401931E6C0FE70082129A /* FilePrintStatsTests.swift in Sources */,
+				D22444291EB8B3C70026CE68 /* PrinterStateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
