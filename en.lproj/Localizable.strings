@@ -47,6 +47,12 @@
 // * Detail
 // *
 "Printer detail" = "Printer detail";
+"Job file" = "File";
+"Job print time" = "Print time";
+"Job print time left" = "Print time left";
+"Bed temperature" = "Bed temperature";
+"Bed temperature target" = "Bed temperature target";
+"Bed temperature offset" = "Bed temperature offset";
 
 
 // *

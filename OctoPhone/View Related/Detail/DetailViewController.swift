@@ -18,7 +18,7 @@ protocol DetailViewControllerDelegate: class {
 }
 
 /// Shows basic informations about printer
-class DetailViewController: BaseViewController {
+class DetailViewController: BaseCollectionViewController {
     // MARK: - Properties
 
     /// Controller logic
@@ -35,7 +35,7 @@ class DetailViewController: BaseViewController {
     // MARK: - Initializers
 
     convenience init(viewModel: DetailViewModelType) {
-        self.init()
+        self.init(collectionViewLayout: UICollectionViewFlowLayout())
 
         self.viewModel = viewModel
     }
@@ -46,6 +46,9 @@ class DetailViewController: BaseViewController {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = controlsButton
+        collectionView?.registerTypedCell(cellClass: JobStateCell.self)
+        collectionView?.registerTypedCell(cellClass: JobPreviewCell.self)
+        collectionView?.registerTypedCell(cellClass: JobInfoCell.self)
 
         bindViewModel()
     }
@@ -60,6 +63,105 @@ class DetailViewController: BaseViewController {
     /// Binds outputs of View Model to UI and converts
     /// user interaction to View Model inputs
     private func bindViewModel() {
+        if let collectionView = collectionView {
+            collectionView.reactive.reloadData <~ viewModel.outputs.dataChanged
+        }
+    }
 
+    fileprivate func dequeueInfoCell(for indexPath: IndexPath, collectionView: UICollectionView,
+                                     title: String, detail: String) -> JobInfoCell {
+
+        let cell: JobInfoCell = collectionView.dequeueTypedCell(for: indexPath)
+
+        cell.titleLabel.text = title
+        cell.detailLabel.text = detail
+
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension DetailViewController {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
+
+        return section == 0 ? 2 : 3
+    }
+
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        let outputs = viewModel.outputs
+
+        switch (indexPath.section, indexPath.item) {
+        // Print connection state label
+        case (0, 0):
+            let cell: JobStateCell = collectionView.dequeueTypedCell(for: indexPath)
+
+            cell.stateLabel.text = outputs.printerState.value
+
+            return cell
+        // Print job title and illustration
+        case (0, 1):
+            let cell: JobPreviewCell = collectionView.dequeueTypedCell(for: indexPath)
+
+            cell.jobPreviewImage.image = outputs.jobPreview.value
+            cell.jobTitleLable.text = outputs.jobTitle.value
+
+            return cell
+        // Job filename
+        case (1, 0):
+            return dequeueInfoCell(for: indexPath, collectionView: collectionView,
+                                   title: tr(.fileName), detail: outputs.fileName.value)
+        // Job print time
+        case (1, 1):
+            return dequeueInfoCell(for: indexPath, collectionView: collectionView,
+                                   title: tr(.jobPrintTime), detail: outputs.printTime.value)
+        // Job print time left
+        case (1, 2):
+            return dequeueInfoCell(for: indexPath, collectionView: collectionView,
+                                   title: tr(.jobPrintTimeLeft), detail: outputs.estimatedPrintTime.value)
+        // Actual bed temperature
+        case (2, 0):
+            return dequeueInfoCell(for: indexPath, collectionView: collectionView,
+                                   title: tr(.bedTemperature), detail: outputs.bedTemperature.value)
+        // Target bed temperature
+        case (2, 1):
+            return dequeueInfoCell(for: indexPath, collectionView: collectionView,
+                                   title: tr(.bedTemperatureTarget), detail: outputs.bedTemperaturTarget.value)
+        // Offset bed temperature
+        case (2, 2):
+            return dequeueInfoCell(for: indexPath, collectionView: collectionView,
+                                   title: tr(.bedTemperatureOffset), detail: outputs.bedTemperatureOffset.value)
+        default:
+            fatalError("Unexpected IndexPath requested.")
+        }
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        /// Makes higher the preview cell, the rest is the same
+        let height: CGFloat = indexPath.section == 0 && indexPath.item == 1 ? 140 : 44
+
+        return CGSize(width: view.frame.width, height: height)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.5
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+
+        return UIEdgeInsets(top: 2, left: 0, bottom: 3, right: 0)
     }
 }

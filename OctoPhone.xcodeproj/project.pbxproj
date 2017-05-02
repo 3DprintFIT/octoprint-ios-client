@@ -72,7 +72,10 @@
 		D22444091EB686820026CE68 /* ControlsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444081EB686820026CE68 /* ControlsCoordinator.swift */; };
 		D224440B1EB693530026CE68 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224440A1EB693530026CE68 /* DetailViewModel.swift */; };
 		D224440D1EB6936B0026CE68 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224440C1EB6936B0026CE68 /* DetailViewController.swift */; };
+		D22444101EB7C5040026CE68 /* JobStateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224440F1EB7C5040026CE68 /* JobStateCell.swift */; };
+		D22444121EB7C9430026CE68 /* JobPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444111EB7C9430026CE68 /* JobPreviewCell.swift */; };
 		D22444141EB7C9B20026CE68 /* UICollectionView+TypedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444131EB7C9B20026CE68 /* UICollectionView+TypedCell.swift */; };
+		D22444161EB8761A0026CE68 /* JobInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444151EB8761A0026CE68 /* JobInfoCell.swift */; };
 		D22444181EB8902F0026CE68 /* Bed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444171EB8902F0026CE68 /* Bed.swift */; };
 		D224441A1EB8915B0026CE68 /* BedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22444191EB8915B0026CE68 /* BedTests.swift */; };
 		D224441C1EB891B90026CE68 /* PrinterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D224441B1EB891B90026CE68 /* PrinterState.swift */; };
@@ -302,7 +305,10 @@
 		D22444081EB686820026CE68 /* ControlsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsCoordinator.swift; sourceTree = "<group>"; };
 		D224440A1EB693530026CE68 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		D224440C1EB6936B0026CE68 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D224440F1EB7C5040026CE68 /* JobStateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobStateCell.swift; sourceTree = "<group>"; };
+		D22444111EB7C9430026CE68 /* JobPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobPreviewCell.swift; sourceTree = "<group>"; };
 		D22444131EB7C9B20026CE68 /* UICollectionView+TypedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+TypedCell.swift"; sourceTree = "<group>"; };
+		D22444151EB8761A0026CE68 /* JobInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobInfoCell.swift; sourceTree = "<group>"; };
 		D22444171EB8902F0026CE68 /* Bed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bed.swift; sourceTree = "<group>"; };
 		D22444191EB8915B0026CE68 /* BedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedTests.swift; sourceTree = "<group>"; };
 		D224441B1EB891B90026CE68 /* PrinterState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterState.swift; sourceTree = "<group>"; };
@@ -670,6 +676,16 @@
 			name = "Model Mapping";
 			sourceTree = "<group>";
 		};
+		D224440E1EB7C4C30026CE68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D224440F1EB7C5040026CE68 /* JobStateCell.swift */,
+				D22444111EB7C9430026CE68 /* JobPreviewCell.swift */,
+				D22444151EB8761A0026CE68 /* JobInfoCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D2306BC11E90159500CA007D /* Slicing Profiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -809,6 +825,7 @@
 		D28EC5311E09E5AD0089C027 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				D224440E1EB7C4C30026CE68 /* View */,
 				D224440A1EB693530026CE68 /* DetailViewModel.swift */,
 				D224440C1EB6936B0026CE68 /* DetailViewController.swift */,
 			);
@@ -1423,6 +1440,7 @@
 				D2EF392B1E66F08700A17057 /* Coordinator.swift in Sources */,
 				D24EDCC21E90089300A8437B /* SlicingProfilesViewController.swift in Sources */,
 				D248115E1EA69F1200BA0A8B /* ClosePrinterCellCollectionViewCell.swift in Sources */,
+				D22444161EB8761A0026CE68 /* JobInfoCell.swift in Sources */,
 				D2CBD72E1E8C4A40002EA538 /* SlicingProfile.swift in Sources */,
 				D2353E041E9AC753000C3B5F /* Colors.swift in Sources */,
 				D248115C1EA69EFC00BA0A8B /* ClosePrinterCellViewModel.swift in Sources */,
@@ -1521,10 +1539,12 @@
 				D2B6F0051DE2151F00F9CE0A /* PrinterLoginViewController.swift in Sources */,
 				D2688D871E9117B000290421 /* SlicingProfileViewModel.swift in Sources */,
 				D26B500F1E734CB600795462 /* SlicingCoordinator.swift in Sources */,
+				D22444121EB7C9430026CE68 /* JobPreviewCell.swift in Sources */,
 				D22401651E6A3B670082129A /* SettingsCoordinator.swift in Sources */,
 				D289197B1E117BAF00E3BBEB /* Localizable.Generated.swift in Sources */,
 				D28E44A51E8A7A81009D4976 /* String+URLEncoded.swift in Sources */,
 				D2353DFB1E9A3412000C3B5F /* FileDetailCoordinator.swift in Sources */,
+				D22444101EB7C5040026CE68 /* JobStateCell.swift in Sources */,
 				D2EF39291E66F06800A17057 /* PrinterListCoordinator.swift in Sources */,
 				D224442B1EB8DC7E0026CE68 /* OPTimeFormatter.swift in Sources */,
 				D23F0CE31E92428E00A70BC9 /* PrinterProfile+JSONAble.swift in Sources */,

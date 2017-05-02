@@ -17,6 +17,12 @@ enum L10n {
   case anErrorOccuredWhileTryingToPrintFile
   /// Axis
   case axis
+  /// Bed temperature
+  case bedTemperature
+  /// Bed temperature offset
+  case bedTemperatureOffset
+  /// Bed temperature target
+  case bedTemperatureTarget
   /// Black
   case black
   /// Blue
@@ -131,6 +137,12 @@ enum L10n {
   case initSDCard
   /// Inverted control
   case invertedControl
+  /// File
+  case jobFile
+  /// Print time
+  case jobPrintTime
+  /// Print time left
+  case jobPrintTimeLeft
   /// Log could not be removed.
   case logCouldNotBeRemoved
   /// Log detail
@@ -305,6 +317,12 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "An error occured while trying to print file")
       case .axis:
         return L10n.tr(key: "Axis")
+      case .bedTemperature:
+        return L10n.tr(key: "Bed temperature")
+      case .bedTemperatureOffset:
+        return L10n.tr(key: "Bed temperature offset")
+      case .bedTemperatureTarget:
+        return L10n.tr(key: "Bed temperature target")
       case .black:
         return L10n.tr(key: "Black")
       case .blue:
@@ -419,6 +437,12 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Init SD card")
       case .invertedControl:
         return L10n.tr(key: "Inverted control")
+      case .jobFile:
+        return L10n.tr(key: "Job file")
+      case .jobPrintTime:
+        return L10n.tr(key: "Job print time")
+      case .jobPrintTimeLeft:
+        return L10n.tr(key: "Job print time left")
       case .logCouldNotBeRemoved:
         return L10n.tr(key: "Log could not be removed")
       case .logDetail:

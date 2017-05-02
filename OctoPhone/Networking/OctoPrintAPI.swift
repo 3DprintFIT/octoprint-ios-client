@@ -16,6 +16,7 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 ///
 /// - version: OctoPrint API version
 /// - sendCommand: Sends arbitrary command to printer
+/// - currentPrinterState: Reads currenter printer state
 /// - files: Downloads list of stored files on printer
 /// - uploadFile: Uploads file to specific location, with given name from given URL
 /// - deleteFile: Deletes file with given file name from specific location
@@ -36,11 +37,13 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - jogPrintHead - Jogs print head in given direction on given axis
 /// - homePrintHead - Moves print head to home position on given axes
 /// - extrudeFilamen - Extrudes fixed amount of filament
+/// - currentBedState - Reads current bed state
 enum OctoPrintAPI {
     // Command
     case version
     // Printer
     case sendCommand(String)
+    case currentPrinterState
     // Files
     case files
     case filesAtLocation(FileOrigin)
@@ -69,6 +72,10 @@ enum OctoPrintAPI {
     case homePrintHead(Set<JogAxis>)
     // Print tool controls
     case extrudeFilament
+    // Bed
+    case currentBedState
+    // Job
+    case currentJob
 }
 
 // MARK: - TargetPart implementation
@@ -105,6 +112,8 @@ extension OctoPrintAPI: TargetPart {
         // Printer
 
         case let .sendCommand(command): return ("api/printer/command", .post, .request, ["command": command])
+
+        case .currentPrinterState: return ("api/printer", .get, .request, nil)
 
         // Files
 
@@ -180,6 +189,14 @@ extension OctoPrintAPI: TargetPart {
         // Print tool controls
         case .extrudeFilament:
             return ("api/printer/tool", .post, .request, ["command": "extrude", "amount": 5])
+
+        // Bed
+        case .currentBedState:
+            return ("api/printer/bed", .get, .request, nil)
+
+        // Job
+        case .currentJob:
+            return ("api/job", .get, .request, nil)
         }
     }
 }
