@@ -238,6 +238,8 @@
 
 
 // *
-// * Printer and tool controls
+// * Connect printer
 // *
 "Connect printer title" = "Connect printer";
+"Not connection available" = "No connection available.";
+"Cannot load list of connections" = "Cannot load list of connections.";

@@ -76,6 +76,8 @@ enum OctoPrintAPI {
     case currentBedState
     // Job
     case currentJob
+    // Connections
+    case listConnections
 }
 
 // MARK: - TargetPart implementation
@@ -197,6 +199,10 @@ extension OctoPrintAPI: TargetPart {
         // Job
         case .currentJob:
             return ("api/job", .get, .request, nil)
+
+        // Connections
+        case .listConnections:
+            return ("api/connection", .get, .request, nil)
         }
     }
 }

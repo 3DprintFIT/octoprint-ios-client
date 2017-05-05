@@ -15,6 +15,11 @@ import Result
 protocol ConnectPrinterViewModelInputs {
     /// Call when user tapped on close controller button
     func closeButtonTapped()
+
+    /// Call when user selected connection at specific index
+    ///
+    /// - Parameter index: Index of selected connection
+    func selectedConnection(at index: Int)
 }
 
 // MARK: - Outputs
@@ -23,6 +28,24 @@ protocol ConnectPrinterViewModelInputs {
 protocol ConnectPrinterViewModelOutputs {
     /// Screen title
     var title: Property<String> { get }
+
+    /// Total count of available connections
+    var availableConnectionsCount: Int { get }
+
+    /// Indicates whether the user is allowed to selected connection
+    var selectionIsEnabled: Property<Bool> { get }
+
+    /// Stream of data changes
+    var connectionsChanged: SignalProducer<(), NoError> { get }
+
+    /// Stream of errors presentable to the user
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
+
+    /// Generates text label for connection at given index
+    ///
+    /// - Parameter index: Index of connection in collection
+    /// - Returns: Connection label text
+    func connectionLabel(at index: Int) -> String
 }
 
 // MARK: - Common public interface
@@ -50,9 +73,29 @@ ConnectPrinterViewModelOutputs {
 
     // MARK: Outputs
 
-    let title = Property(value: "")
+    let title = Property(value: tr(.connectPrinter))
+
+    var availableConnectionsCount: Int {
+        // Return 1 for placeholder text
+        return selectionIsEnabled.value ? connectionsProperty.value.count : 1
+    }
+
+    let selectionIsEnabled: Property<Bool>
+
+    let connectionsChanged: SignalProducer<(), NoError>
+
+    let displayError: SignalProducer<DisplayableError, NoError>
 
     // MARK: Private properties
+
+    /// Currently selected connection index
+    private let selectedConnectionProperty = MutableProperty<Int?>(nil)
+
+    /// Collection of available connections
+    private let connectionsProperty = MutableProperty<[String]>([])
+
+    /// Holds last error occured
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     /// Octoprint requests provider
     private let provider: OctoPrintProvider
@@ -65,6 +108,13 @@ ConnectPrinterViewModelOutputs {
     init(delegate: ConnectPrinterViewControllerDelegate, provider: OctoPrintProvider) {
         self.delegate = delegate
         self.provider = provider
+
+        self.displayError = displayErrorProperty.producer.skipNil()
+        self.connectionsChanged = connectionsProperty.producer.ignoreValues()
+        self.selectionIsEnabled = Property(initial: false,
+                                           then: connectionsProperty.producer.map({ $0.count > 0 }))
+
+        requestConnections()
     }
 
     // MARK: Input methods
@@ -73,7 +123,50 @@ ConnectPrinterViewModelOutputs {
         delegate?.closeButtonTapped()
     }
 
+    func selectedConnection(at index: Int) {
+        selectedConnectionProperty.value = index
+    }
+
     // MARK: Output methods
 
+    func connectionLabel(at index: Int) -> String {
+        if !selectionIsEnabled.value {
+            return tr(.notConnectionAvailable)
+        }
+
+        return connectionsProperty.value[index]
+    }
+
     // MARK: Internal logic
+
+    /// Requests list of available connections from printer
+    private func requestConnections() {
+        provider.request(.listConnections)
+            .filterSuccessfulStatusCodes()
+            .mapJSON()
+            .startWithResult { [weak self] result in
+                switch result {
+                case let .success(data): self?.unwrapConnections(data: data)
+                case .failure: self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                                   tr(.cannotLoadListOfConnections))
+                }
+            }
+    }
+
+    /// Unwraps list of connections from OP response
+    ///
+    /// - Parameter data: Raw response data
+    private func unwrapConnections(data: Any) {
+        guard
+            let json = data as? [String: [String: Any]],
+            let ports = json["options"]?["ports"] as? [String]
+        else {
+            displayErrorProperty.value = (tr(.anErrorOccured),
+                                          tr(.cannotLoadListOfConnections))
+
+            return
+        }
+
+        connectionsProperty.value = ports.map { $0.capitalized }
+    }
 }

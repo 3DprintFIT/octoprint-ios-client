@@ -35,6 +35,8 @@ enum L10n {
   case canNotOpenSelectedLog
   /// Cancel
   case cancel
+  /// Cannot load list of connections.
+  case cannotLoadListOfConnections
   /// Center
   case centerOrigin
   /// Circular
@@ -167,6 +169,8 @@ enum L10n {
   case milimetersPerMinute
   /// mm
   case milimetersSign
+  /// No connection available.
+  case notConnectionAvailable
   /// Nozzle diameter
   case nozzleDiameter
   /// Number of extruders
@@ -341,6 +345,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Can not open selected log")
       case .cancel:
         return L10n.tr(key: "Cancel")
+      case .cannotLoadListOfConnections:
+        return L10n.tr(key: "Cannot load list of connections")
       case .centerOrigin:
         return L10n.tr(key: "Center origin")
       case .circularFormFactor:
@@ -473,6 +479,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Milimeters per minute")
       case .milimetersSign:
         return L10n.tr(key: "Milimeters sign")
+      case .notConnectionAvailable:
+        return L10n.tr(key: "Not connection available")
       case .nozzleDiameter:
         return L10n.tr(key: "Nozzle diameter")
       case .numberOfExtruders:
