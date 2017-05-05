@@ -29,8 +29,16 @@ class DetailViewController: BaseCollectionViewController {
 
     /// Navigation button for controls screen flow
     private lazy var controlsButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(withIcon: FontAwesomeIcon._449Icon, size: CGSize(width: 24, height: 24),
+        let button = UIBarButtonItem(withIcon: ._449Icon, size: CGSize(width: 24, height: 24),
                                      target: self, action: #selector(controlsButtonTapped))
+
+        return button
+    }()
+
+    /// Print job manipulation icon
+    private lazy var printJobButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(withIcon: .printIcon, size: CGSize(width: 24, height: 24),
+                                     target: self, action: #selector(printJobButtonTapped))
 
         return button
     }()
@@ -64,6 +72,7 @@ class DetailViewController: BaseCollectionViewController {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = controlsButton
+        navigationItem.leftBarButtonItem = printJobButton
         collectionView?.registerTypedCell(cellClass: JobStateCell.self)
         collectionView?.registerTypedCell(cellClass: JobPreviewCell.self)
         collectionView?.registerTypedCell(cellClass: JobInfoCell.self)
@@ -88,6 +97,22 @@ class DetailViewController: BaseCollectionViewController {
         viewModel.inputs.controlsButtonTapped()
     }
 
+    /// UI callback for print job button tap
+    func printJobButtonTapped() {
+        let controller = UIAlertController(title: nil, message: tr(.doYouWantToCancelPrintJob),
+                                           preferredStyle: .actionSheet)
+
+        let noAction = UIAlertAction(title: tr(.noIDoNot), style: .cancel, handler: nil)
+        let cancelJobAction = UIAlertAction(title: tr(.cancelPrintJob), style: .destructive) { [weak self] _ in
+            self?.viewModel.inputs.cancelJobButtonTapped()
+        }
+
+        controller.addAction(noAction)
+        controller.addAction(cancelJobAction)
+
+        present(controller, animated: true, completion: nil)
+    }
+
     /// Binds outputs of View Model to UI and converts
     /// user interaction to View Model inputs
     private func bindViewModel() {
@@ -95,6 +120,7 @@ class DetailViewController: BaseCollectionViewController {
             collectionView.reactive.reloadData <~ viewModel.outputs.dataChanged
         }
 
+        printJobButton.reactive.isEnabled <~ viewModel.outputs.jobCancellable
         emptyView.reactive.isHidden <~ viewModel.outputs.contentIsAvailable
 
         connectButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
@@ -102,6 +128,14 @@ class DetailViewController: BaseCollectionViewController {
         }
     }
 
+    /// Shortcut for info cell dequeue mechanism
+    ///
+    /// - Parameters:
+    ///   - indexPath: IndexPath of cell to be dequeued
+    ///   - collectionView: Target collection view
+    ///   - title: Title of cell
+    ///   - detail: Detail text of cell
+    /// - Returns: Configured cell
     fileprivate func dequeueInfoCell(for indexPath: IndexPath, collectionView: UICollectionView,
                                      title: String, detail: String) -> JobInfoCell {
 

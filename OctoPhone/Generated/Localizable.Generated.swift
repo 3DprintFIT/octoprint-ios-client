@@ -35,6 +35,8 @@ enum L10n {
   case canNotOpenSelectedLog
   /// Cancel
   case cancel
+  /// Cancel print job
+  case cancelPrintJob
   /// Cannot load list of connections.
   case cannotLoadListOfConnections
   /// Center
@@ -81,6 +83,8 @@ enum L10n {
   case doYouReallyWantToDeletePrintProfile
   /// Do you really want to delete slicing profile from printer? This operation is permanent and can not be undone.
   case doYouReallyWantToDeleteSlicingProfile
+  /// Do you really want to cancel current job? This action cannot be undone.
+  case doYouWantToCancelPrintJob
   /// Downloaded file can not be opened.
   case downloadedFileCanNotBeOpened
   /// Downloaded list of slicing profiles could not be saved.
@@ -171,6 +175,8 @@ enum L10n {
   case milimetersSign
   /// No connection is selected.
   case noConnectionSelected
+  /// No, I do not
+  case noIDoNot
   /// No connection available.
   case notConnectionAvailable
   /// Nozzle diameter
@@ -349,6 +355,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Can not open selected log")
       case .cancel:
         return L10n.tr(key: "Cancel")
+      case .cancelPrintJob:
+        return L10n.tr(key: "Cancel print job")
       case .cannotLoadListOfConnections:
         return L10n.tr(key: "Cannot load list of connections")
       case .centerOrigin:
@@ -395,6 +403,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Do you really want to delete print profile")
       case .doYouReallyWantToDeleteSlicingProfile:
         return L10n.tr(key: "Do you really want to delete slicing profile")
+      case .doYouWantToCancelPrintJob:
+        return L10n.tr(key: "Do you want to cancel print job")
       case .downloadedFileCanNotBeOpened:
         return L10n.tr(key: "Downloaded file can not be opened")
       case .downloadedListOfSlicingProfilesCouldNotBeSaved:
@@ -485,6 +495,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Milimeters sign")
       case .noConnectionSelected:
         return L10n.tr(key: "No connection selected")
+      case .noIDoNot:
+        return L10n.tr(key: "No I do not")
       case .notConnectionAvailable:
         return L10n.tr(key: "Not connection available")
       case .nozzleDiameter:

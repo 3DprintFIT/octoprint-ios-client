@@ -38,8 +38,10 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - homePrintHead - Moves print head to home position on given axes
 /// - extrudeFilamen - Extrudes fixed amount of filament
 /// - currentBedState - Reads current bed state
+/// - currentJob - Reads info about current job
+/// - cancelJob - Cancels current job
 /// - listConnections - List available printer connections
-/// - connectToPort - Connect
+/// - connectToPort - Connect printer on given port
 enum OctoPrintAPI {
     // Command
     case version
@@ -78,6 +80,7 @@ enum OctoPrintAPI {
     case currentBedState
     // Job
     case currentJob
+    case cancelJob
     // Connections
     case listConnections
     case connectToPort(String)
@@ -202,6 +205,9 @@ extension OctoPrintAPI: TargetPart {
         // Job
         case .currentJob:
             return ("api/job", .get, .request, nil)
+
+        case .cancelJob:
+            return ("api/job", .post, .request, ["command": "cancel"])
 
         // Connections
         case .listConnections:

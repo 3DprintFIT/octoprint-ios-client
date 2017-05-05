@@ -15,6 +15,7 @@
 "Blue" = "Blue";
 "Black" = "Black";
 "Unknown" = "Unknown";
+"No I do not" = "No, I do not";
 
 
 
@@ -245,3 +246,5 @@
 "Cannot load list of connections" = "Cannot load list of connections.";
 "No connection selected" = "No connection is selected.";
 "Selected port could not be connected" = "Selected port could not be connected.";
+"Do you want to cancel print job" = "Do you really want to cancel current job? This action cannot be undone.";
+"Cancel print job" = "Cancel print job";

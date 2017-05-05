@@ -24,6 +24,9 @@ protocol DetailViewModelInputs {
 
     /// Call when user tap on connect printer button
     func connectButtonTapped()
+
+    /// Call when user want to cancel current print job
+    func cancelJobButtonTapped()
 }
 
 // MARK: - Outputs
@@ -62,6 +65,9 @@ protocol DetailViewModelOutputs {
 
     /// Printer bed offset temperature
     var bedTemperatureOffset: Property<String> { get }
+
+    /// Indicates whether the current job is cancellable
+    var jobCancellable: Property<Bool> { get }
 
     /// Streams which indicates when data should be reloaded
     var dataChanged: SignalProducer<(), NoError> { get }
@@ -112,6 +118,8 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
 
     let bedTemperatureOffset: Property<String>
 
+    let jobCancellable: Property<Bool>
+
     let dataChanged: SignalProducer<(), NoError>
 
     // MARK: Private properties
@@ -161,14 +169,18 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
 
         let dataChanged = SignalProducer.combineLatest(stateProducer, jobProducer, bedProducer).ignoreValues()
 
+        let jobCancellable = SignalProducer.combineLatest(
+            jobProducer.map(DetailViewModel.validJob),
+            contentIsAvailable.producer
+        ).map({ return $0 && $1 })
+
+        self.jobCancellable = Property(initial: false, then: jobCancellable)
         self.dataChanged = SignalProducer.merge([dataChanged, contentIsAvailable.producer.ignoreValues()])
 
         requestData()
     }
 
     // MARK: Input methods
-
-    // MARK: Output methods
 
     func controlsButtonTapped() {
         delegate?.controlsButtonTapped()
@@ -181,6 +193,12 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
     func viewWillAppear() {
         requestData()
     }
+
+    func cancelJobButtonTapped() {
+        cancelPrintJob()
+    }
+
+    // MARK: Output methods
 
     // MARK: Internal logic
 
@@ -211,5 +229,17 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
                     self.contentIsAvailableProperty.value = false
                 }
             }
+    }
+
+    /// Cancels current print job and refreshes current data screen
+    private func cancelPrintJob() {
+        provider.request(.cancelJob)
+            .startWithResult { [weak self] _ in
+                self?.requestData()
+            }
+    }
+
+    private static func validJob(_ job: Job) -> Bool {
+        return job.fileName != nil && job.fileSize.value != nil && job.printTimeLeft.value != nil
     }
 }
