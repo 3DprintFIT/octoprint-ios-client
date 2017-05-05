@@ -54,6 +54,12 @@ class DetailViewController: BaseCollectionViewController {
 
     // MARK: - Controller lifecycle
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        viewModel.inputs.viewWillAppear()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

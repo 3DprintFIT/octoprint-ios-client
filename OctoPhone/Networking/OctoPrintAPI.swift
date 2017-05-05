@@ -38,6 +38,8 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - homePrintHead - Moves print head to home position on given axes
 /// - extrudeFilamen - Extrudes fixed amount of filament
 /// - currentBedState - Reads current bed state
+/// - listConnections - List available printer connections
+/// - connectToPort - Connect
 enum OctoPrintAPI {
     // Command
     case version
@@ -78,6 +80,7 @@ enum OctoPrintAPI {
     case currentJob
     // Connections
     case listConnections
+    case connectToPort(String)
 }
 
 // MARK: - TargetPart implementation
@@ -203,6 +206,9 @@ extension OctoPrintAPI: TargetPart {
         // Connections
         case .listConnections:
             return ("api/connection", .get, .request, nil)
+
+        case let .connectToPort(port):
+            return ("api/connection", .post, .request, ["command": "connect", "port": port])
         }
     }
 }

@@ -30,6 +30,14 @@ class ConnectPrinterViewController: BaseViewController {
         return button
     }()
 
+    /// Button for port connection request
+    private lazy var connectButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .done, target: self,
+                                     action: #selector(connectButtonTapped))
+
+        return button
+    }()
+
     /// Picker with list of available connections
     private let connectionPicker = UIPickerView()
 
@@ -51,6 +59,7 @@ class ConnectPrinterViewController: BaseViewController {
         super.viewDidLoad()
 
         navigationItem.leftBarButtonItem = closeButton
+        navigationItem.rightBarButtonItem = connectButton
 
         connectionPicker.delegate = self
         connectionPicker.dataSource = self
@@ -69,16 +78,33 @@ class ConnectPrinterViewController: BaseViewController {
     private func bindViewModel() {
         title = viewModel.outputs.title.value
 
+        reactive.displayableError <~ viewModel.outputs.displayError
+        connectButton.reactive.isEnabled <~ viewModel.outputs.selectionIsEnabled
         connectionPicker.reactive.reloadAllComponents <~ viewModel.outputs.connectionsChanged
         connectionPicker.reactive.isUserInteractionEnabled <~ viewModel.outputs.selectionIsEnabled
+
         connectionPicker.reactive.selections.observeValues { [weak self] row, _ in
             self?.viewModel.inputs.selectedConnection(at: row)
         }
+
+        // Force picker to select first element when data are changed,
+        // this is required because when picker value is selected programatically,
+        // the didSelect delegate func is not called
+        viewModel.outputs.connectionsChanged.startWithValues { [weak self] in
+            if self?.viewModel.outputs.selectionIsEnabled.value == true {
+                self?.viewModel.inputs.selectedConnection(at: 0)
+            }
+        }
     }
 
-    /// UI action button callback
+    /// UI action close button callback
     func closeButtonTapped() {
         viewModel.inputs.closeButtonTapped()
+    }
+
+    /// UI action connect button callback
+    func connectButtonTapped() {
+        viewModel.inputs.connect()
     }
 }
 
@@ -93,6 +119,7 @@ extension ConnectPrinterViewController: UIPickerViewDataSource {
     }
 }
 
+// MARK: - UIPickerViewDelegate
 extension ConnectPrinterViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int,
                     forComponent component: Int) -> String? {

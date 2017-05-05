@@ -169,6 +169,8 @@ enum L10n {
   case milimetersPerMinute
   /// mm
   case milimetersSign
+  /// No connection is selected.
+  case noConnectionSelected
   /// No connection available.
   case notConnectionAvailable
   /// Nozzle diameter
@@ -245,6 +247,8 @@ enum L10n {
   case sdCardStateIsNotAvailable
   /// Selected file could not be uploaded.
   case selectedFileCouldNotBeUploaded
+  /// Selected port could not be connected.
+  case selectedPortCouldNotBeConnected
   /// Selected profile could not be opened.
   case selectedProfileCouldNotBeOpened
   /// Send
@@ -479,6 +483,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Milimeters per minute")
       case .milimetersSign:
         return L10n.tr(key: "Milimeters sign")
+      case .noConnectionSelected:
+        return L10n.tr(key: "No connection selected")
       case .notConnectionAvailable:
         return L10n.tr(key: "Not connection available")
       case .nozzleDiameter:
@@ -555,6 +561,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "SD card state is not available")
       case .selectedFileCouldNotBeUploaded:
         return L10n.tr(key: "Selected file could not be uploaded")
+      case .selectedPortCouldNotBeConnected:
+        return L10n.tr(key: "Selected port could not be connected")
       case .selectedProfileCouldNotBeOpened:
         return L10n.tr(key: "Selected profile could not be opened")
       case .send:
@@ -563,8 +571,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Send Command Indicator")
       case .settings:
         return L10n.tr(key: "Settings")
-      case .sizeInBytes(let p0):
-        return L10n.tr(key: "Size in bytes", p0)
+      case .sizeInBytes(let p1):
+        return L10n.tr(key: "Size in bytes", p1)
       case .slicerProfile:
         return L10n.tr(key: "Slicer profile")
       case .slicerProfiles:
@@ -623,7 +631,7 @@ extension L10n: CustomStringConvertible {
   }
 
   private static func tr(key: String, _ args: CVarArg...) -> String {
-    let format = NSLocalizedString(key, comment: "")
+    let format = NSLocalizedString(key, bundle: Bundle(for: BundleToken.self), comment: "")
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
@@ -631,3 +639,5 @@ extension L10n: CustomStringConvertible {
 func tr(_ key: L10n) -> String {
   return key.string
 }
+
+private final class BundleToken {}

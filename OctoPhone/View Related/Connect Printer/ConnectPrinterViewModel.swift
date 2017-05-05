@@ -20,6 +20,9 @@ protocol ConnectPrinterViewModelInputs {
     ///
     /// - Parameter index: Index of selected connection
     func selectedConnection(at index: Int)
+
+    /// Call when user decided to connect to selected printer
+    func connect()
 }
 
 // MARK: - Outputs
@@ -89,7 +92,7 @@ ConnectPrinterViewModelOutputs {
     // MARK: Private properties
 
     /// Currently selected connection index
-    private let selectedConnectionProperty = MutableProperty<Int?>(nil)
+    private let selectedConnectionProperty = MutableProperty<String?>(nil)
 
     /// Collection of available connections
     private let connectionsProperty = MutableProperty<[String]>([])
@@ -124,7 +127,26 @@ ConnectPrinterViewModelOutputs {
     }
 
     func selectedConnection(at index: Int) {
-        selectedConnectionProperty.value = index
+        selectedConnectionProperty.value = connectionsProperty.value[index]
+    }
+
+    func connect() {
+        guard let port = selectedConnectionProperty.value else {
+            displayErrorProperty.value = (tr(.anErrorOccured), tr(.noConnectionSelected))
+            return
+        }
+
+        provider.request(.connectToPort(port))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .startWithResult { [weak self] result in
+                switch result {
+                case .success:
+                    self?.delegate?.closeButtonTapped()
+                case .failure:
+                    self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                        tr(.selectedPortCouldNotBeConnected))
+                }
+            }
     }
 
     // MARK: Output methods
@@ -167,6 +189,6 @@ ConnectPrinterViewModelOutputs {
             return
         }
 
-        connectionsProperty.value = ports.map { $0.capitalized }
+        connectionsProperty.value = ports
     }
 }

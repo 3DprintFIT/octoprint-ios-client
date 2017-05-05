@@ -16,6 +16,9 @@ import Icons
 
 /// Printer detail logic inputs
 protocol DetailViewModelInputs {
+    /// Call when screen is about to appear
+    func viewWillAppear()
+
     /// Call when user tap on controls button
     func controlsButtonTapped()
 
@@ -173,6 +176,10 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
 
     func connectButtonTapped() {
         delegate?.connectButtonTapped()
+    }
+
+    func viewWillAppear() {
+        requestData()
     }
 
     // MARK: Internal logic

@@ -243,3 +243,5 @@
 "Connect printer title" = "Connect printer";
 "Not connection available" = "No connection available.";
 "Cannot load list of connections" = "Cannot load list of connections.";
+"No connection selected" = "No connection is selected.";
+"Selected port could not be connected" = "Selected port could not be connected.";
