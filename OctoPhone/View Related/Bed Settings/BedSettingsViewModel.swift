@@ -21,7 +21,8 @@ protocol BedSettingsViewModelInputs {
 
 /// Outputs of bed settings logic
 protocol BedSettingsViewModelOutputs {
-
+    /// Screen title
+    var title: Property<String> { get }
 }
 
 // MARK: - Common public interface
@@ -46,6 +47,8 @@ final class BedSettingsViewModel: BedSettingsViewModelType, BedSettingsViewModel
     // MARK: Inputs
 
     // MARK: Outputs
+
+    let title = Property<String>(value: tr(.bedSettings))
 
     // MARK: Private properties
 

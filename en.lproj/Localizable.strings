@@ -248,3 +248,11 @@
 "Selected port could not be connected" = "Selected port could not be connected.";
 "Do you want to cancel print job" = "Do you really want to cancel current job? This action cannot be undone.";
 "Cancel print job" = "Cancel print job";
+
+
+// *
+// * Bed settings
+// *
+"Bed settings" = "Bed settings";
+"Target temperature" = "Target temeprature";
+"Offset temperature" = "Offset temperature";

@@ -17,6 +17,8 @@ enum L10n {
   case anErrorOccuredWhileTryingToPrintFile
   /// Axis
   case axis
+  /// Bed settings
+  case bedSettings
   /// Bed temperature
   case bedTemperature
   /// Bed temperature offset
@@ -183,6 +185,8 @@ enum L10n {
   case nozzleDiameter
   /// Number of extruders
   case numberOfExtruders
+  /// Offset temperature
+  case offsetTemperature
   /// Ok
   case ok
   /// Orange
@@ -291,6 +295,8 @@ enum L10n {
   case storedLogsCouldNotBeLoaded
   /// Stored printers could not be loaded.
   case storedPrintersCouldNotBeLoaded
+  /// Target temeprature
+  case targetTemperature
   /// Terminal
   case terminal
   /// Unknown
@@ -337,6 +343,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "An error occured while trying to print file")
       case .axis:
         return L10n.tr(key: "Axis")
+      case .bedSettings:
+        return L10n.tr(key: "Bed settings")
       case .bedTemperature:
         return L10n.tr(key: "Bed temperature")
       case .bedTemperatureOffset:
@@ -503,6 +511,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Nozzle diameter")
       case .numberOfExtruders:
         return L10n.tr(key: "Number of extruders")
+      case .offsetTemperature:
+        return L10n.tr(key: "Offset temperature")
       case .ok:
         return L10n.tr(key: "Ok")
       case .orange:
@@ -611,6 +621,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Stored logs could not be loaded")
       case .storedPrintersCouldNotBeLoaded:
         return L10n.tr(key: "Stored printers could not be loaded")
+      case .targetTemperature:
+        return L10n.tr(key: "Target temperature")
       case .terminal:
         return L10n.tr(key: "Terminal")
       case .unknown:
