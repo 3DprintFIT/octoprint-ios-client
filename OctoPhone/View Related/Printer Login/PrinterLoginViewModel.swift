@@ -35,6 +35,11 @@ protocol PrinterLoginViewModelInputs {
     /// - Parameter token: Entered login token
     func tokenChanged(_ token: String?)
 
+    /// Call when user changed print stream URL
+    ///
+    /// - Parameter url: Entered stream URL
+    func streamUrlChanged(_ url: String?)
+
     /// Call when login button is pressed
     func loginButtonPressed()
 
@@ -82,6 +87,9 @@ PrinterLoginViewModelOutputs {
     /// Model property for printer login token
     private let tokenProperty = MutableProperty<String?>(nil)
 
+    /// Actual value of stream URL
+    private let streamUrlProperty = MutableProperty<String?>(nil)
+
     /// Model property for button press action
     private let loginButtonPressedProperty = MutableProperty(())
 
@@ -111,8 +119,12 @@ PrinterLoginViewModelOutputs {
         let formValues = Signal.combineLatest(
             printerNameProperty.signal.skipNil(),
             printerUrlProperty.signal.skipNil(),
-            tokenProperty.signal.skipNil()
+            tokenProperty.signal.skipNil(),
+            streamUrlProperty.signal
         )
+
+        // Dirty hack to make stream URL optional
+        streamUrlProperty.value = nil
 
         displayError = displayErrorProperty.signal.skipNil()
 
@@ -123,8 +135,9 @@ PrinterLoginViewModelOutputs {
 
         let loginEvent = formValues
             .sample(on: loginButtonPressedProperty.signal)
-            .map({ name, url, token -> (Printer, OctoPrintProvider) in
-                let printer = Printer(url: URL(string: url)!, accessToken: token, name: name)
+            .map({ name, url, token, stream -> (Printer, OctoPrintProvider) in
+                let printer = Printer(url: URL(string: url)!, accessToken: token, name: name,
+                                      streamUrl: URL(string: stream ?? ""))
                 let tokenPlugin = TokenPlugin(token: token)
                 let provider = OctoPrintProvider(baseURL: printer.url, plugins: [tokenPlugin])
 
@@ -191,6 +204,10 @@ PrinterLoginViewModelOutputs {
         tokenProperty.value = token
     }
 
+    func streamUrlChanged(_ url: String?) {
+        streamUrlProperty.value = url
+    }
+
     func loginButtonPressed() {
         loginButtonPressedProperty.value = ()
     }
@@ -206,7 +223,7 @@ PrinterLoginViewModelOutputs {
     ///   - url: Printer base URL path
     ///   - token: Access token
     /// - Returns: True if form values are valid
-    private static func isValid(_ name: String, _ url: String, token: String) -> Bool {
+    private static func isValid(_ name: String, _ url: String, token: String, stream: String?) -> Bool {
         guard let url = URL(string: url) else { return false }
 
         return !name.characters.isEmpty && !url.absoluteString.characters.isEmpty

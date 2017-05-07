@@ -106,7 +106,7 @@ class PrinterListViewModelTests: QuickSpec {
     /// - Parameter index: Object identifier in collection
     /// - Returns: New Printer with given index identifier
     func createPrinter(index: Int) -> Printer {
-        return Printer(url: URL(string: "http://localhost\(index)")!, accessToken: "Secret Token \(index)", name: "My Printer \(index)")
+        return Printer(url: URL(string: "http://localhost\(index)")!, accessToken: "Secret Token \(index)", name: "My Printer \(index)", streamUrl: nil)
     }
 }
 

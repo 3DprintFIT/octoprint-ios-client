@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import RealmSwift
 import ReactiveSwift
 import ReactiveCocoa
+import SnapKit
 
 /// Interface for flow delegate
 protocol PrinterLoginViewControllerDelegate: class {
@@ -23,13 +23,16 @@ protocol PrinterLoginViewControllerDelegate: class {
 /// Gives user ability to add new printer
 final class PrinterLoginViewController: BaseViewController {
     /// User-friendly name of printer
-    private let printerNameField = UITextField()
+    private let printerNameField = PrinterLoginViewController.inputField(placeholder: .printerName)
 
     /// Printer URL text field
-    private let urlField = UITextField()
+    private let urlField = PrinterLoginViewController.inputField(placeholder: .printerURL)
 
     /// User's access token for printer
-    private let tokenField = UITextField()
+    private let tokenField = PrinterLoginViewController.inputField(placeholder: .printerAccessToken)
+
+    /// Print sream URL
+    private let printStreamField = PrinterLoginViewController.inputField(placeholder: .streamURL)
 
     /// Login button
     private let loginButton = UIButton(type: .system)
@@ -96,42 +99,19 @@ final class PrinterLoginViewController: BaseViewController {
                                                             target: self,
                                                             action: #selector(didTapCancel))
 
-        let constraints = [
-            printerNameField.topAnchor.constraint(
-                equalTo: view.topAnchor,
-                constant: Sizes.groupTopSpacing
-            ),
-            printerNameField.widthAnchor.constraint(equalToConstant: Sizes.textFieldWidth),
-            printerNameField.heightAnchor.constraint(equalToConstant: Sizes.fieldheight),
-            printerNameField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            urlField.topAnchor.constraint(
-                equalTo: printerNameField.bottomAnchor,
-                constant: Sizes.fieldSpacing
-            ),
-            urlField.widthAnchor.constraint(equalToConstant: Sizes.textFieldWidth),
-            urlField.heightAnchor.constraint(equalTo: printerNameField.heightAnchor),
-            urlField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        let stackView = UIStackView(arrangedSubviews: [printerNameField, urlField, tokenField,
+                                                       printStreamField, loginButton],
+                                    axis: .vertical)
 
-            tokenField.topAnchor.constraint(
-                equalTo: urlField.bottomAnchor,
-                constant: Sizes.fieldSpacing
-            ),
-            tokenField.widthAnchor.constraint(equalTo: urlField.widthAnchor),
-            tokenField.heightAnchor.constraint(equalTo: printerNameField.heightAnchor),
-            tokenField.centerXAnchor.constraint(equalTo: urlField.centerXAnchor),
+        stackView.distribution = .equalCentering
 
-            loginButton.topAnchor.constraint(
-                equalTo: tokenField.bottomAnchor,
-                constant: Sizes.fieldSpacing
-            ),
-            loginButton.centerXAnchor.constraint(equalTo: urlField.centerXAnchor)
-        ]
+        view.addSubview(stackView)
 
-        constraints.forEach { $0.isActive = true }
+        stackView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(15)
+            make.width.equalToSuperview()
+        }
 
-        printerNameField.placeholder = tr(.printerName)
-        urlField.placeholder = tr(.printerURL)
-        tokenField.placeholder = tr(.printerAccessToken)
         loginButton.setTitle(tr(.login), for: .normal)
 
         edgesForExtendedLayout = []
@@ -148,21 +128,35 @@ final class PrinterLoginViewController: BaseViewController {
             self?.viewModel.inputs.tokenChanged(token)
         }
 
+        printStreamField.reactive.continuousTextValues.observeValues { [weak self] streamUrl in
+            self?.viewModel.inputs.streamUrlChanged(streamUrl)
+        }
+
         loginButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
             self?.viewModel.inputs.loginButtonPressed()
         }
 
         loginButton.reactive.isEnabled <~ viewModel.outputs.isFormValid
 
-        viewModel.outputs.displayError
-            .observe(on: UIScheduler())
-            .observeValues { [weak self] title, message in
-            let alertController = UIAlertController(title: title,
-                                                    message: message, preferredStyle: .alert)
-
-            alertController.addAction(UIAlertAction(title: tr(.ok), style: .default, handler: nil))
-            self?.present(alertController, animated: true, completion: nil)
-        }
+        reactive.displayableError <~ viewModel.outputs.displayError
     }
     // swiftlint:enable function_body_length
+
+    /// Preconfigured input field
+    ///
+    /// - Parameter placeholder: Input placeholder
+    /// - Returns: Preconfigured field
+    private static func inputField(placeholder: L10n) -> UITextField {
+        let field = UITextField()
+
+        field.snp.makeConstraints { make in
+            make.height.equalTo(44)
+        }
+
+        field.placeholder = tr(placeholder)
+        field.autocorrectionType = .no
+        field.autocapitalizationType = .none
+
+        return field
+    }
 }

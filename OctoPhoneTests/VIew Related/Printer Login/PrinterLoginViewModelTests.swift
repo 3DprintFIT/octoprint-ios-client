@@ -48,7 +48,7 @@ class PrinterLoginViewModelSpec: QuickSpec {
             expect(buttonEnabled) == false
         }
 
-        it("should require all fields filled") { 
+        it("should require all fields filled but stream url") {
             subject.inputs.printerNameChanged("My Printer")
             expect(buttonEnabled) == false
             subject.inputs.printerUrlChanged("http://localhost")

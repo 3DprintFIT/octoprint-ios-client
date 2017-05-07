@@ -297,6 +297,8 @@ enum L10n {
   case storedLogsCouldNotBeLoaded
   /// Stored printers could not be loaded.
   case storedPrintersCouldNotBeLoaded
+  /// Stream URL (optional)
+  case streamURL
   /// Target temeprature
   case targetTemperature
   /// Terminal
@@ -625,6 +627,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Stored logs could not be loaded")
       case .storedPrintersCouldNotBeLoaded:
         return L10n.tr(key: "Stored printers could not be loaded")
+      case .streamURL:
+        return L10n.tr(key: "Stream URL")
       case .targetTemperature:
         return L10n.tr(key: "Target temperature")
       case .terminal:

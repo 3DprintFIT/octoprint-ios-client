@@ -13,8 +13,12 @@ import RealmSwift
 final class Printer: Object {
 
     // MARK: - Stored properties
+
     /// Stored representation of printer URL
     private dynamic var _url = ""
+
+    /// Stored representation of stream URL
+    private dynamic var _streamUrl: String?
 
     /// User's access token for authorization to printer
     dynamic var accessToken = ""
@@ -25,12 +29,24 @@ final class Printer: Object {
     // MARK: - Computed properties
 
     /// Printer URL based on stored property
-    dynamic var url: URL {
+    var url: URL {
         get {
             return URL(string: _url)!
         }
         set {
             _url = newValue.absoluteString
+        }
+    }
+
+    /// Print stream URL
+    var streamUrl: URL? {
+        get {
+            guard let url = _streamUrl else { return nil }
+
+            return URL(string: url)
+        }
+        set {
+            _streamUrl = newValue?.absoluteString
         }
     }
 
@@ -41,16 +57,13 @@ final class Printer: Object {
     /// - Parameters:
     ///   - url: String representation of printer URL
     ///   - accessToken: User's access token
-    convenience init(
-        url: URL,
-        accessToken: String,
-        name: String
-        ) {
+    convenience init(url: URL, accessToken: String, name: String, streamUrl: URL?) {
         self.init()
 
         self.url = url
         self.accessToken = accessToken
         self.name = name
+        self.streamUrl = streamUrl
     }
 
     // MARK: - Realm API
@@ -60,6 +73,6 @@ final class Printer: Object {
     }
 
     override static func ignoredProperties() -> [String] {
-        return ["url"]
+        return ["url", "streamUrl"]
     }
 }

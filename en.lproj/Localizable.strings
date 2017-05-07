@@ -42,6 +42,7 @@
 "Login Error" = "Login Error";
 "Incorrect Credentials" = "The credentials you entered are incorrect.";
 "Could not connect to printer" = "Can not connect to the printer.";
+"Stream URL" = "Stream URL (optional)";
 
 
 // *
