@@ -15,6 +15,16 @@ import Result
 protocol BedSettingsViewModelInputs {
     /// Call when user decided to close bed settings
     func doneButtonTapped()
+
+    /// Call when user changed target temperature
+    ///
+    /// - Parameter value: New value of target temperature
+    func targetTemperatureChanged(_ value: String?)
+
+    /// Call when user changed offset temperature
+    ///
+    /// - Parameter value: New value of offset temperature
+    func offsetTemperatureChanged(_ value: String?)
 }
 
 // MARK: - Outputs
@@ -23,6 +33,9 @@ protocol BedSettingsViewModelInputs {
 protocol BedSettingsViewModelOutputs {
     /// Screen title
     var title: Property<String> { get }
+
+    /// Stream of displayable errors
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
 }
 
 // MARK: - Common public interface
@@ -50,15 +63,48 @@ final class BedSettingsViewModel: BedSettingsViewModelType, BedSettingsViewModel
 
     let title = Property<String>(value: tr(.bedSettings))
 
+    let displayError: SignalProducer<DisplayableError, NoError>
+
     // MARK: Private properties
+
+    /// Actual value of target temperature
+    private let targetTemperatureProperty = MutableProperty<String?>(nil)
+
+    /// Actual value of offset temperature
+    private let offsetTemperatureProperty = MutableProperty<String?>(nil)
+
+    /// Holds last occured error
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
 
     /// Bed settings flow delegate
     private weak var delegate: BedSettingsViewControllerDelegate?
 
+    /// Printer requests provider
+    private let provider: OctoPrintProvider
+
     // MARK: Initializers
 
-    init(delegate: BedSettingsViewControllerDelegate) {
+    init(delegate: BedSettingsViewControllerDelegate, provider: OctoPrintProvider) {
         self.delegate = delegate
+        self.provider = provider
+        self.displayError = displayErrorProperty.producer.skipNil()
+
+        targetTemperatureProperty.producer.skipNil()
+            .map({ Double($0) }).skipNil()
+            .filter({ $0 >= 0 })
+            .debounce(1, on: QueueScheduler.main)
+            .skipRepeats()
+            .startWithValues { [weak self] temperature in
+                self?.setTemperature(temprature: temperature, type: .target)
+            }
+
+        offsetTemperatureProperty.producer.skipNil()
+            .map({ Double($0) }).skipNil()
+            .debounce(1, on: QueueScheduler.main)
+            .skipRepeats()
+            .startWithValues { [weak self] temperature in
+                self?.setTemperature(temprature: temperature, type: .offset)
+            }
     }
 
     // MARK: Input methods
@@ -67,7 +113,29 @@ final class BedSettingsViewModel: BedSettingsViewModelType, BedSettingsViewModel
         delegate?.doneButtonTapped()
     }
 
+    func targetTemperatureChanged(_ value: String?) {
+        targetTemperatureProperty.value = value
+    }
+
+    func offsetTemperatureChanged(_ value: String?) {
+        offsetTemperatureProperty.value = value
+    }
+
     // MARK: Output methods
 
     // MARK: Internal logic
+
+    /// Sets the given temperature to the printer bed
+    ///
+    /// - Parameters:
+    ///   - temprature: Amount of degrees
+    ///   - type: Type bed temperature
+    private func setTemperature(temprature: Double, type: BedTemperatureType) {
+        provider.request(.setBedTemperature(amout: temprature, type))
+            .filterSuccessfulStatusCodes()
+            .startWithFailed { [weak self] _ in
+                self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                    tr(.couldNotSetBedTemperature))
+            }
+    }
 }

@@ -67,6 +67,8 @@ enum L10n {
   case couldNotSaveDownloadedListOfLogs
   /// Could not save printer profiles.
   case couldNotSavePrinterProfiles
+  /// Could not set bed temperature
+  case couldNotSetBedTemperature
   /// Created profile could not be saved localy, but is created on printer.
   case createdProfileCouldNotBeSavedLocaly
   /// Database error
@@ -393,6 +395,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Could not save downloaded list of logs")
       case .couldNotSavePrinterProfiles:
         return L10n.tr(key: "Could not save printer profiles")
+      case .couldNotSetBedTemperature:
+        return L10n.tr(key: "Could not set bed temperature")
       case .createdProfileCouldNotBeSavedLocaly:
         return L10n.tr(key: "Created profile could not be saved localy")
       case .databaseError:

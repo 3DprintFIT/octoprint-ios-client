@@ -256,3 +256,4 @@
 "Bed settings" = "Bed settings";
 "Target temperature" = "Target temeprature";
 "Offset temperature" = "Offset temperature";
+"Could not set bed temperature" = "Could not set bed temperature";

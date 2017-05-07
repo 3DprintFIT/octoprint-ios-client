@@ -23,7 +23,7 @@ final class BedSettingsCoordinator: ContextCoordinator {
     }
 
     override func start() {
-        let viewModel = BedSettingsViewModel(delegate: self)
+        let viewModel = BedSettingsViewModel(delegate: self, provider: provider)
         let controller = BedSettingsViewController(viewModel: viewModel)
         let navigation = UINavigationController(rootViewController: controller)
 

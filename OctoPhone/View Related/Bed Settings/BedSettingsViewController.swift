@@ -35,7 +35,7 @@ class BedSettingsViewController: BaseViewController {
     private let offsetTempLabel = BedSettingsViewController.inputLabel(text: tr(.offsetTemperature))
 
     /// Input for bed target temperature
-    private let tagetTempField = BedSettingsViewController.inputField(placeholder: tr(.targetTemperature))
+    private let targetTempField = BedSettingsViewController.inputField(placeholder: tr(.targetTemperature))
 
     /// Input for bed offset temperature
     private let offsetTempField = BedSettingsViewController.inputField(placeholder: tr(.offsetTemperature))
@@ -57,7 +57,7 @@ class BedSettingsViewController: BaseViewController {
     override func loadView() {
         super.loadView()
 
-        let stackView = UIStackView(arrangedSubviews: [targetTempLabel, tagetTempField,
+        let stackView = UIStackView(arrangedSubviews: [targetTempLabel, targetTempField,
                                                        offsetTempLabel, offsetTempField],
                                     axis: .vertical)
 
@@ -82,6 +82,16 @@ class BedSettingsViewController: BaseViewController {
     /// user interaction to View Model inputs
     private func bindViewModel() {
         title = viewModel.outputs.title.value
+
+        reactive.displayableError <~ viewModel.outputs.displayError
+
+        targetTempField.reactive.continuousTextValues.observeValues { [weak self] value in
+            self?.viewModel.inputs.targetTemperatureChanged(value)
+        }
+
+        offsetTempField.reactive.continuousTextValues.observeValues { [weak self] value in
+            self?.viewModel.inputs.offsetTemperatureChanged(value)
+        }
     }
 
     /// UI Callback for done button tap
@@ -115,6 +125,7 @@ class BedSettingsViewController: BaseViewController {
         }
 
         input.placeholder = placeholder
+        input.keyboardType = .numbersAndPunctuation
 
         return input
     }

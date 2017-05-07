@@ -38,6 +38,7 @@ typealias OctoPrintProvider = DynamicProvider<OctoPrintAPI>
 /// - homePrintHead - Moves print head to home position on given axes
 /// - extrudeFilamen - Extrudes fixed amount of filament
 /// - currentBedState - Reads current bed state
+/// - setBedTemperature - Sets given amount to given temperature type
 /// - currentJob - Reads info about current job
 /// - cancelJob - Cancels current job
 /// - listConnections - List available printer connections
@@ -78,6 +79,7 @@ enum OctoPrintAPI {
     case extrudeFilament
     // Bed
     case currentBedState
+    case setBedTemperature(amout: Double, BedTemperatureType)
     // Job
     case currentJob
     case cancelJob
@@ -202,6 +204,9 @@ extension OctoPrintAPI: TargetPart {
         case .currentBedState:
             return ("api/printer/bed", .get, .request, nil)
 
+        case let .setBedTemperature(amount, type):
+            return ("api/printer/bed", .post, .request, ["command": type.rawValue, type.rawValue: amount])
+
         // Job
         case .currentJob:
             return ("api/job", .get, .request, nil)
@@ -272,4 +277,13 @@ enum JogAxis: String, Hashable {
 enum JogDirection: Int {
     case increase = 10
     case decrease = -10
+}
+
+/// Supported bed temperature
+///
+/// - target: Target temperature
+/// - offset: Offset temperature
+enum BedTemperatureType: String {
+    case target
+    case offset
 }
