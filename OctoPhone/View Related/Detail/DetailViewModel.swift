@@ -27,6 +27,9 @@ protocol DetailViewModelInputs {
 
     /// Call when user want to cancel current print job
     func cancelJobButtonTapped()
+
+    /// Call when user tapped on bed temperature cell to display temperature settings
+    func bedCellTapped()
 }
 
 // MARK: - Outputs
@@ -196,6 +199,10 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
 
     func cancelJobButtonTapped() {
         cancelPrintJob()
+    }
+
+    func bedCellTapped() {
+        delegate?.bedCellTapped()
     }
 
     // MARK: Output methods

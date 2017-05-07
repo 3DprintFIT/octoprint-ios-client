@@ -18,6 +18,9 @@ protocol DetailViewControllerDelegate: class {
 
     /// Called when user tapped on connect printer button
     func connectButtonTapped()
+
+    /// Called when user tapped on bed cell to display temperature settings
+    func bedCellTapped()
 }
 
 /// Shows basic informations about printer
@@ -208,6 +211,18 @@ extension DetailViewController {
         default:
             fatalError("Unexpected IndexPath requested.")
         }
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension DetailViewController {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
+
+        // Allow temperature settings only for bed section
+        guard indexPath.section == 2 else { return }
+
+        viewModel?.inputs.bedCellTapped()
     }
 }
 
