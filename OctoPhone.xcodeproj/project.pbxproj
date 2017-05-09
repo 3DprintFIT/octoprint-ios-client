@@ -26,6 +26,7 @@
 		D203DE781DDFCB8F000DEAA0 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */; };
 		D2063D001E5F8352004C2908 /* PrinterLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */; };
 		D2072FD41DEDCD6D00E1BBD3 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */; };
+		D20755941EC1B0AD00A43F49 /* StaticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20755931EC1B0AD00A43F49 /* StaticProvider.swift */; };
 		D20E419D1E88508E00CE99BA /* LogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E419C1E88508E00CE99BA /* LogCollectionViewCell.swift */; };
 		D20E419F1E88626300CE99BA /* LogDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E419E1E88626300CE99BA /* LogDetailCoordinator.swift */; };
 		D20E41A11E88633F00CE99BA /* LogDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E41A01E88633F00CE99BA /* LogDetailViewModel.swift */; };
@@ -266,6 +267,7 @@
 		D203DE771DDFCB8F000DEAA0 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		D2063CFF1E5F8352004C2908 /* PrinterLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PrinterLoginViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D2072FD31DEDCD6D00E1BBD3 /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
+		D20755931EC1B0AD00A43F49 /* StaticProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticProvider.swift; sourceTree = "<group>"; };
 		D20E419C1E88508E00CE99BA /* LogCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCollectionViewCell.swift; sourceTree = "<group>"; };
 		D20E419E1E88626300CE99BA /* LogDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailCoordinator.swift; sourceTree = "<group>"; };
 		D20E41A01E88633F00CE99BA /* LogDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LogDetailViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -797,6 +799,7 @@
 				D27C97151E63C25D00641A1A /* TokenPlugin.swift */,
 				D22401771E6AFDF70082129A /* JSONAble.swift */,
 				D28E44A41E8A7A81009D4976 /* String+URLEncoded.swift */,
+				D20755931EC1B0AD00A43F49 /* StaticProvider.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1591,6 +1594,7 @@
 				D23F0CE31E92428E00A70BC9 /* PrinterProfile+JSONAble.swift in Sources */,
 				D2063D001E5F8352004C2908 /* PrinterLoginViewModel.swift in Sources */,
 				D22444051EB685670026CE68 /* ControlsViewModel.swift in Sources */,
+				D20755941EC1B0AD00A43F49 /* StaticProvider.swift in Sources */,
 				D22401811E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift in Sources */,
 				D2D990D51E71F3D40094DA64 /* TerminalViewModel.swift in Sources */,
 				D2D331401E67177100C9C005 /* PrinterLoginCoordinator.swift in Sources */,
