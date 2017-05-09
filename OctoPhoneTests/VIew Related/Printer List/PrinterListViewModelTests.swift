@@ -92,12 +92,12 @@ class PrinterListViewModelTests: QuickSpec {
             }
 
             let model0 = subject.outputs.storedPrinterCellViewModel(for: 0)
-            expect(model0.printerName) == "My Printer 0"
-            expect(model0.printerURL) == "http://localhost0"
+            expect(model0.outputs.printerName.value) == "My Printer 0"
+            expect(model0.outputs.printerURL.value) == "http://localhost0"
 
             let model1 = subject.outputs.storedPrinterCellViewModel(for: 1)
-            expect(model1.printerName) == "My Printer 1"
-            expect(model1.printerURL) == "http://localhost1"
+            expect(model1.outputs.printerName.value) == "My Printer 1"
+            expect(model1.outputs.printerURL.value) == "http://localhost1"
         }
     }
 
@@ -111,7 +111,7 @@ class PrinterListViewModelTests: QuickSpec {
 }
 
 extension PrinterListViewModelTests: PrinterListViewControllerDelegate {
-    func selectedPrinterProvider(provider: OctoPrintProvider) {
+    func selectedPrinterProvider(provider: OctoPrintProvider, printerID: String) {
         onSelectedPrinterProvider?(provider)
     }
 

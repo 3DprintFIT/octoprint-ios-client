@@ -19,8 +19,8 @@ class PrinterListCellViewModelTests: QuickSpec {
             let printer = Printer(url: URL(string: printerPath)!, accessToken: "Secret Token", name: printerName, streamUrl: nil)
             let subject = PrinterListCellViewModel(printer: printer)
 
-            expect(subject.printerName) == printerName
-            expect(subject.printerURL) == printerPath
+            expect(subject.printerName.value) == printerName
+            expect(subject.printerURL.value) == printerPath
         }
     }
 }
