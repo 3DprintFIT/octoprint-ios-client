@@ -75,7 +75,7 @@ extension PrinterListViewController {
             withReuseIdentifier: PrinterListCollectionViewCell.identifier, for: indexPath
         ) as! PrinterListCollectionViewCell
 
-        cell.viewModel = viewModel.outputs.storedPrinterCellViewModel(for: indexPath.row)
+        cell.viewModel.value = viewModel.outputs.storedPrinterCellViewModel(for: indexPath.row)
 
         return cell
     }
@@ -91,10 +91,15 @@ extension PrinterListViewController {
 }
 
 extension PrinterListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         return CGSize(width: collectionView.frame.width, height: 150)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+
+        return 1
     }
 }

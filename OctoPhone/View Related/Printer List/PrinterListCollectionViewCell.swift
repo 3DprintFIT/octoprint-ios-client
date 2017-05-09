@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
 
 /// Real word printer overview
 class PrinterListCollectionViewCell: UICollectionViewCell {
@@ -24,15 +26,7 @@ class PrinterListCollectionViewCell: UICollectionViewCell {
     let printProgress = UIProgressView()
 
     /// Cell view model
-    var viewModel: PrinterListCellViewModelType? {
-        didSet {
-            // guard let viewModel = viewModel else { return }
-
-            // nameLabel.text = viewmModel.printerName
-            // urlLabel.text = viewModel.printerURL
-            backgroundColor = .red
-        }
-    }
+    let viewModel = MutableProperty<PrinterListCellViewModelType?>(nil)
 
     /// Holds all view size constants
     struct Sizes {
@@ -46,43 +40,47 @@ class PrinterListCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        configureView()
+        bindViewModel()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    /// Configure cell subviews
-    private func configureView() {
-        let subviews = [photo, statusLabel, printProgress]
+    override func layoutSubviews() {
+        super.layoutSubviews()
 
-        subviews.forEach { view in
-            view.translatesAutoresizingMaskIntoConstraints = false
-            addSubview(view)
+        let textBackgroundView = UIView()
+
+        contentView.addSubview(photo)
+        contentView.addSubview(textBackgroundView)
+        contentView.addSubview(statusLabel)
+
+        photo.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.top.equalToSuperview()
         }
 
-        let constraints = [
-            photo.topAnchor.constraint(equalTo: topAnchor),
-            photo.leadingAnchor.constraint(equalTo: leadingAnchor),
-            photo.widthAnchor.constraint(equalTo: widthAnchor),
-            photo.heightAnchor.constraint(equalToConstant: Sizes.photoHeight),
-            statusLabel.topAnchor.constraint(equalTo: photo.bottomAnchor),
-            statusLabel.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
-                constant: Sizes.leftMargin
-            )
-        ]
+        statusLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(photo).offset(-7)
+            make.leading.trailing.equalToSuperview().inset(15)
+        }
 
-        constraints.forEach { $0.isActive = true }
+        textBackgroundView.snp.makeConstraints { make in
+            make.bottom.leading.trailing.equalToSuperview()
+            make.top.equalTo(statusLabel).offset(-7)
+        }
+
+        contentView.backgroundColor = .white
+        textBackgroundView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+        photo.contentMode = .scaleAspectFit
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
+    /// Binds ViewModel to UI
+    private func bindViewModel() {
+        let vm = viewModel.producer.skipNil()
 
-        viewModel = nil
-
-        // nameLabel.text = viewmModel.printerName
-        // urlLabel.text = viewModel.printerURL
+        photo.reactive.image <~ vm.flatMap(.latest) { $0.outputs.printerStream }
+        statusLabel.reactive.text <~ vm.flatMap(.latest) { $0.outputs.printerName }
     }
 }
