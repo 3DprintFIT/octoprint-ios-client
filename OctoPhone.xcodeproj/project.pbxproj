@@ -31,6 +31,9 @@
 		D20E419F1E88626300CE99BA /* LogDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E419E1E88626300CE99BA /* LogDetailCoordinator.swift */; };
 		D20E41A11E88633F00CE99BA /* LogDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E41A01E88633F00CE99BA /* LogDetailViewModel.swift */; };
 		D20E41A31E88747900CE99BA /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E41A21E88747900CE99BA /* LogDetailViewController.swift */; };
+		D210B8761EC1EFC700363E3F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210B8751EC1EFC700363E3F /* Tool.swift */; };
+		D210B8781EC1F13C00363E3F /* Tool+JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210B8771EC1F13C00363E3F /* Tool+JSONAble.swift */; };
+		D210B87A1EC1F1D200363E3F /* ToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210B8791EC1F1D200363E3F /* ToolTests.swift */; };
 		D2128BB91EAD3A09001FAB6F /* SDCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2128BB81EAD3A09001FAB6F /* SDCardView.swift */; };
 		D2128BBB1EAD3A79001FAB6F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2128BBA1EAD3A79001FAB6F /* RoundedButton.swift */; };
 		D2132B571E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B561E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift */; };
@@ -272,6 +275,9 @@
 		D20E419E1E88626300CE99BA /* LogDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailCoordinator.swift; sourceTree = "<group>"; };
 		D20E41A01E88633F00CE99BA /* LogDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LogDetailViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D20E41A21E88747900CE99BA /* LogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
+		D210B8751EC1EFC700363E3F /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		D210B8771EC1F13C00363E3F /* Tool+JSONAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tool+JSONAble.swift"; sourceTree = "<group>"; };
+		D210B8791EC1F1D200363E3F /* ToolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTests.swift; sourceTree = "<group>"; };
 		D2128BB81EAD3A09001FAB6F /* SDCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDCardView.swift; sourceTree = "<group>"; };
 		D2128BBA1EAD3A79001FAB6F /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		D2132B561E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Disposable+CompositeDisposable.swift"; sourceTree = "<group>"; };
@@ -589,6 +595,7 @@
 				D22102C01EAD0F56005517EB /* SDCard.swift */,
 				D22444171EB8902F0026CE68 /* Bed.swift */,
 				D224441B1EB891B90026CE68 /* PrinterState.swift */,
+				D210B8751EC1EFC700363E3F /* Tool.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -664,6 +671,7 @@
 				D22102C41EAD14D6005517EB /* SDCard+JSONAble.swift */,
 				D224441F1EB89E240026CE68 /* Bed+JSONAble.swift */,
 				D22444241EB8B2C90026CE68 /* PrinterState+JSONAble.swift */,
+				D210B8771EC1F13C00363E3F /* Tool+JSONAble.swift */,
 			);
 			path = "Model Mapping";
 			sourceTree = "<group>";
@@ -692,6 +700,7 @@
 				D22102C61EAD15A0005517EB /* SDCardTests.swift */,
 				D22444191EB8915B0026CE68 /* BedTests.swift */,
 				D22444281EB8B3C70026CE68 /* PrinterStateTests.swift */,
+				D210B8791EC1F1D200363E3F /* ToolTests.swift */,
 			);
 			name = "Model Mapping";
 			sourceTree = "<group>";
@@ -1572,8 +1581,10 @@
 				D22444201EB89E240026CE68 /* Bed+JSONAble.swift in Sources */,
 				D21F3F8B1E6493CA00351761 /* PrinterListViewModel.swift in Sources */,
 				D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */,
+				D210B8761EC1EFC700363E3F /* Tool.swift in Sources */,
 				D2688D851E91154000290421 /* SlicingProfileCoordinator.swift in Sources */,
 				D23F0CDD1E919FB600A70BC9 /* PrinterProfile.swift in Sources */,
+				D210B8781EC1F13C00363E3F /* Tool+JSONAble.swift in Sources */,
 				D2C8AF331E92E3E800DC7914 /* PrintProfileViewController.swift in Sources */,
 				D22444321EB922B30026CE68 /* ConnectPrinterViewController.swift in Sources */,
 				D2F765961E788C3000A5BC11 /* CommandCellViewModel.swift in Sources */,
@@ -1622,6 +1633,7 @@
 				D2FEDE721E6ED36200184CEC /* PrinterListViewModelTests.swift in Sources */,
 				D2C38CC51E7D49A200D06698 /* LogsViewModelTests.swift in Sources */,
 				D2FEDE781E6EEDDB00184CEC /* SignalProducer+JSONAbleTests.swift in Sources */,
+				D210B87A1EC1F1D200363E3F /* ToolTests.swift in Sources */,
 				D22102C71EAD15A0005517EB /* SDCardTests.swift in Sources */,
 				D2C38CD11E7FF87D00D06698 /* LogCellViewModelTests.swift in Sources */,
 				D224441A1EB8915B0026CE68 /* BedTests.swift in Sources */,
