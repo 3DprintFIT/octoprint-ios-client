@@ -28,6 +28,11 @@ final class Printer: Object {
 
     // MARK: - Computed properties
 
+    /// Getter for printer ID backed by it's URL
+    // swiftlint:disable identifier_name
+    var ID: String { return _url }
+    // swiftlint:enable identifier_name
+
     /// Printer URL based on stored property
     var url: URL {
         get {
