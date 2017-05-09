@@ -123,6 +123,7 @@ class DetailViewController: BaseCollectionViewController {
             collectionView.reactive.reloadData <~ viewModel.outputs.dataChanged
         }
 
+        reactive.displayableError <~ viewModel.outputs.displayError
         printJobButton.reactive.isEnabled <~ viewModel.outputs.jobCancellable
         emptyView.reactive.isHidden <~ viewModel.outputs.contentIsAvailable
 

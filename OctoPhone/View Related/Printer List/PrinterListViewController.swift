@@ -14,7 +14,7 @@ import ReactiveCocoa
 /// Printer list flow delegate interface
 protocol PrinterListViewControllerDelegate: class {
     /// Call when requests provider is selected
-    func selectedPrinterProvider(provider: OctoPrintProvider)
+    func selectedPrinterProvider(provider: OctoPrintProvider, printerID: String)
 
     /// Call when add printer button is tapped by user
     func addPrinterButtonTapped()

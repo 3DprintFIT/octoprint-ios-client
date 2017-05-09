@@ -57,6 +57,8 @@
 "Bed temperature offset" = "Bed temperature offset";
 "Printer is currently not in operational state" = "Printer is currently not in operational state. If you want to connect printer, click the button below.";
 "Connect printer" = "Connect.";
+"Could not load printer stream" = "Could not load printer stream.";
+"Could not load printer" = "Could not load printer settings";
 
 
 // *

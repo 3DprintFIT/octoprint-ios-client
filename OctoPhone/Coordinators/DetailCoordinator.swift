@@ -10,8 +10,22 @@ import UIKit
 
 /// Printer detail flow controller
 final class DetailCoordinator: TabCoordinator {
+
+    /// Identifier of printer to be opened
+    private let printerID: String
+
+    init(tabbarController: UITabBarController?, navigationController: UINavigationController?,
+         contextManager: ContextManagerType, provider: OctoPrintProvider, printerID: String) {
+
+        self.printerID = printerID
+
+        super.init(tabbarController: tabbarController, navigationController: navigationController,
+                   contextManager: contextManager, provider: provider)
+    }
+
     override func start() {
-        let viewModel = DetailViewModel(delegate: self, provider: provider)
+        let viewModel = DetailViewModel(delegate: self, provider: provider,
+                                        contextManager: contextManager, printerID: printerID)
         let controller = DetailViewController(viewModel: viewModel)
 
         controller.title = tr(.printerDetail)

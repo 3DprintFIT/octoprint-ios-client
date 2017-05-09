@@ -121,7 +121,7 @@ PrinterListViewModelOutputs {
         let provider = OctoPrintProvider(baseURL: printer.url,
                                          plugins: [tokenPlugin])
 
-        delegate?.selectedPrinterProvider(provider: provider)
+        delegate?.selectedPrinterProvider(provider: provider, printerID: printer.ID)
     }
 
     func addPrinterButtonTapped() {

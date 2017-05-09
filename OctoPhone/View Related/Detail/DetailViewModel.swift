@@ -74,6 +74,9 @@ protocol DetailViewModelOutputs {
 
     /// Streams which indicates when data should be reloaded
     var dataChanged: SignalProducer<(), NoError> { get }
+
+    /// Stream of errors displayable to user
+    var displayError: SignalProducer<DisplayableError, NoError> { get }
 }
 
 // MARK: - Common public interface
@@ -125,36 +128,66 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
 
     let dataChanged: SignalProducer<(), NoError>
 
+    let displayError: SignalProducer<DisplayableError, NoError>
+
     // MARK: Private properties
 
-    let contentIsAvailableProperty = MutableProperty(false)
+    /// Current printer value
+    private let printerProperty = MutableProperty<Printer?>(nil)
 
-    let bedProperty = MutableProperty<Bed?>(nil)
+    /// Indicates whether the content is available, broadcasts its value
+    private let contentIsAvailableProperty = MutableProperty(false)
 
-    let jobProperty = MutableProperty<Job?>(nil)
+    /// Current bed value
+    private let bedProperty = MutableProperty<Bed?>(nil)
 
-    let stateProperty = MutableProperty<PrinterState?>(nil)
+    /// Current job value
+    private let jobProperty = MutableProperty<Job?>(nil)
+
+    /// Current state value
+    private let stateProperty = MutableProperty<PrinterState?>(nil)
+
+    /// Last error occured
+    private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
+
+    /// Stream image
+    private let imageProperty = MutableProperty<UIImage?>(nil)
 
     /// Printer requests provider
     private let provider: OctoPrintProvider
+
+    /// User content requests provider
+    private let staticProvider = StaticContentProvider()
+
+    /// Database connection manager
+    private let contextManager: ContextManagerType
+
+    /// Timer to download stream image
+    private var streamTimerDisposable: Disposable?
 
     /// Detail flow delegate
     private weak var delegate: DetailViewControllerDelegate?
 
     // MARK: Initializers
+    // swiftlint:disable function_body_length
+    init(delegate: DetailViewControllerDelegate, provider: OctoPrintProvider,
+         contextManager: ContextManagerType, printerID: String) {
 
-    init(delegate: DetailViewControllerDelegate, provider: OctoPrintProvider) {
         self.delegate = delegate
         self.provider = provider
+        self.contextManager = contextManager
+
+        let streamTimer = timer(interval: DispatchTimeInterval.seconds(10), on: QueueScheduler.main)
 
         let stateProducer = stateProperty.producer.skipNil()
         let jobProducer = jobProperty.producer.skipNil()
         let bedProducer = bedProperty.producer.skipNil()
+        let printerProducer = printerProperty.producer.skipNil()
+        let imageProducer = imageProperty.producer.skipNil()
 
+        self.displayError = displayErrorProperty.producer.skipNil()
         self.contentIsAvailable = Property(capturing: contentIsAvailableProperty)
         self.printerState = Property(initial: tr(.unknown), then: stateProducer.map({ $0.state }))
-        self.jobPreview = Property(value: FontAwesomeIcon.lightBulbIcon.image(ofSize: CGSize(width: 60, height: 60),
-                                                                              color: Colors.Pallete.greyHue3))
         self.jobTitle = Property(initial: tr(.unknown),
                                  then: jobProducer.map({ $0.fileName }).skipNil())
         self.fileName = Property(initial: tr(.unknown),
@@ -169,8 +202,12 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
                                             then: bedProducer.map({ $0.targetTemperature }).formatTemperature())
         self.bedTemperatureOffset = Property(initial: tr(.unknown),
                                              then: bedProducer.map({ $0.offsetTemperature }).formatTemperature())
+        self.jobPreview = Property(initial: FontAwesomeIcon.lightBulbIcon.image(ofSize: CGSize(width: 60, height: 60),
+                                                                                color: Colors.Pallete.greyHue3),
+                                   then: imageProducer)
 
-        let dataChanged = SignalProducer.combineLatest(stateProducer, jobProducer, bedProducer).ignoreValues()
+        let dataChanged = SignalProducer.combineLatest(stateProducer, jobProducer, bedProducer,
+                                                       printerProperty.producer).ignoreValues()
 
         let jobCancellable = SignalProducer.combineLatest(
             jobProducer.map(DetailViewModel.validJob),
@@ -180,6 +217,22 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
         self.jobCancellable = Property(initial: false, then: jobCancellable)
         self.dataChanged = SignalProducer.merge([dataChanged, contentIsAvailable.producer.ignoreValues()])
 
+        printerProducer.map({ $0.streamUrl }).skipNil().flatMap(.latest) { url in
+            return self.staticProvider.request(.get(url))
+        }
+        .startWithResult { [weak self] result in
+            switch result {
+            case let .success(response): self?.imageProperty.value = UIImage(data: response.data)
+            case .failure: self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                               tr(.couldNotLoadPrinterStream))
+            }
+        }
+
+        self.streamTimerDisposable = streamTimer.startWithValues { [weak self] _ in
+            self?.printerProperty.value = self?.printerProperty.value
+        }
+
+        loadPrinter(with: printerID)
         requestData()
     }
 
@@ -208,6 +261,21 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
     // MARK: Output methods
 
     // MARK: Internal logic
+
+    /// Loads printer object from local storage by it's identifier
+    ///
+    /// - Parameter printerID: Identifier of printer which will be loaded
+    private func loadPrinter(with printerID: String) {
+        self.contextManager.createObservableContext()
+            .fetch(Printer.self, forPrimaryKey: printerID)
+            .startWithResult { [weak self] result in
+                switch result {
+                case let .success(printer): self?.printerProperty.value = printer
+                case .failure: self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                                   tr(.couldNotLoadPrinter))
+                }
+            }
+    }
 
     /// Requests all needed data for printer detail screen,
     /// chains PrinterState, CurrentJob and CurrentBedState requests
@@ -246,7 +314,15 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
             }
     }
 
+    /// Determines whether the job is valid
+    ///
+    /// - Parameter job: Job to be validated
+    /// - Returns: True if job is valid, false otherwise
     private static func validJob(_ job: Job) -> Bool {
         return job.fileName != nil && job.fileSize.value != nil && job.printTimeLeft.value != nil
+    }
+
+    deinit {
+        streamTimerDisposable?.dispose()
     }
 }

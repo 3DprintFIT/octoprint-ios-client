@@ -63,6 +63,10 @@ enum L10n {
   case couldNotDeletePrintProfileFromPrinter
   /// Could not load list of slicers.
   case couldNotLoadListOfSlicers
+  /// Could not load printer settings
+  case couldNotLoadPrinter
+  /// Could not load printer stream.
+  case couldNotLoadPrinterStream
   /// Could not save downloaded list of logs.
   case couldNotSaveDownloadedListOfLogs
   /// Could not save printer profiles.
@@ -393,6 +397,10 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Could not delete print profile from printer")
       case .couldNotLoadListOfSlicers:
         return L10n.tr(key: "Could not load list of slicers")
+      case .couldNotLoadPrinter:
+        return L10n.tr(key: "Could not load printer")
+      case .couldNotLoadPrinterStream:
+        return L10n.tr(key: "Could not load printer stream")
       case .couldNotSaveDownloadedListOfLogs:
         return L10n.tr(key: "Could not save downloaded list of logs")
       case .couldNotSavePrinterProfiles:

@@ -13,10 +13,15 @@ final class OverviewCoordinator: ContextCoordinator {
     /// Network connections provider
     private let provider: OctoPrintProvider
 
+    /// The identifier of selected printer
+    private let printerID: String
+
     init(navigationController: UINavigationController?, contextManager: ContextManagerType,
-         provider: OctoPrintProvider) {
+         provider: OctoPrintProvider, printerID: String) {
 
         self.provider = provider
+        self.printerID = printerID
+
         super.init(navigationController: navigationController, contextManager: contextManager)
     }
 
@@ -33,7 +38,7 @@ final class OverviewCoordinator: ContextCoordinator {
         let detailCoordinator = DetailCoordinator(tabbarController: tabbarController,
                                                   navigationController: detailNavigationController,
                                                   contextManager: contextManager,
-                                                  provider: provider)
+                                                  provider: provider, printerID: printerID)
         let filesCoodinator = FilesCoordinator(tabbarController: tabbarController,
                                                navigationController: filesNavigationController,
                                                contextManager: contextManager,

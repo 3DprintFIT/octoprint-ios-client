@@ -22,7 +22,8 @@ class JobPreviewCell: UICollectionViewCell, TypedCell {
     let jobPreviewImage: UIImageView = {
         let view = UIImageView()
 
-        view.contentMode = .center
+        view.contentMode = .scaleAspectFit
+        view.clipsToBounds = true
 
         return view
     }()
