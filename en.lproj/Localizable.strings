@@ -55,6 +55,9 @@
 "Bed temperature" = "Bed temperature";
 "Bed temperature target" = "Bed temperature target";
 "Bed temperature offset" = "Bed temperature offset";
+"Tool temperature" = "Tool temperature";
+"Tool temperature offset" = "Tool temperature offset";
+"Tool temperature target" = "Tool temperature target";
 "Printer is currently not in operational state" = "Printer is currently not in operational state. If you want to connect printer, click the button below.";
 "Connect printer" = "Connect.";
 "Could not load printer stream" = "Could not load printer stream.";

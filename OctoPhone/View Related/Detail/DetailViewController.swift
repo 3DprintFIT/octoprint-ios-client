@@ -155,7 +155,7 @@ class DetailViewController: BaseCollectionViewController {
 // MARK: - UICollectionViewDataSource
 extension DetailViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.outputs.contentIsAvailable.value ? 3 : 0
+        return viewModel.outputs.contentIsAvailable.value ? 4 : 0
     }
 
     override func collectionView(_ collectionView: UICollectionView,
@@ -164,6 +164,7 @@ extension DetailViewController {
         return section == 0 ? 2 : 3
     }
 
+    // swiftlint:disable cyclomatic_complexity
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
@@ -209,6 +210,18 @@ extension DetailViewController {
         case (2, 2):
             return dequeueInfoCell(for: indexPath, collectionView: collectionView,
                                    title: tr(.bedTemperatureOffset), detail: outputs.bedTemperatureOffset.value)
+        // Actual bed temperature
+        case (3, 0):
+            return dequeueInfoCell(for: indexPath, collectionView: collectionView,
+                                   title: tr(.toolTemperature), detail: outputs.toolTemperature.value)
+        // Target bed temperature
+        case (3, 1):
+            return dequeueInfoCell(for: indexPath, collectionView: collectionView,
+                                   title: tr(.toolTemperatureTarget), detail: outputs.toolTemperaturTarget.value)
+        // Offset bed temperature
+        case (3, 2):
+            return dequeueInfoCell(for: indexPath, collectionView: collectionView,
+                                   title: tr(.toolTemperatureOffset), detail: outputs.toolTemperatureOffset.value)
         default:
             fatalError("Unexpected IndexPath requested.")
         }

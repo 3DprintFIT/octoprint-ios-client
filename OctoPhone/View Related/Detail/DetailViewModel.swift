@@ -69,6 +69,15 @@ protocol DetailViewModelOutputs {
     /// Printer bed offset temperature
     var bedTemperatureOffset: Property<String> { get }
 
+    /// Current temperature of printer tool
+    var toolTemperature: Property<String> { get }
+
+    /// Target temperature of printer tool
+    var toolTemperaturTarget: Property<String> { get }
+
+    /// Printer tool offset temperature
+    var toolTemperatureOffset: Property<String> { get }
+
     /// Indicates whether the current job is cancellable
     var jobCancellable: Property<Bool> { get }
 
@@ -124,6 +133,12 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
 
     let bedTemperatureOffset: Property<String>
 
+    let toolTemperature: Property<String>
+
+    let toolTemperaturTarget: Property<String>
+
+    let toolTemperatureOffset: Property<String>
+
     let jobCancellable: Property<Bool>
 
     let dataChanged: SignalProducer<(), NoError>
@@ -146,6 +161,8 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
 
     /// Current state value
     private let stateProperty = MutableProperty<PrinterState?>(nil)
+
+    private let toolProperty = MutableProperty<Tool?>(nil)
 
     /// Last error occured
     private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
@@ -183,6 +200,7 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
         let jobProducer = jobProperty.producer.skipNil()
         let bedProducer = bedProperty.producer.skipNil()
         let printerProducer = printerProperty.producer.skipNil()
+        let toolProducer = toolProperty.producer.skipNil()
         let imageProducer = imageProperty.producer.skipNil()
 
         self.displayError = displayErrorProperty.producer.skipNil()
@@ -202,6 +220,12 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
                                             then: bedProducer.map({ $0.targetTemperature }).formatTemperature())
         self.bedTemperatureOffset = Property(initial: tr(.unknown),
                                              then: bedProducer.map({ $0.offsetTemperature }).formatTemperature())
+        self.toolTemperature = Property(initial: tr(.unknown),
+                                        then: toolProducer.map({ $0.actualTemperature }).formatTemperature())
+        self.toolTemperaturTarget = Property(initial: tr(.unknown),
+                                             then: toolProducer.map({ $0.targetTemperature }).formatTemperature())
+        self.toolTemperatureOffset = Property(initial: tr(.unknown),
+                                             then: toolProducer.map({ $0.offsetTemperature }).formatTemperature())
         self.jobPreview = Property(initial: FontAwesomeIcon.lightBulbIcon.image(ofSize: CGSize(width: 60, height: 60),
                                                                                 color: Colors.Pallete.greyHue3),
                                    then: imageProducer)
@@ -284,13 +308,18 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
             .filterSuccessfulStatusCodes()
             .mapJSON()
             .mapTo(object: PrinterState.self)
-            .flatMap(FlattenStrategy.latest) { state -> SignalProducer<Any, MoyaError> in
+            .flatMap(.latest) { state -> SignalProducer<Any, MoyaError> in
                 self.stateProperty.value = state
                 return self.provider.request(.currentJob).filterSuccessfulStatusCodes().mapJSON()
             }
             .mapTo(object: Job.self)
-            .flatMap(FlattenStrategy.latest) { job -> SignalProducer<Any, MoyaError> in
+            .flatMap(.latest) { job -> SignalProducer<Any, MoyaError> in
                 self.jobProperty.value = job
+                return self.provider.request(.currentToolState).filterSuccessfulStatusCodes().mapJSON()
+            }
+            .mapDictionary(collectionOf: Tool.self)
+            .flatMap(.latest) { tools -> SignalProducer<Any, MoyaError> in
+                self.toolProperty.value = tools.first
                 return self.provider.request(.currentBedState).filterSuccessfulStatusCodes().mapJSON()
             }
             .mapTo(object: Bed.self, forKeyPath: "bed")

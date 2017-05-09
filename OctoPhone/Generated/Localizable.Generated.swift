@@ -307,6 +307,12 @@ enum L10n {
   case targetTemperature
   /// Terminal
   case terminal
+  /// Tool temperature
+  case toolTemperature
+  /// Tool temperature offset
+  case toolTemperatureOffset
+  /// Tool temperature target
+  case toolTemperatureTarget
   /// Unknown
   case unknown
   /// Uknown file
@@ -641,6 +647,12 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Target temperature")
       case .terminal:
         return L10n.tr(key: "Terminal")
+      case .toolTemperature:
+        return L10n.tr(key: "Tool temperature")
+      case .toolTemperatureOffset:
+        return L10n.tr(key: "Tool temperature offset")
+      case .toolTemperatureTarget:
+        return L10n.tr(key: "Tool temperature target")
       case .unknown:
         return L10n.tr(key: "Unknown")
       case .unknownFile:
