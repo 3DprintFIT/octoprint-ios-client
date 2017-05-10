@@ -36,11 +36,17 @@ protocol PrinterListViewModelOutputs {
     /// Stream of errors which should be presented to the user
     var displayError: SignalProducer<DisplayableError, NoError> { get }
 
-    /// Creates new view model for local printer cell
+    /// Creates new ViewModel for local printer cell
     ///
     /// - Parameter index: Cell index in table
-    /// - Returns: Cell view model
+    /// - Returns: Cell ViewModel
     func storedPrinterCellViewModel(for index: Int) -> PrinterListCellViewModelType
+
+    /// Creates new ViewModel for network printer cell
+    ///
+    /// - Parameter index: Cell index in table
+    /// - Returns: New ViewModel for network printer cell
+    func networkPrinterCellViewModel(for index: Int) -> NetworkPrinterCellViewModelType
 }
 
 /// Defines interface for all printer list view models
@@ -129,6 +135,12 @@ PrinterListViewModelOutputs {
         let printer = storedPrintersProperty.value![index]
 
         return PrinterListCellViewModel(printer: printer)
+    }
+
+    func networkPrinterCellViewModel(for index: Int) -> NetworkPrinterCellViewModelType {
+        let service = networkPrintersProperty.value[index]
+
+        return NetworkPrinterCellViewModel(networkPrinter: service)
     }
 
     // MARK: Inputs

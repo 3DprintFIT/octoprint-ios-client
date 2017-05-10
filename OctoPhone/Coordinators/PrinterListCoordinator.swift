@@ -49,4 +49,8 @@ extension PrinterListCoordinator: PrinterListViewControllerDelegate {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+
+    func selectedNetworkPrinter(withService service: BonjourService) {
+
+    }
 }

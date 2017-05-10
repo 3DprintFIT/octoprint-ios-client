@@ -11,7 +11,7 @@ import ReactiveSwift
 import ReactiveCocoa
 
 /// Real word printer overview
-class PrinterListCollectionViewCell: UICollectionViewCell {
+class PrinterListCollectionViewCell: UICollectionViewCell, TypedCell {
 
     /// CollectionView reuse identifier
     static let identifier = "PrinterOverviewCollectionViewCell"

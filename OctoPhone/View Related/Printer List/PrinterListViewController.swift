@@ -13,11 +13,16 @@ import ReactiveCocoa
 
 /// Printer list flow delegate interface
 protocol PrinterListViewControllerDelegate: class {
-    /// Call when requests provider is selected
+    /// Called when requests provider is selected
     func selectedPrinterProvider(provider: OctoPrintProvider, printerID: String)
 
-    /// Call when add printer button is tapped by user
+    /// Called when add printer button is tapped by user
     func addPrinterButtonTapped()
+
+    /// Called when user selected network printer to be added
+    ///
+    /// - Parameter service: Service representing remote printer
+    func selectedNetworkPrinter(withService service: BonjourService)
 }
 
 /// Represents list of users printers
@@ -40,12 +45,10 @@ class PrinterListViewController: BaseCollectionViewController {
             action: #selector(addPrinterButtonTapped)
         )
 
-        if let collectionView = collectionView {
-            collectionView.register(
-                PrinterListCollectionViewCell.self,
-                forCellWithReuseIdentifier: PrinterListCollectionViewCell.identifier
-            )
+        collectionView?.registerTypedCell(cellClass: NetworkPrinterCollectionViewCell.self)
+        collectionView?.registerTypedCell(cellClass: PrinterListCollectionViewCell.self)
 
+        if let collectionView = collectionView {
             collectionView.reactive.reloadData <~ viewModel.outputs.printersChanged
         }
     }
@@ -66,17 +69,23 @@ extension PrinterListViewController {
                                  numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0: return viewModel.outputs.storedPrintersCount
-        default: return 0
+        default: return viewModel.outputs.networkPrintersCount
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: PrinterListCollectionViewCell.identifier, for: indexPath
-        ) as! PrinterListCollectionViewCell
+        // Set different ViewModels for network and stored printer
+        if indexPath.section == 0 {
+            let cell: PrinterListCollectionViewCell = collectionView.dequeueTypedCell(for: indexPath)
 
-        cell.viewModel.value = viewModel.outputs.storedPrinterCellViewModel(for: indexPath.row)
+            cell.viewModel.value = viewModel.outputs.storedPrinterCellViewModel(for: indexPath.row)
+            return cell
+        }
+
+        let cell: NetworkPrinterCollectionViewCell = collectionView.dequeueTypedCell(for: indexPath)
+
+        cell.viewModel.value = viewModel.outputs.networkPrinterCellViewModel(for: indexPath.row)
 
         return cell
     }
@@ -87,7 +96,9 @@ extension PrinterListViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
 
-        viewModel.inputs.selectedStoredPrinter(at: indexPath)
+        if indexPath.section == 0 {
+            viewModel.inputs.selectedStoredPrinter(at: indexPath)
+        }
     }
 }
 
@@ -96,12 +107,25 @@ extension PrinterListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: collectionView.frame.width, height: 150)
+        let height: CGFloat = indexPath.section == 0 ? 150 : 44
+
+        return CGSize(width: collectionView.frame.width, height: height)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 
         return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+
+        // Make top insets for all sections but first
+        if section > 0 {
+            return UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
+        }
+
+        return .zero
     }
 }
