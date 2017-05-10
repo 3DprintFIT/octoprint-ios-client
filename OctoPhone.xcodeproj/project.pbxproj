@@ -122,6 +122,8 @@
 		D23F0CEE1E92C1EE00A70BC9 /* PrintProfileCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23F0CED1E92C1EE00A70BC9 /* PrintProfileCellViewModelTests.swift */; };
 		D248115C1EA69EFC00BA0A8B /* ClosePrinterCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248115B1EA69EFC00BA0A8B /* ClosePrinterCellViewModel.swift */; };
 		D248115E1EA69F1200BA0A8B /* ClosePrinterCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248115D1EA69F1200BA0A8B /* ClosePrinterCellCollectionViewCell.swift */; };
+		D24CCCB91EC3248C00BCDDD2 /* Bonjour.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24CCCB81EC3248C00BCDDD2 /* Bonjour.swift */; };
+		D24CCCBB1EC3251300BCDDD2 /* BonjourService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24CCCBA1EC3251300BCDDD2 /* BonjourService.swift */; };
 		D24EDCBE1E90037C00A8437B /* SlicingProfilesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EDCBD1E90037C00A8437B /* SlicingProfilesCoordinator.swift */; };
 		D24EDCC01E90087900A8437B /* SlicingProfilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EDCBF1E90087900A8437B /* SlicingProfilesViewModel.swift */; };
 		D24EDCC21E90089300A8437B /* SlicingProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EDCC11E90089300A8437B /* SlicingProfilesViewController.swift */; };
@@ -367,6 +369,8 @@
 		D23F0CED1E92C1EE00A70BC9 /* PrintProfileCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintProfileCellViewModelTests.swift; sourceTree = "<group>"; };
 		D248115B1EA69EFC00BA0A8B /* ClosePrinterCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosePrinterCellViewModel.swift; sourceTree = "<group>"; };
 		D248115D1EA69F1200BA0A8B /* ClosePrinterCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosePrinterCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		D24CCCB81EC3248C00BCDDD2 /* Bonjour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bonjour.swift; sourceTree = "<group>"; };
+		D24CCCBA1EC3251300BCDDD2 /* BonjourService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonjourService.swift; sourceTree = "<group>"; };
 		D24EDCBD1E90037C00A8437B /* SlicingProfilesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesCoordinator.swift; sourceTree = "<group>"; };
 		D24EDCBF1E90087900A8437B /* SlicingProfilesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesViewModel.swift; sourceTree = "<group>"; };
 		D24EDCC11E90089300A8437B /* SlicingProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlicingProfilesViewController.swift; sourceTree = "<group>"; };
@@ -561,6 +565,7 @@
 		D203DE751DDFCB59000DEAA0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D24CCCB71EC3245E00BCDDD2 /* Bonjour */,
 				D2353E021E9AC72D000C3B5F /* Constants */,
 				D2132B5E1E99843E00FA3ACD /* Common UI Elements */,
 				D2C38CD21E8029A300D06698 /* Formatters */,
@@ -785,6 +790,15 @@
 				D23F0CED1E92C1EE00A70BC9 /* PrintProfileCellViewModelTests.swift */,
 			);
 			path = "Print Profiles";
+			sourceTree = "<group>";
+		};
+		D24CCCB71EC3245E00BCDDD2 /* Bonjour */ = {
+			isa = PBXGroup;
+			children = (
+				D24CCCB81EC3248C00BCDDD2 /* Bonjour.swift */,
+				D24CCCBA1EC3251300BCDDD2 /* BonjourService.swift */,
+			);
+			path = Bonjour;
 			sourceTree = "<group>";
 		};
 		D24EDCBC1E8FF8B500A8437B /* Slicing Profiles */ = {
@@ -1499,6 +1513,7 @@
 				D2ABD3E21E9B8985003EDDAA /* OPFileSizeFormatter.swift in Sources */,
 				D23F0CDB1E919AD600A70BC9 /* PrintProfilesViewModel.swift in Sources */,
 				D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */,
+				D24CCCB91EC3248C00BCDDD2 /* Bonjour.swift in Sources */,
 				D2C8AF3B1E9435EE00DC7914 /* FormTextInputView.swift in Sources */,
 				D20E41A31E88747900CE99BA /* LogDetailViewController.swift in Sources */,
 				D2D990C51E6F6ABD0094DA64 /* LogsViewController.swift in Sources */,
@@ -1607,6 +1622,7 @@
 				D22444051EB685670026CE68 /* ControlsViewModel.swift in Sources */,
 				D20755941EC1B0AD00A43F49 /* StaticProvider.swift in Sources */,
 				D22401811E6B11CC0082129A /* GCodeAnalysis+JSONAble.swift in Sources */,
+				D24CCCBB1EC3251300BCDDD2 /* BonjourService.swift in Sources */,
 				D2D990D51E71F3D40094DA64 /* TerminalViewModel.swift in Sources */,
 				D2D331401E67177100C9C005 /* PrinterLoginCoordinator.swift in Sources */,
 				D2AC35FB1EB3DCA7009373AE /* ControlsView.swift in Sources */,
