@@ -30,7 +30,7 @@ class PrinterListViewModelTests: QuickSpec {
 
             contextManager = InMemoryContextManager()
             subject = PrinterListViewModel(delegate: self, contextManager: contextManager)
-            subject.outputs.storedPrintersChanged.startWithValues { printersCountChanged += 1 }
+            subject.outputs.printersChanged.startWithValues { printersCountChanged += 1 }
         }
 
         afterEach {
@@ -52,7 +52,7 @@ class PrinterListViewModelTests: QuickSpec {
         }
 
         it("update printers count dataset changed") {
-            expect(printersCountChanged) == 1
+            expect(printersCountChanged) == 0
             expect(subject.storedPrintersCount) == 0
 
             let realm = try! contextManager.createContext()
@@ -60,14 +60,14 @@ class PrinterListViewModelTests: QuickSpec {
                 realm.add(self.createPrinter(index: 0))
             }
 
-            expect(printersCountChanged) == 2
+            expect(printersCountChanged) == 1
             expect(subject.outputs.storedPrintersCount) == 1
 
             try! realm.write {
                 realm.add(self.createPrinter(index: 1))
             }
 
-            expect(printersCountChanged) == 3
+            expect(printersCountChanged) == 2
             expect(subject.outputs.storedPrintersCount) == 2
         }
 
@@ -117,5 +117,9 @@ extension PrinterListViewModelTests: PrinterListViewControllerDelegate {
 
     func addPrinterButtonTapped() {
         onAddPrinterButtonTapped?()
+    }
+
+    func selectedNetworkPrinter(withService service: BonjourService) {
+
     }
 }

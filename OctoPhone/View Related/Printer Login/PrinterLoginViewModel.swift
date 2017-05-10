@@ -13,6 +13,7 @@ import ReactiveSwift
 import ReactiveMoya
 import RealmSwift
 
+/// Inputs for login logic
 protocol PrinterLoginViewModelInputs {
     /// Call when view did load
     func viewDidLoad()
@@ -47,14 +48,22 @@ protocol PrinterLoginViewModelInputs {
     func cancelLoginPressed()
 }
 
+/// Outputs of login logic
 protocol PrinterLoginViewModelOutputs {
+    /// Initial name of printer
+    var namePreset: ReactiveSwift.Property<String?> { get }
+
+    /// Initial address of printer
+    var addressPreset: ReactiveSwift.Property<String?> { get }
+
     /// Bool value for form validation
-    var isFormValid: Signal<Bool, NoError> { get }
+    var isFormValid: SignalProducer<Bool, NoError> { get }
 
     /// Errors which should be displayed
     var displayError: Signal<DisplayableError, NoError> { get }
 }
 
+/// Common interface for login ViewModels
 protocol PrinterLoginViewModelType {
     /// View model inputs
     var inputs: PrinterLoginViewModelInputs { get }
@@ -63,6 +72,7 @@ protocol PrinterLoginViewModelType {
     var outputs: PrinterLoginViewModelOutputs { get }
 }
 
+/// Login screen logic
 final class PrinterLoginViewModel: PrinterLoginViewModelType, PrinterLoginViewModelInputs,
 PrinterLoginViewModelOutputs {
 
@@ -72,17 +82,21 @@ PrinterLoginViewModelOutputs {
 
     // MARK: Outputs
 
-    let isFormValid: Signal<Bool, NoError>
+    let namePreset: ReactiveSwift.Property<String?>
+
+    let addressPreset: ReactiveSwift.Property<String?>
+
+    let isFormValid: SignalProducer<Bool, NoError>
 
     let displayError: Signal<DisplayableError, NoError>
 
     // MARK: Properties
 
     /// Model property for printer name
-    private let printerNameProperty = MutableProperty<String?>(nil)
+    private let printerNameProperty: MutableProperty<String?>
 
     /// Model property for printer URL
-    private let printerUrlProperty = MutableProperty<String?>(nil)
+    private let printerUrlProperty: MutableProperty<String?>
 
     /// Model property for printer login token
     private let tokenProperty = MutableProperty<String?>(nil)
@@ -112,15 +126,23 @@ PrinterLoginViewModelOutputs {
     private weak var delegate: PrinterLoginViewControllerDelegate?
 
     // swiftlint:disable function_body_length
-    init(delegate: PrinterLoginViewControllerDelegate, contextManager: ContextManagerType) {
+    init(delegate: PrinterLoginViewControllerDelegate, contextManager: ContextManagerType,
+         service: BonjourService? = nil) {
+
         self.delegate = delegate
         self.contextManager = contextManager
+        self.namePreset = Property(value: service?.name)
+        self.addressPreset = Property(value: service?.fullAddress)
 
-        let formValues = Signal.combineLatest(
-            printerNameProperty.signal.skipNil(),
-            printerUrlProperty.signal.skipNil(),
-            tokenProperty.signal.skipNil(),
-            streamUrlProperty.signal
+        // Set the initial values also to ViewModel
+        printerUrlProperty = MutableProperty(service?.fullAddress)
+        printerNameProperty = MutableProperty(service?.name)
+
+        let formValues = SignalProducer.combineLatest(
+            printerNameProperty.producer.skipNil(),
+            printerUrlProperty.producer.skipNil(),
+            tokenProperty.producer.skipNil(),
+            streamUrlProperty.producer
         )
 
         // Dirty hack to make stream URL optional
@@ -128,8 +150,8 @@ PrinterLoginViewModelOutputs {
 
         displayError = displayErrorProperty.signal.skipNil()
 
-        isFormValid = Signal.merge([
-            viewWillAppearProperty.signal.map({ _ in false }).take(first: 1),
+        isFormValid = SignalProducer.merge([
+            viewWillAppearProperty.producer.map({ _ in false }).take(first: 1),
             formValues.map(PrinterLoginViewModel.isValid)
         ])
 
@@ -148,13 +170,13 @@ PrinterLoginViewModelOutputs {
                     .filterSuccessfulStatusCodes()
                     .map({_ in return printer })
                     .materialize()
-        }
+            }
 
         // Observe for successful login
-        loginEvent.signal
+        loginEvent
             .map({ $0.event.value })
             .skipNil()
-            .observeValues { [weak self] printer in
+            .startWithValues { [weak self] printer in
                 guard let weakSelf = self else { return }
 
                 do {
@@ -166,19 +188,19 @@ PrinterLoginViewModelOutputs {
                 } catch { }
 
                 weakSelf.delegate?.successfullyLoggedIn()
-        }
+            }
 
         // Observe for errors while logging in
-        loginEvent.signal
+        loginEvent
             .map({ $0.event.error })
             .skipNil()
-            .observeValues { [weak self] error in
+            .startWithValues { [weak self] error in
                 if case let .statusCode(response) = error, response.statusCode == 401 {
                     self?.displayErrorProperty.value = (tr(.loginError), tr(.incorrectCredentials))
                 } else {
                     self?.displayErrorProperty.value = (tr(.loginError), tr(.couldNotConnectToPrinter))
                 }
-        }
+            }
     }
     // swiftlint:enable function_body_length
 

@@ -35,7 +35,7 @@ class PrinterLoginViewModelSpec: QuickSpec {
             subject = PrinterLoginViewModel(delegate: self, contextManager: InMemoryContextManager())
 
             subject.inputs.viewDidLoad()
-            subject.outputs.isFormValid.observeValues({ buttonEnabled = $0 })
+            subject.outputs.isFormValid.startWithValues({ buttonEnabled = $0 })
             subject.inputs.viewWillAppear()
         }
 

@@ -116,6 +116,9 @@ final class PrinterLoginViewController: BaseViewController {
 
         edgesForExtendedLayout = []
 
+        printerNameField.reactive.text <~ viewModel.outputs.namePreset
+        urlField.reactive.text <~ viewModel.outputs.addressPreset
+
         printerNameField.reactive.continuousTextValues.observeValues { [weak self] name in
             self?.viewModel.inputs.printerNameChanged(name)
         }

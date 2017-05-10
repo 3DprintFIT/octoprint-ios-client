@@ -37,10 +37,16 @@ extension PrinterListCoordinator: PrinterListViewControllerDelegate {
     }
 
     func addPrinterButtonTapped() {
-        let coordinator = PrinterLoginCoordinator(
-            navigationController: navigationController,
-            contextManager: contextManager
-        )
+        presentPrinterLoginScreen()
+    }
+
+    func selectedNetworkPrinter(withService service: BonjourService) {
+        presentPrinterLoginScreen(withService: service)
+    }
+
+    private func presentPrinterLoginScreen(withService service: BonjourService? = nil) {
+        let coordinator = PrinterLoginCoordinator(navigationController: navigationController,
+                                                  contextManager: contextManager, service: service)
 
         coordinator.completed = { [weak self] in
             self?.childCoordinators.removeLast()
@@ -48,9 +54,5 @@ extension PrinterListCoordinator: PrinterListViewControllerDelegate {
 
         childCoordinators.append(coordinator)
         coordinator.start()
-    }
-
-    func selectedNetworkPrinter(withService service: BonjourService) {
-
     }
 }

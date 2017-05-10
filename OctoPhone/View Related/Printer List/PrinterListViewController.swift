@@ -99,6 +99,8 @@ extension PrinterListViewController {
         if indexPath.section == 0 {
             viewModel.inputs.selectedStoredPrinter(at: indexPath)
         }
+
+        viewModel.inputs.selectedNetworkPrinter(at: indexPath.row)
     }
 }
 

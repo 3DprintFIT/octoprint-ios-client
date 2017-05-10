@@ -12,8 +12,20 @@ import UIKit
 /// Controlls printer login controller flow
 final class PrinterLoginCoordinator: ContextCoordinator {
 
+    /// Network printer service
+    private let service: BonjourService?
+
+    init(navigationController: UINavigationController?, contextManager: ContextManagerType,
+         service: BonjourService?) {
+
+        self.service = service
+
+        super.init(navigationController: navigationController, contextManager: contextManager)
+    }
+
     override func start() {
-        let viewModel = PrinterLoginViewModel(delegate: self, contextManager: contextManager)
+        let viewModel = PrinterLoginViewModel(delegate: self, contextManager: contextManager,
+                                              service: service)
         let controller = PrinterLoginViewController(viewModel: viewModel)
 
         navigationController?.present(UINavigationController(rootViewController: controller),

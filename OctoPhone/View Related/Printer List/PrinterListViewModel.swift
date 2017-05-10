@@ -18,6 +18,11 @@ protocol PrinterListViewModelInputs {
     /// - Parameter indexPath: Index path of selected printer
     func selectedStoredPrinter(at indexPath: IndexPath)
 
+    /// Call when user selected network printer
+    ///
+    /// - Parameter index: Index of printer
+    func selectedNetworkPrinter(at index: Int)
+
     /// Call when user tapped button for printer addition
     func addPrinterButtonTapped()
 }
@@ -155,6 +160,12 @@ PrinterListViewModelOutputs {
                                          plugins: [tokenPlugin])
 
         delegate?.selectedPrinterProvider(provider: provider, printerID: printer.ID)
+    }
+
+    func selectedNetworkPrinter(at index: Int) {
+        let service = networkPrintersProperty.value[index]
+
+        delegate?.selectedNetworkPrinter(withService: service)
     }
 
     func addPrinterButtonTapped() {
