@@ -181,6 +181,8 @@ enum L10n {
   case milimetersPerMinute
   /// mm
   case milimetersSign
+  /// Network printers could not be loaded.
+  case networkPrintersCouldNotBeLoaded
   /// No connection is selected.
   case noConnectionSelected
   /// No, I do not
@@ -521,6 +523,8 @@ extension L10n: CustomStringConvertible {
         return L10n.tr(key: "Milimeters per minute")
       case .milimetersSign:
         return L10n.tr(key: "Milimeters sign")
+      case .networkPrintersCouldNotBeLoaded:
+        return L10n.tr(key: "Network printers could not be loaded")
       case .noConnectionSelected:
         return L10n.tr(key: "No connection selected")
       case .noIDoNot:

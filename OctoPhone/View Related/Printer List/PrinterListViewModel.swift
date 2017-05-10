@@ -20,7 +20,6 @@ protocol PrinterListViewModelInputs {
 
     /// Call when user tapped button for printer addition
     func addPrinterButtonTapped()
-
 }
 
 /// Defines all outputs API for view controller
@@ -28,8 +27,11 @@ protocol PrinterListViewModelOutputs {
     /// Total count of stored printers
     var storedPrintersCount: Int { get }
 
-    /// Stored printers list changed indicator
-    var storedPrintersChanged: SignalProducer<(), NoError> { get }
+    /// Total count of printers available on network
+    var networkPrintersCount: Int { get }
+
+    /// Called when stored printers or network printers changed
+    var printersChanged: SignalProducer<(), NoError> { get }
 
     /// Stream of errors which should be presented to the user
     var displayError: SignalProducer<DisplayableError, NoError> { get }
@@ -62,7 +64,9 @@ PrinterListViewModelOutputs {
 
     var storedPrintersCount: Int { return storedPrintersProperty.value?.count ?? 0 }
 
-    let storedPrintersChanged: SignalProducer<(), NoError>
+    var networkPrintersCount: Int { return networkPrintersProperty.value.count }
+
+    let printersChanged: SignalProducer<(), NoError>
 
     let displayError: SignalProducer<DisplayableError, NoError>
 
@@ -70,6 +74,9 @@ PrinterListViewModelOutputs {
 
     /// Collection of stored printers
     private let storedPrintersProperty = MutableProperty<Results<Printer>?>(nil)
+
+    /// The actual collection of network printers
+    private let networkPrintersProperty = MutableProperty<[BonjourService]>([])
 
     /// Holds last occured error
     private let displayErrorProperty = MutableProperty<DisplayableError?>(nil)
@@ -83,19 +90,33 @@ PrinterListViewModelOutputs {
     init(delegate: PrinterListViewControllerDelegate, contextManager: ContextManagerType) {
         self.delegate = delegate
         self.contextManager = contextManager
-        self.storedPrintersChanged = storedPrintersProperty.producer.ignoreValues()
         self.displayError = displayErrorProperty.producer.skipNil()
+
+        self.printersChanged = SignalProducer.merge([
+            networkPrintersProperty.producer.skip(first: 1).ignoreValues(),
+            storedPrintersProperty.producer.skipNil().ignoreValues()
+        ])
 
         contextManager.createObservableContext()
             .fetch(collectionOf: Printer.self)
             .startWithResult { [weak self] result in
-
                 switch result {
                 case let .success(printers): self?.storedPrintersProperty.value = printers
                 case .failure: self?.displayErrorProperty.value = (tr(.anErrorOccured),
                                                                    tr(.storedPrintersCouldNotBeLoaded))
                 }
         }
+
+        Bonjour.searchForServices(ofType: .internetPrinter)
+            .observeResult { [weak self] result in
+                switch result {
+                case let .success(printers):
+                    self?.networkPrintersProperty.value = printers
+                case .failure:
+                    self?.displayErrorProperty.value = (tr(.anErrorOccured),
+                                                        tr(.networkPrintersCouldNotBeLoaded))
+                }
+            }
     }
 
     // MARK: Output functions

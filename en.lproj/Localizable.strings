@@ -24,6 +24,7 @@
 // *
 "Printer list" = "Printer list";
 "Stored printers could not be loaded" = "Stored printers could not be loaded.";
+"Network printers could not be loaded" = "Network printers could not be loaded.";
 
 
 // *

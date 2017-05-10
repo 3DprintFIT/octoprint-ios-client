@@ -46,10 +46,11 @@ class PrinterListViewController: BaseCollectionViewController {
                 forCellWithReuseIdentifier: PrinterListCollectionViewCell.identifier
             )
 
-            collectionView.reactive.reloadData <~ viewModel.outputs.storedPrintersChanged
+            collectionView.reactive.reloadData <~ viewModel.outputs.printersChanged
         }
     }
 
+    /// UI callback for add button tap event
     func addPrinterButtonTapped() {
         viewModel.inputs.addPrinterButtonTapped()
     }
@@ -90,6 +91,7 @@ extension PrinterListViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension PrinterListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
