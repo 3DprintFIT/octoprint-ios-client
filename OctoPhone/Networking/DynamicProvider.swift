@@ -67,7 +67,7 @@ struct DynamicTarget: TargetType {
 /// Requests provider allowing to pass base URL during run time
 final class DynamicProvider<Target: TargetPart>: ReactiveSwiftMoyaProvider<DynamicTarget> {
     /// Request base URL
-    private let baseURL: URL
+    let baseURL: URL
 
     init(
         baseURL: URL,
