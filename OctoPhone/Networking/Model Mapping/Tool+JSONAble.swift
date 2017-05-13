@@ -13,11 +13,12 @@ extension Tool: JSONAble {
     static func fromJSON(json: [String : Any]) throws -> Tool {
         guard
             let actual = json["actual"] as? Double,
-            let offset = json["offset"] as? Double,
             let target = json["target"] as? Double
         else {
             throw JSONAbleError.errorMappingJSONToObject(json: json)
         }
+
+        let offset = json["offset"] as? Double ?? 0.0
 
         return Tool(actual: actual, offset: offset, target: target)
     }

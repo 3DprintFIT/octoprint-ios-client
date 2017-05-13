@@ -12,11 +12,12 @@ extension Bed: JSONAble {
     static func fromJSON(json: [String : Any]) throws -> Bed {
         guard
             let actual = json["actual"] as? Double,
-            let offset = json["offset"] as? Double,
             let target = json["target"] as? Double
         else {
             throw JSONAbleError.errorMappingJSONToObject(json: json)
         }
+
+        let offset = json["offset"] as? Double ?? 0.0
 
         return Bed(actualTemperature: actual, targetTemperature: target, offsetTemperature: offset)
     }
