@@ -36,7 +36,6 @@
 		D210B87A1EC1F1D200363E3F /* ToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210B8791EC1F1D200363E3F /* ToolTests.swift */; };
 		D2128BB91EAD3A09001FAB6F /* SDCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2128BB81EAD3A09001FAB6F /* SDCardView.swift */; };
 		D2128BBB1EAD3A79001FAB6F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2128BBA1EAD3A79001FAB6F /* RoundedButton.swift */; };
-		D2129BDE1EC5EFBE00CB39A8 /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2129BDD1EC5EFBE00CB39A8 /* SocketIO.framework */; };
 		D2132B571E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B561E98DF7500FA3ACD /* Disposable+CompositeDisposable.swift */; };
 		D2132B5B1E98EECF00FA3ACD /* PrintProfileCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B5A1E98EECF00FA3ACD /* PrintProfileCreationViewModel.swift */; };
 		D2132B5D1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2132B5C1E99742D00FA3ACD /* UIViewController+ErrorPresentable.swift */; };
@@ -511,7 +510,6 @@
 				D27C970C1E63986900641A1A /* ReactiveMoya.framework in Frameworks */,
 				D27C970E1E63A00B00641A1A /* Moya.framework in Frameworks */,
 				D2315E6F1E75F53A00C797AB /* SnapKit.framework in Frameworks */,
-				D2129BDE1EC5EFBE00CB39A8 /* SocketIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1444,7 +1442,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Moya.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveMoya.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SocketIO.framework",
 			);
 			name = Carthage;
 			outputPaths = (
