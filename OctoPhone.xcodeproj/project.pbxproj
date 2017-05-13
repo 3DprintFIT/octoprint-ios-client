@@ -164,6 +164,7 @@
 		D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5361E09E65F0089C027 /* FilesViewController.swift */; };
 		D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5381E09E6740089C027 /* SettingsViewController.swift */; };
 		D2A07F721EC7361400ACAB6A /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A07F711EC7361400ACAB6A /* WebSocket.swift */; };
+		D2A07F741EC7398100ACAB6A /* OctoPrintPushEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A07F731EC7398100ACAB6A /* OctoPrintPushEvents.swift */; };
 		D2A601301DF3870F006B833E /* PrinterListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A6012F1DF3870F006B833E /* PrinterListCollectionViewCell.swift */; };
 		D2ABD3E21E9B8985003EDDAA /* OPFileSizeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ABD3E11E9B8985003EDDAA /* OPFileSizeFormatter.swift */; };
 		D2ABD3E41E9B8E30003EDDAA /* OPDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ABD3E31E9B8E30003EDDAA /* OPDateFormatter.swift */; };
@@ -415,6 +416,7 @@
 		D28EC5361E09E65F0089C027 /* FilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		D28EC5381E09E6740089C027 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D2A07F711EC7361400ACAB6A /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		D2A07F731EC7398100ACAB6A /* OctoPrintPushEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoPrintPushEvents.swift; sourceTree = "<group>"; };
 		D2A6012F1DF3870F006B833E /* PrinterListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2A713811DE7069F00BDC0C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D2ABD3E11E9B8985003EDDAA /* OPFileSizeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPFileSizeFormatter.swift; sourceTree = "<group>"; };
@@ -932,6 +934,7 @@
 			isa = PBXGroup;
 			children = (
 				D2A07F711EC7361400ACAB6A /* WebSocket.swift */,
+				D2A07F731EC7398100ACAB6A /* OctoPrintPushEvents.swift */,
 			);
 			path = Sockets;
 			sourceTree = "<group>";
@@ -1509,6 +1512,7 @@
 				D27C97161E63C25D00641A1A /* TokenPlugin.swift in Sources */,
 				D2072FD41DEDCD6D00E1BBD3 /* Printer.swift in Sources */,
 				D2688D791E9052DC00290421 /* SlicingProfileCollectionViewCell.swift in Sources */,
+				D2A07F741EC7398100ACAB6A /* OctoPrintPushEvents.swift in Sources */,
 				D2FF97241DF0DFC3005CA7B2 /* PrinterListViewController.swift in Sources */,
 				D24EDCC01E90087900A8437B /* SlicingProfilesViewModel.swift in Sources */,
 				D2D990B91E6F66C70094DA64 /* CurrentPrintViewModel.swift in Sources */,
