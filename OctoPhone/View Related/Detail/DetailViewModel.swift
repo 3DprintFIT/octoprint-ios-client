@@ -162,6 +162,7 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
     /// Current state value
     private let stateProperty = MutableProperty<PrinterState?>(nil)
 
+    /// Holds last value of tool property
     private let toolProperty = MutableProperty<Tool?>(nil)
 
     /// Last error occured
@@ -172,6 +173,9 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
 
     /// Printer requests provider
     private let provider: OctoPrintProvider
+
+    /// Push events from OctoPrint
+    private var sockets: Disposable?
 
     /// User content requests provider
     private let staticProvider = StaticContentProvider()
@@ -258,6 +262,7 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
 
         loadPrinter(with: printerID)
         requestData()
+        watchData()
     }
 
     // MARK: Input methods
@@ -351,7 +356,18 @@ final class DetailViewModel: DetailViewModelType, DetailViewModelInputs, DetailV
         return job.fileName != nil && job.fileSize.value != nil && job.printTimeLeft.value != nil
     }
 
+    /// Setup temperatures watch
+    private func watchData() {
+        sockets = OctoPrintPushEvents(url: provider.baseURL)
+            .temperatures()
+            .startWithValues({ [weak self] bed, tool in
+                self?.bedProperty.value = bed
+                self?.toolProperty.value = tool
+            })
+    }
+
     deinit {
         streamTimerDisposable?.dispose()
+        sockets?.dispose()
     }
 }
