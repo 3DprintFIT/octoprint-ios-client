@@ -163,6 +163,7 @@
 		D28E44A51E8A7A81009D4976 /* String+URLEncoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E44A41E8A7A81009D4976 /* String+URLEncoded.swift */; };
 		D28EC5371E09E65F0089C027 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5361E09E65F0089C027 /* FilesViewController.swift */; };
 		D28EC5391E09E6740089C027 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EC5381E09E6740089C027 /* SettingsViewController.swift */; };
+		D2A07F721EC7361400ACAB6A /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A07F711EC7361400ACAB6A /* WebSocket.swift */; };
 		D2A601301DF3870F006B833E /* PrinterListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A6012F1DF3870F006B833E /* PrinterListCollectionViewCell.swift */; };
 		D2ABD3E21E9B8985003EDDAA /* OPFileSizeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ABD3E11E9B8985003EDDAA /* OPFileSizeFormatter.swift */; };
 		D2ABD3E41E9B8E30003EDDAA /* OPDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ABD3E31E9B8E30003EDDAA /* OPDateFormatter.swift */; };
@@ -413,6 +414,7 @@
 		D28E44A41E8A7A81009D4976 /* String+URLEncoded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+URLEncoded.swift"; sourceTree = "<group>"; };
 		D28EC5361E09E65F0089C027 /* FilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		D28EC5381E09E6740089C027 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D2A07F711EC7361400ACAB6A /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		D2A6012F1DF3870F006B833E /* PrinterListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterListCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2A713811DE7069F00BDC0C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D2ABD3E11E9B8985003EDDAA /* OPFileSizeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPFileSizeFormatter.swift; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 		D203DE751DDFCB59000DEAA0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D2A07F701EC734EC00ACAB6A /* Sockets */,
 				D24CCCB71EC3245E00BCDDD2 /* Bonjour */,
 				D2353E021E9AC72D000C3B5F /* Constants */,
 				D2132B5E1E99843E00FA3ACD /* Common UI Elements */,
@@ -923,6 +926,14 @@
 				D248115D1EA69F1200BA0A8B /* ClosePrinterCellCollectionViewCell.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		D2A07F701EC734EC00ACAB6A /* Sockets */ = {
+			isa = PBXGroup;
+			children = (
+				D2A07F711EC7361400ACAB6A /* WebSocket.swift */,
+			);
+			path = Sockets;
 			sourceTree = "<group>";
 		};
 		D2AC35F91EB3DC5F009373AE /* Controls */ = {
@@ -1522,6 +1533,7 @@
 				D23F0CDB1E919AD600A70BC9 /* PrintProfilesViewModel.swift in Sources */,
 				D224017C1E6B02F50082129A /* SignalProducer+JSONAble.swift in Sources */,
 				D24CCCB91EC3248C00BCDDD2 /* Bonjour.swift in Sources */,
+				D2A07F721EC7361400ACAB6A /* WebSocket.swift in Sources */,
 				D2C8AF3B1E9435EE00DC7914 /* FormTextInputView.swift in Sources */,
 				D20E41A31E88747900CE99BA /* LogDetailViewController.swift in Sources */,
 				D2D990C51E6F6ABD0094DA64 /* LogsViewController.swift in Sources */,
