@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Icons
 
 /// Printer settings flow controller
 final class SettingsCoordinator: TabCoordinator {
@@ -15,6 +16,8 @@ final class SettingsCoordinator: TabCoordinator {
         let controller = SettingsViewController(viewModel: viewModel)
 
         controller.title = tr(.settings)
+        navigationController?.tabBarItem = UITabBarItem(withIcon: .cogIcon, size: CGSize(width: 22, height: 22),
+                                             title: tr(.settings))
         navigationController?.pushViewController(controller, animated: false)
     }
 }

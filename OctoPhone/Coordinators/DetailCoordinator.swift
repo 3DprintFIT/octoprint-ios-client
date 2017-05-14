@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Icons
 
 /// Printer detail flow controller
 final class DetailCoordinator: TabCoordinator {
@@ -29,6 +30,8 @@ final class DetailCoordinator: TabCoordinator {
         let controller = DetailViewController(viewModel: viewModel)
 
         controller.title = tr(.printerDetail)
+        controller.tabBarItem = UITabBarItem(withIcon: .ulIcon, size: CGSize(width: 22, height: 22),
+                                             title: tr(.printerDetail))
         navigationController?.pushViewController(controller, animated: false)
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Icons
 
 /// Stored files list coordinator
 final class FilesCoordinator: TabCoordinator {
@@ -16,6 +17,8 @@ final class FilesCoordinator: TabCoordinator {
         let controller = FilesViewController(viewModel: viewModel)
 
         controller.title = tr(.files)
+        controller.tabBarItem = UITabBarItem(withIcon: ._429Icon, size: CGSize(width: 22, height: 22),
+                                             title: tr(.files))
         navigationController?.pushViewController(controller, animated: false)
     }
 }

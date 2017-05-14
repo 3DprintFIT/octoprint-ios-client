@@ -25,6 +25,8 @@ class SettingsCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        backgroundColor = .white
+
         contentView.addSubview(settingsTextLabel)
         bindViewModel()
     }
