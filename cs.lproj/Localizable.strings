@@ -1,0 +1,266 @@
+// *
+// * Common
+// *
+"An error occured" = "Ooops, an error occured";
+"Ok" = "Ok";
+"Connection Error" = "Connection Error";
+"Database error" = "Database error";
+"Cancel" = "Cancel";
+"Delete" = "Delete";
+"Default color" = "Default";
+"Red" = "Red";
+"Orange" = "Orange";
+"Yellow" = "Yellow";
+"Green" = "Green";
+"Blue" = "Blue";
+"Black" = "Black";
+"Unknown" = "Unknown";
+"No I do not" = "No, I do not";
+
+
+
+// *
+// * Printer list
+// *
+"Printer list" = "Seznam tiskáren";
+"Stored printers could not be loaded" = "Stored printers could not be loaded.";
+"Network printers could not be loaded" = "Network printers could not be loaded.";
+
+
+// *
+// * Printer overview tabbar
+// *
+"Printer" = "Tiskárna";
+
+
+// *
+// * Printer login
+// *
+"Printer Name" = "Název tiskárny";
+"Printer URL" = "URL adresa tiskárny";
+"Printer Access Token" = "Přístupový token token";
+"Login" = "Přihlásit";
+"Login Error" = "Login Error";
+"Incorrect Credentials" = "The credentials you entered are incorrect.";
+"Could not connect to printer" = "Can not connect to the printer.";
+"Stream URL" = "URL video streamu (volitelné)";
+
+
+// *
+// * Detail
+// *
+"Printer detail" = "Detail tiskárny";
+"Job file" = "Soubor";
+"Job print time" = "Čas tisku";
+"Job print time left" = "Zbývá";
+"Bed temperature" = "Teplota podložky";
+"Bed temperature target" = "Cílová teplota podložky";
+"Bed temperature offset" = "Teplotní posun podložky";
+"Tool temperature" = "Teplota trysky";
+"Tool temperature offset" = "Cílová teplota trysky";
+"Tool temperature target" = "Teplotní posun trysky";
+"Printer is currently not in operational state" = "Tiskárna v tuto chvíli není v provozu. Pokud ji chcete připojit, stiskněte tlačítko níže.";
+"Connect printer" = "Připojit.";
+"Could not load printer stream" = "Could not load printer stream.";
+"Could not load printer" = "Could not load printer settings";
+
+
+// *
+// * Files
+// *
+"Files" = "Soubory";
+"Files list could not be loaded" = "Files list could not be loaded.";
+"Selected file could not be uploaded" = "Selected file could not be uploaded.";
+"All files" = "Vše";
+"Files on printer" = "Tiskárna";
+"Files on card" = "SD karta";
+
+
+// *
+// * File detail
+// *
+"File attributes" = "Attributes";
+"File name" = "File name";
+"Unknown file name" = "Unknown file name";
+"File size" = "Size";
+"File type" = "Type";
+"Stl model" = "STL model";
+"Gcode file" = "GCode file";
+"File last modification" = "Last modification";
+"File analysis" = "GCode analysis";
+"File filament length" = "Filament length";
+"File filament volume" = "Filament volume";
+"File stats" = "Print statistics";
+"File success prints" = "Success prints";
+"File failure prints" = "Failure prints";
+"Do you really want to delete file from printer" = "Do you really want to delete this file from printer? This action is permanent and cannot be undone.";
+"File could not be deleted because was not found" = "File could not be delete because it was not found on the printer.";
+"File could not be deleted because is printed" = "File could not be deleted, because is currently printed";
+"File could not be deleted, because an error occured" = "File could not be deleted, becuase an error occured";
+"File could not be printed" = "File could not be printed";
+"Printer is not operational" = "Requested file could not be printed because printer is not currently operational.";
+"An error occured while trying to print file" = "An error occured when requested file was queued for print.";
+
+
+// *
+// * Settings
+// *
+"Settings" = "Nastavení";
+"Close printer" = "Zavřít detail";
+
+
+// *
+// * Terminal
+// *
+"Terminal" = "Terminal";
+"Send Command Indicator" = "$";
+"Command" = "Příkaz";
+"Send" = "Odeslat";
+"Can not create requested command" = "Can not create requested command.";
+"Can not load stored commands" = "Can not load stored commands.";
+"Command executing failed" = "Yay, command execution failed.";
+"Requested command could not be executed" = "Requested command could not be executed.";
+
+
+// *
+// * Logs
+// *
+"Logs" = "Logy";
+"Size in bytes" = "%@ bytů";
+"Stored logs could not be loaded" = "Stored logs could not be loaded.";
+"Logs could not be downloaded from printer" = "Logs could not be downloaded from printer.";
+"Could not save downloaded list of logs" = "Could not save downloaded list of logs.";
+
+
+// *
+// * Log detail
+// *
+"Log detail" = "Detail logu";
+"Can not open selected log" = "Can not open selected log.";
+"Log file could not be deleted from printer" = "Log file could not be deleted from printer.";
+"Unknown file" = "Uknown file";
+"Unknown file size" = "Unknwon file size";
+"Unknown modification date" = "Uknown modofication date";
+"Downloading log file" = "Downloading log file...";
+"Delete log" = "Delete log";
+"Do you really want to delete log from printer" = "Do you really want to delete log from printer? This action is permanent and cannot be undone.";
+"Requested log file could not be downloaded" = "Requested log file could not be downloaded.";
+"Downloaded file can not be opened" = "Downloaded file can not be opened.";
+"Log could not be removed" = "Log could not be removed.";
+
+
+// *
+// * Slicing
+// *
+"Slicing" = "Slicing";
+"Could not load list of slicers" = "Could not load list of slicers.";
+"Unknown slicer" = "Unknown slicer";
+"Slicer profiles could not be loaded" = "Slicer profiles could not be loaded.";
+"Unknown slicing profile" = "Unknown slicing profile";
+"Downloaded list of slicing profiles could not be saved" = "Downloaded list of slicing profiles could not be saved.";
+"Slicing profile could not be deleted" = "Slicing profile could not be deleted.";
+"Selected profile could not be opened" = "Selected profile could not be opened.";
+"Do you really want to delete slicing profile" = "Do you really want to delete slicing profile from printer? This operation is permanent and can not be undone.";
+
+
+// *
+// * Slicing profiles
+// *
+"Slicer profiles" = "Slicovací profily";
+
+
+// *
+// * Slicing profile detail
+// *
+"Slicer profile" = "Profil sliceru";
+"Slicing profile name" = "Profile name";
+"Slicing profile description" = "Description";
+"Slicing profile reference" = "File reference";
+"Add new slicing profile" = "Add new slicing profile";
+"Slicing profile fields are required" = "Profile name and description are required fields.";
+"Slicing profile could not be created" = "Slicing profile could not be created.";
+
+
+// *
+// * Print profiles
+// *
+"Print profiles" = "Tiskové profily";
+"Printer profiles could not be loaded" = "Printer profiles could not be loaded.";
+"Printer profiles list could not be downloaded" = "Printer profiles list could not be downloaded.";
+"Could not save printer profiles" = "Could not save printer profiles.";
+"Unknown printer profile" = "Unknown printer profile";
+"Do you really want to delete print profile" = "Do you really want to delete print profile? This action is permanent and cannot be undone.";
+"Print profile could not be deleted from localy" = "Print profile could not be deleted localy.";
+"Could not delete print profile from printer" = "Could not delete print profile from printer.";
+"Print profile update was not successfull" = "Print profile update was not successfull.";
+
+
+// *
+// * New print profile
+// *
+"Print profile name" = "Name";
+"Print profile Identifier" = "Identifier";
+"Print profile model" = "Model";
+"Print profile color" = "Color";
+"Form factor" = "Form factor";
+"Rectangular form factor" = "Rectangular";
+"Circular form factor" = "Circular";
+"Origin" = "Origin";
+"Lower left origin" = "Lower left";
+"Center origin" = "Center";
+"Volume" = "Volume";
+"X axis" = "X";
+"Y axis" = "Y";
+"Z axis" = "Z";
+"Milimeters sign" = "mm";
+"Heated bed" = "Heated bed";
+"Axis" = "Axis";
+"E axis" = "E";
+"Inverted control" = "Inverted control";
+"Milimeters per minute" = "mm/min";
+"Nozzle diameter" = "Nozzle diameter";
+"Number of extruders" = "Number of extruders";
+"Profile could not be created" = "Profile could not be created.";
+"Created profile could not be saved localy" = "Created profile could not be saved localy, but is created on printer.";
+
+
+// *
+// * SD card management
+// *
+"SD card management" = "Nastavení SD karty";
+"SD card state is not available" = "SD card state is not available.";
+"SD card ready" = "Ready";
+"SD card not connected" = "Not connected";
+"Refresh SD card" = "Refresh";
+"Init SD card" = "Init";
+"Release SD card" = "Release";
+"SD card command failed" = "There was an issue while performing requested SD card command.";
+
+
+// *
+// * Printer and tool controls
+// *
+"Printer controls" = "Ovládání tiskové hlavy";
+"Print head command could not be issued" = "Printer command could not be issued.";
+"Extrude filament" = "Tavit";
+
+
+// *
+// * Connect printer
+// *
+"Connect printer title" = "Připojit";
+"Not connection available" = "No connection available.";
+"Cannot load list of connections" = "Cannot load list of connections.";
+"No connection selected" = "No connection is selected.";
+"Selected port could not be connected" = "Selected port could not be connected.";
+"Do you want to cancel print job" = "Do you really want to cancel current job? This action cannot be undone.";
+"Cancel print job" = "Cancel print job";
+
+
+// *
+// * Bed settings
+// *
+"Bed settings" = "Bed settings";
+"Target temperature" = "Target temeprature";
+"Offset temperature" = "Offset temperature";
+"Could not set bed temperature" = "Could not set bed temperature";

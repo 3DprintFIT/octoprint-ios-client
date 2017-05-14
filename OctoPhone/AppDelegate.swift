@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = window
         self.coordinator = coordinator
+
         return true
     }
 
