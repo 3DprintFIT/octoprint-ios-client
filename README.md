@@ -26,13 +26,6 @@ This project is build with a huge help of its dependencies:
 * [Moya](https://github.com/Moya/Moya)
 * [SnapKit](https://github.com/SnapKit/SnapKit)
 
-github "realm/realm-cocoa" ~> 2.0
-github "Alamofire/Alamofire" ~> 4.0
-github "ReactiveCocoa/ReactiveSwift" ~> 1.0.1
-github "ReactiveCocoa/ReactiveCocoa" ~> 5.0.0
-github "Moya/Moya" ~> 8.0.2
-github "SnapKit/SnapKit" ~> 3.2.0
-
 ## Local usage
 
 ### Docker setup
