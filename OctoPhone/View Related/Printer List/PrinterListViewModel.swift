@@ -118,7 +118,7 @@ PrinterListViewModelOutputs {
                 }
         }
 
-        Bonjour.searchForServices(ofType: .internetPrinter)
+        Bonjour.searchForServices(ofType: .workstation)
             .observeResult { [weak self] result in
                 switch result {
                 case let .success(printers):
