@@ -4,4 +4,3 @@ github "ReactiveCocoa/ReactiveSwift" ~> 1.0.1
 github "ReactiveCocoa/ReactiveCocoa" ~> 5.0.0
 github "Moya/Moya" ~> 8.0.2
 github "SnapKit/SnapKit" ~> 3.2.0
-github "socketio/socket.io-client-swift" ~> 9.0.0
