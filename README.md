@@ -1,13 +1,31 @@
-# octoprint-ios-client [![Build Status](https://travis-ci.com/3DprintFIT/octoprint-ios-client.svg?token=AxpSW7yys3aiQpPG9zMW&branch=dev)](https://travis-ci.com/3DprintFIT/octoprint-ios-client) [![codebeat badge](https://codebeat.co/badges/f2a97050-74db-47c1-a050-daf71d57c7c9)](https://codebeat.co/projects/github-com-3dprintfit-octoprint-ios-client) [![codecov](https://codecov.io/gh/3DprintFIT/octoprint-ios-client/branch/dev/graph/badge.svg)](https://codecov.io/gh/3DprintFIT/octoprint-ios-client)
+# OctoPhone - OctoPrint iOS client [![Build Status](https://travis-ci.com/3DprintFIT/octoprint-ios-client.svg?token=AxpSW7yys3aiQpPG9zMW&branch=dev)](https://travis-ci.com/3DprintFIT/octoprint-ios-client) [![codebeat badge](https://codebeat.co/badges/f2a97050-74db-47c1-a050-daf71d57c7c9)](https://codebeat.co/projects/github-com-3dprintfit-octoprint-ios-client) [![codecov](https://codecov.io/gh/3DprintFIT/octoprint-ios-client/branch/dev/graph/badge.svg)](https://codecov.io/gh/3DprintFIT/octoprint-ios-client)
+
+OctoPhone is iOS clint for OctoPrint v. 1.2.15.
+The app is written in pure Swift, with MVVM architecture and reactive approach.
+
+The source code is part of my [bachelor thesis](https://github.com/josefdolezal/fit-bi-bap) at FIT-CTU in Prague. Last commit included in final thesis is [53b3dca](https://github.com/3DprintFIT/octoprint-ios-client/tree/53b3dca3053785760a78baa0bea83cab48fd50e9). Since then, it's open source and ready for your contribution! :tada:
+
+![Main](assets/main.jpg)
+
+## Features
+
+* Implements API of OctoPrint 1.2.15
+* Automatically searches for printers on local network
+* Shows video stream of current printing if it's available
+* Print head controls
+* Files management
+* Terminal emulator
+* Everythin' is reactive
+
 
 ## Setup
 
-0. Install [Carthage](https://github.com/Carthage/Carthage) dependency manager
-1. Install [SwiftLint](https://github.com/realm/SwiftLint) Swift linter
-2. Install [SwiftGen](https://github.com/SwiftGen/SwiftGen) which generates translations
-3. Run `$ carthage bootstrap --platform iOS`
-4. Open `OctoPhone.xcodeproj`
-5. :tada:
+1. Install [Carthage](https://github.com/Carthage/Carthage) dependency manager
+2. Install [SwiftLint](https://github.com/realm/SwiftLint) Swift linter
+3. Install [SwiftGen](https://github.com/SwiftGen/SwiftGen) which generates translations
+5. Run `$ carthage bootstrap --platform iOS`
+6. Open `OctoPhone.xcodeproj`
+7. :tada:
 
 ## Tests
 
@@ -19,12 +37,12 @@ You can run tests in Xcode with `cmd + u` keyboard shortcut.
 
 This project is build with a huge help of its dependencies:
 
-* [Realm](https://github.com/realm/realm-cocoa)
-* [Alamofire](https://github.com/Alamofire/Alamofire)
-* [ReactiveSwift](https://github.com/ReactiveCocoa/ReactiveSwift)
-* [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)
-* [Moya](https://github.com/Moya/Moya)
-* [SnapKit](https://github.com/SnapKit/SnapKit)
+* [Realm](https://github.com/realm/realm-cocoa) (MIT)
+* [Alamofire](https://github.com/Alamofire/Alamofire) (Apache 2.0)
+* [ReactiveSwift](https://github.com/ReactiveCocoa/ReactiveSwift) (MIT)
+* [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) (MIT)
+* [Moya](https://github.com/Moya/Moya) (MIT)
+* [SnapKit](https://github.com/SnapKit/SnapKit) (MIT)
 
 ## Local usage
 
