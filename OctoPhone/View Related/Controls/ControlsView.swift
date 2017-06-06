@@ -132,11 +132,25 @@ class ControlsView: UIView {
 
     // MARK: Internal logic
 
-    private static func moveButton(icon: FontAwesomeIcon) -> UIButton {
+    private static func genericButton(icon: FontAwesomeIcon, normalColor: UIColor?,
+                                      tintColor: UIColor?) -> UIButton {
+
         let button = UIButton(type: .custom)
+
+        button.layer.cornerRadius = 30
+        button.layer.masksToBounds = true
+        button.backgroundColor = normalColor
 
         button.setIconImage(withIcon: icon, size: CGSize(width: 18, height: 18),
                             color: Colors.Pallete.greyHue4, forState: .normal)
+
+        button.reactive.controlEvents(.touchDown).observeValues { selectedButton in
+            selectedButton.backgroundColor = tintColor
+        }
+
+        button.reactive.controlEvents([.touchUpInside, .touchUpOutside]).observeValues { selectedButton in
+            selectedButton.backgroundColor = normalColor
+        }
 
         button.snp.makeConstraints { make in
             make.width.height.equalTo(60)
@@ -145,13 +159,11 @@ class ControlsView: UIView {
         return button
     }
 
+    private static func moveButton(icon: FontAwesomeIcon) -> UIButton {
+        return genericButton(icon: icon, normalColor: nil, tintColor: .white)
+    }
+
     private static func homeButton() -> UIButton {
-        let button = moveButton(icon: .homeIcon)
-
-        button.layer.cornerRadius = 30
-        button.layer.masksToBounds = true
-        button.backgroundColor = .white
-
-        return button
+        return genericButton(icon: .homeIcon, normalColor: .white, tintColor: Colors.Pallete.greyHue3)
     }
 }
