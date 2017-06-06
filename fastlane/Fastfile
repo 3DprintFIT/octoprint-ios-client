@@ -6,10 +6,15 @@ default_platform :ios
 platform :ios do
   before_all do
     ENV["CRASHLYTICS_NOTES"] = changelog_from_git_commits
+    carthage(
+      use_binaries: true,
+      platform: "iOS"
+    )
   end
 
   desc "Runs all the tests"
   lane :test do
+    swiftlint
     scan(scheme: "OctoPhone")
     xcov(scheme: "OctoPhone")
   end
@@ -17,11 +22,6 @@ platform :ios do
   desc "Submit a new Beta Build to Crashlytics"
   desc "This will also make sure the profile is up to date"
   lane :beta do
-    carthage(
-      use_binaries: true,
-      platform: "iOS"
-    )
-    swiftlint
     scan(scheme: "OctoPhone")
     xcov(scheme: "OctoPhone")
     create_keychain(
@@ -45,11 +45,6 @@ platform :ios do
 
   desc "Deploy a new version to the App Store"
   lane :release do
-    carthage(
-      use_binaries: true,
-      platform: "iOS"
-    )
-    swiftlint
     scan(
       scheme: "OctoPhone"
     )

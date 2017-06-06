@@ -4,13 +4,7 @@ osx_image: xcode8.3
 before_install:
   - sudo gem install xcov
 
+script: ./scripts/build.sh
+
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
-
-branches:
-  only:
-    - release
-    - dev
-
-script:
-  - fastlane beta
