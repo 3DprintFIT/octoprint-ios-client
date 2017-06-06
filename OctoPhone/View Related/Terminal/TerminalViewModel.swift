@@ -118,7 +118,6 @@ TerminalViewModelOutputs {
                 do {
                     let realm = try weakSelf.contextManager.createContext()
                     try realm.write {
-                        command.status = .success
                         realm.add(command)
                     }
                 } catch {
